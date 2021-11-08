@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Implementing Mapping Types &#8212; Data Structures and Information Retrieval in Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Structures and Information Retrieval in Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Outline
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="algorithms.html">
+   Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis.html">
+   Analysis of Algorithms
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/hashmap.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AllenDowney/DSIRP"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/DSIRP/master?urlpath=tree/hashmap.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis-of-search-algorithms">
+   Analysis of search algorithms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linearmap">
+   LinearMap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bettermap">
+   BetterMap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hash-functions">
+   Hash Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hashmap">
+   HashMap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-time">
+   Run Time
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="implementing-mapping-types">
+<h1>Implementing Mapping Types<a class="headerlink" href="#implementing-mapping-types" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="analysis-of-search-algorithms">
+<h2>Analysis of search algorithms<a class="headerlink" href="#analysis-of-search-algorithms" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>search</strong> is an algorithm that takes a collection and a target item
+and determines whether the target is in the collection, often returning
+the index of the target.</p>
+<p>The simplest search algorithm is a “linear search”, which traverses the
+items of the collection in order, stopping if it finds the target. In
+the worst case it has to traverse the entire collection, so the run time
+is linear.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">in</span></code> operator for sequences uses a linear search; so do string
+methods like <code class="docutils literal notranslate"><span class="pre">find</span></code> and <code class="docutils literal notranslate"><span class="pre">count</span></code>.</p>
+<p>If the elements of the sequence are in order, you can use a <strong>bisection
+search</strong>, which is <span class="math notranslate nohighlight">\(O(\log n)\)</span>. Bisection search is similar to the
+algorithm you might use to look a word up in a dictionary (a paper
+dictionary, not the data structure). Instead of starting at the
+beginning and checking each item in order, you start with the item in
+the middle and check whether the word you are looking for comes before
+or after. If it comes before, then you search the first half of the
+sequence. Otherwise you search the second half. Either way, you cut the
+number of remaining items in half.</p>
+<p>If the sequence has 1,000,000 items, it will take about 20 steps to find
+the word or conclude that it’s not there. So that’s about 50,000 times
+faster than a linear search.</p>
+<p>Bisection search can be much faster than linear search, but it requires
+the sequence to be in order, which might require extra work.</p>
+<p>There is another data structure, called a <strong>hashtable</strong> that is even
+faster—it can do a search in constant time—and it doesn’t require
+the items to be sorted. Python dictionaries are implemented using
+hashtables, which is why most dictionary operations, including the <code class="docutils literal notranslate"><span class="pre">in</span></code>
+operator, are constant time.</p>
+</div>
+<div class="section" id="linearmap">
+<h2>LinearMap<a class="headerlink" href="#linearmap" title="Permalink to this headline">¶</a></h2>
+<p>To explain how hashtables work and why their performance is so good, I
+start with a simple implementation of a map and gradually improve it
+until it’s a hashtable.</p>
+<p>I use Python to demonstrate these implementations, but in real life you
+wouldn’t write code like this in Python; you would just use a
+dictionary! So this notebook, you have to imagine that
+dictionaries don’t exist and you want to implement a data structure that
+maps from keys to values.</p>
+<p>The operations we’ll implement are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">add(k,</span> <span class="pre">v)</span></code>: Add a new item that maps from key <code class="docutils literal notranslate"><span class="pre">k</span></code> to value <code class="docutils literal notranslate"><span class="pre">v</span></code>. With a Python dictionary, <code class="docutils literal notranslate"><span class="pre">d</span></code>, this operation is written <code class="docutils literal notranslate"><span class="pre">d[k]</span> <span class="pre">=</span> <span class="pre">v</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get(k)</span></code>: Look up and return the value that corresponds to key <code class="docutils literal notranslate"><span class="pre">k</span></code>. With a Python dictionary, <code class="docutils literal notranslate"><span class="pre">d</span></code>, this operation is written <code class="docutils literal notranslate"><span class="pre">d[k]</span></code> or <code class="docutils literal notranslate"><span class="pre">d.get(k)</span></code>.</p></li>
+</ul>
+<p>For now, I assume that each key only appears once.</p>
+<p>Here’s a simple implementation of this interface using a list of tuples, where each tuple is a key-value pair.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span>
+<span class="n">value</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+
+<span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+
+<span class="n">add</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">add</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">target</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+<span class="n">get</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LinearMap</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+        
+<span class="n">lmap</span> <span class="o">=</span> <span class="n">LinearMap</span><span class="p">()</span>
+<span class="n">lmap</span><span class="o">.</span><span class="n">items</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LinearMap</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">v</span>
+        <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s1"> not found&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">__init__</span></code> creates a new map with an empty list of items, so that’s constant time.</p>
+<p><code class="docutils literal notranslate"><span class="pre">add</span></code> appends a key-value tuple to the list of items, which takes
+constant time.</p>
+<p><code class="docutils literal notranslate"><span class="pre">get</span></code> uses a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to search the list: if it finds the target key
+it returns the corresponding value; otherwise it raises a <code class="docutils literal notranslate"><span class="pre">KeyError</span></code>. So
+<code class="docutils literal notranslate"><span class="pre">get</span></code> is linear.</p>
+<p>Let’s try out this implementation.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
+
+<span class="n">lmap</span> <span class="o">=</span> <span class="n">LinearMap</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">):</span>
+    <span class="n">lmap</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+<span class="n">lmap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>An alternative is to keep the list sorted by key. Then <code class="docutils literal notranslate"><span class="pre">get</span></code> could use a
+bisection search, which is <span class="math notranslate nohighlight">\(O(\log n)\)</span>. But inserting a new item in the
+middle of a list is linear, so this might not be the best option.</p>
+<p>We could also use a binary search tree, which can implement <code class="docutils literal notranslate"> <span class="pre">add</span></code> and <code class="docutils literal notranslate"><span class="pre">get</span></code> in log time, but that’s still not as good as constant time, so let’s move on.</p>
+</div>
+<div class="section" id="bettermap">
+<h2>BetterMap<a class="headerlink" href="#bettermap" title="Permalink to this headline">¶</a></h2>
+<p>One way to improve <code class="docutils literal notranslate"><span class="pre">LinearMap</span></code> is to break the list of key-value pairs
+into smaller lists. Here’s an implementation called <code class="docutils literal notranslate"><span class="pre">BetterMap</span></code>, which
+is a list of 100 LinearMaps. As we’ll see in a second, the order of
+growth for <code class="docutils literal notranslate"><span class="pre">get</span></code> is still linear, but <code class="docutils literal notranslate"><span class="pre">BetterMap</span></code> is a step on the path
+toward hashtables:</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BetterMap</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maps</span> <span class="o">=</span> <span class="p">[</span><span class="n">LinearMap</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+
+    <span class="k">def</span> <span class="nf">find_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">maps</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">maps</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_map</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_map</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">__init__</span></code> makes a list of <code class="docutils literal notranslate"><span class="pre">LinearMap</span></code> objects.</p>
+<p><code class="docutils literal notranslate"><span class="pre">find_map</span></code> is used by <code class="docutils literal notranslate"><span class="pre">add</span></code> and <code class="docutils literal notranslate"><span class="pre">get</span></code> to figure out which map to put the
+new item in, or which map to search.</p>
+<p><code class="docutils literal notranslate"><span class="pre">find_map</span></code> uses the built-in function <code class="docutils literal notranslate"><span class="pre">hash</span></code>, which takes almost any
+Python object and returns an integer. A limitation of this
+implementation is that it only works with hashable keys. Mutable types
+like lists and dictionaries are unhashable.</p>
+<p>Hashable objects that are considered equivalent return the same hash
+value, but the converse is not necessarily true: two objects with
+different values can return the same hash value.</p>
+<p><code class="docutils literal notranslate"><span class="pre">find_map</span></code> uses the modulus operator to wrap the hash values into the
+range from 0 to <code class="docutils literal notranslate"><span class="pre">len(self.maps)</span></code>, so the result is a legal index into
+the list. Of course, this means that many different hash values will
+wrap onto the same index. But if the hash function spreads things out
+pretty evenly (which is what hash functions are designed to do), then we
+expect <span class="math notranslate nohighlight">\(n/100\)</span> items per <code class="docutils literal notranslate"><span class="pre">LinearMap</span></code>.</p>
+<p>Let’s try it out:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bmap</span> <span class="o">=</span> <span class="n">BetterMap</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">):</span>
+    <span class="n">bmap</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+<span class="n">bmap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">lmap</span> <span class="ow">in</span> <span class="n">bmap</span><span class="o">.</span><span class="n">maps</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lmap</span><span class="o">.</span><span class="n">items</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since the run time of <code class="docutils literal notranslate"><span class="pre">LinearMap.get</span></code> is proportional to the number of
+items, we expect BetterMap to be about 100 times faster than LinearMap.
+The order of growth is still linear, but the leading coefficient is
+smaller.</p>
+</div>
+<div class="section" id="hash-functions">
+<h2>Hash Functions<a class="headerlink" href="#hash-functions" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">BetterMap.find_map</span></code> uses the <a class="reference external" href="https://docs.python.org/3/library/functions.html#hash">built-in function <code class="docutils literal notranslate"><span class="pre">hash</span></code></a>, which takes any hashable object and returns an integer:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">hash(object)</span></code></p>
+<p>Return the hash value of the object (if it has one). Hash values are integers. They are used to quickly compare dictionary keys during a dictionary lookup. Numeric values that compare equal have the same hash value (even if they are of different types, as is the case for 1 and 1.0).</p>
+</div></blockquote>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
+
+<span class="nb">hash</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="nb">hash</span><span class="p">(</span><span class="mf">2.0</span><span class="p">),</span> <span class="nb">hash</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">0</span><span class="n">j</span><span class="p">),</span> <span class="nb">hash</span><span class="p">(</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+<span class="nb">hash</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="nb">hash</span><span class="p">([</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">hash</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="hashmap">
+<h2>HashMap<a class="headerlink" href="#hashmap" title="Permalink to this headline">¶</a></h2>
+<p>Here (finally) is the crucial idea that makes hashtables fast: if you
+can keep the maximum length of the LinearMaps bounded, <code class="docutils literal notranslate"> <span class="pre">LinearMap.get</span></code>
+is constant time. All you have to do is keep track of the number of
+items and when the number of items per LinearMap exceeds a threshold,
+resize the hashtable by adding more LinearMaps.</p>
+<p>Here is an implementation of a hashtable:</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HashMap</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bmap</span> <span class="o">=</span> <span class="n">BetterMap</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bmap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bmap</span><span class="o">.</span><span class="n">maps</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">bmap</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">new_bmap</span> <span class="o">=</span> <span class="n">BetterMap</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bmap</span><span class="o">.</span><span class="n">maps</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bmap</span><span class="o">.</span><span class="n">maps</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+                <span class="n">new_bmap</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">bmap</span> <span class="o">=</span> <span class="n">new_bmap</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">__init__</span></code> creates a <code class="docutils literal notranslate"><span class="pre">BetterMap</span></code> and initializes <code class="docutils literal notranslate"><span class="pre">num</span></code>, which keeps
+track of the number of items.</p>
+<p><code class="docutils literal notranslate"><span class="pre">get</span></code> just invokes <code class="docutils literal notranslate"><span class="pre">BetterMap.get</span></code>, which uses <code class="docutils literal notranslate"><span class="pre">find_map</span></code> to figure out which <code class="docutils literal notranslate"><span class="pre">LinearMap</span></code> to search.</p>
+<p>The real work happens in <code class="docutils literal notranslate"><span class="pre">add</span></code>, which checks the number of items and the size of the <code class="docutils literal notranslate"><span class="pre">BetterMap</span></code>: if they are equal, the average number of items per LinearMap is 1, so it calls <code class="docutils literal notranslate"><span class="pre">resize</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">resize</span></code> makes a new <code class="docutils literal notranslate"><span class="pre">BetterMap</span></code>, twice as big as the previous one, and
+then “rehashes” the items from the old map to the new.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hmap</span> <span class="o">=</span> <span class="n">HashMap</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">):</span>
+    <span class="n">hmap</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+<span class="n">hmap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rehashing is necessary because changing the number of <code class="docutils literal notranslate"><span class="pre">LinearMap</span></code> objects changes the denominator of the modulus operator in <code class="docutils literal notranslate"><span class="pre">find_map</span></code>. That means that some objects that used to hash into the same LinearMap will get split up (which is what we wanted, right?).</p>
+<p>Rehashing is linear, so <code class="docutils literal notranslate"><span class="pre">resize</span></code> is linear, which might seem bad, since
+I promised that <code class="docutils literal notranslate"><span class="pre">add</span></code> would be constant time. But remember that we don’t
+have to resize every time, so <code class="docutils literal notranslate"><span class="pre">add</span></code> is usually constant time and only
+occasionally linear. The total amount of work to run <code class="docutils literal notranslate"><span class="pre">add</span></code> <span class="math notranslate nohighlight">\(n\)</span> times is
+proportional to <span class="math notranslate nohighlight">\(n\)</span>, so the average time of each <code class="docutils literal notranslate"><span class="pre">add</span></code> is constant time!</p>
+<p>To see how this works, think about starting with an empty <code class="docutils literal notranslate"><span class="pre">HashTable</span></code> and adding a sequence of items. We start with 2 <code class="docutils literal notranslate"><span class="pre">LinearMap</span></code> objects, so the first 2 adds are fast (no resizing required). Let’s say that they take one unit of work each. The next add requires a resize, so we have to rehash the first two items (let’s call that 2 more units of work) and then add the third item (one more unit). Adding the next item costs 1 unit, so the total so far is 6 units of work for 4 items.</p>
+<p>The next <code class="docutils literal notranslate"><span class="pre">add</span></code> costs 5 units, but the next three are only one unit each,
+so the total is 14 units for the first 8 adds.</p>
+<p>The next <code class="docutils literal notranslate"><span class="pre">add</span></code> costs 9 units, but then we can add 7 more before the next
+resize, so the total is 30 units for the first 16 adds.</p>
+<p>After 32 adds, the total cost is 62 units, and I hope you are starting
+to see a pattern. After <span class="math notranslate nohighlight">\(n\)</span> adds, where <span class="math notranslate nohighlight">\(n\)</span> is a power of two, the total
+cost is <span class="math notranslate nohighlight">\(2n-2\)</span> units, so the average work per add is a little less than
+2 units. When <span class="math notranslate nohighlight">\(n\)</span> is a power of two, that’s the best case; for other
+values of <span class="math notranslate nohighlight">\(n\)</span> the average work is a little higher, but that’s not
+important. The important thing is that it is <span class="math notranslate nohighlight">\(O(1)\)</span>.</p>
+<p>The following figure shows
+how this works graphically. Each block represents a unit of work. The
+columns show the total work for each add in order from left to right:
+the first two adds cost 1 unit each, the third costs 3 units, etc.</p>
+<p><img alt="" src="https://github.com/AllenDowney/DSIRP/raw/main/figs/towers.png" /></p>
+<p>The extra work of rehashing appears as a sequence of increasingly tall
+towers with increasing space between them. Now if you knock over the
+towers, spreading the cost of resizing over all adds, you can see
+graphically that the total cost after <span class="math notranslate nohighlight">\(n\)</span> adds is <span class="math notranslate nohighlight">\(2n - 2\)</span>.</p>
+<p>An important feature of this algorithm is that when we resize the
+<code class="docutils literal notranslate"><span class="pre">HashTable</span></code> it grows geometrically; that is, we multiply the size by a
+constant. If you increase the size arithmetically—adding a fixed
+number each time—the average time per <code class="docutils literal notranslate"><span class="pre">add</span></code> is linear.</p>
+</div>
+<div class="section" id="run-time">
+<h2>Run Time<a class="headerlink" href="#run-time" title="Permalink to this headline">¶</a></h2>
+<p>For the implementation of a dictionary, a good hash function is one that spreads out the values so the number of items in each of the <code class="docutils literal notranslate"><span class="pre">LinearMap</span></code> objects is about the same.</p>
+<p>In the worst case, if the hash function returns the same value for all objects, they would all be in the same <code class="docutils literal notranslate"><span class="pre">LinearMap</span></code>, and the <code class="docutils literal notranslate"><span class="pre">get</span></code> operation would be linear.</p>
+<p>Hash functions can be expensive to compute, especially if the keys are large objects (like long strings, for example).
+So dictionaries are “fast” because the operations are constant time, but they can be “slow” because the leading constant is relatively high.</p>
+<p>If the number of items in the dictionary is small, other implementations might be faster.</p>
+<p><strong>Exercise:</strong> What are the orders of growth for these two functions? Which one is faster when the words are 11 letters long?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="k">def</span> <span class="nf">is_anagram2</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Counter</span><span class="p">(</span><span class="n">word1</span><span class="p">)</span> <span class="o">==</span> <span class="n">Counter</span><span class="p">(</span><span class="n">word2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_anagram3</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">word1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">word2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> is_anagram2(&#39;tachymetric&#39;, &#39;mccarthyite&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> is_anagram3(&#39;tachymetric&#39;, &#39;mccarthyite&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Allen B. Downey<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

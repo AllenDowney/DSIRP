@@ -1,0 +1,1066 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cleaning and Validation &#8212; Political Alignment Case Study</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Exploring Distributions" href="02_polviews.html" />
+    <link rel="prev" title="Political Alignment Case Study" href="index.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Political Alignment Case Study</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Political Alignment Case Study
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Cleaning and Validation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_polviews.html">
+   Exploring Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_outlook.html">
+   Political Alignment and Outlook
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_worldview.html">
+   Political Alignment and Other Views
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/01_clean.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AllenDowney/PoliticalAlignmentCaseStudy"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/PoliticalAlignmentCaseStudy/master?urlpath=tree/01_clean.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-the-data">
+   Reading the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#validation">
+   Validation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#missing-data">
+   Missing data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#replacing-missing-data">
+   Replacing missing data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resampling">
+   Resampling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-the-results">
+   Saving the results
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="cleaning-and-validation">
+<h1>Cleaning and Validation<a class="headerlink" href="#cleaning-and-validation" title="Permalink to this headline">¶</a></h1>
+<p>This is the first in a series of notebooks that make up a <a class="reference external" href="https://allendowney.github.io/PoliticalAlignmentCaseStudy/">case study in exploratory data analysis</a>.
+This case study is part of the <a class="reference external" href="https://allendowney.github.io/ElementsOfDataScience/"><em>Elements of Data Science</em></a> curriculum.</p>
+<p>In this notebook, we</p>
+<ol class="simple">
+<li><p>Read data from the General Social Survey (GSS),</p></li>
+<li><p>Clean the data, particularly dealing with special codes that indicate missing data,</p></li>
+<li><p>Validate the data by comparing the values in the dataset with values documented in the codebook.</p></li>
+<li><p>Generate resampled datasets that correct for deliberate oversampling in the dataset, and</p></li>
+<li><p>Store the resampled data in a binary format (HDF5) that makes it easier to work with in the notebooks that follow this one.</p></li>
+</ol>
+<p>The following cell loads the packages we need.  If you have everything installed, there should be no error messages.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="reading-the-data">
+<h2>Reading the data<a class="headerlink" href="#reading-the-data" title="Permalink to this headline">¶</a></h2>
+<p>The data we’ll use is from the General Social Survey (GSS).  Using the <a class="reference external" href="https://gssdataexplorer.norc.org/projects/52787">GSS Data Explorer</a>, I selected a subset of the variables in the GSS and made it available along with this notebook.
+The following cell downloads this extract.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
+
+<span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://github.com/AllenDowney/PoliticalAlignmentCaseStudy/&#39;</span> <span class="o">+</span>
+         <span class="s1">&#39;raw/master/gss_eda.tar.gz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The data is in a gzipped tar file that contains two files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GSS.dat</span></code> contains the actual data, and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GSS.dct</span></code> is the “dictionary file” that describes the contents of the data file.</p></li>
+</ul>
+<p>The dictionary file is in Stata format, so we’ll use the <code class="docutils literal notranslate"><span class="pre">statadict</span></code> library to read it.  The following cell installs it if necessary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">statadict</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip install statadict
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use the Python module <code class="docutils literal notranslate"><span class="pre">tarfile</span></code> to extract the dictionary file, and <code class="docutils literal notranslate"><span class="pre">statadict</span></code> to read and parse it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tarfile</span>
+<span class="kn">from</span> <span class="nn">statadict</span> <span class="kn">import</span> <span class="n">parse_stata_dict</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;gss_eda.tar.gz&#39;</span>
+<span class="n">dict_file</span><span class="o">=</span><span class="s1">&#39;GSS.dct&#39;</span>
+<span class="n">data_file</span><span class="o">=</span><span class="s1">&#39;GSS.dat&#39;</span>
+
+<span class="k">with</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">tf</span><span class="p">:</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">dict_file</span><span class="p">)</span>
+    <span class="n">stata_dict</span> <span class="o">=</span> <span class="n">parse_stata_dict</span><span class="p">(</span><span class="n">dict_file</span><span class="p">)</span>
+        
+<span class="n">stata_dict</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;statadict.base.StataDict at 0x7f0bd778a890&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result is a <code class="docutils literal notranslate"><span class="pre">StataDict</span></code> object that contains the names of the columns in the data file and the column specifications, which indicate where each column is.
+We can pass these values to <code class="docutils literal notranslate"><span class="pre">read_fwf</span></code>, which is a Pandas function that reads <a class="reference external" href="https://en.wikipedia.org/wiki/Flat-file_database">fixed width files</a>, which is what <code class="docutils literal notranslate"><span class="pre">GSS.dat</span></code> is.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">tf</span><span class="p">:</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">extractfile</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>  
+    <span class="n">gss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_fwf</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span>
+                      <span class="n">names</span><span class="o">=</span><span class="n">stata_dict</span><span class="o">.</span><span class="n">names</span><span class="p">,</span>
+                      <span class="n">colspecs</span><span class="o">=</span><span class="n">stata_dict</span><span class="o">.</span><span class="n">colspecs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The column names in the data file are in all caps.
+I’ll convert them to lower case because I think it makes the code look better.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">shape</span></code> and <code class="docutils literal notranslate"><span class="pre">head</span></code> to see what the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> looks like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">gss</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">gss</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(64814, 169)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>id_</th>
+      <th>agewed</th>
+      <th>divorce</th>
+      <th>sibs</th>
+      <th>childs</th>
+      <th>age</th>
+      <th>educ</th>
+      <th>paeduc</th>
+      <th>maeduc</th>
+      <th>...</th>
+      <th>fejobaff</th>
+      <th>discaffm</th>
+      <th>discaffw</th>
+      <th>fehire</th>
+      <th>meovrwrk</th>
+      <th>avoidbuy</th>
+      <th>income</th>
+      <th>rincome</th>
+      <th>realrinc</th>
+      <th>china</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1972</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>23</td>
+      <td>16</td>
+      <td>10</td>
+      <td>97</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1972</td>
+      <td>2</td>
+      <td>21</td>
+      <td>2</td>
+      <td>4</td>
+      <td>5</td>
+      <td>70</td>
+      <td>10</td>
+      <td>8</td>
+      <td>8</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1972</td>
+      <td>3</td>
+      <td>20</td>
+      <td>2</td>
+      <td>5</td>
+      <td>4</td>
+      <td>48</td>
+      <td>12</td>
+      <td>8</td>
+      <td>8</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1972</td>
+      <td>4</td>
+      <td>24</td>
+      <td>2</td>
+      <td>5</td>
+      <td>0</td>
+      <td>27</td>
+      <td>17</td>
+      <td>16</td>
+      <td>12</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1972</td>
+      <td>5</td>
+      <td>22</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>61</td>
+      <td>12</td>
+      <td>8</td>
+      <td>8</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>-1</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 169 columns</p>
+</div></div></div>
+</div>
+<p>This dataset has 64814 rows, one for each respondent, and 166 columns, one for each variable.</p>
+</div>
+<div class="section" id="validation">
+<h2>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h2>
+<p>Now that we’ve got the data loaded, it is important to validate it, which means checking for errors.</p>
+<p>The kinds of errors you have to check for depend on the nature of the data, the collection process, how the data is stored and transmitted, etc.</p>
+<p>For this dataset, there are three kinds of validation we’ll think about:</p>
+<ol class="simple">
+<li><p>We need to check the <strong>integrity</strong> of the dataset; that is, whether the data were corrupted or changed during transmission, storage, or conversion from one format to another.</p></li>
+<li><p>We need to check our <strong>interpretation</strong> of the data; for example, whether the numbers used to encode the data mean what we think they mean.</p></li>
+<li><p>We will also keep an eye out for <strong>invalid</strong> data; for example, missing data might be represented using special codes, or there might be patterns in the data that indicate problems with the survey process and the recording of the data.</p></li>
+</ol>
+<p>In a different dataset I worked with, I found a surprising number of respondents whose height was supposedly 62 centimeters.  After investigating, I concluded that they were probably 6 feet, 2 inches, and their heights were recorded incorrectly.</p>
+<p>Validating data can be a tedious process, but it is important.  If you interpret data incorrectly and publish invalid results, you will be embarrassed in the best case, and in the worst case you might do real harm.  See <a class="reference external" href="https://www.vox.com/future-perfect/2019/6/4/18650969/married-women-miserable-fake-paul-dolan-happiness">this article</a> for a recent example.</p>
+<p>However, I don’t expect you to validate every variable in this dataset.  Instead, I will demonstrate the process, and then ask you to validate one additional variable as an exercise.</p>
+<p>The first variable we’ll validate is called <code class="docutils literal notranslate"><span class="pre">polviews</span></code>.  It records responses to the following question:</p>
+<blockquote>
+<div><p>We hear a lot of talk these days about liberals and conservatives.
+I’m going to show you a seven-point scale on which the political views that people might hold are arranged from extremely liberal–point 1–to extremely conservative–point 7. Where would you place yourself on this scale?</p>
+</div></blockquote>
+<p>You can <a class="reference external" href="https://gssdataexplorer.norc.org/projects/52787/variables/178/vshow">read the documentation of this variable in the GSS codebook</a>.</p>
+<p>The responses are encoded like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>	<span class="n">Extremely</span> <span class="n">liberal</span>
+<span class="mi">2</span>	<span class="n">Liberal</span>
+<span class="mi">3</span>	<span class="n">Slightly</span> <span class="n">liberal</span>
+<span class="mi">4</span>	<span class="n">Moderate</span>
+<span class="mi">5</span>	<span class="n">Slghtly</span> <span class="n">conservative</span>
+<span class="mi">6</span>	<span class="n">Conservative</span>
+<span class="mi">7</span>	<span class="n">Extremely</span> <span class="n">conservative</span>
+<span class="mi">8</span>	<span class="n">Don</span><span class="s1">&#39;t know</span>
+<span class="mi">9</span>	<span class="n">No</span> <span class="n">answer</span>
+<span class="mi">0</span>	<span class="n">Not</span> <span class="n">applicable</span>
+</pre></div>
+</div>
+<p>The following function, <code class="docutils literal notranslate"><span class="pre">values</span></code>, takes a Series that represents a single variable and returns the values in the series and their frequencies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Count the values and sort.</span>
+<span class="sd">    </span>
+<span class="sd">    series: pd.Series</span>
+<span class="sd">    </span>
+<span class="sd">    returns: series mapping from values to frequencies</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">series</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are the values for the variable <code class="docutils literal notranslate"><span class="pre">polviews</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">column</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s1">&#39;polviews&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span><span class="p">(</span><span class="n">column</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     6777
+1     1682
+2     6514
+3     7010
+4    21370
+5     8690
+6     8230
+7     1832
+8     2326
+9      383
+Name: polviews, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>To check the integrity of the data and confirm that we have loaded it correctly, we’ll do a “spot check”; that is, we’ll pick one year and compare the values we see in the dataset to the values reported in the codebook.</p>
+<p>We can select values from a single year like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">one_year</span> <span class="o">=</span> <span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1974</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And look at the values and their frequencies:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span><span class="p">(</span><span class="n">column</span><span class="p">[</span><span class="n">one_year</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1     22
+2    201
+3    207
+4    564
+5    221
+6    160
+7     35
+8     70
+9      4
+Name: polviews, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you <a class="reference external" href="https://gssdataexplorer.norc.org/projects/52787/variables/178/vshow">compare these results to the values in the codebook</a>, you should see that they agree.</p>
+<p><strong>Exercise:</strong> Go back and change 1974 to another year, and compare the results to the codebook.</p>
+</div>
+<div class="section" id="missing-data">
+<h2>Missing data<a class="headerlink" href="#missing-data" title="Permalink to this headline">¶</a></h2>
+<p>For many variables, missing values are encoded with numerical codes that we need to replace before we do any analysis.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">polviews</span></code>, the values 8, 9, and 0 represent “Don’t know”, “No answer”, and “Not applicable”.</p>
+<p>“Not applicable” usually means the respondent was not asked a particular question.</p>
+<p>To keep things simple, we’ll treat all of these values as equivalent, but we lose some information by doing that.  For example, if a respondent refuses to answer a question, that might suggest something about their answer.  If so, treating their response as missing data might bias the results.</p>
+<p>Fortunately, for most questions the number of respondents who refused to answer is small.</p>
+<p>I’ll replace the numeric codes 8, 9, and 0 with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, which is a special value used to indicate missing data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span> <span class="o">=</span> <span class="n">column</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">notna</span></code> and <code class="docutils literal notranslate"><span class="pre">sum</span></code> to count the valid responses:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>55328
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we use <code class="docutils literal notranslate"><span class="pre">isna</span></code> to count the missing responses:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9486
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can <a class="reference external" href="https://gssdataexplorer.norc.org/projects/52787/variables/178/vshow">check these results against the codebook</a>; at the bottom of that page, it reports the number of “Valid cases” and “Missing cases”.</p>
+<p>However, in this example, the results don’t match.  The codebook reports 53081 valid cases and 9385 missing cases.</p>
+<p>To figure out what was wrong, I looked at the difference between the values in the codebook and the values I computed from the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="mi">53081</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2247
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="mi">9385</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>101
+</pre></div>
+</div>
+</div>
+</div>
+<p>That looks like about one year of data, so I guessed that the numbers in the code book might not include the most recent data, from 2018.</p>
+<p>Here are the numbers from 2018.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">one_year</span> <span class="o">=</span> <span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2018</span><span class="p">)</span>
+<span class="n">one_year</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2348
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span><span class="p">[</span><span class="n">one_year</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2247
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span><span class="p">[</span><span class="n">one_year</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>101
+</pre></div>
+</div>
+</div>
+</div>
+<p>It looks like my hypothesis is correct; the summary statistics in the codebook do not include data from 2018.</p>
+<p>Based on these checks, it looks like the dataset is intact and we have loaded it correctly.</p>
+</div>
+<div class="section" id="replacing-missing-data">
+<h2>Replacing missing data<a class="headerlink" href="#replacing-missing-data" title="Permalink to this headline">¶</a></h2>
+<p>For the other variables in this dataset, I read through the code book and identified the special values that indicate missing data.</p>
+<p>I recorded that information in the following function, which is intended to replace special values with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">replace_invalid</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">bad</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">bad</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">gss_replace_invalid</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Replace invalid data with NaN.</span>
+<span class="sd">    </span>
+<span class="sd">    df: DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># different variables use different codes for invalid data</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">cohort</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9999</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">marcohrt</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9999</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+    <span class="c1"># since there are a lot of variables that use 0, 8, and 9 for invalid data,</span>
+    <span class="c1"># I&#39;ll use a loop to replace all of them</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;abany&#39;</span><span class="p">,</span> <span class="s1">&#39;abdefect&#39;</span><span class="p">,</span> <span class="s1">&#39;abhlth&#39;</span><span class="p">,</span> <span class="s1">&#39;abnomore&#39;</span><span class="p">,</span> <span class="s1">&#39;abpoor&#39;</span><span class="p">,</span> <span class="s1">&#39;abrape&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;absingle&#39;</span><span class="p">,</span> <span class="s1">&#39;affrmact&#39;</span><span class="p">,</span> <span class="s1">&#39;bible&#39;</span><span class="p">,</span> <span class="s1">&#39;cappun&#39;</span><span class="p">,</span> <span class="s1">&#39;colath&#39;</span><span class="p">,</span> <span class="s1">&#39;colcom&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;colhomo&#39;</span><span class="p">,</span> <span class="s1">&#39;colmil&#39;</span><span class="p">,</span> <span class="s1">&#39;colmslm&#39;</span><span class="p">,</span> <span class="s1">&#39;colrac&#39;</span><span class="p">,</span> <span class="s1">&#39;compuse&#39;</span><span class="p">,</span> <span class="s1">&#39;conarmy&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;conbus&#39;</span><span class="p">,</span> <span class="s1">&#39;conclerg&#39;</span><span class="p">,</span> <span class="s1">&#39;coneduc&#39;</span><span class="p">,</span> <span class="s1">&#39;confed&#39;</span><span class="p">,</span> <span class="s1">&#39;confinan&#39;</span><span class="p">,</span> <span class="s1">&#39;conjudge&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;conlabor&#39;</span><span class="p">,</span> <span class="s1">&#39;conlegis&#39;</span><span class="p">,</span> <span class="s1">&#39;conmedic&#39;</span><span class="p">,</span> <span class="s1">&#39;conpress&#39;</span><span class="p">,</span> <span class="s1">&#39;consci&#39;</span><span class="p">,</span> <span class="s1">&#39;contv&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;databank&#39;</span><span class="p">,</span> <span class="s1">&#39;discaffm&#39;</span><span class="p">,</span> <span class="s1">&#39;discaffw&#39;</span><span class="p">,</span> <span class="s1">&#39;divlaw&#39;</span><span class="p">,</span> <span class="s1">&#39;divorce&#39;</span><span class="p">,</span> <span class="s1">&#39;fair&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;fear&#39;</span><span class="p">,</span> <span class="s1">&#39;fechld&#39;</span><span class="p">,</span> <span class="s1">&#39;fefam&#39;</span><span class="p">,</span> <span class="s1">&#39;fehire&#39;</span><span class="p">,</span> <span class="s1">&#39;fejobaff&#39;</span><span class="p">,</span> <span class="s1">&#39;fepol&#39;</span><span class="p">,</span> <span class="s1">&#39;fepresch&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;finrela&#39;</span><span class="p">,</span> <span class="s1">&#39;fund&#39;</span><span class="p">,</span> <span class="s1">&#39;fund16&#39;</span><span class="p">,</span> <span class="s1">&#39;god&#39;</span><span class="p">,</span> <span class="s1">&#39;grass&#39;</span><span class="p">,</span> <span class="s1">&#39;gunlaw&#39;</span><span class="p">,</span> <span class="s1">&#39;hapmar&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;happy&#39;</span><span class="p">,</span> <span class="s1">&#39;health&#39;</span><span class="p">,</span> <span class="s1">&#39;helpful&#39;</span><span class="p">,</span> <span class="s1">&#39;homosex&#39;</span><span class="p">,</span> <span class="s1">&#39;hunt&#39;</span><span class="p">,</span> <span class="s1">&#39;letdie1&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;libath&#39;</span><span class="p">,</span> <span class="s1">&#39;libcom&#39;</span><span class="p">,</span> <span class="s1">&#39;libhomo&#39;</span><span class="p">,</span> <span class="s1">&#39;libmil&#39;</span><span class="p">,</span> <span class="s1">&#39;libmslm&#39;</span><span class="p">,</span> <span class="s1">&#39;librac&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;life&#39;</span><span class="p">,</span> <span class="s1">&#39;memchurh&#39;</span><span class="p">,</span> <span class="s1">&#39;meovrwrk&#39;</span><span class="p">,</span> <span class="s1">&#39;nataid&#39;</span><span class="p">,</span> <span class="s1">&#39;natarms&#39;</span><span class="p">,</span> <span class="s1">&#39;natchld&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;natcity&#39;</span><span class="p">,</span> <span class="s1">&#39;natcrime&#39;</span><span class="p">,</span> <span class="s1">&#39;natcrimy&#39;</span><span class="p">,</span> <span class="s1">&#39;natdrug&#39;</span><span class="p">,</span> <span class="s1">&#39;nateduc&#39;</span><span class="p">,</span> <span class="s1">&#39;natenrgy&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;natenvir&#39;</span><span class="p">,</span> <span class="s1">&#39;natfare&#39;</span><span class="p">,</span> <span class="s1">&#39;natheal&#39;</span><span class="p">,</span> <span class="s1">&#39;natmass&#39;</span><span class="p">,</span> <span class="s1">&#39;natpark&#39;</span><span class="p">,</span> <span class="s1">&#39;natrace&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;natroad&#39;</span><span class="p">,</span> <span class="s1">&#39;natsci&#39;</span><span class="p">,</span> <span class="s1">&#39;natsoc&#39;</span><span class="p">,</span> <span class="s1">&#39;natspac&#39;</span><span class="p">,</span> <span class="s1">&#39;polviews&#39;</span><span class="p">,</span> <span class="s1">&#39;pornlaw&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;postlife&#39;</span><span class="p">,</span> <span class="s1">&#39;pray&#39;</span><span class="p">,</span> <span class="s1">&#39;prayer&#39;</span><span class="p">,</span> <span class="s1">&#39;premarsx&#39;</span><span class="p">,</span> <span class="s1">&#39;pres04&#39;</span><span class="p">,</span> <span class="s1">&#39;pres08&#39;</span><span class="p">,</span> <span class="s1">&#39;pres12&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;racmar&#39;</span><span class="p">,</span> <span class="s1">&#39;racopen&#39;</span><span class="p">,</span> <span class="s1">&#39;racpres&#39;</span><span class="p">,</span> <span class="s1">&#39;reborn&#39;</span><span class="p">,</span> <span class="s1">&#39;relexp&#39;</span><span class="p">,</span> <span class="s1">&#39;reliten&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;relpersn&#39;</span><span class="p">,</span> <span class="s1">&#39;res16&#39;</span><span class="p">,</span> <span class="s1">&#39;satfin&#39;</span><span class="p">,</span> <span class="s1">&#39;satjob&#39;</span><span class="p">,</span> <span class="s1">&#39;savesoul&#39;</span><span class="p">,</span> <span class="s1">&#39;sexeduc&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;spanking&#39;</span><span class="p">,</span> <span class="s1">&#39;spkath&#39;</span><span class="p">,</span> <span class="s1">&#39;spkcom&#39;</span><span class="p">,</span> <span class="s1">&#39;spkhomo&#39;</span><span class="p">,</span> <span class="s1">&#39;spkmil&#39;</span><span class="p">,</span> <span class="s1">&#39;spkmslm&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;spkrac&#39;</span><span class="p">,</span> <span class="s1">&#39;sprel16&#39;</span><span class="p">,</span> <span class="s1">&#39;sprtprsn&#39;</span><span class="p">,</span> <span class="s1">&#39;teensex&#39;</span><span class="p">,</span> <span class="s1">&#39;trust&#39;</span><span class="p">,</span> <span class="s1">&#39;union_&#39;</span><span class="p">,</span> <span class="s1">&#39;xmarsex&#39;</span><span class="p">]</span>
+    <span class="n">replace_invalid</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+    <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">,</span> <span class="s1">&#39;padeg&#39;</span><span class="p">,</span> <span class="s1">&#39;madeg&#39;</span><span class="p">,</span> <span class="s1">&#39;spdeg&#39;</span><span class="p">,</span> <span class="s1">&#39;partyid&#39;</span><span class="p">]</span>
+    <span class="n">replace_invalid</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+        
+    <span class="n">df</span><span class="o">.</span><span class="n">phone</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">owngun</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">pistol</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">class_</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">df</span><span class="o">.</span><span class="n">chldidel</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">df</span><span class="o">.</span><span class="n">attend</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">9</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">childs</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">9</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">adults</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">9</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">df</span><span class="o">.</span><span class="n">relactiv</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">89</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">age</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">agewed</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">relig</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">relig16</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">df</span><span class="o">.</span><span class="n">realinc</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                  
+    <span class="n">df</span><span class="o">.</span><span class="n">realrinc</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                  
+    
+    <span class="c1"># note: sibs contains some unlikely numbers</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">sibs</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">df</span><span class="o">.</span><span class="n">educ</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">97</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">maeduc</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">97</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">paeduc</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">97</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">speduc</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">97</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">df</span><span class="o">.</span><span class="n">income</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">rincome</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss_replace_invalid</span><span class="p">(</span><span class="n">gss</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># try to make the dataset smaller by replacing</span>
+<span class="c1"># 64-bit FP numbers with 32-bit.</span>
+
+<span class="k">for</span> <span class="n">varname</span> <span class="ow">in</span> <span class="n">gss</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">gss</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">:</span>
+        <span class="n">gss</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>At this point, I have only moderate confidence that this code is correct.  I’m not sure I have dealt with every variable in the dataset, and I’m not sure that the special values for every variable are correct.</p>
+<p>So I will ask for your help.</p>
+<p><strong>Exercise</strong>: In order to validate the other variables, I’d like each person who works with this notebook to validate one variable.</p>
+<p>If you run the following cell, it will choose one of the columns from the dataset at random.  That’s the variable you will check.</p>
+<p>If you get <code class="docutils literal notranslate"><span class="pre">year</span></code> or <code class="docutils literal notranslate"><span class="pre">id_</span></code>, run the cell again to get a different variable name.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">gss</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;spkath&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Go back through the previous two sections of this notebook and replace <code class="docutils literal notranslate"><span class="pre">polviews</span></code> with your randomly chosen variable.  Then run the cells again and go to <a class="reference external" href="https://forms.gle/tmST8YCu4qLc414F7">this online survey to report the results</a>.</p>
+<p>Note: Not all questions were asked during all years.  If your variable doesn’t have data for 1974 or 2018, you might have to choose different years.</p>
+</div>
+<div class="section" id="resampling">
+<h2>Resampling<a class="headerlink" href="#resampling" title="Permalink to this headline">¶</a></h2>
+<p>The GSS uses stratified sampling, which means that some groups are deliberately oversampled to help with statistical validity.</p>
+<p>As a result, each respondent has a sampling weight which is proportional to the number of people in the population they represent.</p>
+<p>Before running any analysis, we can compensate for stratified sampling by “resampling”, that is, by drawing a random sample from the dataset, where each respondent’s chance of appearing in the sample is proportional to their sampling weight.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">resample_rows_weighted</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Resamples a DataFrame using probabilities proportional to given column.</span>
+
+<span class="sd">    df: DataFrame</span>
+<span class="sd">    column: string column name to use as weights</span>
+
+<span class="sd">    returns: DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sample</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">resample_by_year</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Resample rows within each year.</span>
+
+<span class="sd">    df: DataFrame</span>
+<span class="sd">    column: string name of weight variable</span>
+
+<span class="sd">    returns DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="n">resample_rows_weighted</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span>
+               <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">grouped</span><span class="p">]</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sample</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">resample_by_year</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="s1">&#39;wtssall&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="saving-the-results">
+<h2>Saving the results<a class="headerlink" href="#saving-the-results" title="Permalink to this headline">¶</a></h2>
+<p>I’ll save the results to an HDF5 file, which is a binary format that makes it much faster to read the data back.</p>
+<p>First I’ll save the original (not resampled) data.</p>
+<p>An HDF5 file is like a dictionary on disk.  It contains keys and corresponding values.</p>
+<p><code class="docutils literal notranslate"><span class="pre">to_hdf</span></code> takes three arguments:</p>
+<ul class="simple">
+<li><p>The filename, <code class="docutils literal notranslate"><span class="pre">gss_eda.hdf5</span></code>.</p></li>
+<li><p>The key, <code class="docutils literal notranslate"><span class="pre">gss</span></code></p></li>
+<li><p>The compression level, which controls how hard the algorithm works to compress the file.</p></li>
+</ul>
+<p>So this file contains a single key, <code class="docutils literal notranslate"><span class="pre">gss</span></code>, which maps to the DataFrame with the original GSS data.</p>
+<p>The argument <code class="docutils literal notranslate"><span class="pre">w</span></code> says that if the file already exists, we should overwrite it.</p>
+<p>With compression level <code class="docutils literal notranslate"><span class="pre">3</span></code>, it reduces the size of the file by a factor of 10.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># save the original</span>
+
+<span class="n">gss</span><span class="o">.</span><span class="n">to_hdf</span><span class="p">(</span><span class="s1">&#39;gss_eda.hdf5&#39;</span><span class="p">,</span> <span class="s1">&#39;gss&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">complevel</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls -l gss_eda.hdf5
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-rw-r-- 1 downey downey 6939805 Apr 17 11:51 gss_eda.hdf5
+</pre></div>
+</div>
+</div>
+</div>
+<p>And I’ll create a second file with three random resamplings of the original dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if the file already exists, remove it</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;gss_eda.3.hdf5&#39;</span><span class="p">):</span>
+    <span class="o">!</span>rm gss_eda.3.hdf5
+</pre></div>
+</div>
+</div>
+</div>
+<p>This file contains three keys, <code class="docutils literal notranslate"><span class="pre">gss0</span></code>, <code class="docutils literal notranslate"><span class="pre">gss1</span></code>, and <code class="docutils literal notranslate"><span class="pre">gss2</span></code>, which map to three DataFrames.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate and store three resamplings</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;gss0&#39;</span><span class="p">,</span> <span class="s1">&#39;gss1&#39;</span><span class="p">,</span> <span class="s1">&#39;gss2&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">resample_by_year</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="s1">&#39;wtssall&#39;</span><span class="p">)</span>
+
+    <span class="n">sample</span><span class="o">.</span><span class="n">to_hdf</span><span class="p">(</span><span class="s1">&#39;gss_eda.3.hdf5&#39;</span><span class="p">,</span> <span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">complevel</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls -l gss_eda.3.hdf5
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-rw-r-- 1 downey downey 20717248 Apr 17 11:51 gss_eda.3.hdf5
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the other notebooks in this case study, we’ll load this resampled data rather than reading and cleaning the data every time.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Political Alignment Case Study</a>
+    <a class='right-next' id="next-link" href="02_polviews.html" title="next page">Exploring Distributions</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Allen B. Downey<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

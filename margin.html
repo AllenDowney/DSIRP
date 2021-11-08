@@ -1,0 +1,1310 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Margin Matters &#8212; Political Alignment Case Study</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Political Alignment Case Study</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Political Alignment Case Study
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_clean.html">
+   Cleaning and Validation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_polviews.html">
+   Exploring Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_outlook.html">
+   Political Alignment and Outlook
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_worldview.html">
+   Political Alignment and Other Views
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/margin.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AllenDowney/PoliticalAlignmentCaseStudy"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/PoliticalAlignmentCaseStudy/master?urlpath=tree/margin.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tracking-congress">
+   Tracking Congress
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#log-odds">
+   Log odds
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scatter">
+   Scatter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scatter-log-odds">
+   Scatter log odds
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regression">
+   Regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prediction">
+   Prediction
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="the-margin-matters">
+<h1>The Margin Matters<a class="headerlink" href="#the-margin-matters" title="Permalink to this headline">¶</a></h1>
+<p>Allen Downey</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/MIT_License">MIT License</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tracking-congress">
+<h2>Tracking Congress<a class="headerlink" href="#tracking-congress" title="Permalink to this headline">¶</a></h2>
+<p>If you Google “Republican Congress backbone”, you will get a lot of answers to the same question: “Why do Republicans in Congress vote with Donald Trump, even when his policies conflict with long-standing Republican principles?</p>
+<p><a class="reference external" href="https://www.nytimes.com/2020/02/05/opinion/trump-senate-acquittal-impeachment.html">This example from <em>The New York Times</em></a> suggests it comes down to fear of reprisal from Trump, the party leadership, the conservative media, and social media.</p>
+<p>At the same time, when pundits are asked to explain a vote from a particular member of Congress, they often start with something like, “So-and-so represents a district that voted for Trump by a 20% margin…”</p>
+<p>So that makes me wonder: if members of Congress are voting out of fear, to what degree are they afraid of their constituents?</p>
+<p>It seems like our friends at FiveThirtyEight have thought about the same question, because they publish “An updating tally of how often every member of the House and the Senate votes with or against the president”:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://projects.fivethirtyeight.com/congress-trump-score/?ex_cid=rrpromo">Tracking Congress In The Age Of Trump</a></p></li>
+</ul>
+<p>The table there includes every member of the 115th and 116th Congresses who cast a vote; it reports Trump’s margin of victory in the region they represent and the fraction of votes they cast that agree with Trump (they explain how they determined that).</p>
+<p>I’ll use their data to explore the relationship between these voting patterns and Trump’s margin victory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the data file</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;averages.csv&#39;</span><span class="p">):</span>
+    <span class="o">!</span>wget https://projects.fivethirtyeight.com/congress-tracker-data/csv/averages.csv
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s what the dataset looks like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;averages.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>congress</th>
+      <th>chamber</th>
+      <th>bioguide</th>
+      <th>last_name</th>
+      <th>state</th>
+      <th>district</th>
+      <th>party</th>
+      <th>votes</th>
+      <th>agree_pct</th>
+      <th>predicted_agree</th>
+      <th>net_trump_vote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>house</td>
+      <td>A000055</td>
+      <td>Aderholt</td>
+      <td>AL</td>
+      <td>4.0</td>
+      <td>Republican</td>
+      <td>164.0</td>
+      <td>0.975610</td>
+      <td>0.957037</td>
+      <td>63.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>115</td>
+      <td>house</td>
+      <td>A000055</td>
+      <td>Aderholt</td>
+      <td>AL</td>
+      <td>4.0</td>
+      <td>R</td>
+      <td>95.0</td>
+      <td>0.968421</td>
+      <td>0.946349</td>
+      <td>63.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>116</td>
+      <td>house</td>
+      <td>A000055</td>
+      <td>Aderholt</td>
+      <td>AL</td>
+      <td>4.0</td>
+      <td>R</td>
+      <td>69.0</td>
+      <td>0.985507</td>
+      <td>0.971751</td>
+      <td>63.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>house</td>
+      <td>A000367</td>
+      <td>Amash</td>
+      <td>MI</td>
+      <td>3.0</td>
+      <td>Independent</td>
+      <td>163.0</td>
+      <td>0.638037</td>
+      <td>0.753716</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>115</td>
+      <td>house</td>
+      <td>A000367</td>
+      <td>Amash</td>
+      <td>MI</td>
+      <td>3.0</td>
+      <td>R</td>
+      <td>96.0</td>
+      <td>0.541667</td>
+      <td>0.847386</td>
+      <td>9.4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>I’ll select the rows with <code class="docutils literal notranslate"><span class="pre">congress==0</span></code>, which is the sum of votes from the 115th and 116th Congresses.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">both_sessions</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;congress&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">df_all</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">both_sessions</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_all</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>congress</th>
+      <th>chamber</th>
+      <th>bioguide</th>
+      <th>last_name</th>
+      <th>state</th>
+      <th>district</th>
+      <th>party</th>
+      <th>votes</th>
+      <th>agree_pct</th>
+      <th>predicted_agree</th>
+      <th>net_trump_vote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>house</td>
+      <td>A000055</td>
+      <td>Aderholt</td>
+      <td>AL</td>
+      <td>4.0</td>
+      <td>Republican</td>
+      <td>164.0</td>
+      <td>0.975610</td>
+      <td>0.957037</td>
+      <td>63.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>house</td>
+      <td>A000367</td>
+      <td>Amash</td>
+      <td>MI</td>
+      <td>3.0</td>
+      <td>Independent</td>
+      <td>163.0</td>
+      <td>0.638037</td>
+      <td>0.753716</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>house</td>
+      <td>A000369</td>
+      <td>Amodei</td>
+      <td>NV</td>
+      <td>2.0</td>
+      <td>Republican</td>
+      <td>164.0</td>
+      <td>0.969512</td>
+      <td>0.808592</td>
+      <td>12.3</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0</td>
+      <td>house</td>
+      <td>A000370</td>
+      <td>Adams</td>
+      <td>NC</td>
+      <td>12.0</td>
+      <td>Democrat</td>
+      <td>163.0</td>
+      <td>0.116564</td>
+      <td>0.135310</td>
+      <td>-40.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>0</td>
+      <td>house</td>
+      <td>A000371</td>
+      <td>Aguilar</td>
+      <td>CA</td>
+      <td>31.0</td>
+      <td>Democrat</td>
+      <td>164.0</td>
+      <td>0.182927</td>
+      <td>0.206453</td>
+      <td>-21.1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="log-odds">
+<h2>Log odds<a class="headerlink" href="#log-odds" title="Permalink to this headline">¶</a></h2>
+<p>Since the dependent variable is a percentage, I will transform it to a log-odds scale.</p>
+<p>Also, to deal with cases where we have a small number of votes, I will use the Bayesian posterior mean for each member of congress, <a class="reference external" href="https://youtu.be/8idr1WZ1A7Q?t=106">a little trick that is explained nicely in this video</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">df_all</span><span class="p">[</span><span class="s1">&#39;votes&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df_all</span><span class="p">[</span><span class="s1">&#39;agree_pct&#39;</span><span class="p">])</span>
+<span class="n">yes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     160.0
+3     104.0
+7     159.0
+10     19.0
+13     30.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="o">=</span> <span class="n">df_all</span><span class="p">[</span><span class="s1">&#39;votes&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">yes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_all</span><span class="p">[</span><span class="s1">&#39;agree_log_odds&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">yes</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">no</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">df_all</span><span class="p">[</span><span class="s1">&#39;agree_log_odds&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    648.000000
+mean       0.549302
+std        2.279818
+min       -3.164068
+25%       -1.744286
+50%        1.283486
+75%        2.708050
+max        4.276666
+Name: agree_log_odds, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="scatter">
+<h2>Scatter<a class="headerlink" href="#scatter" title="Permalink to this headline">¶</a></h2>
+<p>Here’s a scatter plot of the fraction of votes in agreement with Trump and the margin of victory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="n">agree</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;agree_pct&#39;</span><span class="p">]</span>
+    <span class="n">margin</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;net_trump_vote&#39;</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">margin</span><span class="p">,</span> <span class="n">agree</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Trump&#39;s margin of victory&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f votes in agreement with Trump&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scatter</span><span class="p">(</span><span class="n">df_all</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/margin_14_0.png" src="_images/margin_14_0.png" />
+</div>
+</div>
+<p>Two clusters are apparent: it will come as no surprise that they represent the two parties.</p>
+<p>I’ll generate that plot again with the data points color-coded by party.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_all</span><span class="p">[</span><span class="s1">&#39;party&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Republican     339
+Democrat       306
+Independent      3
+Name: party, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dem</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_all</span><span class="p">[</span><span class="s1">&#39;party&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Democrat&#39;</span><span class="p">)</span>
+<span class="n">dem_all</span> <span class="o">=</span> <span class="n">df_all</span><span class="p">[</span><span class="n">dem</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">dem_all</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>306
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rep</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_all</span><span class="p">[</span><span class="s1">&#39;party&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Republican&#39;</span><span class="p">)</span>
+<span class="n">rep_all</span> <span class="o">=</span> <span class="n">df_all</span><span class="p">[</span><span class="n">rep</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">rep_all</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>339
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scatter</span><span class="p">(</span><span class="n">dem_all</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Democrat&#39;</span><span class="p">)</span>
+<span class="n">scatter</span><span class="p">(</span><span class="n">rep_all</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Republican&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/margin_19_0.png" src="_images/margin_19_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="scatter-log-odds">
+<h2>Scatter log odds<a class="headerlink" href="#scatter-log-odds" title="Permalink to this headline">¶</a></h2>
+<p>Here’s what the scatter plots look like on a log-odds scale.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scatter2</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="n">agree</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;agree_log_odds&#39;</span><span class="p">]</span>
+    <span class="n">margin</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;net_trump_vote&#39;</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">margin</span><span class="p">,</span> <span class="n">agree</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Trump&#39;s margin of victory&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Log odds in agreement with Trump&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scatter2</span><span class="p">(</span><span class="n">dem_all</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Democrat&#39;</span><span class="p">)</span>
+<span class="n">scatter2</span><span class="p">(</span><span class="n">rep_all</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Republican&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/margin_22_0.png" src="_images/margin_22_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="regression">
+<h2>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h2>
+<p>Now let’s see, within each party, what the relationship looks like between the margin of victory and the voting record.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;agree_log_odds ~ net_trump_vote&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dem_all</span><span class="p">)</span>
+<span class="n">results_dem</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">results_dem</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>     <td>agree_log_odds</td>  <th>  R-squared:         </th> <td>   0.083</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.080</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   27.66</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Wed, 03 Jun 2020</td> <th>  Prob (F-statistic):</th> <td>2.73e-07</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>22:27:04</td>     <th>  Log-Likelihood:    </th> <td> -285.88</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   306</td>      <th>  AIC:               </th> <td>   575.8</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   304</td>      <th>  BIC:               </th> <td>   583.2</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+         <td></td>           <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>      <td>   -1.5457</td> <td>    0.050</td> <td>  -30.947</td> <td> 0.000</td> <td>   -1.644</td> <td>   -1.447</td>
+</tr>
+<tr>
+  <th>net_trump_vote</th> <td>    0.0074</td> <td>    0.001</td> <td>    5.260</td> <td> 0.000</td> <td>    0.005</td> <td>    0.010</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 2.367</td> <th>  Durbin-Watson:     </th> <td>   1.122</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.306</td> <th>  Jarque-Bera (JB):  </th> <td>   2.410</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 0.016</td> <th>  Prob(JB):          </th> <td>   0.300</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 3.434</td> <th>  Cond. No.          </th> <td>    49.9</td>
+</tr>
+</table><br/><br/>Warnings:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;agree_log_odds ~ net_trump_vote&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">rep_all</span><span class="p">)</span>
+<span class="n">results_rep</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">results_rep</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>     <td>agree_log_odds</td>  <th>  R-squared:         </th> <td>   0.068</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.065</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   24.41</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Wed, 03 Jun 2020</td> <th>  Prob (F-statistic):</th> <td>1.23e-06</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>22:27:04</td>     <th>  Log-Likelihood:    </th> <td> -369.23</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   339</td>      <th>  AIC:               </th> <td>   742.5</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   337</td>      <th>  BIC:               </th> <td>   750.1</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+         <td></td>           <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>      <td>    2.3525</td> <td>    0.066</td> <td>   35.410</td> <td> 0.000</td> <td>    2.222</td> <td>    2.483</td>
+</tr>
+<tr>
+  <th>net_trump_vote</th> <td>    0.0126</td> <td>    0.003</td> <td>    4.941</td> <td> 0.000</td> <td>    0.008</td> <td>    0.018</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td>58.343</td> <th>  Durbin-Watson:     </th> <td>   1.867</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.000</td> <th>  Jarque-Bera (JB):  </th> <td> 140.684</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td>-0.841</td> <th>  Prob(JB):          </th> <td>2.82e-31</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 5.670</td> <th>  Cond. No.          </th> <td>    44.3</td>
+</tr>
+</table><br/><br/>Warnings:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</div>
+</div>
+<div class="section" id="prediction">
+<h2>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline">¶</a></h2>
+<p>To visualize the results of the models, I’ll plot their predictions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hypo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">hypo</span><span class="p">[</span><span class="s1">&#39;net_trump_vote&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="n">pred_dem</span> <span class="o">=</span> <span class="n">results_dem</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">hypo</span><span class="p">)</span>
+<span class="n">pred_dem</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">hypo</span><span class="p">[</span><span class="s1">&#39;net_trump_vote&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hypo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">hypo</span><span class="p">[</span><span class="s1">&#39;net_trump_vote&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+
+<span class="n">pred_rep</span> <span class="o">=</span> <span class="n">results_rep</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">hypo</span><span class="p">)</span>
+<span class="n">pred_rep</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">hypo</span><span class="p">[</span><span class="s1">&#39;net_trump_vote&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred_rep</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Republicans&#39;</span><span class="p">)</span>
+<span class="n">pred_dem</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Democrats&#39;</span><span class="p">)</span>
+
+<span class="n">scatter2</span><span class="p">(</span><span class="n">dem_all</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">)</span>
+<span class="n">scatter2</span><span class="p">(</span><span class="n">rep_all</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/margin_29_0.png" src="_images/margin_29_0.png" />
+</div>
+</div>
+<p>It looks like the margin matters.</p>
+<p>The slope for democrats is lower.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_dem</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept        -1.545690
+net_trump_vote    0.007447
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_rep</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept         2.352523
+net_trump_vote    0.012576
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>It looks like it gets dragged down by a cluster of representatives from swing districts who vote against Trump with remarkable consistency.  Let’s see who they are.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">swing</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">dem_all</span><span class="p">[</span><span class="s1">&#39;net_trump_vote&#39;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anti_trump</span> <span class="o">=</span> <span class="p">(</span><span class="n">dem_all</span><span class="p">[</span><span class="s1">&#39;agree_log_odds&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dem_all</span><span class="p">[</span><span class="n">swing</span> <span class="o">&amp;</span> <span class="n">anti_trump</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>congress</th>
+      <th>chamber</th>
+      <th>bioguide</th>
+      <th>last_name</th>
+      <th>state</th>
+      <th>district</th>
+      <th>party</th>
+      <th>votes</th>
+      <th>agree_pct</th>
+      <th>predicted_agree</th>
+      <th>net_trump_vote</th>
+      <th>agree_log_odds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>286</th>
+      <td>0</td>
+      <td>house</td>
+      <td>C001117</td>
+      <td>Casten</td>
+      <td>IL</td>
+      <td>6.0</td>
+      <td>Democrat</td>
+      <td>72.0</td>
+      <td>0.055556</td>
+      <td>0.120612</td>
+      <td>-7.0</td>
+      <td>-2.624669</td>
+    </tr>
+    <tr>
+      <th>290</th>
+      <td>0</td>
+      <td>house</td>
+      <td>C001119</td>
+      <td>Craig</td>
+      <td>MN</td>
+      <td>2.0</td>
+      <td>Democrat</td>
+      <td>72.0</td>
+      <td>0.055556</td>
+      <td>0.285124</td>
+      <td>1.2</td>
+      <td>-2.624669</td>
+    </tr>
+    <tr>
+      <th>371</th>
+      <td>0</td>
+      <td>house</td>
+      <td>D000629</td>
+      <td>Davids</td>
+      <td>KS</td>
+      <td>3.0</td>
+      <td>Democrat</td>
+      <td>72.0</td>
+      <td>0.055556</td>
+      <td>0.217135</td>
+      <td>-1.2</td>
+      <td>-2.624669</td>
+    </tr>
+    <tr>
+      <th>373</th>
+      <td>0</td>
+      <td>house</td>
+      <td>D000630</td>
+      <td>Delgado</td>
+      <td>NY</td>
+      <td>19.0</td>
+      <td>Democrat</td>
+      <td>72.0</td>
+      <td>0.055556</td>
+      <td>0.503497</td>
+      <td>6.8</td>
+      <td>-2.624669</td>
+    </tr>
+    <tr>
+      <th>570</th>
+      <td>0</td>
+      <td>house</td>
+      <td>H001066</td>
+      <td>Horsford</td>
+      <td>NV</td>
+      <td>4.0</td>
+      <td>Democrat</td>
+      <td>72.0</td>
+      <td>0.055556</td>
+      <td>0.146273</td>
+      <td>-4.9</td>
+      <td>-2.624669</td>
+    </tr>
+    <tr>
+      <th>597</th>
+      <td>0</td>
+      <td>house</td>
+      <td>H001081</td>
+      <td>Hayes</td>
+      <td>CT</td>
+      <td>5.0</td>
+      <td>Democrat</td>
+      <td>72.0</td>
+      <td>0.055556</td>
+      <td>0.158511</td>
+      <td>-4.1</td>
+      <td>-2.624669</td>
+    </tr>
+    <tr>
+      <th>606</th>
+      <td>0</td>
+      <td>house</td>
+      <td>H001087</td>
+      <td>Hill</td>
+      <td>CA</td>
+      <td>25.0</td>
+      <td>Democrat</td>
+      <td>51.0</td>
+      <td>0.039216</td>
+      <td>0.101966</td>
+      <td>-6.7</td>
+      <td>-2.813411</td>
+    </tr>
+    <tr>
+      <th>610</th>
+      <td>0</td>
+      <td>house</td>
+      <td>H001090</td>
+      <td>Harder</td>
+      <td>CA</td>
+      <td>10.0</td>
+      <td>Democrat</td>
+      <td>72.0</td>
+      <td>0.041667</td>
+      <td>0.177954</td>
+      <td>-3.0</td>
+      <td>-2.862201</td>
+    </tr>
+    <tr>
+      <th>667</th>
+      <td>0</td>
+      <td>house</td>
+      <td>K000368</td>
+      <td>Kirkpatrick</td>
+      <td>AZ</td>
+      <td>2.0</td>
+      <td>Democrat</td>
+      <td>64.0</td>
+      <td>0.031250</td>
+      <td>0.140082</td>
+      <td>-4.9</td>
+      <td>-3.044522</td>
+    </tr>
+    <tr>
+      <th>712</th>
+      <td>0</td>
+      <td>house</td>
+      <td>K000394</td>
+      <td>Kim</td>
+      <td>NJ</td>
+      <td>3.0</td>
+      <td>Democrat</td>
+      <td>72.0</td>
+      <td>0.055556</td>
+      <td>0.477804</td>
+      <td>6.2</td>
+      <td>-2.624669</td>
+    </tr>
+    <tr>
+      <th>809</th>
+      <td>0</td>
+      <td>house</td>
+      <td>L000592</td>
+      <td>Levin</td>
+      <td>MI</td>
+      <td>9.0</td>
+      <td>Democrat</td>
+      <td>72.0</td>
+      <td>0.027778</td>
+      <td>0.112899</td>
+      <td>-7.8</td>
+      <td>-3.164068</td>
+    </tr>
+    <tr>
+      <th>811</th>
+      <td>0</td>
+      <td>house</td>
+      <td>L000593</td>
+      <td>Levin</td>
+      <td>CA</td>
+      <td>49.0</td>
+      <td>Democrat</td>
+      <td>72.0</td>
+      <td>0.041667</td>
+      <td>0.115675</td>
+      <td>-7.5</td>
+      <td>-2.862201</td>
+    </tr>
+    <tr>
+      <th>906</th>
+      <td>0</td>
+      <td>house</td>
+      <td>M001203</td>
+      <td>Malinowski</td>
+      <td>NJ</td>
+      <td>7.0</td>
+      <td>Democrat</td>
+      <td>72.0</td>
+      <td>0.055556</td>
+      <td>0.219601</td>
+      <td>-1.1</td>
+      <td>-2.624669</td>
+    </tr>
+    <tr>
+      <th>1027</th>
+      <td>0</td>
+      <td>house</td>
+      <td>P000618</td>
+      <td>Porter</td>
+      <td>CA</td>
+      <td>45.0</td>
+      <td>Democrat</td>
+      <td>71.0</td>
+      <td>0.056338</td>
+      <td>0.140677</td>
+      <td>-5.4</td>
+      <td>-2.610070</td>
+    </tr>
+    <tr>
+      <th>1121</th>
+      <td>0</td>
+      <td>house</td>
+      <td>R000616</td>
+      <td>Rouda</td>
+      <td>CA</td>
+      <td>48.0</td>
+      <td>Democrat</td>
+      <td>71.0</td>
+      <td>0.056338</td>
+      <td>0.206456</td>
+      <td>-1.7</td>
+      <td>-2.610070</td>
+    </tr>
+    <tr>
+      <th>1231</th>
+      <td>0</td>
+      <td>house</td>
+      <td>S001207</td>
+      <td>Sherrill</td>
+      <td>NJ</td>
+      <td>11.0</td>
+      <td>Democrat</td>
+      <td>71.0</td>
+      <td>0.056338</td>
+      <td>0.276188</td>
+      <td>0.9</td>
+      <td>-2.610070</td>
+    </tr>
+    <tr>
+      <th>1233</th>
+      <td>0</td>
+      <td>house</td>
+      <td>S001208</td>
+      <td>Slotkin</td>
+      <td>MI</td>
+      <td>8.0</td>
+      <td>Democrat</td>
+      <td>72.0</td>
+      <td>0.055556</td>
+      <td>0.499208</td>
+      <td>6.7</td>
+      <td>-2.624669</td>
+    </tr>
+    <tr>
+      <th>1247</th>
+      <td>0</td>
+      <td>house</td>
+      <td>S001215</td>
+      <td>Stevens</td>
+      <td>MI</td>
+      <td>11.0</td>
+      <td>Democrat</td>
+      <td>72.0</td>
+      <td>0.055556</td>
+      <td>0.402540</td>
+      <td>4.4</td>
+      <td>-2.624669</td>
+    </tr>
+    <tr>
+      <th>1249</th>
+      <td>0</td>
+      <td>house</td>
+      <td>S001216</td>
+      <td>Schrier</td>
+      <td>WA</td>
+      <td>8.0</td>
+      <td>Democrat</td>
+      <td>71.0</td>
+      <td>0.056338</td>
+      <td>0.179072</td>
+      <td>-3.0</td>
+      <td>-2.610070</td>
+    </tr>
+    <tr>
+      <th>1306</th>
+      <td>0</td>
+      <td>house</td>
+      <td>U000040</td>
+      <td>Underwood</td>
+      <td>IL</td>
+      <td>14.0</td>
+      <td>Democrat</td>
+      <td>72.0</td>
+      <td>0.055556</td>
+      <td>0.382518</td>
+      <td>3.9</td>
+      <td>-2.624669</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Allen B. Downey<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

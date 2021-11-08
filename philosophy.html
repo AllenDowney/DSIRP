@@ -1,0 +1,609 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getting to Philosophy &#8212; Data Structures and Information Retrieval in Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Structures and Information Retrieval in Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Outline
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="algorithms.html">
+   Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis.html">
+   Analysis of Algorithms
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/philosophy.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AllenDowney/DSIRP"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/DSIRP/master?urlpath=tree/philosophy.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Getting to Philosophy
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Getting to Philosophy
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#checking-for-parentheses">
+     Checking for Parentheses
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#checking-for-italics">
+     Checking for Italics
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#working-with-wikipedia-pages">
+     Working with Wikipedia Pages
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wikifetcher">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       WikiFetcher
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="getting-to-philosophy">
+<h1>Getting to Philosophy<a class="headerlink" href="#getting-to-philosophy" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/chapters/philosophy.ipynb">Click here to run this chapter on Colab</a></p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1>Getting to Philosophy<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>The goal of this notebook is to develop a Web crawler that tests the
+“Getting to Philosophy” conjecture. As explained on <a class="reference external" href="https://en.wikipedia.org/wiki/Wikipedia:Getting_to_Philosophy">this Wikipedia page</a>:</p>
+<blockquote>
+<div><p>Clicking on the first link in the main text of an English Wikipedia article, and then repeating the process for subsequent articles, usually leads to the Philosophy article. In February 2016, this was true for 97% of all articles in Wikipedia…</p>
+</div></blockquote>
+<p>More specifically, the link can’t be in parentheses or italics, and it can’t be an external link, a link to the current page, or a link to a non-existent page.</p>
+<p>We’ll use the <code class="docutils literal notranslate"><span class="pre">urllib</span></code> library to download Wikipedia pages and BeautifulSoup to parse HTML text and navigate the Document Object Model (DOM).</p>
+<p>Before we start working with Wikipedia pages, let’s warm up with a minimal HTML document, which I’ve adapted from the BeautifulSoup documentation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">html_doc</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse&#39;s story&lt;/title&gt;&lt;/head&gt;</span>
+<span class="s2">&lt;body&gt;</span>
+<span class="s2">&lt;p class=&quot;title&quot;&gt;&lt;b&gt;The Dormouse&#39;s story&lt;/b&gt;&lt;/p&gt;</span>
+
+<span class="s2">&lt;p class=&quot;story&quot;&gt;Once upon a time there were three little sisters; and their names were</span>
+<span class="s2">(&lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;),</span>
+<span class="s2">&lt;i&gt;&lt;a href=&quot;http://example.com/lacie&quot; class=&quot;sister&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt; and&lt;/i&gt;</span>
+<span class="s2">&lt;a href=&quot;http://example.com/tillie&quot; class=&quot;sister&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;;</span>
+<span class="s2">and they lived at the bottom of a well.&lt;/p&gt;</span>
+
+<span class="s2">&lt;p class=&quot;story&quot;&gt;...&lt;/p&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This document contains three links, but the first one is in parentheses and the second is in italics, so the third is the link we would follow to get to philosophy.</p>
+<p>Here’s how we parse this document and make a <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code> object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_doc</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">soup</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To iterate through the elements in the DOM, we can write our own implementation of depth first search, like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">iterative_DFS</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="n">root</span><span class="p">]</span>
+    
+    <span class="k">while</span><span class="p">(</span><span class="n">stack</span><span class="p">):</span>
+        <span class="n">element</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">yield</span> <span class="n">element</span>
+
+        <span class="n">children</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="s2">&quot;contents&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="n">stack</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">children</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For example, we can iterate through the elements and print all <code class="docutils literal notranslate"><span class="pre">NavigableString</span></code> elements:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">NavigableString</span>
+
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">iterative_DFS</span><span class="p">(</span><span class="n">soup</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">NavigableString</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">string</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>But we can also use <code class="docutils literal notranslate"><span class="pre">descendants</span></code>, which does the same thing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">descendants</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">NavigableString</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">string</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="checking-for-parentheses">
+<h2>Checking for Parentheses<a class="headerlink" href="#checking-for-parentheses" title="Permalink to this headline">¶</a></h2>
+<p>One theory of software development suggests you should tackle the hardest problem first, because it will drive the design. Then you can figure out how to handle the easier problems.</p>
+<p>For “Getting to Philosophy”, one of the harder problems is to figure out whether a link is in parentheses.
+If you have a link, you could work your way outward looking for enclosing parentheses, but in a tree, that could get complicated.</p>
+<p>The alternative I chose is to iterate through the text in order, counting open and close parentheses, and yield links only if they are not enclosed.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">Tag</span>
+
+<span class="k">def</span> <span class="nf">link_generator</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+    <span class="n">paren_stack</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">descendants</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">NavigableString</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">element</span><span class="o">.</span><span class="n">string</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span><span class="p">:</span>
+                    <span class="n">paren_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39;)&#39;</span><span class="p">:</span>
+                    <span class="n">paren_stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">Tag</span><span class="p">)</span> <span class="ow">and</span> <span class="n">element</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;a&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">paren_stack</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">element</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can iterate through the links that are not in parentheses.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">link_generator</span><span class="p">(</span><span class="n">soup</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="checking-for-italics">
+<h2>Checking for Italics<a class="headerlink" href="#checking-for-italics" title="Permalink to this headline">¶</a></h2>
+<p>To see whether a link is in italics, we can:</p>
+<ol class="simple">
+<li><p>If its parent is a <code class="docutils literal notranslate"><span class="pre">Tag</span></code> with name <code class="docutils literal notranslate"><span class="pre">a</span></code>, it’s in italics.</p></li>
+<li><p>Otherwise we have to check the parent of the parent, and so on.</p></li>
+<li><p>If we get to the root without finding an italics tag, it’s not in italics.</p></li>
+</ol>
+<p>For example, here’s the first link from <code class="docutils literal notranslate"><span class="pre">link_generator</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">link</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">link_generator</span><span class="p">(</span><span class="n">soup</span><span class="p">))</span>
+<span class="n">link</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Its parent is an italics tag.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parent</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">parent</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">Tag</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parent</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> Write a function called <code class="docutils literal notranslate"><span class="pre">in_italics</span></code> that takes an element and returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if it is in italics.</p>
+<p>Then write a more general function called <code class="docutils literal notranslate"><span class="pre">in_bad_element</span></code> that takes an element and returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if:</p>
+<ul class="simple">
+<li><p>The element or one of its ancestors has a “bad” tag name, like <code class="docutils literal notranslate"><span class="pre">i</span></code>, or</p></li>
+<li><p>The element or one of its ancestors is a <code class="docutils literal notranslate"><span class="pre">div</span></code> whose <code class="docutils literal notranslate"><span class="pre">class</span></code> attribute contains a “bad” class name.</p></li>
+</ul>
+<p>We will need the general version of this function to exclude invalid links on Wikipedia pages.</p>
+</div>
+<div class="section" id="working-with-wikipedia-pages">
+<h2>Working with Wikipedia Pages<a class="headerlink" href="#working-with-wikipedia-pages" title="Permalink to this headline">¶</a></h2>
+<p>Actual Wikipedia pages are more complicated that the simple example, so it will take some effort to understand their structure and make sure we select the right “first link”.</p>
+<p>The following cell downloads the Wikipedia page on Python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://en.wikipedia.org/wiki/Python_(programming_language)&quot;</span>
+<span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can parse it and make <code class="docutils literal notranslate"><span class="pre">soup</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="n">soup2</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you use a web browser to view this page, and use the Inspect Element tool to explore the structure, you’ll see that the body of the article is in a <code class="docutils literal notranslate"><span class="pre">div</span></code> element with the class name <code class="docutils literal notranslate"><span class="pre">mw-body-content</span></code>.</p>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">find</span></code> to get this element, and we’ll use it as the root for our searches.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">root</span> <span class="o">=</span> <span class="n">soup2</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;mw-body-content&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> Write a generator function called <code class="docutils literal notranslate"><span class="pre">valid_link_generator</span></code> that uses <code class="docutils literal notranslate"><span class="pre">link_generator</span></code> to find links that are not in parentheses; then it should filter out links that are not valid, including links that are in italics, links to external pages, etc.</p>
+<p>Test your function with a few different pages until it reliably finds the “first link” that seems most consistent with the spirit of the rules.</p>
+</div>
+<div class="section" id="wikifetcher">
+<h2><code class="docutils literal notranslate"><span class="pre">WikiFetcher</span></code><a class="headerlink" href="#wikifetcher" title="Permalink to this headline">¶</a></h2>
+<p>When you write a Web crawler, it is easy to download too many pages too
+fast, which might violate the terms of service for the server you are
+downloading from. To avoid that, we’ll use an object called
+<code class="docutils literal notranslate"><span class="pre">WikiFetcher</span></code> that does two things:</p>
+<ol class="simple">
+<li><p>It encapsulates the code for downloading and parsing web pages.</p></li>
+<li><p>It measures the time between requests and, if we don’t leave enough
+time between requests, it sleeps until a reasonable interval has
+elapsed. By default, the interval is one second.</p></li>
+</ol>
+<p>Here’s the definition of <code class="docutils literal notranslate"><span class="pre">WikiFetcher</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span><span class="p">,</span> <span class="n">sleep</span>
+    
+<span class="k">class</span> <span class="nc">WikiFetcher</span><span class="p">:</span>
+    <span class="n">next_request_time</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">min_interval</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># second</span>
+
+    <span class="k">def</span> <span class="nf">fetch_wikipedia</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sleep_if_needed</span><span class="p">()</span>
+        <span class="n">fp</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">soup</span>
+
+    <span class="k">def</span> <span class="nf">sleep_if_needed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_request_time</span><span class="p">:</span>
+            <span class="n">sleep_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_request_time</span> <span class="o">-</span> <span class="n">time</span><span class="p">()</span>    
+            <span class="k">if</span> <span class="n">sleep_time</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">sleep</span><span class="p">(</span><span class="n">sleep_time</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">next_request_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_interval</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">fetch_wikipedia</span></code> takes a URL as a
+<code class="docutils literal notranslate"><span class="pre">String</span></code> and returns a BeautifulSoup object that represents the contents of the page.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sleep_if_needed</span></code> checks the time since the last
+request and sleeps if the elapsed time is less than <code class="docutils literal notranslate"><span class="pre">min_interval</span></code>.</p>
+<p>Here’s an example that demonstrates how it’s used:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wf</span> <span class="o">=</span> <span class="n">WikiFetcher</span><span class="p">()</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://en.wikipedia.org/wiki/Python_(programming_language)&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="p">())</span>
+<span class="n">wf</span><span class="o">.</span><span class="n">fetch_wikipedia</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="p">())</span>
+<span class="n">wf</span><span class="o">.</span><span class="n">fetch_wikipedia</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If things have gone according to plan, the three timestamps should be no less than 1 second apart, which is consistent with the terms in Wikipedia’s <a class="reference external" href="https://en.wikipedia.org/robots.txt">robots.txt</a>:</p>
+<blockquote>
+<div><p>Friendly, low-speed bots are welcome viewing article pages, but not
+dynamically-generated pages please.</p>
+</div></blockquote>
+<p><strong>Exercise:</strong> Now let’s pull it all together. Write a function called <code class="docutils literal notranslate"><span class="pre">get_to_philosophy</span></code> that takes as a parameter the URL of a Wikipedia page. It should:</p>
+<ol class="simple">
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">WikiFetcher</span></code> object we just created to download and parse the page.</p></li>
+<li><p>Traverse the resulting <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code> object to find the first valid link according to the spirit of the rules.</p></li>
+<li><p>If the page has no links, or if the first link is a page we have already seen, the program should indicate failure and exit.</p></li>
+<li><p>If the link matches the URL of the Wikipedia page on philosophy, the program should indicate success and exit.</p></li>
+<li><p>Otherwise it should go back to Step 1 (although you might want to put a limit on the number of hops).</p></li>
+</ol>
+<p>The program should build a list of the URLs it visits and display the
+results at the end (whether it succeeds or fails).</p>
+<p>Since the links you find are relative, you might find the <code class="docutils literal notranslate"><span class="pre">urljoin</span></code> function helpful:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urljoin</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://en.wikipedia.org/wiki/Python_(programming_language)&quot;</span>
+<span class="n">relative_path</span> <span class="o">=</span> <span class="s2">&quot;/wiki/Interpreted_language&quot;</span>
+
+<span class="n">urljoin</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">relative_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_to_philosophy</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Allen B. Downey<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

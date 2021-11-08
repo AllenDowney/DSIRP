@@ -1,0 +1,3290 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Level Order Traversal &#8212; Data Structures and Information Retrieval in Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Structures and Information Retrieval in Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Outline
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="algorithms.html">
+   Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis.html">
+   Analysis of Algorithms
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/level_order.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AllenDowney/DSIRP"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/DSIRP/master?urlpath=tree/level_order.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Level Order Traversal
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-tree-traversal">
+   More tree traversal
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#walking-a-directory">
+   Walking a Directory
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="level-order-traversal">
+<h1>Level Order Traversal<a class="headerlink" href="#level-order-traversal" title="Permalink to this headline">¶</a></h1>
+<p><em>Data Structures and Information Retrieval in Python</em></p>
+<p>Copyright 2021 Allen Downey</p>
+<p>License: <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a></p>
+</div>
+<div class="section" id="more-tree-traversal">
+<h1>More tree traversal<a class="headerlink" href="#more-tree-traversal" title="Permalink to this headline">¶</a></h1>
+<p>In a previous notebook we wrote two versions of a depth-first search in a tree.
+Now we are working toward depth-first search, but we’re going to make a stop along the way: level-order traversal.</p>
+<p>One application of level-order traversal is searching through directories (aka folders) in a file system.
+Since directories can contain other directories, which can contains other directories, and so on, we can think of a file system as a tree.</p>
+<p>In this notebook, we’ll start by making a tree of directories and fake data files.
+Then we’ll traverse it several ways.</p>
+<p>And while we’re at it, we’ll learn about the <code class="docutils literal notranslate"><span class="pre">os</span></code> module, which provides functions for interacting with the operating system, especially the file system.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">os</span></code> module provides <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>, which creates a directory. It raises an exception if the directory exists, so I’m going to wrap it in a <code class="docutils literal notranslate"><span class="pre">try</span></code> statement.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">mkdir</span><span class="p">(</span><span class="n">dirname</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">dirname</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;made&#39;</span><span class="p">,</span> <span class="n">dirname</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">FileExistsError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="s1">&#39;exists&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now I’ll create the directory where we’ll put the fake data.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span><span class="p">(</span><span class="s1">&#39;level_data&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>level_data exists
+</pre></div>
+</div>
+</div>
+</div>
+<p>Inside <code class="docutils literal notranslate"><span class="pre">level_data</span></code>, I want to make a subdirectory named <code class="docutils literal notranslate"><span class="pre">2021</span></code>.
+It is tempting to write something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>year_dir = `level_data/2021`
+</pre></div>
+</div>
+<p>This path would work on Unix operating systems (including MacOS), but not Windows, which uses <code class="docutils literal notranslate"><span class="pre">\</span></code> rather than <code class="docutils literal notranslate"><span class="pre">/</span></code> between names in a path.</p>
+<p>We can avoid this problem by using <code class="docutils literal notranslate"><span class="pre">os.path.join</span></code>, which joins names in a path with whatever character the operating system wants.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;level_data&#39;</span><span class="p">,</span> <span class="s1">&#39;2021&#39;</span><span class="p">)</span>
+<span class="n">mkdir</span><span class="p">(</span><span class="n">year_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>level_data/2021 exists
+</pre></div>
+</div>
+</div>
+</div>
+<p>To make the fake data files, I’ll use the following function, which opens a file for writing and puts the word <code class="docutils literal notranslate"><span class="pre">data</span></code> into it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_datafile</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;data</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;made&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So let’s start by putting a data file in <code class="docutils literal notranslate"><span class="pre">year_dir</span></code>, imagining that this file contains summary data for the whole year.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_datafile</span><span class="p">(</span><span class="n">year_dir</span><span class="p">,</span> <span class="s1">&#39;year.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>made level_data/2021/year.csv
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following function</p>
+<ol class="simple">
+<li><p>Makes a subdirectory that represents one month of the year,</p></li>
+<li><p>Makes a data file we imagine contains summary data for the month, and</p></li>
+<li><p>Calls <code class="docutils literal notranslate"><span class="pre">make_day</span></code> (below) to make subdirectories each day of the month (in a world where all months have 30 days).</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_month</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">year_dir</span><span class="p">):</span>
+    <span class="n">month</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%.2d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span>
+    <span class="n">month_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">year_dir</span><span class="p">,</span> <span class="n">month</span><span class="p">)</span> 
+    <span class="n">mkdir</span><span class="p">(</span><span class="n">month_dir</span><span class="p">)</span>
+    <span class="n">make_datafile</span><span class="p">(</span><span class="n">month_dir</span><span class="p">,</span> <span class="s1">&#39;month.csv&#39;</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">):</span>
+        <span class="n">make_day</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">month_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">make_day</span></code> makes a sub-subdirectory for a given day of the month, and puts a data file in it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_day</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">month_dir</span><span class="p">):</span>
+    <span class="n">day</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%.2d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">j</span>
+    <span class="n">day_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">month_dir</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span> 
+    <span class="n">mkdir</span><span class="p">(</span><span class="n">day_dir</span><span class="p">)</span>
+    <span class="n">make_datafile</span><span class="p">(</span><span class="n">day_dir</span><span class="p">,</span> <span class="s1">&#39;day.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following loop makes a directory for each month.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
+    <span class="n">make_month</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">year_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>level_data/2021/01 exists
+made level_data/2021/01/month.csv
+level_data/2021/01/01 exists
+made level_data/2021/01/01/day.csv
+level_data/2021/01/02 exists
+made level_data/2021/01/02/day.csv
+level_data/2021/01/03 exists
+made level_data/2021/01/03/day.csv
+level_data/2021/01/04 exists
+made level_data/2021/01/04/day.csv
+level_data/2021/01/05 exists
+made level_data/2021/01/05/day.csv
+level_data/2021/01/06 exists
+made level_data/2021/01/06/day.csv
+level_data/2021/01/07 exists
+made level_data/2021/01/07/day.csv
+level_data/2021/01/08 exists
+made level_data/2021/01/08/day.csv
+level_data/2021/01/09 exists
+made level_data/2021/01/09/day.csv
+level_data/2021/01/10 exists
+made level_data/2021/01/10/day.csv
+level_data/2021/01/11 exists
+made level_data/2021/01/11/day.csv
+level_data/2021/01/12 exists
+made level_data/2021/01/12/day.csv
+level_data/2021/01/13 exists
+made level_data/2021/01/13/day.csv
+level_data/2021/01/14 exists
+made level_data/2021/01/14/day.csv
+level_data/2021/01/15 exists
+made level_data/2021/01/15/day.csv
+level_data/2021/01/16 exists
+made level_data/2021/01/16/day.csv
+level_data/2021/01/17 exists
+made level_data/2021/01/17/day.csv
+level_data/2021/01/18 exists
+made level_data/2021/01/18/day.csv
+level_data/2021/01/19 exists
+made level_data/2021/01/19/day.csv
+level_data/2021/01/20 exists
+made level_data/2021/01/20/day.csv
+level_data/2021/01/21 exists
+made level_data/2021/01/21/day.csv
+level_data/2021/01/22 exists
+made level_data/2021/01/22/day.csv
+level_data/2021/01/23 exists
+made level_data/2021/01/23/day.csv
+level_data/2021/01/24 exists
+made level_data/2021/01/24/day.csv
+level_data/2021/01/25 exists
+made level_data/2021/01/25/day.csv
+level_data/2021/01/26 exists
+made level_data/2021/01/26/day.csv
+level_data/2021/01/27 exists
+made level_data/2021/01/27/day.csv
+level_data/2021/01/28 exists
+made level_data/2021/01/28/day.csv
+level_data/2021/01/29 exists
+made level_data/2021/01/29/day.csv
+level_data/2021/01/30 exists
+made level_data/2021/01/30/day.csv
+level_data/2021/02 exists
+made level_data/2021/02/month.csv
+level_data/2021/02/01 exists
+made level_data/2021/02/01/day.csv
+level_data/2021/02/02 exists
+made level_data/2021/02/02/day.csv
+level_data/2021/02/03 exists
+made level_data/2021/02/03/day.csv
+level_data/2021/02/04 exists
+made level_data/2021/02/04/day.csv
+level_data/2021/02/05 exists
+made level_data/2021/02/05/day.csv
+level_data/2021/02/06 exists
+made level_data/2021/02/06/day.csv
+level_data/2021/02/07 exists
+made level_data/2021/02/07/day.csv
+level_data/2021/02/08 exists
+made level_data/2021/02/08/day.csv
+level_data/2021/02/09 exists
+made level_data/2021/02/09/day.csv
+level_data/2021/02/10 exists
+made level_data/2021/02/10/day.csv
+level_data/2021/02/11 exists
+made level_data/2021/02/11/day.csv
+level_data/2021/02/12 exists
+made level_data/2021/02/12/day.csv
+level_data/2021/02/13 exists
+made level_data/2021/02/13/day.csv
+level_data/2021/02/14 exists
+made level_data/2021/02/14/day.csv
+level_data/2021/02/15 exists
+made level_data/2021/02/15/day.csv
+level_data/2021/02/16 exists
+made level_data/2021/02/16/day.csv
+level_data/2021/02/17 exists
+made level_data/2021/02/17/day.csv
+level_data/2021/02/18 exists
+made level_data/2021/02/18/day.csv
+level_data/2021/02/19 exists
+made level_data/2021/02/19/day.csv
+level_data/2021/02/20 exists
+made level_data/2021/02/20/day.csv
+level_data/2021/02/21 exists
+made level_data/2021/02/21/day.csv
+level_data/2021/02/22 exists
+made level_data/2021/02/22/day.csv
+level_data/2021/02/23 exists
+made level_data/2021/02/23/day.csv
+level_data/2021/02/24 exists
+made level_data/2021/02/24/day.csv
+level_data/2021/02/25 exists
+made level_data/2021/02/25/day.csv
+level_data/2021/02/26 exists
+made level_data/2021/02/26/day.csv
+level_data/2021/02/27 exists
+made level_data/2021/02/27/day.csv
+level_data/2021/02/28 exists
+made level_data/2021/02/28/day.csv
+level_data/2021/02/29 exists
+made level_data/2021/02/29/day.csv
+level_data/2021/02/30 exists
+made level_data/2021/02/30/day.csv
+level_data/2021/03 exists
+made level_data/2021/03/month.csv
+level_data/2021/03/01 exists
+made level_data/2021/03/01/day.csv
+level_data/2021/03/02 exists
+made level_data/2021/03/02/day.csv
+level_data/2021/03/03 exists
+made level_data/2021/03/03/day.csv
+level_data/2021/03/04 exists
+made level_data/2021/03/04/day.csv
+level_data/2021/03/05 exists
+made level_data/2021/03/05/day.csv
+level_data/2021/03/06 exists
+made level_data/2021/03/06/day.csv
+level_data/2021/03/07 exists
+made level_data/2021/03/07/day.csv
+level_data/2021/03/08 exists
+made level_data/2021/03/08/day.csv
+level_data/2021/03/09 exists
+made level_data/2021/03/09/day.csv
+level_data/2021/03/10 exists
+made level_data/2021/03/10/day.csv
+level_data/2021/03/11 exists
+made level_data/2021/03/11/day.csv
+level_data/2021/03/12 exists
+made level_data/2021/03/12/day.csv
+level_data/2021/03/13 exists
+made level_data/2021/03/13/day.csv
+level_data/2021/03/14 exists
+made level_data/2021/03/14/day.csv
+level_data/2021/03/15 exists
+made level_data/2021/03/15/day.csv
+level_data/2021/03/16 exists
+made level_data/2021/03/16/day.csv
+level_data/2021/03/17 exists
+made level_data/2021/03/17/day.csv
+level_data/2021/03/18 exists
+made level_data/2021/03/18/day.csv
+level_data/2021/03/19 exists
+made level_data/2021/03/19/day.csv
+level_data/2021/03/20 exists
+made level_data/2021/03/20/day.csv
+level_data/2021/03/21 exists
+made level_data/2021/03/21/day.csv
+level_data/2021/03/22 exists
+made level_data/2021/03/22/day.csv
+level_data/2021/03/23 exists
+made level_data/2021/03/23/day.csv
+level_data/2021/03/24 exists
+made level_data/2021/03/24/day.csv
+level_data/2021/03/25 exists
+made level_data/2021/03/25/day.csv
+level_data/2021/03/26 exists
+made level_data/2021/03/26/day.csv
+level_data/2021/03/27 exists
+made level_data/2021/03/27/day.csv
+level_data/2021/03/28 exists
+made level_data/2021/03/28/day.csv
+level_data/2021/03/29 exists
+made level_data/2021/03/29/day.csv
+level_data/2021/03/30 exists
+made level_data/2021/03/30/day.csv
+level_data/2021/04 exists
+made level_data/2021/04/month.csv
+level_data/2021/04/01 exists
+made level_data/2021/04/01/day.csv
+level_data/2021/04/02 exists
+made level_data/2021/04/02/day.csv
+level_data/2021/04/03 exists
+made level_data/2021/04/03/day.csv
+level_data/2021/04/04 exists
+made level_data/2021/04/04/day.csv
+level_data/2021/04/05 exists
+made level_data/2021/04/05/day.csv
+level_data/2021/04/06 exists
+made level_data/2021/04/06/day.csv
+level_data/2021/04/07 exists
+made level_data/2021/04/07/day.csv
+level_data/2021/04/08 exists
+made level_data/2021/04/08/day.csv
+level_data/2021/04/09 exists
+made level_data/2021/04/09/day.csv
+level_data/2021/04/10 exists
+made level_data/2021/04/10/day.csv
+level_data/2021/04/11 exists
+made level_data/2021/04/11/day.csv
+level_data/2021/04/12 exists
+made level_data/2021/04/12/day.csv
+level_data/2021/04/13 exists
+made level_data/2021/04/13/day.csv
+level_data/2021/04/14 exists
+made level_data/2021/04/14/day.csv
+level_data/2021/04/15 exists
+made level_data/2021/04/15/day.csv
+level_data/2021/04/16 exists
+made level_data/2021/04/16/day.csv
+level_data/2021/04/17 exists
+made level_data/2021/04/17/day.csv
+level_data/2021/04/18 exists
+made level_data/2021/04/18/day.csv
+level_data/2021/04/19 exists
+made level_data/2021/04/19/day.csv
+level_data/2021/04/20 exists
+made level_data/2021/04/20/day.csv
+level_data/2021/04/21 exists
+made level_data/2021/04/21/day.csv
+level_data/2021/04/22 exists
+made level_data/2021/04/22/day.csv
+level_data/2021/04/23 exists
+made level_data/2021/04/23/day.csv
+level_data/2021/04/24 exists
+made level_data/2021/04/24/day.csv
+level_data/2021/04/25 exists
+made level_data/2021/04/25/day.csv
+level_data/2021/04/26 exists
+made level_data/2021/04/26/day.csv
+level_data/2021/04/27 exists
+made level_data/2021/04/27/day.csv
+level_data/2021/04/28 exists
+made level_data/2021/04/28/day.csv
+level_data/2021/04/29 exists
+made level_data/2021/04/29/day.csv
+level_data/2021/04/30 exists
+made level_data/2021/04/30/day.csv
+level_data/2021/05 exists
+made level_data/2021/05/month.csv
+level_data/2021/05/01 exists
+made level_data/2021/05/01/day.csv
+level_data/2021/05/02 exists
+made level_data/2021/05/02/day.csv
+level_data/2021/05/03 exists
+made level_data/2021/05/03/day.csv
+level_data/2021/05/04 exists
+made level_data/2021/05/04/day.csv
+level_data/2021/05/05 exists
+made level_data/2021/05/05/day.csv
+level_data/2021/05/06 exists
+made level_data/2021/05/06/day.csv
+level_data/2021/05/07 exists
+made level_data/2021/05/07/day.csv
+level_data/2021/05/08 exists
+made level_data/2021/05/08/day.csv
+level_data/2021/05/09 exists
+made level_data/2021/05/09/day.csv
+level_data/2021/05/10 exists
+made level_data/2021/05/10/day.csv
+level_data/2021/05/11 exists
+made level_data/2021/05/11/day.csv
+level_data/2021/05/12 exists
+made level_data/2021/05/12/day.csv
+level_data/2021/05/13 exists
+made level_data/2021/05/13/day.csv
+level_data/2021/05/14 exists
+made level_data/2021/05/14/day.csv
+level_data/2021/05/15 exists
+made level_data/2021/05/15/day.csv
+level_data/2021/05/16 exists
+made level_data/2021/05/16/day.csv
+level_data/2021/05/17 exists
+made level_data/2021/05/17/day.csv
+level_data/2021/05/18 exists
+made level_data/2021/05/18/day.csv
+level_data/2021/05/19 exists
+made level_data/2021/05/19/day.csv
+level_data/2021/05/20 exists
+made level_data/2021/05/20/day.csv
+level_data/2021/05/21 exists
+made level_data/2021/05/21/day.csv
+level_data/2021/05/22 exists
+made level_data/2021/05/22/day.csv
+level_data/2021/05/23 exists
+made level_data/2021/05/23/day.csv
+level_data/2021/05/24 exists
+made level_data/2021/05/24/day.csv
+level_data/2021/05/25 exists
+made level_data/2021/05/25/day.csv
+level_data/2021/05/26 exists
+made level_data/2021/05/26/day.csv
+level_data/2021/05/27 exists
+made level_data/2021/05/27/day.csv
+level_data/2021/05/28 exists
+made level_data/2021/05/28/day.csv
+level_data/2021/05/29 exists
+made level_data/2021/05/29/day.csv
+level_data/2021/05/30 exists
+made level_data/2021/05/30/day.csv
+level_data/2021/06 exists
+made level_data/2021/06/month.csv
+level_data/2021/06/01 exists
+made level_data/2021/06/01/day.csv
+level_data/2021/06/02 exists
+made level_data/2021/06/02/day.csv
+level_data/2021/06/03 exists
+made level_data/2021/06/03/day.csv
+level_data/2021/06/04 exists
+made level_data/2021/06/04/day.csv
+level_data/2021/06/05 exists
+made level_data/2021/06/05/day.csv
+level_data/2021/06/06 exists
+made level_data/2021/06/06/day.csv
+level_data/2021/06/07 exists
+made level_data/2021/06/07/day.csv
+level_data/2021/06/08 exists
+made level_data/2021/06/08/day.csv
+level_data/2021/06/09 exists
+made level_data/2021/06/09/day.csv
+level_data/2021/06/10 exists
+made level_data/2021/06/10/day.csv
+level_data/2021/06/11 exists
+made level_data/2021/06/11/day.csv
+level_data/2021/06/12 exists
+made level_data/2021/06/12/day.csv
+level_data/2021/06/13 exists
+made level_data/2021/06/13/day.csv
+level_data/2021/06/14 exists
+made level_data/2021/06/14/day.csv
+level_data/2021/06/15 exists
+made level_data/2021/06/15/day.csv
+level_data/2021/06/16 exists
+made level_data/2021/06/16/day.csv
+level_data/2021/06/17 exists
+made level_data/2021/06/17/day.csv
+level_data/2021/06/18 exists
+made level_data/2021/06/18/day.csv
+level_data/2021/06/19 exists
+made level_data/2021/06/19/day.csv
+level_data/2021/06/20 exists
+made level_data/2021/06/20/day.csv
+level_data/2021/06/21 exists
+made level_data/2021/06/21/day.csv
+level_data/2021/06/22 exists
+made level_data/2021/06/22/day.csv
+level_data/2021/06/23 exists
+made level_data/2021/06/23/day.csv
+level_data/2021/06/24 exists
+made level_data/2021/06/24/day.csv
+level_data/2021/06/25 exists
+made level_data/2021/06/25/day.csv
+level_data/2021/06/26 exists
+made level_data/2021/06/26/day.csv
+level_data/2021/06/27 exists
+made level_data/2021/06/27/day.csv
+level_data/2021/06/28 exists
+made level_data/2021/06/28/day.csv
+level_data/2021/06/29 exists
+made level_data/2021/06/29/day.csv
+level_data/2021/06/30 exists
+made level_data/2021/06/30/day.csv
+level_data/2021/07 exists
+made level_data/2021/07/month.csv
+level_data/2021/07/01 exists
+made level_data/2021/07/01/day.csv
+level_data/2021/07/02 exists
+made level_data/2021/07/02/day.csv
+level_data/2021/07/03 exists
+made level_data/2021/07/03/day.csv
+level_data/2021/07/04 exists
+made level_data/2021/07/04/day.csv
+level_data/2021/07/05 exists
+made level_data/2021/07/05/day.csv
+level_data/2021/07/06 exists
+made level_data/2021/07/06/day.csv
+level_data/2021/07/07 exists
+made level_data/2021/07/07/day.csv
+level_data/2021/07/08 exists
+made level_data/2021/07/08/day.csv
+level_data/2021/07/09 exists
+made level_data/2021/07/09/day.csv
+level_data/2021/07/10 exists
+made level_data/2021/07/10/day.csv
+level_data/2021/07/11 exists
+made level_data/2021/07/11/day.csv
+level_data/2021/07/12 exists
+made level_data/2021/07/12/day.csv
+level_data/2021/07/13 exists
+made level_data/2021/07/13/day.csv
+level_data/2021/07/14 exists
+made level_data/2021/07/14/day.csv
+level_data/2021/07/15 exists
+made level_data/2021/07/15/day.csv
+level_data/2021/07/16 exists
+made level_data/2021/07/16/day.csv
+level_data/2021/07/17 exists
+made level_data/2021/07/17/day.csv
+level_data/2021/07/18 exists
+made level_data/2021/07/18/day.csv
+level_data/2021/07/19 exists
+made level_data/2021/07/19/day.csv
+level_data/2021/07/20 exists
+made level_data/2021/07/20/day.csv
+level_data/2021/07/21 exists
+made level_data/2021/07/21/day.csv
+level_data/2021/07/22 exists
+made level_data/2021/07/22/day.csv
+level_data/2021/07/23 exists
+made level_data/2021/07/23/day.csv
+level_data/2021/07/24 exists
+made level_data/2021/07/24/day.csv
+level_data/2021/07/25 exists
+made level_data/2021/07/25/day.csv
+level_data/2021/07/26 exists
+made level_data/2021/07/26/day.csv
+level_data/2021/07/27 exists
+made level_data/2021/07/27/day.csv
+level_data/2021/07/28 exists
+made level_data/2021/07/28/day.csv
+level_data/2021/07/29 exists
+made level_data/2021/07/29/day.csv
+level_data/2021/07/30 exists
+made level_data/2021/07/30/day.csv
+level_data/2021/08 exists
+made level_data/2021/08/month.csv
+level_data/2021/08/01 exists
+made level_data/2021/08/01/day.csv
+level_data/2021/08/02 exists
+made level_data/2021/08/02/day.csv
+level_data/2021/08/03 exists
+made level_data/2021/08/03/day.csv
+level_data/2021/08/04 exists
+made level_data/2021/08/04/day.csv
+level_data/2021/08/05 exists
+made level_data/2021/08/05/day.csv
+level_data/2021/08/06 exists
+made level_data/2021/08/06/day.csv
+level_data/2021/08/07 exists
+made level_data/2021/08/07/day.csv
+level_data/2021/08/08 exists
+made level_data/2021/08/08/day.csv
+level_data/2021/08/09 exists
+made level_data/2021/08/09/day.csv
+level_data/2021/08/10 exists
+made level_data/2021/08/10/day.csv
+level_data/2021/08/11 exists
+made level_data/2021/08/11/day.csv
+level_data/2021/08/12 exists
+made level_data/2021/08/12/day.csv
+level_data/2021/08/13 exists
+made level_data/2021/08/13/day.csv
+level_data/2021/08/14 exists
+made level_data/2021/08/14/day.csv
+level_data/2021/08/15 exists
+made level_data/2021/08/15/day.csv
+level_data/2021/08/16 exists
+made level_data/2021/08/16/day.csv
+level_data/2021/08/17 exists
+made level_data/2021/08/17/day.csv
+level_data/2021/08/18 exists
+made level_data/2021/08/18/day.csv
+level_data/2021/08/19 exists
+made level_data/2021/08/19/day.csv
+level_data/2021/08/20 exists
+made level_data/2021/08/20/day.csv
+level_data/2021/08/21 exists
+made level_data/2021/08/21/day.csv
+level_data/2021/08/22 exists
+made level_data/2021/08/22/day.csv
+level_data/2021/08/23 exists
+made level_data/2021/08/23/day.csv
+level_data/2021/08/24 exists
+made level_data/2021/08/24/day.csv
+level_data/2021/08/25 exists
+made level_data/2021/08/25/day.csv
+level_data/2021/08/26 exists
+made level_data/2021/08/26/day.csv
+level_data/2021/08/27 exists
+made level_data/2021/08/27/day.csv
+level_data/2021/08/28 exists
+made level_data/2021/08/28/day.csv
+level_data/2021/08/29 exists
+made level_data/2021/08/29/day.csv
+level_data/2021/08/30 exists
+made level_data/2021/08/30/day.csv
+level_data/2021/09 exists
+made level_data/2021/09/month.csv
+level_data/2021/09/01 exists
+made level_data/2021/09/01/day.csv
+level_data/2021/09/02 exists
+made level_data/2021/09/02/day.csv
+level_data/2021/09/03 exists
+made level_data/2021/09/03/day.csv
+level_data/2021/09/04 exists
+made level_data/2021/09/04/day.csv
+level_data/2021/09/05 exists
+made level_data/2021/09/05/day.csv
+level_data/2021/09/06 exists
+made level_data/2021/09/06/day.csv
+level_data/2021/09/07 exists
+made level_data/2021/09/07/day.csv
+level_data/2021/09/08 exists
+made level_data/2021/09/08/day.csv
+level_data/2021/09/09 exists
+made level_data/2021/09/09/day.csv
+level_data/2021/09/10 exists
+made level_data/2021/09/10/day.csv
+level_data/2021/09/11 exists
+made level_data/2021/09/11/day.csv
+level_data/2021/09/12 exists
+made level_data/2021/09/12/day.csv
+level_data/2021/09/13 exists
+made level_data/2021/09/13/day.csv
+level_data/2021/09/14 exists
+made level_data/2021/09/14/day.csv
+level_data/2021/09/15 exists
+made level_data/2021/09/15/day.csv
+level_data/2021/09/16 exists
+made level_data/2021/09/16/day.csv
+level_data/2021/09/17 exists
+made level_data/2021/09/17/day.csv
+level_data/2021/09/18 exists
+made level_data/2021/09/18/day.csv
+level_data/2021/09/19 exists
+made level_data/2021/09/19/day.csv
+level_data/2021/09/20 exists
+made level_data/2021/09/20/day.csv
+level_data/2021/09/21 exists
+made level_data/2021/09/21/day.csv
+level_data/2021/09/22 exists
+made level_data/2021/09/22/day.csv
+level_data/2021/09/23 exists
+made level_data/2021/09/23/day.csv
+level_data/2021/09/24 exists
+made level_data/2021/09/24/day.csv
+level_data/2021/09/25 exists
+made level_data/2021/09/25/day.csv
+level_data/2021/09/26 exists
+made level_data/2021/09/26/day.csv
+level_data/2021/09/27 exists
+made level_data/2021/09/27/day.csv
+level_data/2021/09/28 exists
+made level_data/2021/09/28/day.csv
+level_data/2021/09/29 exists
+made level_data/2021/09/29/day.csv
+level_data/2021/09/30 exists
+made level_data/2021/09/30/day.csv
+level_data/2021/10 exists
+made level_data/2021/10/month.csv
+level_data/2021/10/01 exists
+made level_data/2021/10/01/day.csv
+level_data/2021/10/02 exists
+made level_data/2021/10/02/day.csv
+level_data/2021/10/03 exists
+made level_data/2021/10/03/day.csv
+level_data/2021/10/04 exists
+made level_data/2021/10/04/day.csv
+level_data/2021/10/05 exists
+made level_data/2021/10/05/day.csv
+level_data/2021/10/06 exists
+made level_data/2021/10/06/day.csv
+level_data/2021/10/07 exists
+made level_data/2021/10/07/day.csv
+level_data/2021/10/08 exists
+made level_data/2021/10/08/day.csv
+level_data/2021/10/09 exists
+made level_data/2021/10/09/day.csv
+level_data/2021/10/10 exists
+made level_data/2021/10/10/day.csv
+level_data/2021/10/11 exists
+made level_data/2021/10/11/day.csv
+level_data/2021/10/12 exists
+made level_data/2021/10/12/day.csv
+level_data/2021/10/13 exists
+made level_data/2021/10/13/day.csv
+level_data/2021/10/14 exists
+made level_data/2021/10/14/day.csv
+level_data/2021/10/15 exists
+made level_data/2021/10/15/day.csv
+level_data/2021/10/16 exists
+made level_data/2021/10/16/day.csv
+level_data/2021/10/17 exists
+made level_data/2021/10/17/day.csv
+level_data/2021/10/18 exists
+made level_data/2021/10/18/day.csv
+level_data/2021/10/19 exists
+made level_data/2021/10/19/day.csv
+level_data/2021/10/20 exists
+made level_data/2021/10/20/day.csv
+level_data/2021/10/21 exists
+made level_data/2021/10/21/day.csv
+level_data/2021/10/22 exists
+made level_data/2021/10/22/day.csv
+level_data/2021/10/23 exists
+made level_data/2021/10/23/day.csv
+level_data/2021/10/24 exists
+made level_data/2021/10/24/day.csv
+level_data/2021/10/25 exists
+made level_data/2021/10/25/day.csv
+level_data/2021/10/26 exists
+made level_data/2021/10/26/day.csv
+level_data/2021/10/27 exists
+made level_data/2021/10/27/day.csv
+level_data/2021/10/28 exists
+made level_data/2021/10/28/day.csv
+level_data/2021/10/29 exists
+made level_data/2021/10/29/day.csv
+level_data/2021/10/30 exists
+made level_data/2021/10/30/day.csv
+level_data/2021/11 exists
+made level_data/2021/11/month.csv
+level_data/2021/11/01 exists
+made level_data/2021/11/01/day.csv
+level_data/2021/11/02 exists
+made level_data/2021/11/02/day.csv
+level_data/2021/11/03 exists
+made level_data/2021/11/03/day.csv
+level_data/2021/11/04 exists
+made level_data/2021/11/04/day.csv
+level_data/2021/11/05 exists
+made level_data/2021/11/05/day.csv
+level_data/2021/11/06 exists
+made level_data/2021/11/06/day.csv
+level_data/2021/11/07 exists
+made level_data/2021/11/07/day.csv
+level_data/2021/11/08 exists
+made level_data/2021/11/08/day.csv
+level_data/2021/11/09 exists
+made level_data/2021/11/09/day.csv
+level_data/2021/11/10 exists
+made level_data/2021/11/10/day.csv
+level_data/2021/11/11 exists
+made level_data/2021/11/11/day.csv
+level_data/2021/11/12 exists
+made level_data/2021/11/12/day.csv
+level_data/2021/11/13 exists
+made level_data/2021/11/13/day.csv
+level_data/2021/11/14 exists
+made level_data/2021/11/14/day.csv
+level_data/2021/11/15 exists
+made level_data/2021/11/15/day.csv
+level_data/2021/11/16 exists
+made level_data/2021/11/16/day.csv
+level_data/2021/11/17 exists
+made level_data/2021/11/17/day.csv
+level_data/2021/11/18 exists
+made level_data/2021/11/18/day.csv
+level_data/2021/11/19 exists
+made level_data/2021/11/19/day.csv
+level_data/2021/11/20 exists
+made level_data/2021/11/20/day.csv
+level_data/2021/11/21 exists
+made level_data/2021/11/21/day.csv
+level_data/2021/11/22 exists
+made level_data/2021/11/22/day.csv
+level_data/2021/11/23 exists
+made level_data/2021/11/23/day.csv
+level_data/2021/11/24 exists
+made level_data/2021/11/24/day.csv
+level_data/2021/11/25 exists
+made level_data/2021/11/25/day.csv
+level_data/2021/11/26 exists
+made level_data/2021/11/26/day.csv
+level_data/2021/11/27 exists
+made level_data/2021/11/27/day.csv
+level_data/2021/11/28 exists
+made level_data/2021/11/28/day.csv
+level_data/2021/11/29 exists
+made level_data/2021/11/29/day.csv
+level_data/2021/11/30 exists
+made level_data/2021/11/30/day.csv
+level_data/2021/12 exists
+made level_data/2021/12/month.csv
+level_data/2021/12/01 exists
+made level_data/2021/12/01/day.csv
+level_data/2021/12/02 exists
+made level_data/2021/12/02/day.csv
+level_data/2021/12/03 exists
+made level_data/2021/12/03/day.csv
+level_data/2021/12/04 exists
+made level_data/2021/12/04/day.csv
+level_data/2021/12/05 exists
+made level_data/2021/12/05/day.csv
+level_data/2021/12/06 exists
+made level_data/2021/12/06/day.csv
+level_data/2021/12/07 exists
+made level_data/2021/12/07/day.csv
+level_data/2021/12/08 exists
+made level_data/2021/12/08/day.csv
+level_data/2021/12/09 exists
+made level_data/2021/12/09/day.csv
+level_data/2021/12/10 exists
+made level_data/2021/12/10/day.csv
+level_data/2021/12/11 exists
+made level_data/2021/12/11/day.csv
+level_data/2021/12/12 exists
+made level_data/2021/12/12/day.csv
+level_data/2021/12/13 exists
+made level_data/2021/12/13/day.csv
+level_data/2021/12/14 exists
+made level_data/2021/12/14/day.csv
+level_data/2021/12/15 exists
+made level_data/2021/12/15/day.csv
+level_data/2021/12/16 exists
+made level_data/2021/12/16/day.csv
+level_data/2021/12/17 exists
+made level_data/2021/12/17/day.csv
+level_data/2021/12/18 exists
+made level_data/2021/12/18/day.csv
+level_data/2021/12/19 exists
+made level_data/2021/12/19/day.csv
+level_data/2021/12/20 exists
+made level_data/2021/12/20/day.csv
+level_data/2021/12/21 exists
+made level_data/2021/12/21/day.csv
+level_data/2021/12/22 exists
+made level_data/2021/12/22/day.csv
+level_data/2021/12/23 exists
+made level_data/2021/12/23/day.csv
+level_data/2021/12/24 exists
+made level_data/2021/12/24/day.csv
+level_data/2021/12/25 exists
+made level_data/2021/12/25/day.csv
+level_data/2021/12/26 exists
+made level_data/2021/12/26/day.csv
+level_data/2021/12/27 exists
+made level_data/2021/12/27/day.csv
+level_data/2021/12/28 exists
+made level_data/2021/12/28/day.csv
+level_data/2021/12/29 exists
+made level_data/2021/12/29/day.csv
+level_data/2021/12/30 exists
+made level_data/2021/12/30/day.csv
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="walking-a-directory">
+<h1>Walking a Directory<a class="headerlink" href="#walking-a-directory" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">os</span></code> module provides <code class="docutils literal notranslate"><span class="pre">walk</span></code>, which is a generator function that traverses a directory and all its subdirectories, and all their subdirectories, and so on.</p>
+<p>For each directory, it yields:</p>
+<ul class="simple">
+<li><p>dirpath, which is the name of the directory.</p></li>
+<li><p>dirnames, which is a list of subdirectories it contains, and</p></li>
+<li><p>filenames, which is a list of files it contains.</p></li>
+</ul>
+<p>Here’s how we can use it to print the paths of all files in the directory we created.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">dirpath</span><span class="p">,</span> <span class="n">dirnames</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;level_data&#39;</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirpath</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>level_data/2021/year.csv
+level_data/2021/04/month.csv
+level_data/2021/04/04/day.csv
+level_data/2021/04/24/day.csv
+level_data/2021/04/09/day.csv
+level_data/2021/04/02/day.csv
+level_data/2021/04/27/day.csv
+level_data/2021/04/17/day.csv
+level_data/2021/04/21/day.csv
+level_data/2021/04/18/day.csv
+level_data/2021/04/14/day.csv
+level_data/2021/04/23/day.csv
+level_data/2021/04/01/day.csv
+level_data/2021/04/10/day.csv
+level_data/2021/04/30/day.csv
+level_data/2021/04/15/day.csv
+level_data/2021/04/12/day.csv
+level_data/2021/04/06/day.csv
+level_data/2021/04/05/day.csv
+level_data/2021/04/29/day.csv
+level_data/2021/04/07/day.csv
+level_data/2021/04/28/day.csv
+level_data/2021/04/08/day.csv
+level_data/2021/04/03/day.csv
+level_data/2021/04/20/day.csv
+level_data/2021/04/22/day.csv
+level_data/2021/04/11/day.csv
+level_data/2021/04/25/day.csv
+level_data/2021/04/13/day.csv
+level_data/2021/04/16/day.csv
+level_data/2021/04/26/day.csv
+level_data/2021/04/19/day.csv
+level_data/2021/09/month.csv
+level_data/2021/09/04/day.csv
+level_data/2021/09/24/day.csv
+level_data/2021/09/09/day.csv
+level_data/2021/09/02/day.csv
+level_data/2021/09/27/day.csv
+level_data/2021/09/17/day.csv
+level_data/2021/09/21/day.csv
+level_data/2021/09/18/day.csv
+level_data/2021/09/14/day.csv
+level_data/2021/09/23/day.csv
+level_data/2021/09/01/day.csv
+level_data/2021/09/10/day.csv
+level_data/2021/09/30/day.csv
+level_data/2021/09/15/day.csv
+level_data/2021/09/12/day.csv
+level_data/2021/09/06/day.csv
+level_data/2021/09/05/day.csv
+level_data/2021/09/29/day.csv
+level_data/2021/09/07/day.csv
+level_data/2021/09/28/day.csv
+level_data/2021/09/08/day.csv
+level_data/2021/09/03/day.csv
+level_data/2021/09/20/day.csv
+level_data/2021/09/22/day.csv
+level_data/2021/09/11/day.csv
+level_data/2021/09/25/day.csv
+level_data/2021/09/13/day.csv
+level_data/2021/09/16/day.csv
+level_data/2021/09/26/day.csv
+level_data/2021/09/19/day.csv
+level_data/2021/02/month.csv
+level_data/2021/02/04/day.csv
+level_data/2021/02/24/day.csv
+level_data/2021/02/09/day.csv
+level_data/2021/02/02/day.csv
+level_data/2021/02/27/day.csv
+level_data/2021/02/17/day.csv
+level_data/2021/02/21/day.csv
+level_data/2021/02/18/day.csv
+level_data/2021/02/14/day.csv
+level_data/2021/02/23/day.csv
+level_data/2021/02/01/day.csv
+level_data/2021/02/10/day.csv
+level_data/2021/02/30/day.csv
+level_data/2021/02/15/day.csv
+level_data/2021/02/12/day.csv
+level_data/2021/02/06/day.csv
+level_data/2021/02/05/day.csv
+level_data/2021/02/29/day.csv
+level_data/2021/02/07/day.csv
+level_data/2021/02/28/day.csv
+level_data/2021/02/08/day.csv
+level_data/2021/02/03/day.csv
+level_data/2021/02/20/day.csv
+level_data/2021/02/22/day.csv
+level_data/2021/02/11/day.csv
+level_data/2021/02/25/day.csv
+level_data/2021/02/13/day.csv
+level_data/2021/02/16/day.csv
+level_data/2021/02/26/day.csv
+level_data/2021/02/19/day.csv
+level_data/2021/01/month.csv
+level_data/2021/01/04/day.csv
+level_data/2021/01/24/day.csv
+level_data/2021/01/09/day.csv
+level_data/2021/01/02/day.csv
+level_data/2021/01/27/day.csv
+level_data/2021/01/17/day.csv
+level_data/2021/01/21/day.csv
+level_data/2021/01/18/day.csv
+level_data/2021/01/14/day.csv
+level_data/2021/01/23/day.csv
+level_data/2021/01/01/day.csv
+level_data/2021/01/10/day.csv
+level_data/2021/01/30/day.csv
+level_data/2021/01/15/day.csv
+level_data/2021/01/12/day.csv
+level_data/2021/01/06/day.csv
+level_data/2021/01/05/day.csv
+level_data/2021/01/29/day.csv
+level_data/2021/01/07/day.csv
+level_data/2021/01/28/day.csv
+level_data/2021/01/08/day.csv
+level_data/2021/01/03/day.csv
+level_data/2021/01/20/day.csv
+level_data/2021/01/22/day.csv
+level_data/2021/01/11/day.csv
+level_data/2021/01/25/day.csv
+level_data/2021/01/13/day.csv
+level_data/2021/01/16/day.csv
+level_data/2021/01/26/day.csv
+level_data/2021/01/19/day.csv
+level_data/2021/10/month.csv
+level_data/2021/10/04/day.csv
+level_data/2021/10/24/day.csv
+level_data/2021/10/09/day.csv
+level_data/2021/10/02/day.csv
+level_data/2021/10/27/day.csv
+level_data/2021/10/17/day.csv
+level_data/2021/10/21/day.csv
+level_data/2021/10/18/day.csv
+level_data/2021/10/14/day.csv
+level_data/2021/10/23/day.csv
+level_data/2021/10/01/day.csv
+level_data/2021/10/10/day.csv
+level_data/2021/10/30/day.csv
+level_data/2021/10/15/day.csv
+level_data/2021/10/12/day.csv
+level_data/2021/10/06/day.csv
+level_data/2021/10/05/day.csv
+level_data/2021/10/29/day.csv
+level_data/2021/10/07/day.csv
+level_data/2021/10/28/day.csv
+level_data/2021/10/08/day.csv
+level_data/2021/10/03/day.csv
+level_data/2021/10/20/day.csv
+level_data/2021/10/22/day.csv
+level_data/2021/10/11/day.csv
+level_data/2021/10/25/day.csv
+level_data/2021/10/13/day.csv
+level_data/2021/10/16/day.csv
+level_data/2021/10/26/day.csv
+level_data/2021/10/19/day.csv
+level_data/2021/12/month.csv
+level_data/2021/12/04/day.csv
+level_data/2021/12/24/day.csv
+level_data/2021/12/09/day.csv
+level_data/2021/12/02/day.csv
+level_data/2021/12/27/day.csv
+level_data/2021/12/17/day.csv
+level_data/2021/12/21/day.csv
+level_data/2021/12/18/day.csv
+level_data/2021/12/14/day.csv
+level_data/2021/12/23/day.csv
+level_data/2021/12/01/day.csv
+level_data/2021/12/10/day.csv
+level_data/2021/12/30/day.csv
+level_data/2021/12/15/day.csv
+level_data/2021/12/12/day.csv
+level_data/2021/12/06/day.csv
+level_data/2021/12/05/day.csv
+level_data/2021/12/29/day.csv
+level_data/2021/12/07/day.csv
+level_data/2021/12/28/day.csv
+level_data/2021/12/08/day.csv
+level_data/2021/12/03/day.csv
+level_data/2021/12/20/day.csv
+level_data/2021/12/22/day.csv
+level_data/2021/12/11/day.csv
+level_data/2021/12/25/day.csv
+level_data/2021/12/13/day.csv
+level_data/2021/12/16/day.csv
+level_data/2021/12/26/day.csv
+level_data/2021/12/19/day.csv
+level_data/2021/06/month.csv
+level_data/2021/06/04/day.csv
+level_data/2021/06/24/day.csv
+level_data/2021/06/09/day.csv
+level_data/2021/06/02/day.csv
+level_data/2021/06/27/day.csv
+level_data/2021/06/17/day.csv
+level_data/2021/06/21/day.csv
+level_data/2021/06/18/day.csv
+level_data/2021/06/14/day.csv
+level_data/2021/06/23/day.csv
+level_data/2021/06/01/day.csv
+level_data/2021/06/10/day.csv
+level_data/2021/06/30/day.csv
+level_data/2021/06/15/day.csv
+level_data/2021/06/12/day.csv
+level_data/2021/06/06/day.csv
+level_data/2021/06/05/day.csv
+level_data/2021/06/29/day.csv
+level_data/2021/06/07/day.csv
+level_data/2021/06/28/day.csv
+level_data/2021/06/08/day.csv
+level_data/2021/06/03/day.csv
+level_data/2021/06/20/day.csv
+level_data/2021/06/22/day.csv
+level_data/2021/06/11/day.csv
+level_data/2021/06/25/day.csv
+level_data/2021/06/13/day.csv
+level_data/2021/06/16/day.csv
+level_data/2021/06/26/day.csv
+level_data/2021/06/19/day.csv
+level_data/2021/05/month.csv
+level_data/2021/05/04/day.csv
+level_data/2021/05/24/day.csv
+level_data/2021/05/09/day.csv
+level_data/2021/05/02/day.csv
+level_data/2021/05/27/day.csv
+level_data/2021/05/17/day.csv
+level_data/2021/05/21/day.csv
+level_data/2021/05/18/day.csv
+level_data/2021/05/14/day.csv
+level_data/2021/05/23/day.csv
+level_data/2021/05/01/day.csv
+level_data/2021/05/10/day.csv
+level_data/2021/05/30/day.csv
+level_data/2021/05/15/day.csv
+level_data/2021/05/12/day.csv
+level_data/2021/05/06/day.csv
+level_data/2021/05/05/day.csv
+level_data/2021/05/29/day.csv
+level_data/2021/05/07/day.csv
+level_data/2021/05/28/day.csv
+level_data/2021/05/08/day.csv
+level_data/2021/05/03/day.csv
+level_data/2021/05/20/day.csv
+level_data/2021/05/22/day.csv
+level_data/2021/05/11/day.csv
+level_data/2021/05/25/day.csv
+level_data/2021/05/13/day.csv
+level_data/2021/05/16/day.csv
+level_data/2021/05/26/day.csv
+level_data/2021/05/19/day.csv
+level_data/2021/07/month.csv
+level_data/2021/07/04/day.csv
+level_data/2021/07/24/day.csv
+level_data/2021/07/09/day.csv
+level_data/2021/07/02/day.csv
+level_data/2021/07/27/day.csv
+level_data/2021/07/17/day.csv
+level_data/2021/07/21/day.csv
+level_data/2021/07/18/day.csv
+level_data/2021/07/14/day.csv
+level_data/2021/07/23/day.csv
+level_data/2021/07/01/day.csv
+level_data/2021/07/10/day.csv
+level_data/2021/07/30/day.csv
+level_data/2021/07/15/day.csv
+level_data/2021/07/12/day.csv
+level_data/2021/07/06/day.csv
+level_data/2021/07/05/day.csv
+level_data/2021/07/29/day.csv
+level_data/2021/07/07/day.csv
+level_data/2021/07/28/day.csv
+level_data/2021/07/08/day.csv
+level_data/2021/07/03/day.csv
+level_data/2021/07/20/day.csv
+level_data/2021/07/22/day.csv
+level_data/2021/07/11/day.csv
+level_data/2021/07/25/day.csv
+level_data/2021/07/13/day.csv
+level_data/2021/07/16/day.csv
+level_data/2021/07/26/day.csv
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>level_data/2021/07/19/day.csv
+level_data/2021/08/month.csv
+level_data/2021/08/04/day.csv
+level_data/2021/08/24/day.csv
+level_data/2021/08/09/day.csv
+level_data/2021/08/02/day.csv
+level_data/2021/08/27/day.csv
+level_data/2021/08/17/day.csv
+level_data/2021/08/21/day.csv
+level_data/2021/08/18/day.csv
+level_data/2021/08/14/day.csv
+level_data/2021/08/23/day.csv
+level_data/2021/08/01/day.csv
+level_data/2021/08/10/day.csv
+level_data/2021/08/30/day.csv
+level_data/2021/08/15/day.csv
+level_data/2021/08/12/day.csv
+level_data/2021/08/06/day.csv
+level_data/2021/08/05/day.csv
+level_data/2021/08/29/day.csv
+level_data/2021/08/07/day.csv
+level_data/2021/08/28/day.csv
+level_data/2021/08/08/day.csv
+level_data/2021/08/03/day.csv
+level_data/2021/08/20/day.csv
+level_data/2021/08/22/day.csv
+level_data/2021/08/11/day.csv
+level_data/2021/08/25/day.csv
+level_data/2021/08/13/day.csv
+level_data/2021/08/16/day.csv
+level_data/2021/08/26/day.csv
+level_data/2021/08/19/day.csv
+level_data/2021/03/month.csv
+level_data/2021/03/04/day.csv
+level_data/2021/03/24/day.csv
+level_data/2021/03/09/day.csv
+level_data/2021/03/02/day.csv
+level_data/2021/03/27/day.csv
+level_data/2021/03/17/day.csv
+level_data/2021/03/21/day.csv
+level_data/2021/03/18/day.csv
+level_data/2021/03/14/day.csv
+level_data/2021/03/23/day.csv
+level_data/2021/03/01/day.csv
+level_data/2021/03/10/day.csv
+level_data/2021/03/30/day.csv
+level_data/2021/03/15/day.csv
+level_data/2021/03/12/day.csv
+level_data/2021/03/06/day.csv
+level_data/2021/03/05/day.csv
+level_data/2021/03/29/day.csv
+level_data/2021/03/07/day.csv
+level_data/2021/03/28/day.csv
+level_data/2021/03/08/day.csv
+level_data/2021/03/03/day.csv
+level_data/2021/03/20/day.csv
+level_data/2021/03/22/day.csv
+level_data/2021/03/11/day.csv
+level_data/2021/03/25/day.csv
+level_data/2021/03/13/day.csv
+level_data/2021/03/16/day.csv
+level_data/2021/03/26/day.csv
+level_data/2021/03/19/day.csv
+level_data/2021/11/month.csv
+level_data/2021/11/04/day.csv
+level_data/2021/11/24/day.csv
+level_data/2021/11/09/day.csv
+level_data/2021/11/02/day.csv
+level_data/2021/11/27/day.csv
+level_data/2021/11/17/day.csv
+level_data/2021/11/21/day.csv
+level_data/2021/11/18/day.csv
+level_data/2021/11/14/day.csv
+level_data/2021/11/23/day.csv
+level_data/2021/11/01/day.csv
+level_data/2021/11/10/day.csv
+level_data/2021/11/30/day.csv
+level_data/2021/11/15/day.csv
+level_data/2021/11/12/day.csv
+level_data/2021/11/06/day.csv
+level_data/2021/11/05/day.csv
+level_data/2021/11/29/day.csv
+level_data/2021/11/07/day.csv
+level_data/2021/11/28/day.csv
+level_data/2021/11/08/day.csv
+level_data/2021/11/03/day.csv
+level_data/2021/11/20/day.csv
+level_data/2021/11/22/day.csv
+level_data/2021/11/11/day.csv
+level_data/2021/11/25/day.csv
+level_data/2021/11/13/day.csv
+level_data/2021/11/16/day.csv
+level_data/2021/11/26/day.csv
+level_data/2021/11/19/day.csv
+level_data/2021/00/month.csv
+level_data/2021/00/04/day.csv
+level_data/2021/00/24/day.csv
+level_data/2021/00/09/day.csv
+level_data/2021/00/02/day.csv
+level_data/2021/00/27/day.csv
+level_data/2021/00/17/day.csv
+level_data/2021/00/21/day.csv
+level_data/2021/00/18/day.csv
+level_data/2021/00/14/day.csv
+level_data/2021/00/23/day.csv
+level_data/2021/00/01/day.csv
+level_data/2021/00/10/day.csv
+level_data/2021/00/30/day.csv
+level_data/2021/00/15/day.csv
+level_data/2021/00/12/day.csv
+level_data/2021/00/06/day.csv
+level_data/2021/00/05/day.csv
+level_data/2021/00/29/day.csv
+level_data/2021/00/07/day.csv
+level_data/2021/00/28/day.csv
+level_data/2021/00/08/day.csv
+level_data/2021/00/03/day.csv
+level_data/2021/00/20/day.csv
+level_data/2021/00/22/day.csv
+level_data/2021/00/11/day.csv
+level_data/2021/00/25/day.csv
+level_data/2021/00/13/day.csv
+level_data/2021/00/16/day.csv
+level_data/2021/00/26/day.csv
+level_data/2021/00/19/day.csv
+</pre></div>
+</div>
+</div>
+</div>
+<p>One quirk of <code class="docutils literal notranslate"><span class="pre">os.walk</span></code> is that the directories and files don’t appear in any particular order.
+Of course, we can store the results and sort them in whatever order we want.</p>
+<p>But as an exercise, we can write our own version of <code class="docutils literal notranslate"><span class="pre">walk</span></code>.
+We’ll need two functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">os.listdir</span></code>, which takes a directory and list the directories and files it contains, and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">os.path.isfile</span></code>, which takes a path and returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if it is a file, and <code class="docutils literal notranslate"><span class="pre">False</span></code> if it is a directory or something else.</p></li>
+</ul>
+<p>You might notice that some file-related functions are in the submodule <code class="docutils literal notranslate"><span class="pre">os.path</span></code>.
+There is some logic to this organization, but it is not always obvious why a particular function is in this submodule or not.</p>
+<p>Anyway, here is a recursive version of <code class="docutils literal notranslate"><span class="pre">walk</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">walk</span><span class="p">(</span><span class="n">dirname</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dirname</span><span class="p">)):</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">walk</span><span class="p">(</span><span class="n">year_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>level_data/2021/00/01/day.csv
+level_data/2021/00/02/day.csv
+level_data/2021/00/03/day.csv
+level_data/2021/00/04/day.csv
+level_data/2021/00/05/day.csv
+level_data/2021/00/06/day.csv
+level_data/2021/00/07/day.csv
+level_data/2021/00/08/day.csv
+level_data/2021/00/09/day.csv
+level_data/2021/00/10/day.csv
+level_data/2021/00/11/day.csv
+level_data/2021/00/12/day.csv
+level_data/2021/00/13/day.csv
+level_data/2021/00/14/day.csv
+level_data/2021/00/15/day.csv
+level_data/2021/00/16/day.csv
+level_data/2021/00/17/day.csv
+level_data/2021/00/18/day.csv
+level_data/2021/00/19/day.csv
+level_data/2021/00/20/day.csv
+level_data/2021/00/21/day.csv
+level_data/2021/00/22/day.csv
+level_data/2021/00/23/day.csv
+level_data/2021/00/24/day.csv
+level_data/2021/00/25/day.csv
+level_data/2021/00/26/day.csv
+level_data/2021/00/27/day.csv
+level_data/2021/00/28/day.csv
+level_data/2021/00/29/day.csv
+level_data/2021/00/30/day.csv
+level_data/2021/00/month.csv
+level_data/2021/01/01/day.csv
+level_data/2021/01/02/day.csv
+level_data/2021/01/03/day.csv
+level_data/2021/01/04/day.csv
+level_data/2021/01/05/day.csv
+level_data/2021/01/06/day.csv
+level_data/2021/01/07/day.csv
+level_data/2021/01/08/day.csv
+level_data/2021/01/09/day.csv
+level_data/2021/01/10/day.csv
+level_data/2021/01/11/day.csv
+level_data/2021/01/12/day.csv
+level_data/2021/01/13/day.csv
+level_data/2021/01/14/day.csv
+level_data/2021/01/15/day.csv
+level_data/2021/01/16/day.csv
+level_data/2021/01/17/day.csv
+level_data/2021/01/18/day.csv
+level_data/2021/01/19/day.csv
+level_data/2021/01/20/day.csv
+level_data/2021/01/21/day.csv
+level_data/2021/01/22/day.csv
+level_data/2021/01/23/day.csv
+level_data/2021/01/24/day.csv
+level_data/2021/01/25/day.csv
+level_data/2021/01/26/day.csv
+level_data/2021/01/27/day.csv
+level_data/2021/01/28/day.csv
+level_data/2021/01/29/day.csv
+level_data/2021/01/30/day.csv
+level_data/2021/01/month.csv
+level_data/2021/02/01/day.csv
+level_data/2021/02/02/day.csv
+level_data/2021/02/03/day.csv
+level_data/2021/02/04/day.csv
+level_data/2021/02/05/day.csv
+level_data/2021/02/06/day.csv
+level_data/2021/02/07/day.csv
+level_data/2021/02/08/day.csv
+level_data/2021/02/09/day.csv
+level_data/2021/02/10/day.csv
+level_data/2021/02/11/day.csv
+level_data/2021/02/12/day.csv
+level_data/2021/02/13/day.csv
+level_data/2021/02/14/day.csv
+level_data/2021/02/15/day.csv
+level_data/2021/02/16/day.csv
+level_data/2021/02/17/day.csv
+level_data/2021/02/18/day.csv
+level_data/2021/02/19/day.csv
+level_data/2021/02/20/day.csv
+level_data/2021/02/21/day.csv
+level_data/2021/02/22/day.csv
+level_data/2021/02/23/day.csv
+level_data/2021/02/24/day.csv
+level_data/2021/02/25/day.csv
+level_data/2021/02/26/day.csv
+level_data/2021/02/27/day.csv
+level_data/2021/02/28/day.csv
+level_data/2021/02/29/day.csv
+level_data/2021/02/30/day.csv
+level_data/2021/02/month.csv
+level_data/2021/03/01/day.csv
+level_data/2021/03/02/day.csv
+level_data/2021/03/03/day.csv
+level_data/2021/03/04/day.csv
+level_data/2021/03/05/day.csv
+level_data/2021/03/06/day.csv
+level_data/2021/03/07/day.csv
+level_data/2021/03/08/day.csv
+level_data/2021/03/09/day.csv
+level_data/2021/03/10/day.csv
+level_data/2021/03/11/day.csv
+level_data/2021/03/12/day.csv
+level_data/2021/03/13/day.csv
+level_data/2021/03/14/day.csv
+level_data/2021/03/15/day.csv
+level_data/2021/03/16/day.csv
+level_data/2021/03/17/day.csv
+level_data/2021/03/18/day.csv
+level_data/2021/03/19/day.csv
+level_data/2021/03/20/day.csv
+level_data/2021/03/21/day.csv
+level_data/2021/03/22/day.csv
+level_data/2021/03/23/day.csv
+level_data/2021/03/24/day.csv
+level_data/2021/03/25/day.csv
+level_data/2021/03/26/day.csv
+level_data/2021/03/27/day.csv
+level_data/2021/03/28/day.csv
+level_data/2021/03/29/day.csv
+level_data/2021/03/30/day.csv
+level_data/2021/03/month.csv
+level_data/2021/04/01/day.csv
+level_data/2021/04/02/day.csv
+level_data/2021/04/03/day.csv
+level_data/2021/04/04/day.csv
+level_data/2021/04/05/day.csv
+level_data/2021/04/06/day.csv
+level_data/2021/04/07/day.csv
+level_data/2021/04/08/day.csv
+level_data/2021/04/09/day.csv
+level_data/2021/04/10/day.csv
+level_data/2021/04/11/day.csv
+level_data/2021/04/12/day.csv
+level_data/2021/04/13/day.csv
+level_data/2021/04/14/day.csv
+level_data/2021/04/15/day.csv
+level_data/2021/04/16/day.csv
+level_data/2021/04/17/day.csv
+level_data/2021/04/18/day.csv
+level_data/2021/04/19/day.csv
+level_data/2021/04/20/day.csv
+level_data/2021/04/21/day.csv
+level_data/2021/04/22/day.csv
+level_data/2021/04/23/day.csv
+level_data/2021/04/24/day.csv
+level_data/2021/04/25/day.csv
+level_data/2021/04/26/day.csv
+level_data/2021/04/27/day.csv
+level_data/2021/04/28/day.csv
+level_data/2021/04/29/day.csv
+level_data/2021/04/30/day.csv
+level_data/2021/04/month.csv
+level_data/2021/05/01/day.csv
+level_data/2021/05/02/day.csv
+level_data/2021/05/03/day.csv
+level_data/2021/05/04/day.csv
+level_data/2021/05/05/day.csv
+level_data/2021/05/06/day.csv
+level_data/2021/05/07/day.csv
+level_data/2021/05/08/day.csv
+level_data/2021/05/09/day.csv
+level_data/2021/05/10/day.csv
+level_data/2021/05/11/day.csv
+level_data/2021/05/12/day.csv
+level_data/2021/05/13/day.csv
+level_data/2021/05/14/day.csv
+level_data/2021/05/15/day.csv
+level_data/2021/05/16/day.csv
+level_data/2021/05/17/day.csv
+level_data/2021/05/18/day.csv
+level_data/2021/05/19/day.csv
+level_data/2021/05/20/day.csv
+level_data/2021/05/21/day.csv
+level_data/2021/05/22/day.csv
+level_data/2021/05/23/day.csv
+level_data/2021/05/24/day.csv
+level_data/2021/05/25/day.csv
+level_data/2021/05/26/day.csv
+level_data/2021/05/27/day.csv
+level_data/2021/05/28/day.csv
+level_data/2021/05/29/day.csv
+level_data/2021/05/30/day.csv
+level_data/2021/05/month.csv
+level_data/2021/06/01/day.csv
+level_data/2021/06/02/day.csv
+level_data/2021/06/03/day.csv
+level_data/2021/06/04/day.csv
+level_data/2021/06/05/day.csv
+level_data/2021/06/06/day.csv
+level_data/2021/06/07/day.csv
+level_data/2021/06/08/day.csv
+level_data/2021/06/09/day.csv
+level_data/2021/06/10/day.csv
+level_data/2021/06/11/day.csv
+level_data/2021/06/12/day.csv
+level_data/2021/06/13/day.csv
+level_data/2021/06/14/day.csv
+level_data/2021/06/15/day.csv
+level_data/2021/06/16/day.csv
+level_data/2021/06/17/day.csv
+level_data/2021/06/18/day.csv
+level_data/2021/06/19/day.csv
+level_data/2021/06/20/day.csv
+level_data/2021/06/21/day.csv
+level_data/2021/06/22/day.csv
+level_data/2021/06/23/day.csv
+level_data/2021/06/24/day.csv
+level_data/2021/06/25/day.csv
+level_data/2021/06/26/day.csv
+level_data/2021/06/27/day.csv
+level_data/2021/06/28/day.csv
+level_data/2021/06/29/day.csv
+level_data/2021/06/30/day.csv
+level_data/2021/06/month.csv
+level_data/2021/07/01/day.csv
+level_data/2021/07/02/day.csv
+level_data/2021/07/03/day.csv
+level_data/2021/07/04/day.csv
+level_data/2021/07/05/day.csv
+level_data/2021/07/06/day.csv
+level_data/2021/07/07/day.csv
+level_data/2021/07/08/day.csv
+level_data/2021/07/09/day.csv
+level_data/2021/07/10/day.csv
+level_data/2021/07/11/day.csv
+level_data/2021/07/12/day.csv
+level_data/2021/07/13/day.csv
+level_data/2021/07/14/day.csv
+level_data/2021/07/15/day.csv
+level_data/2021/07/16/day.csv
+level_data/2021/07/17/day.csv
+level_data/2021/07/18/day.csv
+level_data/2021/07/19/day.csv
+level_data/2021/07/20/day.csv
+level_data/2021/07/21/day.csv
+level_data/2021/07/22/day.csv
+level_data/2021/07/23/day.csv
+level_data/2021/07/24/day.csv
+level_data/2021/07/25/day.csv
+level_data/2021/07/26/day.csv
+level_data/2021/07/27/day.csv
+level_data/2021/07/28/day.csv
+level_data/2021/07/29/day.csv
+level_data/2021/07/30/day.csv
+level_data/2021/07/month.csv
+level_data/2021/08/01/day.csv
+level_data/2021/08/02/day.csv
+level_data/2021/08/03/day.csv
+level_data/2021/08/04/day.csv
+level_data/2021/08/05/day.csv
+level_data/2021/08/06/day.csv
+level_data/2021/08/07/day.csv
+level_data/2021/08/08/day.csv
+level_data/2021/08/09/day.csv
+level_data/2021/08/10/day.csv
+level_data/2021/08/11/day.csv
+level_data/2021/08/12/day.csv
+level_data/2021/08/13/day.csv
+level_data/2021/08/14/day.csv
+level_data/2021/08/15/day.csv
+level_data/2021/08/16/day.csv
+level_data/2021/08/17/day.csv
+level_data/2021/08/18/day.csv
+level_data/2021/08/19/day.csv
+level_data/2021/08/20/day.csv
+level_data/2021/08/21/day.csv
+level_data/2021/08/22/day.csv
+level_data/2021/08/23/day.csv
+level_data/2021/08/24/day.csv
+level_data/2021/08/25/day.csv
+level_data/2021/08/26/day.csv
+level_data/2021/08/27/day.csv
+level_data/2021/08/28/day.csv
+level_data/2021/08/29/day.csv
+level_data/2021/08/30/day.csv
+level_data/2021/08/month.csv
+level_data/2021/09/01/day.csv
+level_data/2021/09/02/day.csv
+level_data/2021/09/03/day.csv
+level_data/2021/09/04/day.csv
+level_data/2021/09/05/day.csv
+level_data/2021/09/06/day.csv
+level_data/2021/09/07/day.csv
+level_data/2021/09/08/day.csv
+level_data/2021/09/09/day.csv
+level_data/2021/09/10/day.csv
+level_data/2021/09/11/day.csv
+level_data/2021/09/12/day.csv
+level_data/2021/09/13/day.csv
+level_data/2021/09/14/day.csv
+level_data/2021/09/15/day.csv
+level_data/2021/09/16/day.csv
+level_data/2021/09/17/day.csv
+level_data/2021/09/18/day.csv
+level_data/2021/09/19/day.csv
+level_data/2021/09/20/day.csv
+level_data/2021/09/21/day.csv
+level_data/2021/09/22/day.csv
+level_data/2021/09/23/day.csv
+level_data/2021/09/24/day.csv
+level_data/2021/09/25/day.csv
+level_data/2021/09/26/day.csv
+level_data/2021/09/27/day.csv
+level_data/2021/09/28/day.csv
+level_data/2021/09/29/day.csv
+level_data/2021/09/30/day.csv
+level_data/2021/09/month.csv
+level_data/2021/10/01/day.csv
+level_data/2021/10/02/day.csv
+level_data/2021/10/03/day.csv
+level_data/2021/10/04/day.csv
+level_data/2021/10/05/day.csv
+level_data/2021/10/06/day.csv
+level_data/2021/10/07/day.csv
+level_data/2021/10/08/day.csv
+level_data/2021/10/09/day.csv
+level_data/2021/10/10/day.csv
+level_data/2021/10/11/day.csv
+level_data/2021/10/12/day.csv
+level_data/2021/10/13/day.csv
+level_data/2021/10/14/day.csv
+level_data/2021/10/15/day.csv
+level_data/2021/10/16/day.csv
+level_data/2021/10/17/day.csv
+level_data/2021/10/18/day.csv
+level_data/2021/10/19/day.csv
+level_data/2021/10/20/day.csv
+level_data/2021/10/21/day.csv
+level_data/2021/10/22/day.csv
+level_data/2021/10/23/day.csv
+level_data/2021/10/24/day.csv
+level_data/2021/10/25/day.csv
+level_data/2021/10/26/day.csv
+level_data/2021/10/27/day.csv
+level_data/2021/10/28/day.csv
+level_data/2021/10/29/day.csv
+level_data/2021/10/30/day.csv
+level_data/2021/10/month.csv
+level_data/2021/11/01/day.csv
+level_data/2021/11/02/day.csv
+level_data/2021/11/03/day.csv
+level_data/2021/11/04/day.csv
+level_data/2021/11/05/day.csv
+level_data/2021/11/06/day.csv
+level_data/2021/11/07/day.csv
+level_data/2021/11/08/day.csv
+level_data/2021/11/09/day.csv
+level_data/2021/11/10/day.csv
+level_data/2021/11/11/day.csv
+level_data/2021/11/12/day.csv
+level_data/2021/11/13/day.csv
+level_data/2021/11/14/day.csv
+level_data/2021/11/15/day.csv
+level_data/2021/11/16/day.csv
+level_data/2021/11/17/day.csv
+level_data/2021/11/18/day.csv
+level_data/2021/11/19/day.csv
+level_data/2021/11/20/day.csv
+level_data/2021/11/21/day.csv
+level_data/2021/11/22/day.csv
+level_data/2021/11/23/day.csv
+level_data/2021/11/24/day.csv
+level_data/2021/11/25/day.csv
+level_data/2021/11/26/day.csv
+level_data/2021/11/27/day.csv
+level_data/2021/11/28/day.csv
+level_data/2021/11/29/day.csv
+level_data/2021/11/30/day.csv
+level_data/2021/11/month.csv
+level_data/2021/12/01/day.csv
+level_data/2021/12/02/day.csv
+level_data/2021/12/03/day.csv
+level_data/2021/12/04/day.csv
+level_data/2021/12/05/day.csv
+level_data/2021/12/06/day.csv
+level_data/2021/12/07/day.csv
+level_data/2021/12/08/day.csv
+level_data/2021/12/09/day.csv
+level_data/2021/12/10/day.csv
+level_data/2021/12/11/day.csv
+level_data/2021/12/12/day.csv
+level_data/2021/12/13/day.csv
+level_data/2021/12/14/day.csv
+level_data/2021/12/15/day.csv
+level_data/2021/12/16/day.csv
+level_data/2021/12/17/day.csv
+level_data/2021/12/18/day.csv
+level_data/2021/12/19/day.csv
+level_data/2021/12/20/day.csv
+level_data/2021/12/21/day.csv
+level_data/2021/12/22/day.csv
+level_data/2021/12/23/day.csv
+level_data/2021/12/24/day.csv
+level_data/2021/12/25/day.csv
+level_data/2021/12/26/day.csv
+level_data/2021/12/27/day.csv
+level_data/2021/12/28/day.csv
+level_data/2021/12/29/day.csv
+level_data/2021/12/30/day.csv
+level_data/2021/12/month.csv
+level_data/2021/year.csv
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> Write a version of <code class="docutils literal notranslate"><span class="pre">walk</span></code> called <code class="docutils literal notranslate"><span class="pre">walk_gen</span></code> that is a generator function; that is, it should yield the paths it finds rather than printing them.</p>
+<p>You can use the following loop to test your code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">walk_gen</span><span class="p">(</span><span class="n">year_dir</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>level_data/2021/00/01/day.csv
+level_data/2021/00/02/day.csv
+level_data/2021/00/03/day.csv
+level_data/2021/00/04/day.csv
+level_data/2021/00/05/day.csv
+level_data/2021/00/06/day.csv
+level_data/2021/00/07/day.csv
+level_data/2021/00/08/day.csv
+level_data/2021/00/09/day.csv
+level_data/2021/00/10/day.csv
+level_data/2021/00/11/day.csv
+level_data/2021/00/12/day.csv
+level_data/2021/00/13/day.csv
+level_data/2021/00/14/day.csv
+level_data/2021/00/15/day.csv
+level_data/2021/00/16/day.csv
+level_data/2021/00/17/day.csv
+level_data/2021/00/18/day.csv
+level_data/2021/00/19/day.csv
+level_data/2021/00/20/day.csv
+level_data/2021/00/21/day.csv
+level_data/2021/00/22/day.csv
+level_data/2021/00/23/day.csv
+level_data/2021/00/24/day.csv
+level_data/2021/00/25/day.csv
+level_data/2021/00/26/day.csv
+level_data/2021/00/27/day.csv
+level_data/2021/00/28/day.csv
+level_data/2021/00/29/day.csv
+level_data/2021/00/30/day.csv
+level_data/2021/00/month.csv
+level_data/2021/01/01/day.csv
+level_data/2021/01/02/day.csv
+level_data/2021/01/03/day.csv
+level_data/2021/01/04/day.csv
+level_data/2021/01/05/day.csv
+level_data/2021/01/06/day.csv
+level_data/2021/01/07/day.csv
+level_data/2021/01/08/day.csv
+level_data/2021/01/09/day.csv
+level_data/2021/01/10/day.csv
+level_data/2021/01/11/day.csv
+level_data/2021/01/12/day.csv
+level_data/2021/01/13/day.csv
+level_data/2021/01/14/day.csv
+level_data/2021/01/15/day.csv
+level_data/2021/01/16/day.csv
+level_data/2021/01/17/day.csv
+level_data/2021/01/18/day.csv
+level_data/2021/01/19/day.csv
+level_data/2021/01/20/day.csv
+level_data/2021/01/21/day.csv
+level_data/2021/01/22/day.csv
+level_data/2021/01/23/day.csv
+level_data/2021/01/24/day.csv
+level_data/2021/01/25/day.csv
+level_data/2021/01/26/day.csv
+level_data/2021/01/27/day.csv
+level_data/2021/01/28/day.csv
+level_data/2021/01/29/day.csv
+level_data/2021/01/30/day.csv
+level_data/2021/01/month.csv
+level_data/2021/02/01/day.csv
+level_data/2021/02/02/day.csv
+level_data/2021/02/03/day.csv
+level_data/2021/02/04/day.csv
+level_data/2021/02/05/day.csv
+level_data/2021/02/06/day.csv
+level_data/2021/02/07/day.csv
+level_data/2021/02/08/day.csv
+level_data/2021/02/09/day.csv
+level_data/2021/02/10/day.csv
+level_data/2021/02/11/day.csv
+level_data/2021/02/12/day.csv
+level_data/2021/02/13/day.csv
+level_data/2021/02/14/day.csv
+level_data/2021/02/15/day.csv
+level_data/2021/02/16/day.csv
+level_data/2021/02/17/day.csv
+level_data/2021/02/18/day.csv
+level_data/2021/02/19/day.csv
+level_data/2021/02/20/day.csv
+level_data/2021/02/21/day.csv
+level_data/2021/02/22/day.csv
+level_data/2021/02/23/day.csv
+level_data/2021/02/24/day.csv
+level_data/2021/02/25/day.csv
+level_data/2021/02/26/day.csv
+level_data/2021/02/27/day.csv
+level_data/2021/02/28/day.csv
+level_data/2021/02/29/day.csv
+level_data/2021/02/30/day.csv
+level_data/2021/02/month.csv
+level_data/2021/03/01/day.csv
+level_data/2021/03/02/day.csv
+level_data/2021/03/03/day.csv
+level_data/2021/03/04/day.csv
+level_data/2021/03/05/day.csv
+level_data/2021/03/06/day.csv
+level_data/2021/03/07/day.csv
+level_data/2021/03/08/day.csv
+level_data/2021/03/09/day.csv
+level_data/2021/03/10/day.csv
+level_data/2021/03/11/day.csv
+level_data/2021/03/12/day.csv
+level_data/2021/03/13/day.csv
+level_data/2021/03/14/day.csv
+level_data/2021/03/15/day.csv
+level_data/2021/03/16/day.csv
+level_data/2021/03/17/day.csv
+level_data/2021/03/18/day.csv
+level_data/2021/03/19/day.csv
+level_data/2021/03/20/day.csv
+level_data/2021/03/21/day.csv
+level_data/2021/03/22/day.csv
+level_data/2021/03/23/day.csv
+level_data/2021/03/24/day.csv
+level_data/2021/03/25/day.csv
+level_data/2021/03/26/day.csv
+level_data/2021/03/27/day.csv
+level_data/2021/03/28/day.csv
+level_data/2021/03/29/day.csv
+level_data/2021/03/30/day.csv
+level_data/2021/03/month.csv
+level_data/2021/04/01/day.csv
+level_data/2021/04/02/day.csv
+level_data/2021/04/03/day.csv
+level_data/2021/04/04/day.csv
+level_data/2021/04/05/day.csv
+level_data/2021/04/06/day.csv
+level_data/2021/04/07/day.csv
+level_data/2021/04/08/day.csv
+level_data/2021/04/09/day.csv
+level_data/2021/04/10/day.csv
+level_data/2021/04/11/day.csv
+level_data/2021/04/12/day.csv
+level_data/2021/04/13/day.csv
+level_data/2021/04/14/day.csv
+level_data/2021/04/15/day.csv
+level_data/2021/04/16/day.csv
+level_data/2021/04/17/day.csv
+level_data/2021/04/18/day.csv
+level_data/2021/04/19/day.csv
+level_data/2021/04/20/day.csv
+level_data/2021/04/21/day.csv
+level_data/2021/04/22/day.csv
+level_data/2021/04/23/day.csv
+level_data/2021/04/24/day.csv
+level_data/2021/04/25/day.csv
+level_data/2021/04/26/day.csv
+level_data/2021/04/27/day.csv
+level_data/2021/04/28/day.csv
+level_data/2021/04/29/day.csv
+level_data/2021/04/30/day.csv
+level_data/2021/04/month.csv
+level_data/2021/05/01/day.csv
+level_data/2021/05/02/day.csv
+level_data/2021/05/03/day.csv
+level_data/2021/05/04/day.csv
+level_data/2021/05/05/day.csv
+level_data/2021/05/06/day.csv
+level_data/2021/05/07/day.csv
+level_data/2021/05/08/day.csv
+level_data/2021/05/09/day.csv
+level_data/2021/05/10/day.csv
+level_data/2021/05/11/day.csv
+level_data/2021/05/12/day.csv
+level_data/2021/05/13/day.csv
+level_data/2021/05/14/day.csv
+level_data/2021/05/15/day.csv
+level_data/2021/05/16/day.csv
+level_data/2021/05/17/day.csv
+level_data/2021/05/18/day.csv
+level_data/2021/05/19/day.csv
+level_data/2021/05/20/day.csv
+level_data/2021/05/21/day.csv
+level_data/2021/05/22/day.csv
+level_data/2021/05/23/day.csv
+level_data/2021/05/24/day.csv
+level_data/2021/05/25/day.csv
+level_data/2021/05/26/day.csv
+level_data/2021/05/27/day.csv
+level_data/2021/05/28/day.csv
+level_data/2021/05/29/day.csv
+level_data/2021/05/30/day.csv
+level_data/2021/05/month.csv
+level_data/2021/06/01/day.csv
+level_data/2021/06/02/day.csv
+level_data/2021/06/03/day.csv
+level_data/2021/06/04/day.csv
+level_data/2021/06/05/day.csv
+level_data/2021/06/06/day.csv
+level_data/2021/06/07/day.csv
+level_data/2021/06/08/day.csv
+level_data/2021/06/09/day.csv
+level_data/2021/06/10/day.csv
+level_data/2021/06/11/day.csv
+level_data/2021/06/12/day.csv
+level_data/2021/06/13/day.csv
+level_data/2021/06/14/day.csv
+level_data/2021/06/15/day.csv
+level_data/2021/06/16/day.csv
+level_data/2021/06/17/day.csv
+level_data/2021/06/18/day.csv
+level_data/2021/06/19/day.csv
+level_data/2021/06/20/day.csv
+level_data/2021/06/21/day.csv
+level_data/2021/06/22/day.csv
+level_data/2021/06/23/day.csv
+level_data/2021/06/24/day.csv
+level_data/2021/06/25/day.csv
+level_data/2021/06/26/day.csv
+level_data/2021/06/27/day.csv
+level_data/2021/06/28/day.csv
+level_data/2021/06/29/day.csv
+level_data/2021/06/30/day.csv
+level_data/2021/06/month.csv
+level_data/2021/07/01/day.csv
+level_data/2021/07/02/day.csv
+level_data/2021/07/03/day.csv
+level_data/2021/07/04/day.csv
+level_data/2021/07/05/day.csv
+level_data/2021/07/06/day.csv
+level_data/2021/07/07/day.csv
+level_data/2021/07/08/day.csv
+level_data/2021/07/09/day.csv
+level_data/2021/07/10/day.csv
+level_data/2021/07/11/day.csv
+level_data/2021/07/12/day.csv
+level_data/2021/07/13/day.csv
+level_data/2021/07/14/day.csv
+level_data/2021/07/15/day.csv
+level_data/2021/07/16/day.csv
+level_data/2021/07/17/day.csv
+level_data/2021/07/18/day.csv
+level_data/2021/07/19/day.csv
+level_data/2021/07/20/day.csv
+level_data/2021/07/21/day.csv
+level_data/2021/07/22/day.csv
+level_data/2021/07/23/day.csv
+level_data/2021/07/24/day.csv
+level_data/2021/07/25/day.csv
+level_data/2021/07/26/day.csv
+level_data/2021/07/27/day.csv
+level_data/2021/07/28/day.csv
+level_data/2021/07/29/day.csv
+level_data/2021/07/30/day.csv
+level_data/2021/07/month.csv
+level_data/2021/08/01/day.csv
+level_data/2021/08/02/day.csv
+level_data/2021/08/03/day.csv
+level_data/2021/08/04/day.csv
+level_data/2021/08/05/day.csv
+level_data/2021/08/06/day.csv
+level_data/2021/08/07/day.csv
+level_data/2021/08/08/day.csv
+level_data/2021/08/09/day.csv
+level_data/2021/08/10/day.csv
+level_data/2021/08/11/day.csv
+level_data/2021/08/12/day.csv
+level_data/2021/08/13/day.csv
+level_data/2021/08/14/day.csv
+level_data/2021/08/15/day.csv
+level_data/2021/08/16/day.csv
+level_data/2021/08/17/day.csv
+level_data/2021/08/18/day.csv
+level_data/2021/08/19/day.csv
+level_data/2021/08/20/day.csv
+level_data/2021/08/21/day.csv
+level_data/2021/08/22/day.csv
+level_data/2021/08/23/day.csv
+level_data/2021/08/24/day.csv
+level_data/2021/08/25/day.csv
+level_data/2021/08/26/day.csv
+level_data/2021/08/27/day.csv
+level_data/2021/08/28/day.csv
+level_data/2021/08/29/day.csv
+level_data/2021/08/30/day.csv
+level_data/2021/08/month.csv
+level_data/2021/09/01/day.csv
+level_data/2021/09/02/day.csv
+level_data/2021/09/03/day.csv
+level_data/2021/09/04/day.csv
+level_data/2021/09/05/day.csv
+level_data/2021/09/06/day.csv
+level_data/2021/09/07/day.csv
+level_data/2021/09/08/day.csv
+level_data/2021/09/09/day.csv
+level_data/2021/09/10/day.csv
+level_data/2021/09/11/day.csv
+level_data/2021/09/12/day.csv
+level_data/2021/09/13/day.csv
+level_data/2021/09/14/day.csv
+level_data/2021/09/15/day.csv
+level_data/2021/09/16/day.csv
+level_data/2021/09/17/day.csv
+level_data/2021/09/18/day.csv
+level_data/2021/09/19/day.csv
+level_data/2021/09/20/day.csv
+level_data/2021/09/21/day.csv
+level_data/2021/09/22/day.csv
+level_data/2021/09/23/day.csv
+level_data/2021/09/24/day.csv
+level_data/2021/09/25/day.csv
+level_data/2021/09/26/day.csv
+level_data/2021/09/27/day.csv
+level_data/2021/09/28/day.csv
+level_data/2021/09/29/day.csv
+level_data/2021/09/30/day.csv
+level_data/2021/09/month.csv
+level_data/2021/10/01/day.csv
+level_data/2021/10/02/day.csv
+level_data/2021/10/03/day.csv
+level_data/2021/10/04/day.csv
+level_data/2021/10/05/day.csv
+level_data/2021/10/06/day.csv
+level_data/2021/10/07/day.csv
+level_data/2021/10/08/day.csv
+level_data/2021/10/09/day.csv
+level_data/2021/10/10/day.csv
+level_data/2021/10/11/day.csv
+level_data/2021/10/12/day.csv
+level_data/2021/10/13/day.csv
+level_data/2021/10/14/day.csv
+level_data/2021/10/15/day.csv
+level_data/2021/10/16/day.csv
+level_data/2021/10/17/day.csv
+level_data/2021/10/18/day.csv
+level_data/2021/10/19/day.csv
+level_data/2021/10/20/day.csv
+level_data/2021/10/21/day.csv
+level_data/2021/10/22/day.csv
+level_data/2021/10/23/day.csv
+level_data/2021/10/24/day.csv
+level_data/2021/10/25/day.csv
+level_data/2021/10/26/day.csv
+level_data/2021/10/27/day.csv
+level_data/2021/10/28/day.csv
+level_data/2021/10/29/day.csv
+level_data/2021/10/30/day.csv
+level_data/2021/10/month.csv
+level_data/2021/11/01/day.csv
+level_data/2021/11/02/day.csv
+level_data/2021/11/03/day.csv
+level_data/2021/11/04/day.csv
+level_data/2021/11/05/day.csv
+level_data/2021/11/06/day.csv
+level_data/2021/11/07/day.csv
+level_data/2021/11/08/day.csv
+level_data/2021/11/09/day.csv
+level_data/2021/11/10/day.csv
+level_data/2021/11/11/day.csv
+level_data/2021/11/12/day.csv
+level_data/2021/11/13/day.csv
+level_data/2021/11/14/day.csv
+level_data/2021/11/15/day.csv
+level_data/2021/11/16/day.csv
+level_data/2021/11/17/day.csv
+level_data/2021/11/18/day.csv
+level_data/2021/11/19/day.csv
+level_data/2021/11/20/day.csv
+level_data/2021/11/21/day.csv
+level_data/2021/11/22/day.csv
+level_data/2021/11/23/day.csv
+level_data/2021/11/24/day.csv
+level_data/2021/11/25/day.csv
+level_data/2021/11/26/day.csv
+level_data/2021/11/27/day.csv
+level_data/2021/11/28/day.csv
+level_data/2021/11/29/day.csv
+level_data/2021/11/30/day.csv
+level_data/2021/11/month.csv
+level_data/2021/12/01/day.csv
+level_data/2021/12/02/day.csv
+level_data/2021/12/03/day.csv
+level_data/2021/12/04/day.csv
+level_data/2021/12/05/day.csv
+level_data/2021/12/06/day.csv
+level_data/2021/12/07/day.csv
+level_data/2021/12/08/day.csv
+level_data/2021/12/09/day.csv
+level_data/2021/12/10/day.csv
+level_data/2021/12/11/day.csv
+level_data/2021/12/12/day.csv
+level_data/2021/12/13/day.csv
+level_data/2021/12/14/day.csv
+level_data/2021/12/15/day.csv
+level_data/2021/12/16/day.csv
+level_data/2021/12/17/day.csv
+level_data/2021/12/18/day.csv
+level_data/2021/12/19/day.csv
+level_data/2021/12/20/day.csv
+level_data/2021/12/21/day.csv
+level_data/2021/12/22/day.csv
+level_data/2021/12/23/day.csv
+level_data/2021/12/24/day.csv
+level_data/2021/12/25/day.csv
+level_data/2021/12/26/day.csv
+level_data/2021/12/27/day.csv
+level_data/2021/12/28/day.csv
+level_data/2021/12/29/day.csv
+level_data/2021/12/30/day.csv
+level_data/2021/12/month.csv
+level_data/2021/year.csv
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> Write a version of <code class="docutils literal notranslate"><span class="pre">walk_gen</span></code> called <code class="docutils literal notranslate"><span class="pre">walk_dfs</span></code> that traverses the given directory and yields the file it contains, but it should use a stack and run iteratively, rather than recursively.</p>
+<p>You can use the following loop to test your code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">walk_dfs</span><span class="p">(</span><span class="n">year_dir</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>level_data/2021/year.csv
+level_data/2021/12/month.csv
+level_data/2021/12/30/day.csv
+level_data/2021/12/29/day.csv
+level_data/2021/12/28/day.csv
+level_data/2021/12/27/day.csv
+level_data/2021/12/26/day.csv
+level_data/2021/12/25/day.csv
+level_data/2021/12/24/day.csv
+level_data/2021/12/23/day.csv
+level_data/2021/12/22/day.csv
+level_data/2021/12/21/day.csv
+level_data/2021/12/20/day.csv
+level_data/2021/12/19/day.csv
+level_data/2021/12/18/day.csv
+level_data/2021/12/17/day.csv
+level_data/2021/12/16/day.csv
+level_data/2021/12/15/day.csv
+level_data/2021/12/14/day.csv
+level_data/2021/12/13/day.csv
+level_data/2021/12/12/day.csv
+level_data/2021/12/11/day.csv
+level_data/2021/12/10/day.csv
+level_data/2021/12/09/day.csv
+level_data/2021/12/08/day.csv
+level_data/2021/12/07/day.csv
+level_data/2021/12/06/day.csv
+level_data/2021/12/05/day.csv
+level_data/2021/12/04/day.csv
+level_data/2021/12/03/day.csv
+level_data/2021/12/02/day.csv
+level_data/2021/12/01/day.csv
+level_data/2021/11/month.csv
+level_data/2021/11/30/day.csv
+level_data/2021/11/29/day.csv
+level_data/2021/11/28/day.csv
+level_data/2021/11/27/day.csv
+level_data/2021/11/26/day.csv
+level_data/2021/11/25/day.csv
+level_data/2021/11/24/day.csv
+level_data/2021/11/23/day.csv
+level_data/2021/11/22/day.csv
+level_data/2021/11/21/day.csv
+level_data/2021/11/20/day.csv
+level_data/2021/11/19/day.csv
+level_data/2021/11/18/day.csv
+level_data/2021/11/17/day.csv
+level_data/2021/11/16/day.csv
+level_data/2021/11/15/day.csv
+level_data/2021/11/14/day.csv
+level_data/2021/11/13/day.csv
+level_data/2021/11/12/day.csv
+level_data/2021/11/11/day.csv
+level_data/2021/11/10/day.csv
+level_data/2021/11/09/day.csv
+level_data/2021/11/08/day.csv
+level_data/2021/11/07/day.csv
+level_data/2021/11/06/day.csv
+level_data/2021/11/05/day.csv
+level_data/2021/11/04/day.csv
+level_data/2021/11/03/day.csv
+level_data/2021/11/02/day.csv
+level_data/2021/11/01/day.csv
+level_data/2021/10/month.csv
+level_data/2021/10/30/day.csv
+level_data/2021/10/29/day.csv
+level_data/2021/10/28/day.csv
+level_data/2021/10/27/day.csv
+level_data/2021/10/26/day.csv
+level_data/2021/10/25/day.csv
+level_data/2021/10/24/day.csv
+level_data/2021/10/23/day.csv
+level_data/2021/10/22/day.csv
+level_data/2021/10/21/day.csv
+level_data/2021/10/20/day.csv
+level_data/2021/10/19/day.csv
+level_data/2021/10/18/day.csv
+level_data/2021/10/17/day.csv
+level_data/2021/10/16/day.csv
+level_data/2021/10/15/day.csv
+level_data/2021/10/14/day.csv
+level_data/2021/10/13/day.csv
+level_data/2021/10/12/day.csv
+level_data/2021/10/11/day.csv
+level_data/2021/10/10/day.csv
+level_data/2021/10/09/day.csv
+level_data/2021/10/08/day.csv
+level_data/2021/10/07/day.csv
+level_data/2021/10/06/day.csv
+level_data/2021/10/05/day.csv
+level_data/2021/10/04/day.csv
+level_data/2021/10/03/day.csv
+level_data/2021/10/02/day.csv
+level_data/2021/10/01/day.csv
+level_data/2021/09/month.csv
+level_data/2021/09/30/day.csv
+level_data/2021/09/29/day.csv
+level_data/2021/09/28/day.csv
+level_data/2021/09/27/day.csv
+level_data/2021/09/26/day.csv
+level_data/2021/09/25/day.csv
+level_data/2021/09/24/day.csv
+level_data/2021/09/23/day.csv
+level_data/2021/09/22/day.csv
+level_data/2021/09/21/day.csv
+level_data/2021/09/20/day.csv
+level_data/2021/09/19/day.csv
+level_data/2021/09/18/day.csv
+level_data/2021/09/17/day.csv
+level_data/2021/09/16/day.csv
+level_data/2021/09/15/day.csv
+level_data/2021/09/14/day.csv
+level_data/2021/09/13/day.csv
+level_data/2021/09/12/day.csv
+level_data/2021/09/11/day.csv
+level_data/2021/09/10/day.csv
+level_data/2021/09/09/day.csv
+level_data/2021/09/08/day.csv
+level_data/2021/09/07/day.csv
+level_data/2021/09/06/day.csv
+level_data/2021/09/05/day.csv
+level_data/2021/09/04/day.csv
+level_data/2021/09/03/day.csv
+level_data/2021/09/02/day.csv
+level_data/2021/09/01/day.csv
+level_data/2021/08/month.csv
+level_data/2021/08/30/day.csv
+level_data/2021/08/29/day.csv
+level_data/2021/08/28/day.csv
+level_data/2021/08/27/day.csv
+level_data/2021/08/26/day.csv
+level_data/2021/08/25/day.csv
+level_data/2021/08/24/day.csv
+level_data/2021/08/23/day.csv
+level_data/2021/08/22/day.csv
+level_data/2021/08/21/day.csv
+level_data/2021/08/20/day.csv
+level_data/2021/08/19/day.csv
+level_data/2021/08/18/day.csv
+level_data/2021/08/17/day.csv
+level_data/2021/08/16/day.csv
+level_data/2021/08/15/day.csv
+level_data/2021/08/14/day.csv
+level_data/2021/08/13/day.csv
+level_data/2021/08/12/day.csv
+level_data/2021/08/11/day.csv
+level_data/2021/08/10/day.csv
+level_data/2021/08/09/day.csv
+level_data/2021/08/08/day.csv
+level_data/2021/08/07/day.csv
+level_data/2021/08/06/day.csv
+level_data/2021/08/05/day.csv
+level_data/2021/08/04/day.csv
+level_data/2021/08/03/day.csv
+level_data/2021/08/02/day.csv
+level_data/2021/08/01/day.csv
+level_data/2021/07/month.csv
+level_data/2021/07/30/day.csv
+level_data/2021/07/29/day.csv
+level_data/2021/07/28/day.csv
+level_data/2021/07/27/day.csv
+level_data/2021/07/26/day.csv
+level_data/2021/07/25/day.csv
+level_data/2021/07/24/day.csv
+level_data/2021/07/23/day.csv
+level_data/2021/07/22/day.csv
+level_data/2021/07/21/day.csv
+level_data/2021/07/20/day.csv
+level_data/2021/07/19/day.csv
+level_data/2021/07/18/day.csv
+level_data/2021/07/17/day.csv
+level_data/2021/07/16/day.csv
+level_data/2021/07/15/day.csv
+level_data/2021/07/14/day.csv
+level_data/2021/07/13/day.csv
+level_data/2021/07/12/day.csv
+level_data/2021/07/11/day.csv
+level_data/2021/07/10/day.csv
+level_data/2021/07/09/day.csv
+level_data/2021/07/08/day.csv
+level_data/2021/07/07/day.csv
+level_data/2021/07/06/day.csv
+level_data/2021/07/05/day.csv
+level_data/2021/07/04/day.csv
+level_data/2021/07/03/day.csv
+level_data/2021/07/02/day.csv
+level_data/2021/07/01/day.csv
+level_data/2021/06/month.csv
+level_data/2021/06/30/day.csv
+level_data/2021/06/29/day.csv
+level_data/2021/06/28/day.csv
+level_data/2021/06/27/day.csv
+level_data/2021/06/26/day.csv
+level_data/2021/06/25/day.csv
+level_data/2021/06/24/day.csv
+level_data/2021/06/23/day.csv
+level_data/2021/06/22/day.csv
+level_data/2021/06/21/day.csv
+level_data/2021/06/20/day.csv
+level_data/2021/06/19/day.csv
+level_data/2021/06/18/day.csv
+level_data/2021/06/17/day.csv
+level_data/2021/06/16/day.csv
+level_data/2021/06/15/day.csv
+level_data/2021/06/14/day.csv
+level_data/2021/06/13/day.csv
+level_data/2021/06/12/day.csv
+level_data/2021/06/11/day.csv
+level_data/2021/06/10/day.csv
+level_data/2021/06/09/day.csv
+level_data/2021/06/08/day.csv
+level_data/2021/06/07/day.csv
+level_data/2021/06/06/day.csv
+level_data/2021/06/05/day.csv
+level_data/2021/06/04/day.csv
+level_data/2021/06/03/day.csv
+level_data/2021/06/02/day.csv
+level_data/2021/06/01/day.csv
+level_data/2021/05/month.csv
+level_data/2021/05/30/day.csv
+level_data/2021/05/29/day.csv
+level_data/2021/05/28/day.csv
+level_data/2021/05/27/day.csv
+level_data/2021/05/26/day.csv
+level_data/2021/05/25/day.csv
+level_data/2021/05/24/day.csv
+level_data/2021/05/23/day.csv
+level_data/2021/05/22/day.csv
+level_data/2021/05/21/day.csv
+level_data/2021/05/20/day.csv
+level_data/2021/05/19/day.csv
+level_data/2021/05/18/day.csv
+level_data/2021/05/17/day.csv
+level_data/2021/05/16/day.csv
+level_data/2021/05/15/day.csv
+level_data/2021/05/14/day.csv
+level_data/2021/05/13/day.csv
+level_data/2021/05/12/day.csv
+level_data/2021/05/11/day.csv
+level_data/2021/05/10/day.csv
+level_data/2021/05/09/day.csv
+level_data/2021/05/08/day.csv
+level_data/2021/05/07/day.csv
+level_data/2021/05/06/day.csv
+level_data/2021/05/05/day.csv
+level_data/2021/05/04/day.csv
+level_data/2021/05/03/day.csv
+level_data/2021/05/02/day.csv
+level_data/2021/05/01/day.csv
+level_data/2021/04/month.csv
+level_data/2021/04/30/day.csv
+level_data/2021/04/29/day.csv
+level_data/2021/04/28/day.csv
+level_data/2021/04/27/day.csv
+level_data/2021/04/26/day.csv
+level_data/2021/04/25/day.csv
+level_data/2021/04/24/day.csv
+level_data/2021/04/23/day.csv
+level_data/2021/04/22/day.csv
+level_data/2021/04/21/day.csv
+level_data/2021/04/20/day.csv
+level_data/2021/04/19/day.csv
+level_data/2021/04/18/day.csv
+level_data/2021/04/17/day.csv
+level_data/2021/04/16/day.csv
+level_data/2021/04/15/day.csv
+level_data/2021/04/14/day.csv
+level_data/2021/04/13/day.csv
+level_data/2021/04/12/day.csv
+level_data/2021/04/11/day.csv
+level_data/2021/04/10/day.csv
+level_data/2021/04/09/day.csv
+level_data/2021/04/08/day.csv
+level_data/2021/04/07/day.csv
+level_data/2021/04/06/day.csv
+level_data/2021/04/05/day.csv
+level_data/2021/04/04/day.csv
+level_data/2021/04/03/day.csv
+level_data/2021/04/02/day.csv
+level_data/2021/04/01/day.csv
+level_data/2021/03/month.csv
+level_data/2021/03/30/day.csv
+level_data/2021/03/29/day.csv
+level_data/2021/03/28/day.csv
+level_data/2021/03/27/day.csv
+level_data/2021/03/26/day.csv
+level_data/2021/03/25/day.csv
+level_data/2021/03/24/day.csv
+level_data/2021/03/23/day.csv
+level_data/2021/03/22/day.csv
+level_data/2021/03/21/day.csv
+level_data/2021/03/20/day.csv
+level_data/2021/03/19/day.csv
+level_data/2021/03/18/day.csv
+level_data/2021/03/17/day.csv
+level_data/2021/03/16/day.csv
+level_data/2021/03/15/day.csv
+level_data/2021/03/14/day.csv
+level_data/2021/03/13/day.csv
+level_data/2021/03/12/day.csv
+level_data/2021/03/11/day.csv
+level_data/2021/03/10/day.csv
+level_data/2021/03/09/day.csv
+level_data/2021/03/08/day.csv
+level_data/2021/03/07/day.csv
+level_data/2021/03/06/day.csv
+level_data/2021/03/05/day.csv
+level_data/2021/03/04/day.csv
+level_data/2021/03/03/day.csv
+level_data/2021/03/02/day.csv
+level_data/2021/03/01/day.csv
+level_data/2021/02/month.csv
+level_data/2021/02/30/day.csv
+level_data/2021/02/29/day.csv
+level_data/2021/02/28/day.csv
+level_data/2021/02/27/day.csv
+level_data/2021/02/26/day.csv
+level_data/2021/02/25/day.csv
+level_data/2021/02/24/day.csv
+level_data/2021/02/23/day.csv
+level_data/2021/02/22/day.csv
+level_data/2021/02/21/day.csv
+level_data/2021/02/20/day.csv
+level_data/2021/02/19/day.csv
+level_data/2021/02/18/day.csv
+level_data/2021/02/17/day.csv
+level_data/2021/02/16/day.csv
+level_data/2021/02/15/day.csv
+level_data/2021/02/14/day.csv
+level_data/2021/02/13/day.csv
+level_data/2021/02/12/day.csv
+level_data/2021/02/11/day.csv
+level_data/2021/02/10/day.csv
+level_data/2021/02/09/day.csv
+level_data/2021/02/08/day.csv
+level_data/2021/02/07/day.csv
+level_data/2021/02/06/day.csv
+level_data/2021/02/05/day.csv
+level_data/2021/02/04/day.csv
+level_data/2021/02/03/day.csv
+level_data/2021/02/02/day.csv
+level_data/2021/02/01/day.csv
+level_data/2021/01/month.csv
+level_data/2021/01/30/day.csv
+level_data/2021/01/29/day.csv
+level_data/2021/01/28/day.csv
+level_data/2021/01/27/day.csv
+level_data/2021/01/26/day.csv
+level_data/2021/01/25/day.csv
+level_data/2021/01/24/day.csv
+level_data/2021/01/23/day.csv
+level_data/2021/01/22/day.csv
+level_data/2021/01/21/day.csv
+level_data/2021/01/20/day.csv
+level_data/2021/01/19/day.csv
+level_data/2021/01/18/day.csv
+level_data/2021/01/17/day.csv
+level_data/2021/01/16/day.csv
+level_data/2021/01/15/day.csv
+level_data/2021/01/14/day.csv
+level_data/2021/01/13/day.csv
+level_data/2021/01/12/day.csv
+level_data/2021/01/11/day.csv
+level_data/2021/01/10/day.csv
+level_data/2021/01/09/day.csv
+level_data/2021/01/08/day.csv
+level_data/2021/01/07/day.csv
+level_data/2021/01/06/day.csv
+level_data/2021/01/05/day.csv
+level_data/2021/01/04/day.csv
+level_data/2021/01/03/day.csv
+level_data/2021/01/02/day.csv
+level_data/2021/01/01/day.csv
+level_data/2021/00/month.csv
+level_data/2021/00/30/day.csv
+level_data/2021/00/29/day.csv
+level_data/2021/00/28/day.csv
+level_data/2021/00/27/day.csv
+level_data/2021/00/26/day.csv
+level_data/2021/00/25/day.csv
+level_data/2021/00/24/day.csv
+level_data/2021/00/23/day.csv
+level_data/2021/00/22/day.csv
+level_data/2021/00/21/day.csv
+level_data/2021/00/20/day.csv
+level_data/2021/00/19/day.csv
+level_data/2021/00/18/day.csv
+level_data/2021/00/17/day.csv
+level_data/2021/00/16/day.csv
+level_data/2021/00/15/day.csv
+level_data/2021/00/14/day.csv
+level_data/2021/00/13/day.csv
+level_data/2021/00/12/day.csv
+level_data/2021/00/11/day.csv
+level_data/2021/00/10/day.csv
+level_data/2021/00/09/day.csv
+level_data/2021/00/08/day.csv
+level_data/2021/00/07/day.csv
+level_data/2021/00/06/day.csv
+level_data/2021/00/05/day.csv
+level_data/2021/00/04/day.csv
+level_data/2021/00/03/day.csv
+level_data/2021/00/02/day.csv
+level_data/2021/00/01/day.csv
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that the order the files are discovered is “depth-first”. For example, it yields all files from the first month before any of the files for the second month.</p>
+<p>An alternative is a level-order traversal, which yields all files at the first level (the annual summary), then all the files at the second level (the monthly summaries), then the files at the third level.</p>
+<p>To implement a level-order traversal, we can make a minimal change to <code class="docutils literal notranslate"><span class="pre">walk_dfs</span></code>: replace the stack with a FIFO queue.
+To implement the queue efficiently, we can use <code class="docutils literal notranslate"><span class="pre">collections.deque</span></code>.</p>
+<p><strong>Exercise:</strong> Write a generator function called <code class="docutils literal notranslate"><span class="pre">walk_level</span></code> that takes a directory and yields its files in level order.</p>
+<p>Use the following loop to test your code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">walk_level</span><span class="p">(</span><span class="n">year_dir</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>level_data/2021/year.csv
+level_data/2021/00/month.csv
+level_data/2021/01/month.csv
+level_data/2021/02/month.csv
+level_data/2021/03/month.csv
+level_data/2021/04/month.csv
+level_data/2021/05/month.csv
+level_data/2021/06/month.csv
+level_data/2021/07/month.csv
+level_data/2021/08/month.csv
+level_data/2021/09/month.csv
+level_data/2021/10/month.csv
+level_data/2021/11/month.csv
+level_data/2021/12/month.csv
+level_data/2021/00/01/day.csv
+level_data/2021/00/02/day.csv
+level_data/2021/00/03/day.csv
+level_data/2021/00/04/day.csv
+level_data/2021/00/05/day.csv
+level_data/2021/00/06/day.csv
+level_data/2021/00/07/day.csv
+level_data/2021/00/08/day.csv
+level_data/2021/00/09/day.csv
+level_data/2021/00/10/day.csv
+level_data/2021/00/11/day.csv
+level_data/2021/00/12/day.csv
+level_data/2021/00/13/day.csv
+level_data/2021/00/14/day.csv
+level_data/2021/00/15/day.csv
+level_data/2021/00/16/day.csv
+level_data/2021/00/17/day.csv
+level_data/2021/00/18/day.csv
+level_data/2021/00/19/day.csv
+level_data/2021/00/20/day.csv
+level_data/2021/00/21/day.csv
+level_data/2021/00/22/day.csv
+level_data/2021/00/23/day.csv
+level_data/2021/00/24/day.csv
+level_data/2021/00/25/day.csv
+level_data/2021/00/26/day.csv
+level_data/2021/00/27/day.csv
+level_data/2021/00/28/day.csv
+level_data/2021/00/29/day.csv
+level_data/2021/00/30/day.csv
+level_data/2021/01/01/day.csv
+level_data/2021/01/02/day.csv
+level_data/2021/01/03/day.csv
+level_data/2021/01/04/day.csv
+level_data/2021/01/05/day.csv
+level_data/2021/01/06/day.csv
+level_data/2021/01/07/day.csv
+level_data/2021/01/08/day.csv
+level_data/2021/01/09/day.csv
+level_data/2021/01/10/day.csv
+level_data/2021/01/11/day.csv
+level_data/2021/01/12/day.csv
+level_data/2021/01/13/day.csv
+level_data/2021/01/14/day.csv
+level_data/2021/01/15/day.csv
+level_data/2021/01/16/day.csv
+level_data/2021/01/17/day.csv
+level_data/2021/01/18/day.csv
+level_data/2021/01/19/day.csv
+level_data/2021/01/20/day.csv
+level_data/2021/01/21/day.csv
+level_data/2021/01/22/day.csv
+level_data/2021/01/23/day.csv
+level_data/2021/01/24/day.csv
+level_data/2021/01/25/day.csv
+level_data/2021/01/26/day.csv
+level_data/2021/01/27/day.csv
+level_data/2021/01/28/day.csv
+level_data/2021/01/29/day.csv
+level_data/2021/01/30/day.csv
+level_data/2021/02/01/day.csv
+level_data/2021/02/02/day.csv
+level_data/2021/02/03/day.csv
+level_data/2021/02/04/day.csv
+level_data/2021/02/05/day.csv
+level_data/2021/02/06/day.csv
+level_data/2021/02/07/day.csv
+level_data/2021/02/08/day.csv
+level_data/2021/02/09/day.csv
+level_data/2021/02/10/day.csv
+level_data/2021/02/11/day.csv
+level_data/2021/02/12/day.csv
+level_data/2021/02/13/day.csv
+level_data/2021/02/14/day.csv
+level_data/2021/02/15/day.csv
+level_data/2021/02/16/day.csv
+level_data/2021/02/17/day.csv
+level_data/2021/02/18/day.csv
+level_data/2021/02/19/day.csv
+level_data/2021/02/20/day.csv
+level_data/2021/02/21/day.csv
+level_data/2021/02/22/day.csv
+level_data/2021/02/23/day.csv
+level_data/2021/02/24/day.csv
+level_data/2021/02/25/day.csv
+level_data/2021/02/26/day.csv
+level_data/2021/02/27/day.csv
+level_data/2021/02/28/day.csv
+level_data/2021/02/29/day.csv
+level_data/2021/02/30/day.csv
+level_data/2021/03/01/day.csv
+level_data/2021/03/02/day.csv
+level_data/2021/03/03/day.csv
+level_data/2021/03/04/day.csv
+level_data/2021/03/05/day.csv
+level_data/2021/03/06/day.csv
+level_data/2021/03/07/day.csv
+level_data/2021/03/08/day.csv
+level_data/2021/03/09/day.csv
+level_data/2021/03/10/day.csv
+level_data/2021/03/11/day.csv
+level_data/2021/03/12/day.csv
+level_data/2021/03/13/day.csv
+level_data/2021/03/14/day.csv
+level_data/2021/03/15/day.csv
+level_data/2021/03/16/day.csv
+level_data/2021/03/17/day.csv
+level_data/2021/03/18/day.csv
+level_data/2021/03/19/day.csv
+level_data/2021/03/20/day.csv
+level_data/2021/03/21/day.csv
+level_data/2021/03/22/day.csv
+level_data/2021/03/23/day.csv
+level_data/2021/03/24/day.csv
+level_data/2021/03/25/day.csv
+level_data/2021/03/26/day.csv
+level_data/2021/03/27/day.csv
+level_data/2021/03/28/day.csv
+level_data/2021/03/29/day.csv
+level_data/2021/03/30/day.csv
+level_data/2021/04/01/day.csv
+level_data/2021/04/02/day.csv
+level_data/2021/04/03/day.csv
+level_data/2021/04/04/day.csv
+level_data/2021/04/05/day.csv
+level_data/2021/04/06/day.csv
+level_data/2021/04/07/day.csv
+level_data/2021/04/08/day.csv
+level_data/2021/04/09/day.csv
+level_data/2021/04/10/day.csv
+level_data/2021/04/11/day.csv
+level_data/2021/04/12/day.csv
+level_data/2021/04/13/day.csv
+level_data/2021/04/14/day.csv
+level_data/2021/04/15/day.csv
+level_data/2021/04/16/day.csv
+level_data/2021/04/17/day.csv
+level_data/2021/04/18/day.csv
+level_data/2021/04/19/day.csv
+level_data/2021/04/20/day.csv
+level_data/2021/04/21/day.csv
+level_data/2021/04/22/day.csv
+level_data/2021/04/23/day.csv
+level_data/2021/04/24/day.csv
+level_data/2021/04/25/day.csv
+level_data/2021/04/26/day.csv
+level_data/2021/04/27/day.csv
+level_data/2021/04/28/day.csv
+level_data/2021/04/29/day.csv
+level_data/2021/04/30/day.csv
+level_data/2021/05/01/day.csv
+level_data/2021/05/02/day.csv
+level_data/2021/05/03/day.csv
+level_data/2021/05/04/day.csv
+level_data/2021/05/05/day.csv
+level_data/2021/05/06/day.csv
+level_data/2021/05/07/day.csv
+level_data/2021/05/08/day.csv
+level_data/2021/05/09/day.csv
+level_data/2021/05/10/day.csv
+level_data/2021/05/11/day.csv
+level_data/2021/05/12/day.csv
+level_data/2021/05/13/day.csv
+level_data/2021/05/14/day.csv
+level_data/2021/05/15/day.csv
+level_data/2021/05/16/day.csv
+level_data/2021/05/17/day.csv
+level_data/2021/05/18/day.csv
+level_data/2021/05/19/day.csv
+level_data/2021/05/20/day.csv
+level_data/2021/05/21/day.csv
+level_data/2021/05/22/day.csv
+level_data/2021/05/23/day.csv
+level_data/2021/05/24/day.csv
+level_data/2021/05/25/day.csv
+level_data/2021/05/26/day.csv
+level_data/2021/05/27/day.csv
+level_data/2021/05/28/day.csv
+level_data/2021/05/29/day.csv
+level_data/2021/05/30/day.csv
+level_data/2021/06/01/day.csv
+level_data/2021/06/02/day.csv
+level_data/2021/06/03/day.csv
+level_data/2021/06/04/day.csv
+level_data/2021/06/05/day.csv
+level_data/2021/06/06/day.csv
+level_data/2021/06/07/day.csv
+level_data/2021/06/08/day.csv
+level_data/2021/06/09/day.csv
+level_data/2021/06/10/day.csv
+level_data/2021/06/11/day.csv
+level_data/2021/06/12/day.csv
+level_data/2021/06/13/day.csv
+level_data/2021/06/14/day.csv
+level_data/2021/06/15/day.csv
+level_data/2021/06/16/day.csv
+level_data/2021/06/17/day.csv
+level_data/2021/06/18/day.csv
+level_data/2021/06/19/day.csv
+level_data/2021/06/20/day.csv
+level_data/2021/06/21/day.csv
+level_data/2021/06/22/day.csv
+level_data/2021/06/23/day.csv
+level_data/2021/06/24/day.csv
+level_data/2021/06/25/day.csv
+level_data/2021/06/26/day.csv
+level_data/2021/06/27/day.csv
+level_data/2021/06/28/day.csv
+level_data/2021/06/29/day.csv
+level_data/2021/06/30/day.csv
+level_data/2021/07/01/day.csv
+level_data/2021/07/02/day.csv
+level_data/2021/07/03/day.csv
+level_data/2021/07/04/day.csv
+level_data/2021/07/05/day.csv
+level_data/2021/07/06/day.csv
+level_data/2021/07/07/day.csv
+level_data/2021/07/08/day.csv
+level_data/2021/07/09/day.csv
+level_data/2021/07/10/day.csv
+level_data/2021/07/11/day.csv
+level_data/2021/07/12/day.csv
+level_data/2021/07/13/day.csv
+level_data/2021/07/14/day.csv
+level_data/2021/07/15/day.csv
+level_data/2021/07/16/day.csv
+level_data/2021/07/17/day.csv
+level_data/2021/07/18/day.csv
+level_data/2021/07/19/day.csv
+level_data/2021/07/20/day.csv
+level_data/2021/07/21/day.csv
+level_data/2021/07/22/day.csv
+level_data/2021/07/23/day.csv
+level_data/2021/07/24/day.csv
+level_data/2021/07/25/day.csv
+level_data/2021/07/26/day.csv
+level_data/2021/07/27/day.csv
+level_data/2021/07/28/day.csv
+level_data/2021/07/29/day.csv
+level_data/2021/07/30/day.csv
+level_data/2021/08/01/day.csv
+level_data/2021/08/02/day.csv
+level_data/2021/08/03/day.csv
+level_data/2021/08/04/day.csv
+level_data/2021/08/05/day.csv
+level_data/2021/08/06/day.csv
+level_data/2021/08/07/day.csv
+level_data/2021/08/08/day.csv
+level_data/2021/08/09/day.csv
+level_data/2021/08/10/day.csv
+level_data/2021/08/11/day.csv
+level_data/2021/08/12/day.csv
+level_data/2021/08/13/day.csv
+level_data/2021/08/14/day.csv
+level_data/2021/08/15/day.csv
+level_data/2021/08/16/day.csv
+level_data/2021/08/17/day.csv
+level_data/2021/08/18/day.csv
+level_data/2021/08/19/day.csv
+level_data/2021/08/20/day.csv
+level_data/2021/08/21/day.csv
+level_data/2021/08/22/day.csv
+level_data/2021/08/23/day.csv
+level_data/2021/08/24/day.csv
+level_data/2021/08/25/day.csv
+level_data/2021/08/26/day.csv
+level_data/2021/08/27/day.csv
+level_data/2021/08/28/day.csv
+level_data/2021/08/29/day.csv
+level_data/2021/08/30/day.csv
+level_data/2021/09/01/day.csv
+level_data/2021/09/02/day.csv
+level_data/2021/09/03/day.csv
+level_data/2021/09/04/day.csv
+level_data/2021/09/05/day.csv
+level_data/2021/09/06/day.csv
+level_data/2021/09/07/day.csv
+level_data/2021/09/08/day.csv
+level_data/2021/09/09/day.csv
+level_data/2021/09/10/day.csv
+level_data/2021/09/11/day.csv
+level_data/2021/09/12/day.csv
+level_data/2021/09/13/day.csv
+level_data/2021/09/14/day.csv
+level_data/2021/09/15/day.csv
+level_data/2021/09/16/day.csv
+level_data/2021/09/17/day.csv
+level_data/2021/09/18/day.csv
+level_data/2021/09/19/day.csv
+level_data/2021/09/20/day.csv
+level_data/2021/09/21/day.csv
+level_data/2021/09/22/day.csv
+level_data/2021/09/23/day.csv
+level_data/2021/09/24/day.csv
+level_data/2021/09/25/day.csv
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>level_data/2021/09/26/day.csv
+level_data/2021/09/27/day.csv
+level_data/2021/09/28/day.csv
+level_data/2021/09/29/day.csv
+level_data/2021/09/30/day.csv
+level_data/2021/10/01/day.csv
+level_data/2021/10/02/day.csv
+level_data/2021/10/03/day.csv
+level_data/2021/10/04/day.csv
+level_data/2021/10/05/day.csv
+level_data/2021/10/06/day.csv
+level_data/2021/10/07/day.csv
+level_data/2021/10/08/day.csv
+level_data/2021/10/09/day.csv
+level_data/2021/10/10/day.csv
+level_data/2021/10/11/day.csv
+level_data/2021/10/12/day.csv
+level_data/2021/10/13/day.csv
+level_data/2021/10/14/day.csv
+level_data/2021/10/15/day.csv
+level_data/2021/10/16/day.csv
+level_data/2021/10/17/day.csv
+level_data/2021/10/18/day.csv
+level_data/2021/10/19/day.csv
+level_data/2021/10/20/day.csv
+level_data/2021/10/21/day.csv
+level_data/2021/10/22/day.csv
+level_data/2021/10/23/day.csv
+level_data/2021/10/24/day.csv
+level_data/2021/10/25/day.csv
+level_data/2021/10/26/day.csv
+level_data/2021/10/27/day.csv
+level_data/2021/10/28/day.csv
+level_data/2021/10/29/day.csv
+level_data/2021/10/30/day.csv
+level_data/2021/11/01/day.csv
+level_data/2021/11/02/day.csv
+level_data/2021/11/03/day.csv
+level_data/2021/11/04/day.csv
+level_data/2021/11/05/day.csv
+level_data/2021/11/06/day.csv
+level_data/2021/11/07/day.csv
+level_data/2021/11/08/day.csv
+level_data/2021/11/09/day.csv
+level_data/2021/11/10/day.csv
+level_data/2021/11/11/day.csv
+level_data/2021/11/12/day.csv
+level_data/2021/11/13/day.csv
+level_data/2021/11/14/day.csv
+level_data/2021/11/15/day.csv
+level_data/2021/11/16/day.csv
+level_data/2021/11/17/day.csv
+level_data/2021/11/18/day.csv
+level_data/2021/11/19/day.csv
+level_data/2021/11/20/day.csv
+level_data/2021/11/21/day.csv
+level_data/2021/11/22/day.csv
+level_data/2021/11/23/day.csv
+level_data/2021/11/24/day.csv
+level_data/2021/11/25/day.csv
+level_data/2021/11/26/day.csv
+level_data/2021/11/27/day.csv
+level_data/2021/11/28/day.csv
+level_data/2021/11/29/day.csv
+level_data/2021/11/30/day.csv
+level_data/2021/12/01/day.csv
+level_data/2021/12/02/day.csv
+level_data/2021/12/03/day.csv
+level_data/2021/12/04/day.csv
+level_data/2021/12/05/day.csv
+level_data/2021/12/06/day.csv
+level_data/2021/12/07/day.csv
+level_data/2021/12/08/day.csv
+level_data/2021/12/09/day.csv
+level_data/2021/12/10/day.csv
+level_data/2021/12/11/day.csv
+level_data/2021/12/12/day.csv
+level_data/2021/12/13/day.csv
+level_data/2021/12/14/day.csv
+level_data/2021/12/15/day.csv
+level_data/2021/12/16/day.csv
+level_data/2021/12/17/day.csv
+level_data/2021/12/18/day.csv
+level_data/2021/12/19/day.csv
+level_data/2021/12/20/day.csv
+level_data/2021/12/21/day.csv
+level_data/2021/12/22/day.csv
+level_data/2021/12/23/day.csv
+level_data/2021/12/24/day.csv
+level_data/2021/12/25/day.csv
+level_data/2021/12/26/day.csv
+level_data/2021/12/27/day.csv
+level_data/2021/12/28/day.csv
+level_data/2021/12/29/day.csv
+level_data/2021/12/30/day.csv
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you are looking for a file in a large file system, a level-order search might be useful if you think the file is more likely to be near the root, rather than deep in a nested subdirectory.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Allen B. Downey<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -1,0 +1,2096 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generational changes among the religious and non-religious &#8212; Political Alignment Case Study</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Political Alignment Case Study</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Political Alignment Case Study
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_clean.html">
+   Cleaning and Validation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_polviews.html">
+   Exploring Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_outlook.html">
+   Political Alignment and Outlook
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_worldview.html">
+   Political Alignment and Other Views
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/generation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AllenDowney/PoliticalAlignmentCaseStudy"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/PoliticalAlignmentCaseStudy/master?urlpath=tree/generation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loading-the-data">
+     Loading the data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exploring-the-groups">
+   Exploring the groups
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selecting-variables">
+   Selecting variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#period-and-cohort-effects">
+   Period and cohort effects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing-the-model">
+   Testing the model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-generations">
+   Comparing generations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-the-model">
+   Running the model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-results">
+   Comparing results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-the-results">
+   Plotting the results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#beliefs-and-attitudes">
+   Beliefs and attitudes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#free-speech">
+   Free speech
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#confidence-in-institutions">
+   Confidence in institutions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#allocation-of-resources">
+   Allocation of resources
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#issues-related-to-sex">
+   Issues related to sex
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#outlook">
+   Outlook
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#public-policy">
+   Public policy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abortion">
+   Abortion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#religion">
+   Religion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gender-roles-and-work">
+   Gender roles and work
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#misc">
+   Misc
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="generational-changes-among-the-religious-and-non-religious">
+<h1>Generational changes among the religious and non-religious<a class="headerlink" href="#generational-changes-among-the-religious-and-non-religious" title="Permalink to this headline">¶</a></h1>
+<p>Allen Downey</p>
+<p>Copyright 2020</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/MIT_License">MIT License</a></p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>In this notebook I use data from the GSS to explore differences in beliefs and attitudes between Christians and Nones (people with no religious affiliation) and look at generational changes in those differences.</p>
+<div class="section" id="setup">
+<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
+<p>If you are running this notebook in Colab, the following cell downloads the <code class="docutils literal notranslate"><span class="pre">empiricaldist</span></code> library.</p>
+<p>If you are running in another environment, you will need to install it yourself.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If we&#39;re running in Colab, install empiricaldist</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">IN_COLAB</span> <span class="o">=</span> <span class="s1">&#39;google.colab&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span>
+
+<span class="k">if</span> <span class="n">IN_COLAB</span><span class="p">:</span>
+    <span class="o">!</span>pip install empiricaldist
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following cell downloads <code class="docutils literal notranslate"><span class="pre">utils.py</span></code>, which contains function I use in many data science projects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load some utility code</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;utils.py&#39;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+    <span class="o">!</span>wget https://github.com/AllenDowney/PoliticalAlignmentCaseStudy/raw/master/utils.py
+</pre></div>
+</div>
+</div>
+</div>
+<p>If everything we need is installed, the following cell should run without error.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Cdf</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">decorate</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">underride</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="loading-the-data">
+<h3>Loading the data<a class="headerlink" href="#loading-the-data" title="Permalink to this headline">¶</a></h3>
+<p>The following cell downloads an HDF5 file that contains the data we need.</p>
+<p>The HDF file is created by a notebook called <code class="docutils literal notranslate"><span class="pre">01_clean.ipynb</span></code>, which you should find in the same directory as this notebook, if you want to see the details.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the data file</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">datafile</span> <span class="o">=</span> <span class="s1">&#39;gss_eda.hdf5&#39;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">datafile</span><span class="p">):</span>
+    <span class="o">!</span>wget https://github.com/AllenDowney/PoliticalAlignmentCaseStudy/raw/master/gss_eda.hdf5
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can read the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">datafile</span><span class="p">,</span> <span class="s1">&#39;gss&#39;</span><span class="p">)</span>
+<span class="n">gss</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(64814, 165)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1972    1613
+1973    1504
+1974    1484
+1975    1490
+1976    1499
+1977    1530
+1978    1532
+1980    1468
+1982    1860
+1983    1599
+1984    1473
+1985    1534
+1986    1470
+1987    1819
+1988    1481
+1989    1537
+1990    1372
+1991    1517
+1993    1606
+1994    2992
+1996    2904
+1998    2832
+2000    2817
+2002    2765
+2004    2812
+2006    4510
+2008    2023
+2010    2044
+2012    1974
+2014    2538
+2016    2867
+2018    2348
+Name: year, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>For modeling purposes, I’ll use data from 1998 to 2018 and respondents born during or after 1940.</p>
+<p>These choices are a compromise between using more data, so the results are more likely to be statistically valid, and using recent data, so the models are not too influenced by irrelevant history.</p>
+<p>I classify as “Christian” anyone who reports that their religious affiliation is Catholic, Protestant, or Christian.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">prepare_df</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="c1"># compute quadratic and cubic terms for the models</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;y2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">2004</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;c2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">1970</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;c3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">1970</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
+    
+    <span class="c1"># classify religious affiliation</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;christian&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;relig&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">11</span><span class="p">])</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;none&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;relig&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span>
+    
+    <span class="c1"># select recent years and generations</span>
+    <span class="n">recent</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1998</span><span class="p">)</span>
+    <span class="n">notold</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1940</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">recent</span> <span class="o">&amp;</span> <span class="n">notold</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For exploration, I’ll use this subset of the data without resampling, which means it oversamples some groups.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">prepare_df</span><span class="p">(</span><span class="n">gss</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(25246, 170)
+</pre></div>
+</div>
+</div>
+</div>
+<p>For inference, I’ll use 101 resamplings of the data, weighted to be representative of the adult population in the U.S.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">resample_rows_weighted</span>
+
+<span class="n">dfs</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">resample_rows_weighted</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;wtssall&#39;</span><span class="p">])</span>
+       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exploring-the-groups">
+<h2>Exploring the groups<a class="headerlink" href="#exploring-the-groups" title="Permalink to this headline">¶</a></h2>
+<p>To see what the groups look like, I select Christians and Nones.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">christian</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;christian&#39;</span><span class="p">]]</span>
+<span class="n">christian</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(18900, 170)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">none</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;none&#39;</span><span class="p">]]</span>
+<span class="n">none</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4774, 170)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s what the distribution of birth years looks like for the two groups:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">christian</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Christian&#39;</span><span class="p">)</span>
+<span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">none</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Birth year&#39;</span><span class="p">,</span>
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;CDF&#39;</span><span class="p">,</span>
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Distribution of birth year&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_23_0.png" src="_images/generation_23_0.png" />
+</div>
+</div>
+<p>The Christians in this dataset come from earlier cohorts, so we have to control for that.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">christian</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Christian&#39;</span><span class="p">)</span>
+<span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">none</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Interview year&#39;</span><span class="p">,</span>
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;CDF&#39;</span><span class="p">,</span>
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Distribution of interview year&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_25_0.png" src="_images/generation_25_0.png" />
+</div>
+</div>
+<p>Also, the fraction of Christians was declining over the observation period, so the Christians in the dataset were more likely to be observed earlier.  We’ll have to control for that, too.</p>
+</div>
+<div class="section" id="selecting-variables">
+<h2>Selecting variables<a class="headerlink" href="#selecting-variables" title="Permalink to this headline">¶</a></h2>
+<p>The following is a list of the variables we’ll explore.</p>
+<p>For each variable, I identify a response or list of responses to consider, and provide text that describes what that response means.</p>
+<p>I do my best to paraphrase the wording of the question accurately, but if you have any questions, you can <a class="reference external" href="https://gssdataexplorer.norc.org/projects/52787/variables/data_cart">consult the documentation</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">variables</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># allow to speak</span>
+    <span class="p">(</span><span class="s1">&#39;spkmil&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Anti-democratic</span><span class="se">\n</span><span class="s1">militarist&#39;</span><span class="p">),</span>   
+    <span class="p">(</span><span class="s1">&#39;spkmslm&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Anti-U.S.</span><span class="se">\n</span><span class="s1">Muslim clergyman&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;spkath&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Opponent of churches</span><span class="se">\n</span><span class="s1">and religion&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;spkcom&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Communist&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;spkrac&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Racist&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;spkhomo&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Homosexual&#39;</span><span class="p">),</span>
+
+    <span class="c1"># allow to teach at a college or university</span>
+    <span class="p">(</span><span class="s1">&#39;colmil&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Anti-democratic</span><span class="se">\n</span><span class="s1">militarist&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;colmslm&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Anti-U.S.</span><span class="se">\n</span><span class="s1">Muslim clergyman&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;colath&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Opponent of churches</span><span class="se">\n</span><span class="s1">and religion&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;colcom&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Communist&#39;</span><span class="p">),</span>    <span class="c1"># not fired</span>
+    <span class="p">(</span><span class="s1">&#39;colrac&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Racist&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;colhomo&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Homosexual&#39;</span><span class="p">),</span>
+
+    <span class="c1"># do not remove from library</span>
+    <span class="p">(</span><span class="s1">&#39;libmil&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Anti-democratic</span><span class="se">\n</span><span class="s1">militarist&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;libmslm&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Anti-U.S.</span><span class="se">\n</span><span class="s1">Muslim clergyman&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;libath&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Opponent of churches</span><span class="se">\n</span><span class="s1">and religion&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;libcom&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Communist&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;librac&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Racist&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;libhomo&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Homosexual&#39;</span><span class="p">),</span>
+
+    <span class="c1"># items related to sex</span>
+    <span class="p">(</span><span class="s1">&#39;homosex&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Same-sex relations</span><span class="se">\n</span><span class="s1">always wrong&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;premarsx&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Premarital sex</span><span class="se">\n</span><span class="s1">always wrong&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;xmarsex&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Extramarital sex</span><span class="se">\n</span><span class="s1">always wrong&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;teensex&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Teen sex</span><span class="se">\n</span><span class="s1">always wrong&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;sexeduc&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Favor sex education</span><span class="se">\n</span><span class="s1">in schools&#39;</span><span class="p">),</span>
+    
+    <span class="c1"># items related to abortion</span>
+    <span class="p">(</span><span class="s1">&#39;abany&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;A pregnant woman wants it</span><span class="se">\n</span><span class="s1">for any reason&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;abdefect&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;There is a strong chance</span><span class="se">\n</span><span class="s1">of a serious defect&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;abnomore&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;She is married and</span><span class="se">\n</span><span class="s1">does not want more children&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;abhlth&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Her health is seriously endangered&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;abpoor&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;She has very low income and</span><span class="se">\n</span><span class="s1">cannot afford more children&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;abrape&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;She became pregnant</span><span class="se">\n</span><span class="s1">as a result of rape&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;absingle&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;She is not married and</span><span class="se">\n</span><span class="s1">does not want to marry the man&#39;</span><span class="p">),</span>
+    
+    <span class="c1"># other items related to public policy</span>
+    <span class="p">(</span><span class="s1">&#39;cappun&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Oppose death penalty</span><span class="se">\n</span><span class="s1">for murder&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;gunlaw&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Favor permit to buy gun&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;grass&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Marijuana should be</span><span class="se">\n</span><span class="s1">made legal&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;divlaw&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Divorce should be</span><span class="se">\n</span><span class="s1">easier to obtain&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;prayer&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Approve SCOTUS ruling</span><span class="se">\n</span><span class="s1">prohibiting school prayer&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;letdie1&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Allow doctor to end life</span><span class="se">\n</span><span class="s1">of terminal patient&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;racopen&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Favor law barring</span><span class="se">\n</span><span class="s1">housing discrimination&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;pornlaw&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;Pornography should be legal&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;affrmact&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;Favor affirmative action</span><span class="se">\n</span><span class="s1">for blacks&#39;</span><span class="p">),</span>
+
+    <span class="c1"># items related to spending</span>
+    <span class="p">(</span><span class="s1">&#39;natroad&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Highways and bridges&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;natsoc&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Social Security&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;natmass&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Mass transportation&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;natpark&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Parks and recreation&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;natchld&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Assistance for child care&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;natsci&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Supporting scientific research&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;natenrgy&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Developing alternative</span><span class="se">\n</span><span class="s1">energy sources&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;natspac&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Space exploration&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;natenvir&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Improving and protecting</span><span class="se">\n</span><span class="s1">the environment&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;natheal&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Improving and protecting</span><span class="se">\n</span><span class="s2">the nation&#39;s health&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;natcity&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Solving the problems of</span><span class="se">\n</span><span class="s1">the big cities&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;natcrime&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Halting the rising</span><span class="se">\n</span><span class="s1">crime rate&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;natdrug&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Dealing with drug addiction&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;nateduc&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Improving the nation&#39;s</span><span class="se">\n</span><span class="s2">education system&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;natrace&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Improving the conditions</span><span class="se">\n</span><span class="s1">of Blacks&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;natarms&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;The military, armaments</span><span class="se">\n</span><span class="s1">and defense&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;nataid&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Foreign aid&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;natfare&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Welfare&#39;</span><span class="p">),</span>
+
+    <span class="c1"># confidence in institutions</span>
+    <span class="p">(</span><span class="s1">&#39;confinan&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Banks and financial instituions&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;conbus&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Major companies&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;conclerg&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Organized religion&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;coneduc&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Education&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;confed&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Executive branch of</span><span class="se">\n</span><span class="s1">the federal government&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;conlabor&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Organized labor&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;conpress&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Press&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;conmedic&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Medicine&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;contv&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Television&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;conjudge&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;U.S. Supreme Court&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;consci&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Scientific community&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;conlegis&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Congress&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;conarmy&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Military&#39;</span><span class="p">),</span>
+
+    <span class="c1"># religious beliefs</span>
+    <span class="p">(</span><span class="s1">&#39;god&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;Know God exists with no doubts&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;reborn&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Had a born again experience&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;savesoul&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Tried to convince others</span><span class="se">\n</span><span class="s1">to accept Jesus&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;bible&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Bible is the actual word of God</span><span class="se">\n</span><span class="s1">to be taken literally&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;postlife&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Believe there is a life after death&#39;</span><span class="p">),</span>
+
+    <span class="p">(</span><span class="s1">&#39;relpersn&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;Considers self very or</span><span class="se">\n</span><span class="s1">moderately religious&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;sprtprsn&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;Considers self very or</span><span class="se">\n</span><span class="s1">moderately spiritual&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;relexp&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Had a religious or spiritual</span><span class="se">\n</span><span class="s1">experience that changed life&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;relactiv&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span> <span class="s1">&#39;Church activities weekly or more</span><span class="se">\n</span><span class="s1">not including services&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;pray&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;Prayer weekly or more often&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;attend&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="s1">&#39;Attend religious services</span><span class="se">\n</span><span class="s1">weekly or more often&#39;</span><span class="p">),</span>
+    
+    <span class="c1"># outlook on people</span>
+    <span class="p">(</span><span class="s1">&#39;helpful&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;People try to be helpful&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;fair&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;People try to be fair&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;trust&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;People can be trusted&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;fear&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Not afraid to walk alone at night&#39;</span><span class="p">),</span>
+
+    <span class="c1"># miscellaneous</span>
+    <span class="p">(</span><span class="s1">&#39;spanking&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;Spanking sometimes</span><span class="se">\n</span><span class="s1">necessary&#39;</span><span class="p">),</span>
+    
+    <span class="c1"># gender roles and work</span>
+    <span class="p">(</span><span class="s1">&#39;fepol&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Agree men are emotionally</span><span class="se">\n</span><span class="s1">more suited for politics&#39;</span><span class="p">),</span>    
+    <span class="p">(</span><span class="s1">&#39;fejobaff&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;Favor preferential hiring</span><span class="se">\n</span><span class="s1">and promotion of women&#39;</span><span class="p">),</span>    
+    <span class="p">(</span><span class="s1">&#39;fehire&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;Favor special effort to hire</span><span class="se">\n</span><span class="s1">and promote qualified women&#39;</span><span class="p">),</span>    
+    <span class="p">(</span><span class="s1">&#39;fechld&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;Working mother can have warm</span><span class="se">\n</span><span class="s1">secure relationship with child&#39;</span><span class="p">),</span>    
+    <span class="p">(</span><span class="s1">&#39;fepresch&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;Preschool child is likely</span><span class="se">\n</span><span class="s1">to suffer if mother works&#39;</span><span class="p">),</span>    
+    <span class="p">(</span><span class="s1">&#39;fefam&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;Much better if man achieves and</span><span class="se">\n</span><span class="s1">woman takes care of family&#39;</span><span class="p">),</span>    
+    <span class="p">(</span><span class="s1">&#39;discaffm&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;Likely that a less qualified</span><span class="se">\n</span><span class="s1">woman gets job or promotion&#39;</span><span class="p">),</span>    
+    <span class="p">(</span><span class="s1">&#39;discaffw&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;Likely that a less qualified</span><span class="se">\n</span><span class="s1">man gets job or promotion&#39;</span><span class="p">),</span>    
+    <span class="p">(</span><span class="s1">&#39;meovrwrk&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;Family life suffers because men</span><span class="se">\n</span><span class="s1">concentrate too much on work&#39;</span><span class="p">),</span> 
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following cell makes maps from variable names to values and labels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_map</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">value_map</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+    <span class="n">value_map</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="n">label_map</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="period-and-cohort-effects">
+<h2>Period and cohort effects<a class="headerlink" href="#period-and-cohort-effects" title="Permalink to this headline">¶</a></h2>
+<p>First I select the subset of one group where the dependent variable is valid.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varname</span> <span class="o">=</span> <span class="s1">&#39;natmass&#39;</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">value_map</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>natmass 1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">christian</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">valid</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="n">varname</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">valid</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(16692, 170)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s the fraction of this variable that has the selected value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="p">(</span><span class="n">valid</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">value</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3707764198418404
+</pre></div>
+</div>
+</div>
+</div>
+<p>For logistic regression, we need the dependent variable to be 0 or 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">valid</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">valid</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">value</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">valid</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    10503
+1     6189
+Name: y, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s what the changes look like over time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">plot_series_lowess</span>
+
+<span class="n">by_year</span> <span class="o">=</span> <span class="n">valid</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">by_year</span><span class="p">,</span> <span class="s1">&#39;C2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_40_0.png" src="_images/generation_40_0.png" />
+</div>
+</div>
+<p>And here’s what they look like by cohort.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">by_cohort</span> <span class="o">=</span> <span class="n">valid</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;cohort&#39;</span><span class="p">)[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">by_cohort</span><span class="p">,</span> <span class="s1">&#39;C3&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_42_0.png" src="_images/generation_42_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="testing-the-model">
+<h2>Testing the model<a class="headerlink" href="#testing-the-model" title="Permalink to this headline">¶</a></h2>
+<p>Now we can run logistic regression with year and cohort as explanatory variables.</p>
+<p>I consider two versions of this model, with and without quadratic terms.  It seems like the model with quadratic terms does a better job of capturing the period and cohort effects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+
+<span class="n">formula</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;y ~ year + cohort&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">valid</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.656549
+         Iterations 5
+</pre></div>
+</div>
+<div class="output text_html"><table class="simpletable">
+<caption>Logit Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>           <td>y</td>        <th>  No. Observations:  </th>  <td> 16692</td>  
+</tr>
+<tr>
+  <th>Model:</th>                 <td>Logit</td>      <th>  Df Residuals:      </th>  <td> 16689</td>  
+</tr>
+<tr>
+  <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>  <td>     2</td>  
+</tr>
+<tr>
+  <th>Date:</th>            <td>Fri, 10 Jan 2020</td> <th>  Pseudo R-squ.:     </th> <td>0.004275</td> 
+</tr>
+<tr>
+  <th>Time:</th>                <td>09:49:24</td>     <th>  Log-Likelihood:    </th> <td> -10959.</td> 
+</tr>
+<tr>
+  <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td> -11006.</td> 
+</tr>
+<tr>
+  <th>Covariance Type:</th>     <td>nonrobust</td>    <th>  LLR p-value:       </th> <td>3.663e-21</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>    2.8315</td> <td>    5.215</td> <td>    0.543</td> <td> 0.587</td> <td>   -7.390</td> <td>   13.053</td>
+</tr>
+<tr>
+  <th>year</th>      <td>    0.0095</td> <td>    0.003</td> <td>    3.706</td> <td> 0.000</td> <td>    0.004</td> <td>    0.015</td>
+</tr>
+<tr>
+  <th>cohort</th>    <td>   -0.0115</td> <td>    0.001</td> <td>   -9.511</td> <td> 0.000</td> <td>   -0.014</td> <td>   -0.009</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;y ~ year + y2 + cohort + c2&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">valid</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.655773
+         Iterations 5
+</pre></div>
+</div>
+<div class="output text_html"><table class="simpletable">
+<caption>Logit Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>           <td>y</td>        <th>  No. Observations:  </th>  <td> 16692</td>  
+</tr>
+<tr>
+  <th>Model:</th>                 <td>Logit</td>      <th>  Df Residuals:      </th>  <td> 16687</td>  
+</tr>
+<tr>
+  <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>  <td>     4</td>  
+</tr>
+<tr>
+  <th>Date:</th>            <td>Fri, 10 Jan 2020</td> <th>  Pseudo R-squ.:     </th> <td>0.005451</td> 
+</tr>
+<tr>
+  <th>Time:</th>                <td>09:49:25</td>     <th>  Log-Likelihood:    </th> <td> -10946.</td> 
+</tr>
+<tr>
+  <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td> -11006.</td> 
+</tr>
+<tr>
+  <th>Covariance Type:</th>     <td>nonrobust</td>    <th>  LLR p-value:       </th> <td>5.376e-25</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>  -35.1692</td> <td>    9.292</td> <td>   -3.785</td> <td> 0.000</td> <td>  -53.381</td> <td>  -16.958</td>
+</tr>
+<tr>
+  <th>year</th>      <td>    0.0289</td> <td>    0.005</td> <td>    6.254</td> <td> 0.000</td> <td>    0.020</td> <td>    0.038</td>
+</tr>
+<tr>
+  <th>y2</th>        <td>   -0.0023</td> <td>    0.000</td> <td>   -5.035</td> <td> 0.000</td> <td>   -0.003</td> <td>   -0.001</td>
+</tr>
+<tr>
+  <th>cohort</th>    <td>   -0.0118</td> <td>    0.001</td> <td>   -8.130</td> <td> 0.000</td> <td>   -0.015</td> <td>   -0.009</td>
+</tr>
+<tr>
+  <th>c2</th>        <td>-3.484e-05</td> <td> 8.19e-05</td> <td>   -0.425</td> <td> 0.671</td> <td>   -0.000</td> <td>    0.000</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;y ~ year + y2 + cohort + c2 + c3&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">valid</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.655770
+         Iterations 5
+</pre></div>
+</div>
+<div class="output text_html"><table class="simpletable">
+<caption>Logit Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>           <td>y</td>        <th>  No. Observations:  </th>  <td> 16692</td>  
+</tr>
+<tr>
+  <th>Model:</th>                 <td>Logit</td>      <th>  Df Residuals:      </th>  <td> 16686</td>  
+</tr>
+<tr>
+  <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>  <td>     5</td>  
+</tr>
+<tr>
+  <th>Date:</th>            <td>Fri, 10 Jan 2020</td> <th>  Pseudo R-squ.:     </th> <td>0.005456</td> 
+</tr>
+<tr>
+  <th>Time:</th>                <td>09:49:25</td>     <th>  Log-Likelihood:    </th> <td> -10946.</td> 
+</tr>
+<tr>
+  <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td> -11006.</td> 
+</tr>
+<tr>
+  <th>Covariance Type:</th>     <td>nonrobust</td>    <th>  LLR p-value:       </th> <td>2.990e-24</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>  -34.0023</td> <td>    9.919</td> <td>   -3.428</td> <td> 0.001</td> <td>  -53.443</td> <td>  -14.562</td>
+</tr>
+<tr>
+  <th>year</th>      <td>    0.0289</td> <td>    0.005</td> <td>    6.261</td> <td> 0.000</td> <td>    0.020</td> <td>    0.038</td>
+</tr>
+<tr>
+  <th>y2</th>        <td>   -0.0024</td> <td>    0.000</td> <td>   -5.042</td> <td> 0.000</td> <td>   -0.003</td> <td>   -0.001</td>
+</tr>
+<tr>
+  <th>cohort</th>    <td>   -0.0124</td> <td>    0.002</td> <td>   -5.194</td> <td> 0.000</td> <td>   -0.017</td> <td>   -0.008</td>
+</tr>
+<tr>
+  <th>c2</th>        <td>-1.539e-05</td> <td>    0.000</td> <td>   -0.154</td> <td> 0.878</td> <td>   -0.000</td> <td>    0.000</td>
+</tr>
+<tr>
+  <th>c3</th>        <td>  1.77e-06</td> <td> 5.26e-06</td> <td>    0.336</td> <td> 0.737</td> <td>-8.55e-06</td> <td> 1.21e-05</td>
+</tr>
+</table></div></div>
+</div>
+<p>The following plot shows the data grouped by cohort and the model for someone interviewed in 2008.</p>
+<p>We can use it to confirm that the model is capturing the cohort effect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1940</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+
+<span class="n">dfp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">dfp</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xs</span>
+<span class="n">dfp</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2008</span>
+<span class="n">dfp</span><span class="p">[</span><span class="s1">&#39;y2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dfp</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">2004</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">dfp</span><span class="p">[</span><span class="s1">&#39;c2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dfp</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">1970</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">dfp</span><span class="p">[</span><span class="s1">&#39;c3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dfp</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">1970</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
+
+<span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">by_cohort</span><span class="p">,</span> <span class="s1">&#39;C3&#39;</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">dfp</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C7&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Model at year 2008&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1938</span><span class="p">,</span> <span class="mi">2002</span><span class="p">)</span>
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Birth year&#39;</span><span class="p">,</span>
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Fraction&#39;</span><span class="p">,</span>
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Mean response by year of birth&#39;</span><span class="p">,</span>
+         <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;generation_by_cohort.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_48_0.png" src="_images/generation_48_0.png" />
+</div>
+</div>
+<p>The following plot shows the data grouped by year along with predictions for people born in 1968 and 1993.</p>
+<p>We can use it to confirm that the model captures the period effect, and we can see the generational difference as measured by the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">by_year</span><span class="p">,</span> <span class="s1">&#39;C2&#39;</span><span class="p">)</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1998</span><span class="p">,</span> <span class="mi">2020</span><span class="p">)</span>
+
+<span class="n">dfp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">dfp</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xs</span>
+<span class="n">dfp</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1968</span>
+<span class="n">dfp</span><span class="p">[</span><span class="s1">&#39;y2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dfp</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">2004</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">dfp</span><span class="p">[</span><span class="s1">&#39;c2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dfp</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">1970</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">dfp</span><span class="p">[</span><span class="s1">&#39;c3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dfp</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">1970</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
+
+<span class="n">ys</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">dfp</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C4&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Born 1968&#39;</span><span class="p">)</span>
+
+<span class="n">dfp</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1993</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">dfp</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C6&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Born 1993&#39;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Interview year&#39;</span><span class="p">,</span>
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Fraction&#39;</span><span class="p">,</span>
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Mean response by year of interview&#39;</span><span class="p">,</span>
+         <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1996</span><span class="p">,</span> <span class="mi">2020</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;generation_by_year&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_50_0.png" src="_images/generation_50_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="comparing-generations">
+<h2>Comparing generations<a class="headerlink" href="#comparing-generations" title="Permalink to this headline">¶</a></h2>
+<p>Now let’s see how things change from one generation to the next, controlling to period effects.</p>
+<p>I’ll use the model to generate predictions for two hypothetical members of this group, born in 1968 and 1993, both interviewed in 2018.</p>
+<p>Here’s a DataFrame that describes these hypothetical people.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pred</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1968</span><span class="p">,</span> <span class="mi">1993</span><span class="p">]</span>
+<span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2018</span>
+<span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;y2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">2004</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;c2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">1970</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;c3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">1970</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
+<span class="n">df_pred</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cohort</th>
+      <th>year</th>
+      <th>y2</th>
+      <th>c2</th>
+      <th>c3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1968</td>
+      <td>2018</td>
+      <td>196</td>
+      <td>4</td>
+      <td>-8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1993</td>
+      <td>2018</td>
+      <td>196</td>
+      <td>529</td>
+      <td>12167</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>And here are the predictions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.280852
+1    0.201243
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="running-the-model">
+<h2>Running the model<a class="headerlink" href="#running-the-model" title="Permalink to this headline">¶</a></h2>
+<p>The following function encapsulates the steps in the previous section.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_model</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">formula</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Runs the model and generates predictions.</span>
+<span class="sd">    </span>
+<span class="sd">    df: DataFrame</span>
+<span class="sd">    varname: string variable name</span>
+<span class="sd">    value: value or list of values considered &quot;yes&quot;</span>
+<span class="sd">    formula: string patsy model</span>
+<span class="sd">    </span>
+<span class="sd">    returns: array of predicted values based on df_pred</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">valid</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="n">varname</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">valid</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">valid</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">value</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">valid</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_pred</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Depending on <code class="docutils literal notranslate"><span class="pre">formula</span></code>, we can run either the linear or quadratic version of the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#formula = &#39;y ~ year + cohort&#39;</span>
+<span class="c1">#formula = &#39;y ~ year + y2 + cohort + c2&#39;</span>
+<span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;y ~ year + y2 + cohort + c2 + c3&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are the results for Christians and Nones.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">run_model</span><span class="p">(</span><span class="n">christian</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">formula</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.28085169, 0.20124302])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">run_model</span><span class="p">(</span><span class="n">none</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">formula</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.03442896, 0.03817344])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="comparing-results">
+<h2>Comparing results<a class="headerlink" href="#comparing-results" title="Permalink to this headline">¶</a></h2>
+<p>The following function runs the analysis for the two groups and return an array with predictions for 4 hypothetical people:</p>
+<ul class="simple">
+<li><p>Christian born in 1968</p></li>
+<li><p>Christian born in 1993</p></li>
+<li><p>None born in 1968</p></li>
+<li><p>None born in 1993</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="n">christian</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;christian&#39;</span><span class="p">]]</span>
+    <span class="n">none</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;none&#39;</span><span class="p">]]</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="n">run_model</span><span class="p">(</span><span class="n">christian</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">formula</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">run_model</span><span class="p">(</span><span class="n">none</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">formula</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">c</span><span class="p">,</span> <span class="n">n</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compare</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([28.08516892, 20.12430165,  3.44289599,  3.81734432])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following function runs the same analysis 101 times, using each of the resampled datasets.</p>
+<p>It computes the 5th, 50th, and 95th percentiles in each column and returns an array with one row for each percentile and one column for each of the 4 hypothetical people.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compare_iter</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="n">compare</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dfs</span><span class="p">]</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">percentiles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">95</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">percentiles</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percentiles</span> <span class="o">=</span> <span class="n">compare_iter</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="n">percentiles</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[28.65101432, 19.74193596,  2.2695887 ,  2.97257609],
+       [30.11273943, 21.91327412,  3.71919116,  3.89548952],
+       [31.78215012, 23.81139566,  5.04135907,  5.55335347]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting-the-results">
+<h2>Plotting the results<a class="headerlink" href="#plotting-the-results" title="Permalink to this headline">¶</a></h2>
+<p>The following functions visualize the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_interval</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">interval</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mf">0.16</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Show a confidence interval.</span>
+<span class="sd">    </span>
+<span class="sd">    y: vertical coordinate</span>
+<span class="sd">    interval: triple of low, med, and high</span>
+<span class="sd">    dy: height of the error bars</span>
+<span class="sd">    options: passed to plt</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">low</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">interval</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">y</span><span class="o">+</span><span class="n">dy</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">([</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">],</span> <span class="n">y</span><span class="o">+</span><span class="n">dy</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">dy</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Christian&#39;</span><span class="p">:</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;None&#39;</span><span class="p">:</span><span class="s1">&#39;C1&#39;</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">plot_arrow</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">group</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plot an arrow showing generational changes.</span>
+<span class="sd">    </span>
+<span class="sd">    y: vertical coordinate</span>
+<span class="sd">    row: x1, x2 pair</span>
+<span class="sd">    group: string group name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">color_map</span><span class="p">[</span><span class="n">group</span><span class="p">]</span>
+    <span class="n">label1</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">group</span><span class="si">}</span><span class="s1"> born 1968&#39;</span>
+    <span class="n">label2</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">group</span><span class="si">}</span><span class="s1"> born 1993&#39;</span>
+    
+    <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">row</span>    
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label1</span><span class="p">)</span>
+    
+    <span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;&gt;&#39;</span> <span class="k">if</span> <span class="n">x2</span> <span class="o">&gt;</span> <span class="n">x1</span> <span class="k">else</span> <span class="s1">&#39;&lt;&#39;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_percentiles</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">percentiles</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mf">0.12</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plot the results from the resampled analysis.</span>
+<span class="sd">    </span>
+<span class="sd">    y: vertical coordinate</span>
+<span class="sd">    percentiles: array with a row for each percentile and</span>
+<span class="sd">                 column for each hypothetical person</span>
+<span class="sd">    dy: vertical offset for the first group</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plot_interval</span><span class="p">(</span><span class="n">y</span><span class="o">+</span><span class="n">dy</span><span class="p">,</span> <span class="n">percentiles</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">)</span>
+    <span class="n">plot_arrow</span><span class="p">(</span><span class="n">y</span><span class="o">+</span><span class="n">dy</span><span class="p">,</span> <span class="n">percentiles</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">],</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+    <span class="n">plot_interval</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">dy</span><span class="p">,</span> <span class="n">percentiles</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">)</span>
+    <span class="n">plot_arrow</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">dy</span><span class="p">,</span> <span class="n">percentiles</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;Christian&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">miniplot</span><span class="p">(</span><span class="n">percentiles</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make a plot with just one variable&quot;&quot;&quot;</span>
+    <span class="n">plot_percentiles</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">percentiles</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">miniplot</span><span class="p">(</span><span class="n">percentiles</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">varname</span><span class="p">])</span>
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Percentage&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_73_0.png" src="_images/generation_73_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="beliefs-and-attitudes">
+<h2>Beliefs and attitudes<a class="headerlink" href="#beliefs-and-attitudes" title="Permalink to this headline">¶</a></h2>
+<p>Now let’s see what the results look like for a variety of beliefs and attitudes.</p>
+<p>The following list contains variable names, the response I’ve selected, and a label that summarizes the selected response.</p>
+<p>As an example, here’s a complete analysis of a single variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varname</span> <span class="o">=</span> <span class="s1">&#39;pray&#39;</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">value_map</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">compare</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="n">percentiles</span> <span class="o">=</span> <span class="n">compare_iter</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">percentiles</span><span class="p">)</span>
+<span class="n">miniplot</span><span class="p">(</span><span class="n">percentiles</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pray [1, 2, 3, 4]
+[88.64014414 79.02553422 42.42939496 27.36045101]
+[[87.36607046 77.5964954  40.73463178 23.39981756]
+ [88.60220296 79.5213753  44.20904724 26.65050877]
+ [89.62262558 81.53221359 48.17391681 28.93114145]]
+</pre></div>
+</div>
+<img alt="_images/generation_77_1.png" src="_images/generation_77_1.png" />
+</div>
+</div>
+<p>For testing, we can loop through the variables and run one analysis with the unresampled data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">varname</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">compare</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>spkmil
+[73.5113101  76.76801946 82.09560968 78.39559141]
+spkmslm
+[45.49596897 36.16927047 59.53604459 53.6932326 ]
+spkath
+[79.22311623 78.04532283 89.69533261 89.5105957 ]
+spkcom
+[69.46353225 68.75260772 81.12576215 83.42409051]
+spkrac
+[60.3880369  49.91127651 68.47108633 58.15589464]
+spkhomo
+[90.06235488 90.4766765  94.4764429  95.82608918]
+colmil
+[59.49662759 66.43455177 66.02818803 68.87707294]
+colmslm
+[32.43295797 26.14526947 45.31159224 35.16720515]
+colath
+[64.03971692 72.31061918 75.72620643 83.06921543]
+colcom
+[63.78654967 68.70265262 77.15069651 79.11245972]
+colrac
+[45.40934808 39.49995269 48.12065303 40.06686363]
+colhomo
+[89.17096349 92.52793162 94.96915779 93.93005577]
+libmil
+[72.26322264 76.80931845 85.93400702 84.70593488]
+libmslm
+[48.76353068 40.22516432 64.43893098 56.1513263 ]
+libath
+[74.79277381 76.19890115 92.86989688 92.6605855 ]
+libcom
+[71.47928341 74.34902723 85.86445345 86.97307526]
+librac
+[61.67809039 51.13471775 76.10257378 60.81905199]
+libhomo
+[81.79362286 88.88577597 94.88162589 94.56903031]
+homosex
+[43.2499736  26.02727507 14.60015087  8.47780471]
+premarsx
+[22.26112763 15.61701899  4.74451967  2.38574064]
+xmarsex
+[83.39192428 82.43078978 54.62779781 58.98866977]
+teensex
+[68.41449398 49.65675108 41.25854856 27.52858109]
+sexeduc
+[91.70737342 94.98287385 96.2774079  98.25713522]
+abany
+[43.41944174 41.3995639  71.55856513 66.42643421]
+abdefect
+[73.02303301 66.27051086 91.30318802 81.33778165]
+abnomore
+[44.31492364 39.77807224 72.00750498 66.08859556]
+abhlth
+[87.46737603 86.47912608 94.85623463 93.26452543]
+abpoor
+[41.62665525 41.84029891 67.75769386 66.49518121]
+abrape
+[74.89404181 77.31786536 90.46982819 90.56697658]
+absingle
+[38.84668806 34.19344447 66.37167504 60.53935644]
+cappun
+[33.55463848 44.48520016 38.21351605 42.42618274]
+gunlaw
+[71.20383307 66.33977015 69.18452013 69.66204428]
+grass
+[61.68805191 71.01634253 82.78437414 84.89693807]
+divlaw
+[43.00281337 46.85598636 51.33716417 59.40353458]
+prayer
+[33.74359486 52.04324277 67.26735582 76.1386634 ]
+letdie1
+[69.6644715  74.86999269 88.79556461 86.20789208]
+racopen
+[80.26737897 81.45531965 79.09489328 80.21025033]
+pornlaw
+[64.52978902 76.56828694 85.97367299 88.22481399]
+affrmact
+[21.05093081 26.50331869 30.32874825 34.98033455]
+natroad
+[56.45389489 35.53284828 65.23946114 39.69656434]
+natsoc
+[67.37905989 44.79243358 64.64223973 45.29214691]
+natmass
+[35.22213294 28.7643498  48.52230686 36.32573053]
+natpark
+[34.17935857 38.2896629  39.46412034 45.04948144]
+natchld
+[59.37417463 62.79809711 67.03702883 65.23955519]
+natsci
+[39.80269003 36.90575408 51.24566019 50.13529848]
+natenrgy
+[52.86066667 53.78547176 65.54730071 65.26712737]
+natspac
+[19.89561017 19.58949264 32.77135355 37.94810993]
+natenvir
+[57.20770297 70.91138832 72.45425865 81.37103326]
+natheal
+[64.75055397 63.13098615 72.13970354 64.46942054]
+natcity
+[55.53992497 54.05057976 51.59353382 55.07975863]
+natcrime
+[73.94955158 67.76348809 57.31752779 54.03097305]
+natdrug
+[68.31794005 67.26020567 70.19711738 65.31999371]
+nateduc
+[73.99285499 72.16437619 84.32265258 81.23015693]
+natrace
+[49.89317856 56.11094299 62.69301732 67.82830273]
+natarms
+[39.83380456 28.84803579 25.28695122 17.01997032]
+nataid
+[ 9.82466168 21.19327073 10.08446096 22.11511565]
+natfare
+[19.93343815 21.64751293 25.48356417 27.32928223]
+confinan
+[12.66682956 24.24425984  6.07534072 17.24309586]
+conbus
+[19.64942601 24.8910571  14.9580066  17.64472432]
+conclerg
+[22.85102756 29.62101982  4.2986863   8.27954864]
+coneduc
+[21.84336117 35.87421951 16.83152194 28.55130699]
+confed
+[10.45491829 13.93303892  9.40292797  9.52391555]
+conlabor
+[11.18874318 20.61281316 10.28513127 22.33094665]
+conpress
+[ 8.81439129  9.70186571 12.6718666  11.3784002 ]
+conmedic
+[32.47554257 49.23012708 30.20770207 44.76007786]
+contv
+[ 9.85957672 13.9771673   3.98226901  5.73194279]
+conjudge
+[26.3352463  27.96629237 22.38261828 22.1787875 ]
+consci
+[37.83470996 44.01941385 52.78142307 61.74872794]
+conlegis
+[3.90103339 9.54029367 1.44883188 5.36324345]
+conarmy
+[59.34348941 60.82389205 49.22218759 44.3586916 ]
+god
+[70.05585786 54.54176727 23.1488361  13.84997176]
+reborn
+[57.94039213 47.78098959 19.08488879 13.20532487]
+savesoul
+[56.70785044 51.78148764 17.91740306 18.08368455]
+bible
+[40.7100707  32.53023435  9.78488653  7.88023483]
+postlife
+[86.60628194 91.07626079 55.77191022 62.86114651]
+relpersn
+[66.62937988 55.68363263 11.59321878  7.28325125]
+sprtprsn
+[76.74946413 54.58924942 48.13054167 34.58637659]
+relexp
+[62.6117107  56.19613869 17.96450418 21.2967375 ]
+relactiv
+[11.01806423  7.55599771  3.8962701   0.92942076]
+pray
+[88.64014414 79.02553422 42.42939496 27.36045101]
+attend
+[28.08516892 20.12430165  3.44289599  3.81734432]
+helpful
+[47.47359947 34.36248075 49.7537416  34.16047289]
+fair
+[53.61717119 34.47184959 55.82503034 41.38746425]
+trust
+[29.26894445 18.43385666 40.44124049 23.60146494]
+fear
+[67.25857509 61.96407852 72.89262483 63.31583672]
+spanking
+[72.47779753 74.91842981 57.12181834 65.55452896]
+fepol
+[13.88866324 18.70822545  8.55305731 11.82774957]
+fejobaff
+[37.32595866 41.64868146 32.2215146  44.18340857]
+fehire
+[73.35485936 68.97477718 74.32198819 81.83595582]
+fechld
+[77.03561326 78.57964449 78.92801115 82.26175663]
+fepresch
+[25.75030164 18.79883107 23.52021269 14.83169073]
+fefam
+[23.6351855  24.05805615 13.37111586 12.41761707]
+discaffm
+[47.60762486 44.9277582  39.21370124 44.4863117 ]
+discaffw
+[73.30302634 64.9975628  73.78844031 73.7674552 ]
+meovrwrk
+[50.94775015 41.15332679 51.50807705 37.09845044]
+</pre></div>
+</div>
+</div>
+</div>
+<p>And here’s how we run the complete analysis for all variables.</p>
+<p>It takes a few minutes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_results</span><span class="p">(</span><span class="n">variables</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">results</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">varname</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">varname</span><span class="p">)</span>
+        <span class="n">percentiles</span> <span class="o">=</span> <span class="n">compare_iter</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">percentiles</span>
+        
+    <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># uncomment to clear saved results</span>
+<span class="c1"># results = None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">generate_results</span><span class="p">(</span><span class="n">variables</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sprtprsn
+relexp
+relactiv
+pray
+attend
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following function generates a plot for a collection of variable names.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make a plot showing results for several variables.</span>
+<span class="sd">    </span>
+<span class="sd">    results: map from varname to array of percentiles</span>
+<span class="sd">    varnames: list of string varnames</span>
+<span class="sd">    loc: string location for the legend.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">varname</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">varnames</span><span class="p">):</span>
+        <span class="n">percentiles</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span>
+        <span class="n">plot_percentiles</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">percentiles</span><span class="p">)</span>
+
+    <span class="c1"># label the y axis</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">label_map</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="k">for</span> <span class="n">varname</span> <span class="ow">in</span> <span class="n">varnames</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">varnames</span><span class="p">)),</span> <span class="n">labels</span><span class="p">)</span>
+
+    <span class="c1"># make a legend with just the first four entries</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+    
+    <span class="n">loc</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;loc&#39;</span><span class="p">,</span> <span class="s1">&#39;best&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="p">[:</span><span class="mi">4</span><span class="p">],</span> <span class="n">labels</span><span class="p">[:</span><span class="mi">4</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span>
+
+    <span class="c1"># flip the axes so the results go from top to bottom</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+    
+    <span class="n">underride</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Percentage&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">decorate</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="free-speech">
+<h2>Free speech<a class="headerlink" href="#free-speech" title="Permalink to this headline">¶</a></h2>
+<p>There are always some people whose ideas are considered bad or dangerous by other people.</p>
+<ul class="simple">
+<li><p>For instance, somebody who is against all churches and religion …
+If such a person wanted to make a speech in your (city/town/community) against churches and religion, should he be allowed to speak, or not?</p></li>
+<li><p>Or consider a person who believes that Blacks are genetically inferior…
+If such a person wanted to make a speech in your community claiming that Blacks are inferior, should he be allowed to speak, or not?</p></li>
+<li><p>Now, I should like to ask you some questions about a man who admits he is a Communist.
+Suppose this admitted Communist wanted to make a speech in your community. Should he be allowed to speak, or not?</p></li>
+<li><p>Consider a person who advocates doing away with elections and letting the military run the country.
+If such a person wanted to make a speech in your community, should he be allowed to speak, or not?</p></li>
+<li><p>And what about a man who admits that he is a homosexual?
+Suppose this admitted homosexual wanted to make a speech in your community. Should he be allowed to speak, or not?</p></li>
+<li><p>Now consider a Muslim clergyman who preaches hatred of the United States.
+If such a person wanted to make a speech in your community preaching hatred of the United States, should he be allowed to speak, or not?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;spkmslm&#39;</span><span class="p">,</span> <span class="s1">&#39;spkrac&#39;</span><span class="p">,</span> <span class="s1">&#39;spkcom&#39;</span><span class="p">,</span> <span class="s1">&#39;spkmil&#39;</span><span class="p">,</span> <span class="s1">&#39;spkath&#39;</span><span class="p">,</span> <span class="s1">&#39;spkhomo&#39;</span><span class="p">]</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Allow to speak&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_87_0.png" src="_images/generation_87_0.png" />
+</div>
+</div>
+<p>There are always some people whose ideas are considered bad or dangerous by other people.</p>
+<ul class="simple">
+<li><p>For instance, somebody who is against all churches and religion …
+Should such a person be allowed to teach in a college or university, or not?</p></li>
+<li><p>Now consider a Muslim clergyman who preaches hatred of the United States.
+Should such a person be allowed to teach in a college or university, or not?</p></li>
+<li><p>Questions associated with this variable:
+Or consider a person who believes that Blacks are genetically inferior….
+Should such a person be allowed to teach in a college or university, or not?</p></li>
+<li><p>Now, I should like to ask you some questions about a man who admits he is a Communist.
+Suppose he is teaching in a college. Should he be fired, or not?</p></li>
+<li><p>Consider a person who advocates doing away with elections and letting the military run the country.
+Should such a person be allowed to teach in a college or university, or not?</p></li>
+<li><p>And what about a man who admits that he is a homosexual?
+Should such a person be allowed to teach in a college or university, or not?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;colmslm&#39;</span><span class="p">,</span> <span class="s1">&#39;colrac&#39;</span><span class="p">,</span> <span class="s1">&#39;colcom&#39;</span><span class="p">,</span> <span class="s1">&#39;colmil&#39;</span><span class="p">,</span> <span class="s1">&#39;colath&#39;</span><span class="p">,</span> <span class="s1">&#39;colhomo&#39;</span><span class="p">]</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Allow to teach at college or university&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_89_0.png" src="_images/generation_89_0.png" />
+</div>
+</div>
+<p>There are always some people whose ideas are considered bad or dangerous by other people.</p>
+<ul class="simple">
+<li><p>libath: For instance, somebody who is against all churches and religion …
+If some people in your community suggested that a book he wrote against churches and religion should be taken out of your public library, would you favor removing this book, or not?</p></li>
+<li><p>librac: Or consider a person who believes that Blacks are genetically inferior.
+If some people in your community suggested that a book he wrote which said Blacks are inferior should be taken out of your public library, would you favor removing this book, or not?</p></li>
+<li><p>libcom: Now, I should like to ask you some questions about a man who admits he is a Communist.
+Suppose he wrote a book which is in your public library. Somebody in your community suggests that the book should be removed from the library. Would you favor removing it, or not?</p></li>
+<li><p>libmil: Consider a person who advocates doing away with elections and letting the military run the country.
+Suppose he wrote a book advocating doing away with elections and letting the military run the country.  Somebody in your community suggests that the book be removed from the public library. Would you favor removing it, or not?</p></li>
+<li><p>libhomo: And what about a man who admits that he is a homosexual?
+If some people in your community suggested that a book he wrote in favor of homosexuality should be taken out of your public library, would you favor removing this book, or not?</p></li>
+<li><p>libmslm: Now consider a Muslim clergyman who preaches hatred of the United States.
+If some people in your community suggested that a book he wrote which preaches hatred of the United States should be taken out of your public library, would you favor removing this book, or not?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;libmslm&#39;</span><span class="p">,</span> <span class="s1">&#39;librac&#39;</span><span class="p">,</span> <span class="s1">&#39;libcom&#39;</span><span class="p">,</span> <span class="s1">&#39;libmil&#39;</span><span class="p">,</span> <span class="s1">&#39;libath&#39;</span><span class="p">,</span> <span class="s1">&#39;libhomo&#39;</span><span class="p">]</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Keep book in library written by&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_91_0.png" src="_images/generation_91_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="confidence-in-institutions">
+<h2>Confidence in institutions<a class="headerlink" href="#confidence-in-institutions" title="Permalink to this headline">¶</a></h2>
+<p>“I am going to name some institutions in this country. As far as the people running these institutions are concerned, would you say you have a great deal of confidence, only some confidence, or hardly any confidence at all in them?”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;conbus&#39;</span><span class="p">,</span> <span class="s1">&#39;coneduc&#39;</span><span class="p">,</span> <span class="s1">&#39;conjudge&#39;</span><span class="p">,</span> <span class="s1">&#39;conmedic&#39;</span><span class="p">,</span> <span class="s1">&#39;consci&#39;</span><span class="p">,</span> <span class="s1">&#39;conarmy&#39;</span><span class="p">]</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Great deal of confidence in&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_93_0.png" src="_images/generation_93_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;contv&#39;</span><span class="p">,</span> <span class="s1">&#39;conpress&#39;</span><span class="p">,</span> <span class="s1">&#39;conlegis&#39;</span><span class="p">,</span> <span class="s1">&#39;confed&#39;</span><span class="p">,</span> <span class="s1">&#39;conclerg&#39;</span><span class="p">,</span> <span class="s1">&#39;confinan&#39;</span><span class="p">,</span> <span class="s1">&#39;conlabor&#39;</span><span class="p">]</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Great deal of confidence in&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&quot;title=&#39;Great&quot;, &#39;deal&#39;, &#39;of&#39;, &#39;confidence&#39;, &quot;in&#39;);&quot;)
+</pre></div>
+</div>
+<img alt="_images/generation_94_1.png" src="_images/generation_94_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="allocation-of-resources">
+<h2>Allocation of resources<a class="headerlink" href="#allocation-of-resources" title="Permalink to this headline">¶</a></h2>
+<p>“We are faced with many problems in this country, none of which can be solved easily or inexpensively. I’m going to name some of these problems, and for each one I’d like you to tell me whether you think we’re spending too much money on it, too little money, or about the right amount.”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nataid&#39;</span><span class="p">,</span> <span class="s1">&#39;natfare&#39;</span><span class="p">,</span> <span class="s1">&#39;natpark&#39;</span><span class="p">,</span> <span class="s1">&#39;natrace&#39;</span><span class="p">,</span> <span class="s1">&#39;natchld&#39;</span><span class="p">,</span> <span class="s1">&#39;natenvir&#39;</span><span class="p">]</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;We spend too little money on&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;generation5.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_96_0.png" src="_images/generation_96_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;natarms&#39;</span><span class="p">,</span> <span class="s1">&#39;natmass&#39;</span><span class="p">,</span> <span class="s1">&#39;natsci&#39;</span><span class="p">,</span> <span class="s1">&#39;natroad&#39;</span><span class="p">,</span> <span class="s1">&#39;natsoc&#39;</span><span class="p">,</span> <span class="s1">&#39;natcrime&#39;</span><span class="p">]</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;We spend too little money on&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;generation6.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_97_0.png" src="_images/generation_97_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;natspac&#39;</span><span class="p">,</span> <span class="s1">&#39;natcity&#39;</span><span class="p">,</span> <span class="s1">&#39;natenrgy&#39;</span><span class="p">,</span> <span class="s1">&#39;natdrug&#39;</span><span class="p">,</span> <span class="s1">&#39;natheal&#39;</span><span class="p">,</span> <span class="s1">&#39;nateduc&#39;</span><span class="p">]</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;We spend too little money on&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;generation7.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_98_0.png" src="_images/generation_98_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="issues-related-to-sex">
+<h2>Issues related to sex<a class="headerlink" href="#issues-related-to-sex" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;premarsx&#39;</span><span class="p">,</span> <span class="s1">&#39;homosex&#39;</span><span class="p">,</span> <span class="s1">&#39;teensex&#39;</span><span class="p">,</span> <span class="s1">&#39;xmarsex&#39;</span><span class="p">,</span> <span class="s1">&#39;sexeduc&#39;</span><span class="p">]</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;generation8.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_100_0.png" src="_images/generation_100_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="outlook">
+<h2>Outlook<a class="headerlink" href="#outlook" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;trust&#39;</span><span class="p">,</span> <span class="s1">&#39;helpful&#39;</span><span class="p">,</span> <span class="s1">&#39;fair&#39;</span><span class="p">,</span> <span class="s1">&#39;fear&#39;</span><span class="p">]</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_102_0.png" src="_images/generation_102_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="public-policy">
+<h2>Public policy<a class="headerlink" href="#public-policy" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;affrmact&#39;</span><span class="p">,</span> <span class="s1">&#39;cappun&#39;</span><span class="p">,</span> <span class="s1">&#39;divlaw&#39;</span><span class="p">,</span> <span class="s1">&#39;prayer&#39;</span><span class="p">]</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Law and public policy&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;generation3.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_104_0.png" src="_images/generation_104_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;grass&#39;</span><span class="p">,</span> <span class="s1">&#39;pornlaw&#39;</span><span class="p">,</span> <span class="s1">&#39;gunlaw&#39;</span><span class="p">,</span> <span class="s1">&#39;letdie1&#39;</span><span class="p">,</span> <span class="s1">&#39;racopen&#39;</span><span class="p">]</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Law and public policy&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;generation2.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_105_0.png" src="_images/generation_105_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="abortion">
+<h2>Abortion<a class="headerlink" href="#abortion" title="Permalink to this headline">¶</a></h2>
+<p>“Please tell me whether or not you think it should be possible for a pregnant woman to obtain a legal abortion if …</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;abany&#39;</span><span class="p">,</span> <span class="s1">&#39;abnomore&#39;</span><span class="p">,</span> <span class="s1">&#39;absingle&#39;</span><span class="p">,</span> <span class="s1">&#39;abpoor&#39;</span><span class="p">,</span> <span class="s1">&#39;abdefect&#39;</span><span class="p">,</span> <span class="s1">&#39;abrape&#39;</span><span class="p">,</span> <span class="s1">&#39;abhlth&#39;</span><span class="p">]</span>
+
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Abortion should be legal if&#39;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;generation4.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_107_0.png" src="_images/generation_107_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="religion">
+<h2>Religion<a class="headerlink" href="#religion" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bible&#39;</span><span class="p">,</span> <span class="s1">&#39;reborn&#39;</span><span class="p">,</span> <span class="s1">&#39;savesoul&#39;</span><span class="p">,</span> <span class="s1">&#39;god&#39;</span><span class="p">,</span> <span class="s1">&#39;postlife&#39;</span><span class="p">]</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> 
+          <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> 
+          <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Religious beliefs&#39;</span><span class="p">,</span>
+          <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">110</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;generation1.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_109_0.png" src="_images/generation_109_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;relactiv&#39;</span><span class="p">,</span> <span class="s1">&#39;attend&#39;</span><span class="p">,</span> <span class="s1">&#39;relpersn&#39;</span><span class="p">,</span> <span class="s1">&#39;sprtprsn&#39;</span><span class="p">,</span> <span class="s1">&#39;relexp&#39;</span><span class="p">,</span> <span class="s1">&#39;pray&#39;</span><span class="p">]</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> 
+          <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> 
+          <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Religious beliefs&#39;</span><span class="p">,</span>
+          <span class="c1">#xlim=[0, 110]</span>
+         <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;generation1b.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_110_0.png" src="_images/generation_110_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="gender-roles-and-work">
+<h2>Gender roles and work<a class="headerlink" href="#gender-roles-and-work" title="Permalink to this headline">¶</a></h2>
+<p>“Tell me if you agree or disagree with this statement: Most men are better suited emotionally for politics than are most women.”  Select “agree”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df.fepol.replace([0, 8, 9], np.nan, inplace=True)
+df.fejobaff.replace([0, 8, 9], np.nan, inplace=True)
+df.fehire.replace([0, 8, 9], np.nan, inplace=True)
+df.fechld.replace([0, 8, 9], np.nan, inplace=True)
+df.fepresch.replace([0, 8, 9], np.nan, inplace=True)
+df.fefam.replace([0, 8, 9], np.nan, inplace=True)
+df.discaffm.replace([0, 8, 9], np.nan, inplace=True)
+df.discaffw.replace([0, 8, 9], np.nan, inplace=True)
+df.meovrwrk.replace([0, 8, 9], np.nan, inplace=True)
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fepol&#39;</span><span class="p">,</span> <span class="s1">&#39;fefam&#39;</span><span class="p">,</span> <span class="s1">&#39;fepresch&#39;</span><span class="p">,</span> <span class="s1">&#39;fejobaff&#39;</span><span class="p">,</span> <span class="s1">&#39;discaffm&#39;</span><span class="p">,</span> <span class="s1">&#39;meovrwrk&#39;</span><span class="p">]</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Agree or strongly agree&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_112_0.png" src="_images/generation_112_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;discaffw&#39;</span><span class="p">,</span> <span class="s1">&#39;fehire&#39;</span><span class="p">,</span> <span class="s1">&#39;fechld&#39;</span><span class="p">]</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Agree or strongly agree&#39;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="mi">85</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(60, 85)
+</pre></div>
+</div>
+<img alt="_images/generation_113_1.png" src="_images/generation_113_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="misc">
+<h2>Misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
+<p>“Do you strongly agree, agree, disagree, or strongly disagree that it is sometimes necessary to discipline a child with a good, hard spanking?”</p>
+<p>“Tell me if you agree or disagree with this statement: Most men are better suited emotionally for politics than are most women.”  Select “agree”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fepol&#39;</span><span class="p">,</span> <span class="s1">&#39;spanking&#39;</span><span class="p">]</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">varnames</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Agree or strongly agree&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/generation_115_0.png" src="_images/generation_115_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">varname</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">varname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;con&#39;</span><span class="p">):</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">varname</span><span class="p">)</span>
+<span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;confinan&#39;,
+ &#39;conbus&#39;,
+ &#39;conclerg&#39;,
+ &#39;coneduc&#39;,
+ &#39;confed&#39;,
+ &#39;conlabor&#39;,
+ &#39;conpress&#39;,
+ &#39;conmedic&#39;,
+ &#39;contv&#39;,
+ &#39;conjudge&#39;,
+ &#39;consci&#39;,
+ &#39;conlegis&#39;,
+ &#39;conarmy&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Allen B. Downey<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

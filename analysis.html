@@ -1,0 +1,700 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analysis of Algorithms &#8212; Data Structures and Information Retrieval in Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Algorithms" href="algorithms.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Structures and Information Retrieval in Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Outline
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="algorithms.html">
+   Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Analysis of Algorithms
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/analysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AllenDowney/DSIRP"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/DSIRP/master?urlpath=tree/analysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#order-of-growth">
+   Order of growth
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#big-o-notation">
+   Big O notation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-adding-the-elements-of-a-list">
+   Example: Adding the elements of a list
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-sorting">
+   Example: Sorting
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="analysis-of-algorithms">
+<h1>Analysis of Algorithms<a class="headerlink" href="#analysis-of-algorithms" title="Permalink to this headline">¶</a></h1>
+<p><em>Data Structures and Information Retrieval in Python</em></p>
+<p>Copyright 2021 Allen Downey</p>
+<p>License: <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a></p>
+<p><strong>Analysis of algorithms</strong> is a branch of computer science that studies
+the performance of algorithms, especially their run time and space
+requirements. See <a class="reference external" href="http://en.wikipedia.org/wiki/Analysis_of_algorithms">http://en.wikipedia.org/wiki/Analysis_of_algorithms</a>.</p>
+<p>The practical goal of algorithm analysis is to predict the performance
+of different algorithms in order to guide design decisions.</p>
+<p>During the 2008 United States Presidential Campaign, candidate Barack
+Obama was asked to perform an impromptu analysis when he visited Google.
+Chief executive Eric Schmidt jokingly asked him for “the most efficient
+way to sort a million 32-bit integers.” Obama had apparently been tipped
+off, because he quickly replied, “I think the bubble sort would be the
+wrong way to go.” See <a class="reference external" href="http://www.youtube.com/watch?v=k4RRi_ntQc8">http://www.youtube.com/watch?v=k4RRi_ntQc8</a>.</p>
+<p>This is true: bubble sort is conceptually simple but slow for large datasets. The answer Schmidt was probably looking for is “radix sort”
+(<a class="reference external" href="http://en.wikipedia.org/wiki/Radix_sort">http://en.wikipedia.org/wiki/Radix_sort</a>).</p>
+<p>But if you get a question like this in an interview, I think a
+better answer is, “The fastest way to sort a million integers is to
+use whatever sort function is provided by the language I’m using.
+Its performance is good enough for the vast majority of
+applications, but if it turned out that my application was too slow,
+I would use a profiler to see where the time was being spent. If it
+looked like a faster sort algorithm would have a significant effect
+on performance, then I would look around for a good implementation
+of radix sort.”</p>
+<p>The goal of algorithm analysis is to make meaningful comparisons between algorithms, but there are some problems:</p>
+<ul class="simple">
+<li><p>The relative performance of the algorithms might depend on
+characteristics of the hardware, so one algorithm might be faster on
+Machine A, another on Machine B. The usual solution to this
+problem is to specify a <strong>machine model</strong> and analyze the number of
+steps, or operations, an algorithm requires under a given model.</p></li>
+<li><p>Relative performance might depend on the details of the dataset. For
+example, some sorting algorithms run faster if the data are already
+partially sorted; other algorithms run slower in this case. A common
+way to avoid this problem is to analyze the <strong>worst case</strong> scenario.
+It is sometimes useful to analyze average case performance, but
+that’s usually harder, and it might not be obvious what set of cases
+to average over.</p></li>
+<li><p>Relative performance also depends on the size of the problem. A
+sorting algorithm that is fast for small lists might be slow for
+long lists. The usual solution to this problem is to express run
+time (or number of operations) as a function of problem size, and
+group functions into categories depending on how quickly they grow
+as problem size increases.</p></li>
+</ul>
+<p>The good thing about this kind of comparison is that it lends itself to
+simple classification of algorithms. For example, if I know that the run
+time of Algorithm A tends to be proportional to the size of the input,
+<span class="math notranslate nohighlight">\(n\)</span>, and Algorithm B tends to be proportional to <span class="math notranslate nohighlight">\(n^2\)</span>, then I expect A
+to be faster than B, at least for large values of <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>This kind of analysis comes with some caveats, but we’ll get to that later.</p>
+<div class="section" id="order-of-growth">
+<h2>Order of growth<a class="headerlink" href="#order-of-growth" title="Permalink to this headline">¶</a></h2>
+<p>Suppose you have analyzed two algorithms and expressed their run times in terms of the size of the input: Algorithm A takes <span class="math notranslate nohighlight">\(100n+1\)</span> steps to solve a problem with size <span class="math notranslate nohighlight">\(n\)</span>; Algorithm B takes <span class="math notranslate nohighlight">\(n^2 + n + 1\)</span> steps.</p>
+<p>The following table shows the run time of these algorithms for different problem sizes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">])</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">table</span><span class="p">[</span><span class="s1">&#39;Algorithm A&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">table</span><span class="p">[</span><span class="s1">&#39;Algorithm B&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">table</span><span class="p">[</span><span class="s1">&#39;Ratio (B/A)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s1">&#39;Algorithm B&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">table</span><span class="p">[</span><span class="s1">&#39;Algorithm A&#39;</span><span class="p">]</span>
+<span class="n">table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Algorithm A</th>
+      <th>Algorithm B</th>
+      <th>Ratio (B/A)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10</th>
+      <td>1001</td>
+      <td>111</td>
+      <td>0.110889</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>10001</td>
+      <td>10101</td>
+      <td>1.009999</td>
+    </tr>
+    <tr>
+      <th>1000</th>
+      <td>100001</td>
+      <td>1001001</td>
+      <td>10.009910</td>
+    </tr>
+    <tr>
+      <th>10000</th>
+      <td>1000001</td>
+      <td>100010001</td>
+      <td>100.009901</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>At <span class="math notranslate nohighlight">\(n=10\)</span>, Algorithm A looks pretty bad; it takes almost 10 times longer
+than Algorithm B.
+But for <span class="math notranslate nohighlight">\(n=100\)</span> they are about the same, and for larger values A is much better.</p>
+<p>The fundamental reason is that for large values of <span class="math notranslate nohighlight">\(n\)</span>, any function
+that contains an <span class="math notranslate nohighlight">\(n^2\)</span> term will grow faster than a function whose
+leading term is <span class="math notranslate nohighlight">\(n\)</span>. The <strong>leading term</strong> is the term with the highest
+exponent.</p>
+<p>For Algorithm A, the leading term has a large coefficient, 100, which is
+why B does better than A for small <span class="math notranslate nohighlight">\(n\)</span>. But regardless of the
+coefficients, there will always be some value of <span class="math notranslate nohighlight">\(n\)</span> where
+<span class="math notranslate nohighlight">\(a n^2 &gt; b n\)</span>, for any values of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
+<p>The same argument applies to the non-leading terms. Suppose the run time
+of Algorithm C is <span class="math notranslate nohighlight">\(n+1000000\)</span>; it would still be better than Algorithm
+B for sufficiently large <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">])</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">table</span><span class="p">[</span><span class="s1">&#39;Algorithm C&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1000000</span>
+<span class="n">table</span><span class="p">[</span><span class="s1">&#39;Algorithm B&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">table</span><span class="p">[</span><span class="s1">&#39;Ratio (C/B)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s1">&#39;Algorithm B&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">table</span><span class="p">[</span><span class="s1">&#39;Algorithm C&#39;</span><span class="p">]</span>
+<span class="n">table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Algorithm C</th>
+      <th>Algorithm B</th>
+      <th>Ratio (C/B)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10</th>
+      <td>1000010</td>
+      <td>111</td>
+      <td>0.000111</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>1000100</td>
+      <td>10101</td>
+      <td>0.010100</td>
+    </tr>
+    <tr>
+      <th>1000</th>
+      <td>1001000</td>
+      <td>1001001</td>
+      <td>1.000001</td>
+    </tr>
+    <tr>
+      <th>10000</th>
+      <td>1010000</td>
+      <td>100010001</td>
+      <td>99.019803</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In general, we expect an algorithm with a smaller leading term to be a
+better algorithm for large problems, but for smaller problems, there may
+be a <strong>crossover point</strong> where another algorithm is better.</p>
+<p>The following figure shows the run times (in arbitrary units) for the three algorithms over a range of problems sizes. For small problem sizes, Algorithm B is the fastest, but for large problems sizes, it is the worst.
+In the figure, we can see where the crossover points are.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1500</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">ns</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Algorithm A&#39;</span><span class="p">)</span>
+
+<span class="n">ys</span> <span class="o">=</span> <span class="n">ns</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">ns</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Algorithm B&#39;</span><span class="p">)</span>
+
+<span class="n">ys</span> <span class="o">=</span> <span class="n">ns</span> <span class="o">+</span> <span class="mi">1_000_000</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Algorithm C&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Problem size (n)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Run time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/analysis_11_0.png" src="_images/analysis_11_0.png" />
+</div>
+</div>
+<p>The location of these crossover points depends on the details of the algorithms, the
+inputs, and the hardware, so it is usually ignored for purposes of
+algorithmic analysis. But that doesn’t mean you can forget about it.</p>
+</div>
+<div class="section" id="big-o-notation">
+<h2>Big O notation<a class="headerlink" href="#big-o-notation" title="Permalink to this headline">¶</a></h2>
+<p>If two algorithms have the same leading order term, it is hard to say
+which is better; again, the answer depends on the details. So for
+algorithmic analysis, functions with the same leading term are
+considered equivalent, even if they have different coefficients.</p>
+<p>An <strong>order of growth</strong> is a set of functions whose growth behavior is
+considered equivalent. For example, <span class="math notranslate nohighlight">\(2n\)</span>, <span class="math notranslate nohighlight">\(100n\)</span> and <span class="math notranslate nohighlight">\(n+1\)</span> belong to the
+same order of growth, which is written <span class="math notranslate nohighlight">\(O(n)\)</span> in <strong>Big-O notation</strong> and
+often called <strong>linear</strong> because every function in the set grows linearly
+with <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>All functions with the leading term <span class="math notranslate nohighlight">\(n^2\)</span> belong to <span class="math notranslate nohighlight">\(O(n^2)\)</span>; they are
+called <strong>quadratic</strong>.</p>
+<p>The following table shows some of the orders of growth that appear most
+commonly in algorithmic analysis, in increasing order of badness.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Order of growth</p></th>
+<th class="head"><p>Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td><p>constant</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(O(\log_b n)\)</span></p></td>
+<td><p>logarithmic (for any <span class="math notranslate nohighlight">\(b\)</span>)</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(O(n)\)</span></p></td>
+<td><p>linear</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(O(n \log_b n)\)</span></p></td>
+<td><p>linearithmic</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(O(n^2)\)</span></p></td>
+<td><p>quadratic</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(O(n^3)\)</span></p></td>
+<td><p>cubic</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(O(c^n)\)</span></p></td>
+<td><p>exponential (for any <span class="math notranslate nohighlight">\(c\)</span>)</p></td>
+</tr>
+</tbody>
+</table>
+<p>For the logarithmic terms, the base of the logarithm doesn’t matter;
+changing bases is the equivalent of multiplying by a constant, which
+doesn’t change the order of growth. Similarly, all exponential functions
+belong to the same order of growth regardless of the base of the
+exponent. Exponential functions grow very quickly, so exponential
+algorithms are only useful for small problems.</p>
+<div class="section" id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
+<p>Read the Wikipedia page on Big-O notation at
+<a class="reference external" href="http://en.wikipedia.org/wiki/Big_O_notation">http://en.wikipedia.org/wiki/Big_O_notation</a> and answer the following
+questions:</p>
+<ol class="simple">
+<li><p>What is the order of growth of <span class="math notranslate nohighlight">\(n^3 + n^2\)</span>? What about
+<span class="math notranslate nohighlight">\(1000000 n^3 + n^2\)</span>? What about <span class="math notranslate nohighlight">\(n^3 + 1000000 n^2\)</span>?</p></li>
+<li><p>What is the order of growth of <span class="math notranslate nohighlight">\((n^2 + n) \cdot (n + 1)\)</span>? Before you
+start multiplying, remember that you only need the leading term.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(f\)</span> is in <span class="math notranslate nohighlight">\(O(g)\)</span>, for some unspecified function <span class="math notranslate nohighlight">\(g\)</span>, what can we
+say about <span class="math notranslate nohighlight">\(af+b\)</span>, where <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are constants?</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(f_1\)</span> and <span class="math notranslate nohighlight">\(f_2\)</span> are in <span class="math notranslate nohighlight">\(O(g)\)</span>, what can we say about <span class="math notranslate nohighlight">\(f_1 + f_2\)</span>?</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(f_1\)</span> is in <span class="math notranslate nohighlight">\(O(g)\)</span> and <span class="math notranslate nohighlight">\(f_2\)</span> is in <span class="math notranslate nohighlight">\(O(h)\)</span>, what can we say about
+<span class="math notranslate nohighlight">\(f_1 + f_2\)</span>?</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(f_1\)</span> is in <span class="math notranslate nohighlight">\(O(g)\)</span> and <span class="math notranslate nohighlight">\(f_2\)</span> is in <span class="math notranslate nohighlight">\(O(h)\)</span>, what can we say about
+<span class="math notranslate nohighlight">\(f_1 \cdot f_2\)</span>?</p></li>
+</ol>
+<p>Programmers who care about performance often find this kind of analysis
+hard to swallow. They have a point: sometimes the coefficients and the
+non-leading terms make a real difference. Sometimes the details of the
+hardware, the programming language, and the characteristics of the input
+make a big difference. And for small problems, order of growth is
+irrelevant.</p>
+<p>But if you keep those caveats in mind, algorithmic analysis is a useful
+tool. At least for large problems, the “better” algorithm is usually
+better, and sometimes it is <em>much</em> better. The difference between two
+algorithms with the same order of growth is usually a constant factor,
+but the difference between a good algorithm and a bad algorithm is
+unbounded!</p>
+</div>
+</div>
+<div class="section" id="example-adding-the-elements-of-a-list">
+<h2>Example: Adding the elements of a list<a class="headerlink" href="#example-adding-the-elements-of-a-list" title="Permalink to this headline">¶</a></h2>
+<p>In Python, most arithmetic operations are constant time; multiplication usually takes longer than addition and subtraction, and division takes even longer, but these run times don’t depend on the magnitude of the operands. Very large integers are an exception; in that case the run time increases with the number of digits.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that iterates a list is linear, as long as all of the operations in the body of the loop are constant time. For example, adding up the elements of a list is linear:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_sum</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">total</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">compute_sum</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>45
+</pre></div>
+</div>
+</div>
+</div>
+<p>The built-in function <code class="docutils literal notranslate"><span class="pre">sum</span></code> is also linear because it does the same thing, but it tends to be faster because it is a more efficient implementation; in the language of algorithmic analysis, it has a smaller leading coefficient.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> compute_sum(t)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>310 ns ± 0.579 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> sum(t)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>131 ns ± 0.444 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="example-sorting">
+<h2>Example: Sorting<a class="headerlink" href="#example-sorting" title="Permalink to this headline">¶</a></h2>
+<p>Python provides a list method, <code class="docutils literal notranslate"><span class="pre">sort</span></code>, that modifies a list in place, and a function, <code class="docutils literal notranslate"><span class="pre">sorted</span></code> that makes a new list.</p>
+<p>Read the Wikipedia page on sorting algorithms at
+<a class="reference external" href="http://en.wikipedia.org/wiki/Sorting_algorithm">http://en.wikipedia.org/wiki/Sorting_algorithm</a> and answer the
+following questions:</p>
+<ol class="simple">
+<li><p>What is a “comparison sort?” What is the best worst-case order of growth for a comparison sort? What is the best worst-case order of growth for any sort algorithm?</p></li>
+<li><p>What is the order of growth of bubble sort, and why does Barack Obama think it is “the wrong way to go?”</p></li>
+<li><p>What is the order of growth of radix sort? What preconditions do we need to use it?</p></li>
+<li><p>What is a stable sort and why might it matter in practice?</p></li>
+<li><p>What is the worst sorting algorithm (that has a name)?</p></li>
+<li><p>What sort algorithm does the C library use? What sort algorithm does Python use? Are these algorithms stable? You might have to Google around to find these answers.</p></li>
+<li><p>Many of the non-comparison sorts are linear, so why does Python use an <span class="math notranslate nohighlight">\(O(n \log n)\)</span> comparison sort?</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="algorithms.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Algorithms</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Allen B. Downey<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

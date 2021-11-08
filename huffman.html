@@ -1,0 +1,636 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Huffman Code &#8212; Data Structures and Information Retrieval in Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Structures and Information Retrieval in Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Outline
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="algorithms.html">
+   Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis.html">
+   Analysis of Algorithms
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/huffman.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AllenDowney/DSIRP"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/DSIRP/master?urlpath=tree/huffman.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#making-trees">
+   Making trees
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#drawing-the-tree">
+   Drawing the Tree
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#making-the-table">
+   Making the Table
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#encoding">
+   Encoding
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decoding">
+   Decoding
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="huffman-code">
+<h1>Huffman Code<a class="headerlink" href="#huffman-code" title="Permalink to this headline">¶</a></h1>
+<p><em>Data Structures and Information Retrieval in Python</em></p>
+<p>Copyright 2021 Allen Downey</p>
+<p>License: <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a></p>
+<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Huffman_coding">Huffman code</a> is a “type of optimal prefix code that is commonly used for lossless data compression”.
+There are three parts of that definition we have to unpack: “code”, “prefix”, and “optimal”.</p>
+<p>In this context, a “code” is a mapping from symbols to bit strings.
+For example, <a class="reference external" href="https://en.wikipedia.org/wiki/ASCII">ASCII</a> is a character encoding that maps from characters (like letters, numbers, and punctuation) to seven-bit integers.
+Since all ASCII bit strings are the same length, it is a “fixed-length code”, as contrasted with Huffman codes, which are “variable-length codes”.</p>
+<p>In order to decode something encoded in a variable-length code, there has to be some way to figure out where one bit string ends and the next begins.
+In general, there are three ways to solve this problem:</p>
+<ul class="simple">
+<li><p>One option is to begin each bit string with a special sequence that indicates its length. This is <a class="reference external" href="https://stackoverflow.com/questions/1543613/how-does-utf-8-variable-width-encoding-work">how Unicode works</a>.</p></li>
+<li><p>Another option is to end each bit string with a special sequence that marks the end.</p></li>
+<li><p>The third option is to use a “prefix code”, which is how Huffman codes work.</p></li>
+</ul>
+<p>A prefix code is a code where no whole bit string in the code is a prefix of any bit string in the code.
+If a code has this property, we can decode it by reading bits one at a time and checking to see whether we have completed a valid bit string.
+If so, we know we are at the end of the bit string, because it cannot be the prefix of another bit string.</p>
+<p>For example, the following is a prefix code with only three symbols:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">symbol</span>        <span class="n">bit</span> <span class="n">string</span>
+<span class="n">x</span>             <span class="mi">1</span>
+<span class="n">y</span>             <span class="mi">01</span>
+<span class="n">z</span>             <span class="mi">001</span>
+</pre></div>
+</div>
+<p>In this code, we can encode the string <code class="docutils literal notranslate"><span class="pre">xyz</span></code> with the bit string <code class="docutils literal notranslate"><span class="pre">101001</span></code>, and we can decode the result without ambiguity.</p>
+<p>So that’s what it means to say that a Huffman code is a prefix code; finally, Huffman codes are “optimal” in the sense that they give short codes to the most common symbols and longer codes to the least common symbols.
+The result is that they minimize the average number of bits needed to encode a sequence of symbols.</p>
+<p>However, in order to achieve this feat, we have to know the relative frequencies of the symbols.
+One way to do that is to start with a “corpus”, which is a text that contains the symbols in the proportions we expect for the text we will encode.</p>
+<p>As an example, I’ll use the text from the <a class="reference external" href="https://en.wikipedia.org/wiki/Huffman_coding">Huffman code Wikipedia page</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;this is an example of a huffman tree&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use a <code class="docutils literal notranslate"><span class="pre">Counter</span></code> to count the number of times each symbol appears in this text.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">c</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s see how we can use these counts to build a Huffman code.
+The first step is to build a Huffman tree, which is a binary tree where every node contains a count and some nodes contain symbols.</p>
+<p>To make a Huffman tree, we start with a sequence of nodes, one for each symbol.
+To represent nodes, I’ll use a <code class="docutils literal notranslate"><span class="pre">namedtuple</span></code>.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+
+<span class="n">Node</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Node&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;letter&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For example, here’s a node that represents the symbol <code class="docutils literal notranslate"><span class="pre">a</span></code> with count <code class="docutils literal notranslate"><span class="pre">4</span></code>.
+Since this node has no children, it is a leaf node.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">left</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And here’s another leaf node that represents the symbol <code class="docutils literal notranslate"><span class="pre">n</span></code> and its count.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">right</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">right</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>One reason we’re using a namedtuple is that it behaves like a tuple, so if we compare two <code class="docutils literal notranslate"><span class="pre">Node</span></code> objects, we get a tuple-like sorting order.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span> <span class="o">&gt;</span> <span class="n">right</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If two nodes have the same <code class="docutils literal notranslate"><span class="pre">count</span></code>, they get sorted in alphabetical order by <code class="docutils literal notranslate"><span class="pre">letter</span></code>.</p>
+<div class="section" id="making-trees">
+<h2>Making trees<a class="headerlink" href="#making-trees" title="Permalink to this headline">¶</a></h2>
+<p>Given these two leaf nodes, we can make a tree like this:</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="n">left</span><span class="o">.</span><span class="n">count</span> <span class="o">+</span> <span class="n">right</span><span class="o">.</span><span class="n">count</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+<span class="n">root</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because <code class="docutils literal notranslate"><span class="pre">root</span></code> has children, it is not a leaf node; it is an interior node.
+In a Huffman tree, the interior nodes do not represent symbols, so I have set <code class="docutils literal notranslate"><span class="pre">letter</span></code> to the null character <code class="docutils literal notranslate"><span class="pre">\0</span></code>.
+The count of an interior node is the sum of the count of its children.</p>
+<p>Now, to build a Huffman tree, we’ll start with a collection of nodes, one for each symbol, and build the tree “bottom up” by following these steps:</p>
+<ol class="simple">
+<li><p>Remove the node with the lowest count.</p></li>
+<li><p>Remove the node with the next lowest count.</p></li>
+<li><p>Make a new node with the nodes we just removed as children.</p></li>
+<li><p>Put the new node back into the collection.</p></li>
+<li><p>If there’s only one node in the collection, it’s the Huffman tree, and we’re done.</p></li>
+</ol>
+<p>In general, we could use any kind of collection, but if we look at the operations required by this algorithm, the most efficient option is a heap.</p>
+<p>But we’ll start by iterating through the <code class="docutils literal notranslate"><span class="pre">Counter</span></code> and making a list of <code class="docutils literal notranslate"><span class="pre">Node</span></code> objects,</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Node</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">letter</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> 
+         <span class="k">for</span> <span class="p">(</span><span class="n">letter</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+<span class="n">nodes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we’ll use the heap module to convert the list to a heap.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">heapq</span> <span class="kn">import</span> <span class="n">heapify</span><span class="p">,</span> <span class="n">heappop</span><span class="p">,</span> <span class="n">heappush</span>
+
+<span class="n">heap</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">heapify</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+<span class="n">heap</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can use the heap to make a tree.</p>
+<p><strong>Exercise:</strong> Write a function called <code class="docutils literal notranslate"><span class="pre">make_tree</span></code> that takes a heap of <code class="docutils literal notranslate"><span class="pre">Node</span></code> objects and uses the algorithm I described to make and return a Huffman tree. In other words, it should join up the nodes into a tree and return the root node.</p>
+<p>Use this code to test it.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tree</span> <span class="o">=</span> <span class="n">make_tree</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="drawing-the-tree">
+<h2>Drawing the Tree<a class="headerlink" href="#drawing-the-tree" title="Permalink to this headline">¶</a></h2>
+<p>To see what it looks like, we’ll use NetworkX and a library called EoN.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">EoN</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip install EoN
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following function traverses the Huffman tree and makes a NetworkX <code class="docutils literal notranslate"><span class="pre">DiGraph</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="k">def</span> <span class="nf">add_edges</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">G</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make a NetworkX graph that represents the heap.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">parent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span>
+    
+    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">right</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">child</span><span class="p">:</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">child</span><span class="p">)</span>
+            <span class="n">add_edges</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="n">add_edges</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following function traverses the tree again and collects the node labels in a dictionary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_labels</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make a NetworkX graph that represents the heap.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">parent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span>
+    
+    <span class="k">if</span> <span class="n">parent</span><span class="o">.</span><span class="n">letter</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">:</span>
+        <span class="n">labels</span><span class="p">[</span><span class="n">parent</span><span class="p">]</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">count</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">labels</span><span class="p">[</span><span class="n">parent</span><span class="p">]</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">letter</span>
+        
+    <span class="n">get_labels</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+    <span class="n">get_labels</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">get_labels</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_edge_labels</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">edge_labels</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make a NetworkX graph that represents the heap.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">parent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span>
+    
+    <span class="k">if</span> <span class="n">parent</span><span class="o">.</span><span class="n">left</span><span class="p">:</span>
+        <span class="n">edge_labels</span><span class="p">[</span><span class="n">parent</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">left</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
+        <span class="n">get_edge_labels</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">edge_labels</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="n">parent</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+        <span class="n">edge_labels</span><span class="p">[</span><span class="n">parent</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">right</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+        <span class="n">get_edge_labels</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">edge_labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edge_labels</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">get_edge_labels</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">edge_labels</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">edge_labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we’re ready to draw.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">EoN</span> <span class="kn">import</span> <span class="n">hierarchy_pos</span>
+
+<span class="k">def</span> <span class="nf">draw_tree</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+    <span class="n">add_edges</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">G</span><span class="p">)</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">hierarchy_pos</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">get_labels</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+    <span class="n">edge_labels</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">get_edge_labels</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">edge_labels</span><span class="p">)</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edge_labels</span><span class="o">=</span><span class="n">edge_labels</span><span class="p">,</span> <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_tree</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result might not be identical to the tree on <a class="reference external" href="https://en.wikipedia.org/wiki/Huffman_coding">the Wikipedia page</a>, but a letter in our tree should be on the same level as the same letter in their tree.</p>
+</div>
+<div class="section" id="making-the-table">
+<h2>Making the Table<a class="headerlink" href="#making-the-table" title="Permalink to this headline">¶</a></h2>
+<p>The following function traverses the tree, keeping track of the path as it goes. When it finds a leaf node, it makes an entry in the table.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_leaf</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">left</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">right</span> <span class="ow">is</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_table</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span>
+    
+    <span class="k">if</span> <span class="n">is_leaf</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+        <span class="n">table</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">letter</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="k">return</span>
+    
+    <span class="n">make_table</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">path</span><span class="o">+</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
+    <span class="n">make_table</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">path</span><span class="o">+</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">make_table</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
+
+<span class="n">table</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="encoding">
+<h2>Encoding<a class="headerlink" href="#encoding" title="Permalink to this headline">¶</a></h2>
+<p>We can use the table to encode a string by looking up each symbol in the string and joining the results into a bit string.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="n">table</span><span class="p">[</span><span class="n">letter</span><span class="p">]</span> <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">s</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s an example, noting that we can encode strings other than the corpus we started with, provided that it contains no symbols that were not in the corpus.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code</span> <span class="o">=</span> <span class="n">encode</span><span class="p">(</span><span class="s1">&#39;this is spinal tap&#39;</span><span class="p">,</span><span class="n">table</span><span class="p">)</span>
+<span class="n">code</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="decoding">
+<h2>Decoding<a class="headerlink" href="#decoding" title="Permalink to this headline">¶</a></h2>
+<p>To decode the bit string, we start at the top of the tree and follow the path, turning left when we see a <code class="docutils literal notranslate"><span class="pre">0</span></code> and right when we see a <code class="docutils literal notranslate"><span class="pre">1</span></code>.
+If we get to a root node, we have decoded a symbol, so we should record it and then jump back to the top of the tree to start decoding the next symbol.</p>
+<p><strong>Exercise:</strong> Write a function called <code class="docutils literal notranslate"><span class="pre">decode</span></code> that takes as parameters a string on 0s and 1s and a Huffman tree. It should decode the message and return it as a string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decode</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Allen B. Downey<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

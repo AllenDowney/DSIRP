@@ -1,0 +1,922 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exploring Distributions &#8212; Political Alignment Case Study</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Political Alignment and Outlook" href="03_outlook.html" />
+    <link rel="prev" title="Cleaning and Validation" href="01_clean.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Political Alignment Case Study</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Political Alignment Case Study
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_clean.html">
+   Cleaning and Validation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Exploring Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_outlook.html">
+   Political Alignment and Outlook
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_worldview.html">
+   Political Alignment and Other Views
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/02_polviews.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AllenDowney/PoliticalAlignmentCaseStudy"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/PoliticalAlignmentCaseStudy/master?urlpath=tree/02_polviews.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-the-data">
+   Loading the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#political-alignment">
+   Political alignment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pmfs">
+   PMFs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-series">
+   Time series
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#local-regression">
+     Local regression
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cross-tabulation">
+   Cross tabulation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#color-palettes">
+   Color palettes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting">
+   Plotting
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="exploring-distributions">
+<h1>Exploring Distributions<a class="headerlink" href="#exploring-distributions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This is the second in a series of notebooks that make up a <a class="reference external" href="https://allendowney.github.io/PoliticalAlignmentCaseStudy/">case study in exploratory data analysis</a>.
+This case study is part of the <a class="reference external" href="https://allendowney.github.io/ElementsOfDataScience/"><em>Elements of Data Science</em></a> curriculum.</p>
+<p>In this notebook, we:</p>
+<ol class="simple">
+<li><p>Look at responses to the variable <code class="docutils literal notranslate"><span class="pre">polviews</span></code>, which represent political alignment on a 7-point scale from liberal to conservative.</p></li>
+<li><p>Compare the distribution of responses in 1974 and 1990.</p></li>
+<li><p>Plot the mean and standard deviation of responses over time as a way of quantifying changes in political alignment and polarization.</p></li>
+<li><p>Use local regression to plot a smooth line through noisy data.</p></li>
+<li><p>Use cross tabulation to compute the fraction of respondents in each category over time.</p></li>
+<li><p>Plot the results using a custom color palette.</p></li>
+</ol>
+<p>As an exercise, you will look at changes in political party affiliation over the same period.</p>
+<p>The following cell installs the <code class="docutils literal notranslate"><span class="pre">empiricaldist</span></code> library if necessary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">empiricaldist</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip install empiricaldist
+</pre></div>
+</div>
+</div>
+</div>
+<p>If everything we need is installed, the following cell should run without error.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Pmf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following cell defines a function I use to decorate the axes in plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">decorate</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Decorate the current axes.</span>
+<span class="sd">    </span>
+<span class="sd">    Call decorate with keyword arguments like</span>
+<span class="sd">    decorate(title=&#39;Title&#39;,</span>
+<span class="sd">             xlabel=&#39;x&#39;,</span>
+<span class="sd">             ylabel=&#39;y&#39;)</span>
+<span class="sd">             </span>
+<span class="sd">    The keyword arguments can be any of the axis properties</span>
+<span class="sd">    https://matplotlib.org/api/axes_api.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+    
+    <span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">handles</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="loading-the-data">
+<h2>Loading the data<a class="headerlink" href="#loading-the-data" title="Permalink to this headline">¶</a></h2>
+<p>In the previous notebook, we downloaded GSS data, loaded and cleaned it, resampled it to correct for stratified sampling, and then saved the data in an HDF5 file, which is much faster to load.  In this and the following notebooks, we’ll download the HDF5 file and load it.</p>
+<p>The following cell downloads the file if necessary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
+
+<span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://github.com/AllenDowney/PoliticalAlignmentCaseStudy/&#39;</span> <span class="o">+</span>
+         <span class="s1">&#39;raw/master/gss_eda.3.hdf5&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This file contains three DataFrames containing resamples of the GSS data.  We’ll work with the first resampling, <code class="docutils literal notranslate"><span class="pre">gss0</span></code>, to get started; at the end of this notebook, we’ll see the other two as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datafile</span> <span class="o">=</span> <span class="s1">&#39;gss_eda.3.hdf5&#39;</span>
+<span class="n">gss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">datafile</span><span class="p">,</span> <span class="s1">&#39;gss0&#39;</span><span class="p">)</span>
+<span class="n">gss</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="political-alignment">
+<h2>Political alignment<a class="headerlink" href="#political-alignment" title="Permalink to this headline">¶</a></h2>
+<p>The people surveyed as part of the GSS were asked about their “political alignment”, which is where they place themselves on a spectrum from liberal to conservative.</p>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">polviews</span></code> contains responses to the <a class="reference external" href="https://gssdataexplorer.norc.org/projects/52787/variables/178/vshow">following question</a>:</p>
+<blockquote>
+<div><p>We hear a lot of talk these days about liberals and conservatives.
+I’m going to show you a seven-point scale on which the political views that people might hold are arranged from extremely liberal–point 1–to extremely conservative–point 7. Where would you place yourself on this scale?</p>
+</div></blockquote>
+<p>Here are the valid responses:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>	<span class="n">Extremely</span> <span class="n">liberal</span>
+<span class="mi">2</span>	<span class="n">Liberal</span>
+<span class="mi">3</span>	<span class="n">Slightly</span> <span class="n">liberal</span>
+<span class="mi">4</span>	<span class="n">Moderate</span>
+<span class="mi">5</span>	<span class="n">Slightly</span> <span class="n">conservative</span>
+<span class="mi">6</span>	<span class="n">Conservative</span>
+<span class="mi">7</span>	<span class="n">Extremely</span> <span class="n">conservative</span>
+</pre></div>
+</div>
+<p>To see how the responses have changed over time, we’ll inspect them at the beginning and end of the observation period.</p>
+<p>First I’ll select the column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">polviews</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s1">&#39;polviews&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then compute a Boolean Series that’s <code class="docutils literal notranslate"><span class="pre">True</span></code> for responses from 1974.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year74</span> <span class="o">=</span> <span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1974</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can select the responses from 1974.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">polviews74</span> <span class="o">=</span> <span class="n">polviews</span><span class="p">[</span><span class="n">year74</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As in the previous notebook, we’ll use <code class="docutils literal notranslate"><span class="pre">values</span></code> to plot the values in the series and their frequencies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Count the values and sort.</span>
+<span class="sd">    </span>
+<span class="sd">    series: pd.Series</span>
+<span class="sd">    </span>
+<span class="sd">    returns: series mapping from values to frequencies</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">series</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are the responses from 1974.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span><span class="p">(</span><span class="n">polviews74</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And here are the responses from 2018.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year18</span> <span class="o">=</span> <span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2018</span><span class="p">)</span>
+<span class="n">polviews18</span> <span class="o">=</span> <span class="n">polviews</span><span class="p">[</span><span class="n">year18</span><span class="p">]</span>
+<span class="n">values</span><span class="p">(</span><span class="n">polviews18</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pmfs">
+<h2>PMFs<a class="headerlink" href="#pmfs" title="Permalink to this headline">¶</a></h2>
+<p>To visualize these distributions, we’ll use the Probability Mass Function (PMF), which is similar to a histogram.  The difference is that the PMF is “normalized”, which means that it shows the percentage of people who gave each response, rather than the number.</p>
+<p>I’ll use the <code class="docutils literal notranslate"><span class="pre">Pmf</span></code> class from <code class="docutils literal notranslate"><span class="pre">empiricaldist</span></code> to compute them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Pmf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s the distribution from 1974:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf74</span> <span class="o">=</span> <span class="n">Pmf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">polviews74</span><span class="p">)</span>
+<span class="n">pmf74</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;1974&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Political view on a 7-point scale&#39;</span><span class="p">,</span>
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Fraction of population&#39;</span><span class="p">,</span>
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Distribution of political views&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And from 2018:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf18</span> <span class="o">=</span> <span class="n">Pmf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">polviews18</span><span class="p">)</span>
+<span class="n">pmf18</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;2018&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Political view on a 7-point scale&#39;</span><span class="p">,</span>
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Fraction of population&#39;</span><span class="p">,</span>
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Distribution of political views&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In both cases, the most common response is <code class="docutils literal notranslate"><span class="pre">4</span></code>, which is the code for “moderate”.  And few respondents describe themselves as “extremely” liberal or conservative.</p>
+<p>So maybe we’re not so polarized after all.</p>
+<p>To make it easier to compare the distributions, I’ll plot them side by side.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf74</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;1974&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=-</span><span class="mf">0.45</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;edge&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="n">pmf18</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;2018&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.45</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;edge&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Political view on a 7-point scale&#39;</span><span class="p">,</span>
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Fraction of population&#39;</span><span class="p">,</span>
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Distribution of political views&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can see the changes in the distribution more clearly.  It looks like the number of people at the extremes (1 and 7) has increased, and the fraction of liberal (2) and slightly liberal (3) has decreased.</p>
+<p><strong>Exercise:</strong> To summarize these changes, we can compare the mean and standard deviation of <code class="docutils literal notranslate"><span class="pre">polviews</span></code> in 1974 and 2018.</p>
+<p>The mean of the responses measures the balance of people in the population with liberal or conservative leanings.  If the mean increases over time, that might indicate a shift in the population toward conservatism.</p>
+<p>The standard deviation measures the dispersion of views in the population; if it increases over time, that might indicate an increase in polarization.</p>
+<p>Compute the mean and standard deviation of <code class="docutils literal notranslate"><span class="pre">polviews74</span></code> and <code class="docutils literal notranslate"><span class="pre">polviews18</span></code>.</p>
+<p>What do they indicate about changes over this interval?</p>
+</div>
+<div class="section" id="time-series">
+<h2>Time series<a class="headerlink" href="#time-series" title="Permalink to this headline">¶</a></h2>
+<p>At this point we have looked at the endpoints, 1974 and 2018, but we don’t know what happened in between.</p>
+<p>To see how the distribution changes over time, we can group by year and compute the mean of <code class="docutils literal notranslate"><span class="pre">polviews</span></code> during each year.</p>
+<p>First I’ll use <code class="docutils literal notranslate"><span class="pre">groupby</span></code> to group the respondents by year.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss_by_year</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+<span class="n">gss_by_year</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result is a <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> object that represents a collection of groups.  We can loop through the groups and display the number of respondents in each:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">gss_by_year</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In many ways the <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> behaves like a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.  We can use the bracket operator to select a column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">polviews_by_year</span> <span class="o">=</span> <span class="n">gss_by_year</span><span class="p">[</span><span class="s1">&#39;polviews&#39;</span><span class="p">]</span>
+<span class="n">polviews_by_year</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A column from a <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> is a <code class="docutils literal notranslate"><span class="pre">SeriesGroupBy</span></code>.  If we invoke <code class="docutils literal notranslate"><span class="pre">mean</span></code> on it, the results is a series that contains the mean of <code class="docutils literal notranslate"><span class="pre">polviews</span></code> for each year of the survey.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_series</span> <span class="o">=</span> <span class="n">polviews_by_year</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And here’s what it looks like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;polviews&#39;</span><span class="p">)</span>
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> 
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Mean (7 point scale)&#39;</span><span class="p">,</span>
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Mean of polviews&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> The standard deviation quantifies the spread of the distribution, which is one way to measure polarization.</p>
+<p>Plot standard deviation of <code class="docutils literal notranslate"><span class="pre">polviews</span></code> for each year of the survey from 1972 to 2018.</p>
+<p>Does it show evidence of increasing polarization?</p>
+<div class="section" id="local-regression">
+<h3>Local regression<a class="headerlink" href="#local-regression" title="Permalink to this headline">¶</a></h3>
+<p>In the previous section we plotted mean and standard deviation of <code class="docutils literal notranslate"><span class="pre">polviews</span></code> over time.  Both plots are quite noisy.</p>
+<p>We can use <a class="reference external" href="https://en.wikipedia.org/wiki/Local_regression">local regression</a> to compute a smooth line through these data points.</p>
+<p>The following function takes a Pandas Series and uses and algorithm called LOWESS to compute a smooth line.  LOWESS stands for “locally weighted scatterplot smoothing”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.nonparametric.smoothers_lowess</span> <span class="kn">import</span> <span class="n">lowess</span>
+
+<span class="k">def</span> <span class="nf">make_lowess</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Use LOWESS to compute a smooth line.</span>
+<span class="sd">    </span>
+<span class="sd">    series: pd.Series</span>
+<span class="sd">    </span>
+<span class="sd">    returns: pd.Series</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="n">smooth</span> <span class="o">=</span> <span class="n">lowess</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">index</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">smooth</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll use the following function to plot data points and the smoothed line.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_series_lowess</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plots a series of data points and a smooth line.</span>
+<span class="sd">    </span>
+<span class="sd">    series: pd.Series</span>
+<span class="sd">    color: string or tuple</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">smooth</span> <span class="o">=</span> <span class="n">make_lowess</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+    <span class="n">smooth</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following figure shows the mean of <code class="docutils literal notranslate"><span class="pre">polviews</span></code> and a smooth line.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_series</span> <span class="o">=</span> <span class="n">gss_by_year</span><span class="p">[</span><span class="s1">&#39;polviews&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">mean_series</span><span class="p">,</span> <span class="s1">&#39;C2&#39;</span><span class="p">)</span>
+<span class="n">decorate</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Mean (7 point scale)&#39;</span><span class="p">,</span>
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Mean of polviews&#39;</span><span class="p">,</span>
+         <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span>
+         <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">1972</span><span class="p">,</span> <span class="mi">2020</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>One reason the PMFs for 1974 and 2018 did not look very different is that the mean seems to have gone up (more conservative) and then down again (more liberal).</p>
+<p>Generally, it looks like the U.S. has been trending toward liberal for the last 20 years, or more, at least in the sense of how people describe themselves.</p>
+<p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">plot_series_lowess</span></code> to plot the standard deviation of <code class="docutils literal notranslate"><span class="pre">polviews</span></code> with a smooth line.</p>
+</div>
+</div>
+<div class="section" id="cross-tabulation">
+<h2>Cross tabulation<a class="headerlink" href="#cross-tabulation" title="Permalink to this headline">¶</a></h2>
+<p>In the previous sections, we treated <code class="docutils literal notranslate"><span class="pre">polviews</span></code> as a numerical quantity, so we were able to compute means and standard deviations.</p>
+<p>But the responses are really categorical, which means that each value represents a discrete category, like “liberal” or “conservative”.</p>
+<p>In this section, we’ll treat <code class="docutils literal notranslate"><span class="pre">polviews</span></code> as a categorical variable.  Specifically, we’ll compute the number of respondents in each category for each year, and plot changes over time.</p>
+<p>Pandas provides a function called <code class="docutils literal notranslate"><span class="pre">crosstab</span></code> that computes a <a class="reference external" href="https://en.wikipedia.org/wiki/Contingency_table">cross tabulation</a>.</p>
+<p>It takes two Series as arguments and returns a DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span>
+<span class="n">column</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s1">&#39;polviews&#39;</span><span class="p">]</span>
+
+<span class="n">xtab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are the first few lines from the result.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xtab</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It contains one row for each value of <code class="docutils literal notranslate"><span class="pre">year</span></code> and one column for each value of <code class="docutils literal notranslate"><span class="pre">polviews</span></code>.  Reading the first row, we see that in 1974, 31 people gave response 1, “extremely liberal”, 201 people gave response 2, “liberal”, and so on.</p>
+<p>The number of respondents varies from year to year, so we need to “normalize” the results, which means computing for each year the <em>fraction</em> of respondents in each category, rather than the count.</p>
+<p><code class="docutils literal notranslate"><span class="pre">crosstab</span></code> takes an optional argument that normalizes each row.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xtab_norm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s what that looks like for the 7-point scale.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xtab_norm</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To make the results easier to interpret, I’m going to replace the numeric codes 1-7 with strings.  First I’ll make a dictionary that maps from numbers to strings:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># recode the 7 point scale with words</span>
+<span class="n">d7</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Extremely liberal&#39;</span><span class="p">,</span> 
+      <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;Liberal&#39;</span><span class="p">,</span> 
+      <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;Slightly liberal&#39;</span><span class="p">,</span> 
+      <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;Moderate&#39;</span><span class="p">,</span> 
+      <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;Slightly conservative&#39;</span><span class="p">,</span> 
+      <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;Conservative&#39;</span><span class="p">,</span> 
+      <span class="mi">7</span><span class="p">:</span> <span class="s1">&#39;Extremely conservative&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we can use the <code class="docutils literal notranslate"><span class="pre">replace</span></code> function like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">polviews7</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s1">&#39;polviews&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">d7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">values</span></code> to confirm that the values in <code class="docutils literal notranslate"><span class="pre">polviews7</span></code> are strings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span><span class="p">(</span><span class="n">polviews7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we make the cross tabulation again, we can see that the column names are strings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xtab_norm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">polviews7</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<span class="n">xtab_norm</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We are almost ready to plot the results, but first we need some colors.</p>
+</div>
+<div class="section" id="color-palettes">
+<h2>Color palettes<a class="headerlink" href="#color-palettes" title="Permalink to this headline">¶</a></h2>
+<p>Seaborn provides a variety of color palettes,  <a class="reference external" href="https://seaborn.pydata.org/tutorial/color_palettes.html">which you can read about here</a>.</p>
+<p>To represent political views, I’ll use a diverging palette from blue to red.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">palplot</span><span class="p">(</span><span class="n">palette</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The middle color is white, which won’t work when we plot it, so I will replace it with a purple color from another palette.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">muted</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;muted&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">purple</span> <span class="o">=</span> <span class="n">muted</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">palplot</span><span class="p">(</span><span class="n">muted</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s the modified diverging palette  with purple in the middle.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">palette</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">purple</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">palplot</span><span class="p">(</span><span class="n">palette</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A feature of this color map is that the colors are meaningful, at least in countries that use blue, purple, and red for these points on the political spectrum.
+A drawback of this color map is that some some of the colors are indistinguishable to people who are <a class="reference external" href="https://davidmathlogic.com/colorblind">color blind</a>.</p>
+<p>Now I’ll make a dictionary that maps from the responses to the corresponding colors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Extremely liberal&#39;</span><span class="p">,</span> 
+           <span class="s1">&#39;Liberal&#39;</span><span class="p">,</span> 
+           <span class="s1">&#39;Slightly liberal&#39;</span><span class="p">,</span> 
+           <span class="s1">&#39;Moderate&#39;</span><span class="p">,</span> 
+           <span class="s1">&#39;Slightly conservative&#39;</span><span class="p">,</span> 
+           <span class="s1">&#39;Conservative&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Extremely conservative&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="n">palette</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">color_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting">
+<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
+<p>To plot the results, I use the following function, which takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and plots each column using <code class="docutils literal notranslate"><span class="pre">plot_series_lowess</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_columns_lowess</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plot the columns in a DataFrame.</span>
+<span class="sd">    </span>
+<span class="sd">    table: DataFrame with a cross tabulation</span>
+<span class="sd">    columns: list of column names, in the desired order</span>
+<span class="sd">    colors: mapping from column names to colors</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
+        <span class="n">series</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">col</span><span class="p">]</span>
+        <span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">colors</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following function sets the position of the figure legend.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">anchor_legend</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Place the upper left corner of the legend box.</span>
+<span class="sd">    </span>
+<span class="sd">    x: x coordinate</span>
+<span class="sd">    y: y coordinate</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are the 7 categories plotted as a function of time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_columns_lowess</span><span class="p">(</span><span class="n">xtab_norm</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">color_map</span><span class="p">)</span>
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span>
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Proportion&#39;</span><span class="p">,</span>
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Fraction of people with each political view&#39;</span><span class="p">,</span>
+         <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">1972</span><span class="p">,</span> <span class="mi">2020</span><span class="p">])</span>
+
+<span class="n">anchor_legend</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span> <span class="mf">1.02</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This way of looking at the results suggests that changes in political alignment during this period have generally been slow and small.</p>
+<p>The fraction of self-described moderates has not changed substantially.</p>
+<p>The fraction of conservatives increased, but seems to be decreasing now; the number of liberals seems to be increasing.</p>
+<p>The fraction of people at the extremes has increased, but it is hard to see clearly in this figure.</p>
+<p>We can get a better view by plotting just the extremes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Extremely liberal&#39;</span><span class="p">,</span> <span class="s1">&#39;Extremely conservative&#39;</span><span class="p">]</span>
+
+<span class="n">plot_columns_lowess</span><span class="p">(</span><span class="n">xtab_norm</span><span class="p">,</span> <span class="n">columns2</span><span class="p">,</span> <span class="n">color_map</span><span class="p">)</span>
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span>
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Proportion&#39;</span><span class="p">,</span>
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Fraction of people with extreme political views&#39;</span><span class="p">,</span>
+         <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">1970</span><span class="p">,</span> <span class="mi">2020</span><span class="p">])</span>
+
+<span class="n">anchor_legend</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span> <span class="mf">1.02</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This figure shows that the fraction of people who describe themselves as “extreme” has increased from about 2.5% to about 4%.</p>
+<p>In relative terms, that’s a big increase.  But in absolute terms these tails of the distribution are still small.</p>
+<p><strong>Exercise:</strong> Let’s do a similar analysis with <code class="docutils literal notranslate"><span class="pre">partyid</span></code>, which encodes responses to the question:</p>
+<blockquote>
+<div><p>Generally speaking, do you usually think of yourself as a Republican, Democrat, Independent, or what?</p>
+</div></blockquote>
+<p>The valid responses are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>	<span class="n">Strong</span> <span class="n">democrat</span>
+<span class="mi">1</span>	<span class="n">Not</span> <span class="nb">str</span> <span class="n">democrat</span>
+<span class="mi">2</span>	<span class="n">Ind</span><span class="p">,</span><span class="n">near</span> <span class="n">dem</span>
+<span class="mi">3</span>	<span class="n">Independent</span>
+<span class="mi">4</span>	<span class="n">Ind</span><span class="p">,</span><span class="n">near</span> <span class="n">rep</span>
+<span class="mi">5</span>	<span class="n">Not</span> <span class="nb">str</span> <span class="n">republican</span>
+<span class="mi">6</span>	<span class="n">Strong</span> <span class="n">republican</span>
+<span class="mi">7</span>	<span class="n">Other</span> <span class="n">party</span>
+</pre></div>
+</div>
+<p>You can <a class="reference external" href="https://gssdataexplorer.norc.org/projects/52787/variables/141/vshow">read the codebook for <code class="docutils literal notranslate"><span class="pre">partyid</span></code> here</a>.</p>
+<p>Here are the steps I suggest:</p>
+<ol class="simple">
+<li><p>If you have not already saved this notebook, you should do that first.  If you are running on Colab, select “Save a copy in Drive” from the File menu.</p></li>
+<li><p>Now, before you modify this notebook, make <em>another</em> copy and give it an appropriate name.</p></li>
+<li><p>Search and replace <code class="docutils literal notranslate"><span class="pre">polviews</span></code> with <code class="docutils literal notranslate"><span class="pre">partyid</span></code> (use “Edit-&gt;Find and replace”).</p></li>
+<li><p>Run the notebook from the beginning and see what other changes you have to make.</p></li>
+</ol>
+<p>You will have to make changes in <code class="docutils literal notranslate"><span class="pre">d7</span></code> and <code class="docutils literal notranslate"><span class="pre">columns</span></code>.  Otherwise you might get a message like</p>
+<p><code class="docutils literal notranslate"><span class="pre">TypeError:</span> <span class="pre">'&lt;'</span> <span class="pre">not</span> <span class="pre">supported</span> <span class="pre">between</span> <span class="pre">instances</span> <span class="pre">of</span> <span class="pre">'float'</span> <span class="pre">and</span> <span class="pre">'str'</span></code></p>
+<p>Also, you might have to drop “Other party” or change the color palette.</p>
+<p>And you should change the titles of the figures.</p>
+<p>What changes in party affiliation do you see over the last 50 years?  Are things going in the directions you expected?</p>
+<p>Write a headline (or a couple) that describe the most substantial changes you see.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="01_clean.html" title="previous page">Cleaning and Validation</a>
+    <a class='right-next' id="next-link" href="03_outlook.html" title="next page">Political Alignment and Outlook</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Allen B. Downey<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

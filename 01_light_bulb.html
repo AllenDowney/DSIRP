@@ -1,0 +1,786 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Survival Analysis &#8212; Survival Analysis in Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Kaplan-Meier Estimation" href="02_kaplan_meier.html" />
+    <link rel="prev" title="Outline" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Survival Analysis in Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Outline
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Survival Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_kaplan_meier.html">
+   Kaplan-Meier Estimation
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/01_light_bulb.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AllenDowney/SurvivalAnalysisPython"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/SurvivalAnalysisPython/master?urlpath=tree/01_light_bulb.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#light-bulb-lifetimes">
+   Light bulb lifetimes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pmf">
+   PMF
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cdf">
+   CDF
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#survival-function">
+   Survival function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hazard-function">
+   Hazard function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-cumulative-hazard-function">
+   The cumulative hazard function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resampling">
+   Resampling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="survival-analysis">
+<h1>Survival Analysis<a class="headerlink" href="#survival-analysis" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/SurvivalAnalysisPython/blob/master/01_light_bulb.ipynb">Run this notebook on Colab</a></p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This notebook presents four ways to represent a distribution: PMFs, CDFs, survival functions, and hazard functions.</p>
+<p>These representations are equivalent in the sense that if you are given any of them, you can compute the others.  So you might wonder why we need four ways to represent the same information.  There are two reasons:</p>
+<ol class="simple">
+<li><p>Each representation is useful for computing different values and answering different questions.  In this notebook I’ll show you what each representation is good for.</p></li>
+<li><p>In some cases we can use a sample to compute a PMF, and use the PMF to compute the other representations.  In other cases it is easier to estimate the hazard function and use it to compute the others.</p></li>
+</ol>
+<p>In this notebook I will demonstrate the first process, starting with the PMF.  In the next notebook we’ll see the second process, starting with the hazard function.</p>
+</div>
+<div class="section" id="light-bulb-lifetimes">
+<h2>Light bulb lifetimes<a class="headerlink" href="#light-bulb-lifetimes" title="Permalink to this headline">¶</a></h2>
+<p>As a first example, I’ll use I’ll use data from an experiment that measures the lifetimes of 50 light bulbs.
+I downloaded the data from from <a class="reference external" href="https://gist.github.com/epogrebnyak/7933e16c0ad215742c4c104be4fbdeb1">this gist</a>, which includes this documentation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Dataset from:
+    
+V.J. Menon and D.C. Agrawal,  Renewal Rate of Filament Lamps: 
+Theory and Experiment. Journal of Failure Analysis and Prevention. 
+December 2007, p. 421, Table 2/
+DOI: 10.1007/s11668-007-9074-9
+
+Description:
+
+An assembly of 50 new Philips (India) lamps with the 
+rating 40 W, 220 V (AC) was taken and installed in the horizontal 
+orientation and uniformly distributed over a lab area 11 m by 7 m. 
+
+The assembly was monitored at regular intervals of 12 h to
+look for failures. The instants of recorded failures were
+called t‘ and a total of 32 data points were obtained such
+that even the last bulb failed. 
+
+Variables:
+
+i - observation number
+h - time in hours since experiment start
+f - number of failed lamps at particular time h
+K - number of surviving lamps  at particular time h
+</pre></div>
+</div>
+<p>Because of the design of this experiment, we can consider the data to be a representative sample from the distribution of lifetimes, at least for light bulbs that are lit continuously.</p>
+<p>The following cell downloads the data (thanks to Evgeny Pogrebnyak for making it available).<br />
+If that fails, you should be able to <a class="reference external" href="https://github.com/AllenDowney/SurvivalAnalysisPython/raw/master/lamps.csv">get it from my repository</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">datafile</span> <span class="o">=</span> <span class="s1">&#39;lamps.csv&#39;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">datafile</span><span class="p">):</span>
+    <span class="o">!</span>wget https://gist.github.com/epogrebnyak/7933e16c0ad215742c4c104be4fbdeb1/raw/c932bc5b6aa6317770c4cbf43eb591511fec08f9/lamps.csv
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use Pandas to load the data from the CSV file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;lamps.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>h</th>
+      <th>f</th>
+      <th>K</th>
+    </tr>
+    <tr>
+      <th>i</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>840</td>
+      <td>2</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>852</td>
+      <td>1</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>936</td>
+      <td>1</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>960</td>
+      <td>1</td>
+      <td>45</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="pmf">
+<h2>PMF<a class="headerlink" href="#pmf" title="Permalink to this headline">¶</a></h2>
+<p>This dataset is complete in the sense that the experiment ran until all light bulbs failed, so the lifetime for every bulb is known.
+So we can use the data to estimate the probability mass function (PMF) of lifetimes.</p>
+<p>To represent a PMF, I’ll use a Pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code> with the lifetimes (column <code class="docutils literal notranslate"><span class="pre">h</span></code>) as the index and the number of failures (column <code class="docutils literal notranslate"><span class="pre">f</span></code>) as the values.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;f&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">])</span>
+<span class="n">pmf</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;t&#39;</span>
+<span class="n">pmf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To normalize the PMF, we divide through by the total number of lightbulbs.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf</span> <span class="o">/=</span> <span class="n">pmf</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">pmf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For a given lifetime, <code class="docutils literal notranslate"><span class="pre">t</span></code>, the PMF contains the fraction of lifetimes equal to <code class="docutils literal notranslate"><span class="pre">t</span></code>.
+For example, we can compute the fraction of light bulbs that lasted 840 hours:</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf</span><span class="p">[</span><span class="mi">840</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or the fraction equal to 1524 hours.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf</span><span class="p">[</span><span class="mi">1524</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s what the PMF looks like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">decorate</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Decorate the current axes.</span>
+<span class="sd">    Call decorate with keyword arguments like</span>
+<span class="sd">    decorate(title=&#39;Title&#39;,</span>
+<span class="sd">             xlabel=&#39;x&#39;,</span>
+<span class="sd">             ylabel=&#39;y&#39;)</span>
+<span class="sd">    The keyword arguments can be any of the axis properties</span>
+<span class="sd">    https://matplotlib.org/api/axes_api.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Lifetime (hours)&#39;</span><span class="p">,</span> 
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;PMF&#39;</span><span class="p">,</span> 
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;PMF of lightbulb lifetimes&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This way of visualizing the data can be useful for validation, and it gives a sense of the location and spread of the data.  But it does not make the shape of the distrbution clear.  For that, the CDF is better.</p>
+</div>
+<div class="section" id="cdf">
+<h2>CDF<a class="headerlink" href="#cdf" title="Permalink to this headline">¶</a></h2>
+<p>The Cumulative Distribution Function (CDF) is the cumulative sum of the PMF.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf</span> <span class="o">=</span> <span class="n">pmf</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">cdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For a given lifetime, <code class="docutils literal notranslate"><span class="pre">t</span></code>, the CDF contains the fraction of lifetimes less than or equal to <code class="docutils literal notranslate"><span class="pre">t</span></code>.
+For example, here is the fraction of light bulbs that expired at or before 840 hours:</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf</span><span class="p">[</span><span class="mi">840</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And the fraction that expired at or before 1524 hours.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf</span><span class="p">[</span><span class="mi">1524</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s what the CDF looks like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Lifetime (hours)&#39;</span><span class="p">,</span> 
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;CDF&#39;</span><span class="p">,</span> 
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;CDF of lightbulb lifetimes&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In my opinion, the CDF is often the best way to visualize the distribution of a sample.</p>
+<p>Between 800 and 1800 hours, the CDF is roughly a straight line, which suggests that the distribution is uniform in this range.</p>
+</div>
+<div class="section" id="survival-function">
+<h2>Survival function<a class="headerlink" href="#survival-function" title="Permalink to this headline">¶</a></h2>
+<p>The survival function is the complement of the CDF; that is, for a given lifetime, <code class="docutils literal notranslate"><span class="pre">t</span></code>:</p>
+<ul class="simple">
+<li><p>The CDF is the fraction of the population less than or equal to <code class="docutils literal notranslate"><span class="pre">t</span></code>.</p></li>
+<li><p>The survival function is the fraction (strictly) greater than <code class="docutils literal notranslate"><span class="pre">t</span></code>.</p></li>
+</ul>
+<p>We can compute the survival function like this:</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">cdf</span>
+<span class="n">surv</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">surv</span></code> to compute the fraction of lightbulbs that live longer than 1524 hours:</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv</span><span class="p">[</span><span class="mi">1524</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we plot the survival function along with the CDF, we can see that they are complements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">surv</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Lifetime (hours)&#39;</span><span class="p">,</span> 
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Prob(lifetime&gt;t)&#39;</span><span class="p">,</span> 
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Survival function of lightbulb lifetimes&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It might not be obvious why the survival function is useful.  Given the CDF and a little arithmetic, we can answer all of the same questions.</p>
+<p>There are two reasons:</p>
+<ul class="simple">
+<li><p>In some domains it is more natural, or at least conventional, to represent distributions in terms of survival rates.</p></li>
+<li><p>The survival function is a step on the way to the hazard function, which we’ll get to now.</p></li>
+</ul>
+</div>
+<div class="section" id="hazard-function">
+<h2>Hazard function<a class="headerlink" href="#hazard-function" title="Permalink to this headline">¶</a></h2>
+<p>For a given lifetime <code class="docutils literal notranslate"><span class="pre">t</span></code>, the hazard function computes the “hazard rate” at <code class="docutils literal notranslate"><span class="pre">t</span></code>.  Using the vocabulary of the light bulb example, the hazard rate is the fraction of light bulbs that survive until <code class="docutils literal notranslate"><span class="pre">t</span></code> and then fail at <code class="docutils literal notranslate"><span class="pre">t</span></code>.</p>
+<p>We can compute the hazard rate by computing these quantities:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pmf(t)</span></code> is the fraction of light bulbs that fail at <code class="docutils literal notranslate"><span class="pre">t</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">surv(t)</span></code> is the fraction of light bulbs that live longer than <code class="docutils literal notranslate"><span class="pre">t</span></code>.</p></li>
+<li><p>The sum, <code class="docutils literal notranslate"><span class="pre">pmf(t)</span> <span class="pre">+</span> <span class="pre">surv(t)</span></code> is the fraction that survive until <code class="docutils literal notranslate"><span class="pre">t</span></code>.</p></li>
+</ul>
+<p>So the hazard rate is the ratio of <code class="docutils literal notranslate"><span class="pre">pmf(t)</span></code> to the sum <code class="docutils literal notranslate"><span class="pre">pmf(t)</span> <span class="pre">+</span> <span class="pre">surv(t)</span></code>.
+We can compute it like this:</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">haz</span> <span class="o">=</span> <span class="n">pmf</span> <span class="o">/</span> <span class="p">(</span><span class="n">pmf</span> <span class="o">+</span> <span class="n">surv</span><span class="p">)</span>
+<span class="n">haz</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s what the hazard function looks like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">haz</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Lifetime (hours)&#39;</span><span class="p">,</span> 
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Hazard rate&#39;</span><span class="p">,</span> 
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Hazard function of lightbulb lifetimes&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With this kind of data, plotting the hazard function does not provide a clear picture of what’s happening.  There are two problems:</p>
+<ol class="simple">
+<li><p>The plot shows spikes at the locations of the data, but it is hard to see the shape of the curve.</p></li>
+<li><p>The large values on the right are unreliable because they are based on a small number of values.</p></li>
+</ol>
+<p>To explain the second point, let’s look at the last few rows of the failure column, <code class="docutils literal notranslate"><span class="pre">f</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that one bulb failed at each of 1812, 1836, 1860, 1980, and 2568 hours.</p>
+<p>So the last value of the hazard function is based on only one bulb; the second-to-last point is based on 2 bulbs; and so on.</p>
+</div>
+<div class="section" id="the-cumulative-hazard-function">
+<h2>The cumulative hazard function<a class="headerlink" href="#the-cumulative-hazard-function" title="Permalink to this headline">¶</a></h2>
+<p>To get a better sense for the shape of the curve, we can plot the cumulative hazard function, like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">haz</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Lifetime (hours)&#39;</span><span class="p">,</span> 
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Cumulative hazard rate&#39;</span><span class="p">,</span> 
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Hazard function of lightbulb lifetimes&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The slope of the cumulative hazard function is proportional to the hazard rate, so we can use this curve to see when the hazard rate is low or high, and when it is increasing or decreasing.</p>
+<p>Between 0 and 1000 hours, the slope is low, so the hazard rate is low.</p>
+<p>Between 1000 and 2000 hours, the slope is increasing, so the hazard rate is increasing.</p>
+<p>But notice that the vertical scale goes to 4.  You might wonder that that means; the answer is “not much”.</p>
+<p>The values of the hazard function are rates, that is, percentages of light bulbs that expire at each point in time.  When you add up these rates, the result does not have a clear interpretation.</p>
+<p>When you look at a cumulative hazard function, you should pay attention to the slope of the curve and ignore the values.</p>
+</div>
+<div class="section" id="resampling">
+<h2>Resampling<a class="headerlink" href="#resampling" title="Permalink to this headline">¶</a></h2>
+<p>In the previous section, I suggested that we have to be careful not to overinterpret the right side of the hazard function, because it is based on a small number of data points.</p>
+<p>To see how precise the estimated hazard function is, we can use resampling.</p>
+<p>First I will use the Pmf of lifetimes to make a kernel density estimate (KDE) of the distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gaussian_kde</span>
+    
+<span class="n">kde</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">pmf</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">pmf</span><span class="p">)</span>
+<span class="n">size</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;f&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use the KDE to draw a new sample of lifetimes, with the same size as the original data set, like this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">kde</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">sample</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following function takes a sample and computes its PMF, CDF, survival function, and hazard function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_hazard</span><span class="p">(</span><span class="n">sample</span><span class="p">):</span>
+    <span class="n">pmf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>    
+    <span class="n">cdf</span> <span class="o">=</span> <span class="n">pmf</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+    <span class="n">surv</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">cdf</span>
+    <span class="n">haz</span> <span class="o">=</span> <span class="n">pmf</span> <span class="o">/</span> <span class="p">(</span><span class="n">pmf</span> <span class="o">+</span> <span class="n">surv</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pmf</span><span class="p">,</span> <span class="n">cdf</span><span class="p">,</span> <span class="n">surv</span><span class="p">,</span> <span class="n">haz</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>I’ll generate 100 samples and plot their survival functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">kde</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">sf</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">make_hazard</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+    <span class="n">sf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    
+<span class="n">surv</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Lifetime (hours)&#39;</span><span class="p">,</span> 
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Prob(lifetime&gt;t)&#39;</span><span class="p">,</span> 
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Survival function of lightbulb lifetimes&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>By plotting the resampled survival functions on top of each other, we can get a sense of how much the results vary due to random sampling.</p>
+<p>We can do the same thing with the hazard function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">kde</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">hf</span> <span class="o">=</span> <span class="n">make_hazard</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+    <span class="n">hf</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">haz</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Lifetime (hours)&#39;</span><span class="p">,</span> 
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Cumulative hazard rate&#39;</span><span class="p">,</span> 
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Hazard function of lightbulb lifetimes&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This plot gives us a sense of which parts of the cumulative hazard function are reliable and which are not.</p>
+<p>Below 2000 hours, all of the resampled curves are similar; they increase with increasing slope.</p>
+<p>After that, the variability of the curves is much wider, which means we don’t have enough data to characterize this part of the hazard function.</p>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>We have seen four ways to represent a distribution of lifetimes:</p>
+<ul class="simple">
+<li><p>Probability mass function (PMF), which maps from each value in the distribution to its probability.</p></li>
+<li><p>Cumulative distribution function (CDF), which maps from each value, <code class="docutils literal notranslate"><span class="pre">x</span></code>, to its cumulative probability, that is, the probability of being less than or equal to <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
+<li><p>Survival function, which is the complement of the CDF; that is, the probability of exceeding <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
+<li><p>Hazard function, which is the number of failures at <code class="docutils literal notranslate"><span class="pre">x</span></code> as a fraction of the number of cases that survive until <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
+</ul>
+<p>These representations are equivalent in the sense that they all contain the same information.  Given any of them, we can compute any of the others.</p>
+<p>In this notebook, we computed the <code class="docutils literal notranslate"><span class="pre">Pmf</span></code> directly from the data, then computed the <code class="docutils literal notranslate"><span class="pre">Cdf</span></code>, survival function, and hazard function, in that order.</p>
+<p>In the next notebook we will use these representations to deal with a case where we cannot compute the PMF directly from the data.</p>
+<p>Part of <a class="reference external" href="https://allendowney.github.io/SurvivalAnalysisPython/">Survival Analysis in Python</a></p>
+<p>Allen B. Downey</p>
+<p><a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="index.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Outline</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="02_kaplan_meier.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Kaplan-Meier Estimation</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Allen B. Downey<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

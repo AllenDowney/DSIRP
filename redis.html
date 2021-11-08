@@ -1,0 +1,779 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redis &#8212; Data Structures and Information Retrieval in Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Structures and Information Retrieval in Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Outline
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="algorithms.html">
+   Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis.html">
+   Analysis of Algorithms
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/redis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AllenDowney/DSIRP"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/DSIRP/master?urlpath=tree/redis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Redis
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#persistence">
+     Persistence
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#redis-clients-and-servers">
+     Redis clients and servers
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#redis-py">
+     redis-py
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#redis-data-types">
+     Redis Data Types
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lists">
+   Lists
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hash">
+     Hash
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deleting">
+     Deleting
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anagrams-again">
+     Anagrams (again!)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shut-down">
+     Shut down
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="redis">
+<h1>Redis<a class="headerlink" href="#redis" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/chapters/chap01.ipynb">Click here to run this chapter on Colab</a></p>
+<div class="section" id="persistence">
+<h2>Persistence<a class="headerlink" href="#persistence" title="Permalink to this headline">¶</a></h2>
+<p>Data stored only in the memory of a running program is called “volatile”, because it disappears when the program ends.</p>
+<p>Data that still exists after the program that created it ends is called
+“persistent”. In general, files stored in a file system are persistent,
+as well as data stored in databases.</p>
+<p>A simple way to make data persistent is to store it in a file. For example, before the program ends, it could translate its data structures into a format like <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JSON</a> and then write them into a file.
+When it starts again, it could read the file and rebuild the data
+structures.</p>
+<p>But there are several problems with this solution:</p>
+<ol class="simple">
+<li><p>Reading and writing large data structures (like a Web index) would
+be slow.</p></li>
+<li><p>The entire data structure might not fit into the memory of a single
+running program.</p></li>
+<li><p>If a program ends unexpectedly (for example, due to a power outage),
+any changes made since the program last started would be lost.</p></li>
+</ol>
+<p>A better alternative is a database that provides persistent storage and
+the ability to read and write parts of the database without reading and
+writing the whole thing.</p>
+<p>There are many kinds of <a class="reference external" href="https://en.wikipedia.org/wiki/Database">database management systems</a> (DBMS) that provide
+these capabilities.</p>
+<p>The database we’ll use is Redis, which organizes data in structures that are similar to Python data structures.
+Among others, it provides lists, hashes (similar to Python dictionaries), and sets.</p>
+<p>Redis is a “key-value database”, which means that it represents a mapping from keys to values.
+In Redis, the keys are strings and the values can be one of several types.</p>
+</div>
+<div class="section" id="redis-clients-and-servers">
+<h2>Redis clients and servers<a class="headerlink" href="#redis-clients-and-servers" title="Permalink to this headline">¶</a></h2>
+<p>Redis is usually run as a remote service; in fact, the name stands for
+“REmote DIctionary Server”. To use Redis, you have to run the Redis
+server somewhere and then connect to it using a Redis client.</p>
+<p>To get started, we’ll run the Redis server on the same machine where we run the Jupyter server.
+This will let us get started quickly, but if we are running Jupyter on Colab, the database lives in a Colab runtime environment, which disappears when we shut down the notebook.
+So it’s not really persistent.</p>
+<p>Later we will use <a class="reference external" href="http://thinkdast.com/redistogo">RedisToGo</a>, which runs Redis in the cloud.
+Databases on RedisToGo are persistent.</p>
+<p>The following cell installs the Redis server and starts it with the <code class="docutils literal notranslate"><span class="pre">daemonize</span></code> options, which runs it in the background so the Jupyter server can resume.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">IN_COLAB</span> <span class="o">=</span> <span class="s1">&#39;google.colab&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span>
+
+<span class="k">if</span> <span class="n">IN_COLAB</span><span class="p">:</span>
+    <span class="o">!</span>pip install redis-server
+    <span class="o">!</span>/usr/local/lib/python*/dist-packages/redis_server/bin/redis-server --daemonize yes
+<span class="k">else</span><span class="p">:</span>
+    <span class="o">!</span>redis-server --daemonize yes
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="redis-py">
+<h2>redis-py<a class="headerlink" href="#redis-py" title="Permalink to this headline">¶</a></h2>
+<p>To talk to the Redis server, we’ll use <a class="reference external" href="https://redis-py.readthedocs.io/en/stable/index.html">redis-py</a>.
+Here’s how we use it to connect to the Redis server.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">redis</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip install redis
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">redis</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">Redis</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">set</span></code> method adds a key-value pair to the database.
+In the following example, the key and value are both strings.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">get</span></code> method looks up a key and returns the corresponding value.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result is not actually a string; it is a <a class="reference external" href="https://stackoverflow.com/questions/6224052/what-is-the-difference-between-a-string-and-a-byte-string">bytearray</a>.</p>
+<p>For many purposes, a bytearray behaves like a string so for now we will treat it like a string and deal with differences as they arise.</p>
+<p>The values can be integers or floating-point numbers.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And Redis provides some functions that understand numbers, like <code class="docutils literal notranslate"><span class="pre">incr</span></code>.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">incr</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>But if you <code class="docutils literal notranslate"><span class="pre">get</span></code> a numeric value, the result is a bytearray.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">value</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you want to do math with it, you have to convert it back to a number.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you want to set more than one value at a time, you can pass a dictionary to <code class="docutils literal notranslate"><span class="pre">mset</span></code>.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">1.23</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">mset</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you try to store any other type in a Redis database, you get an error.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">redis</span> <span class="kn">import</span> <span class="n">DataError</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">DataError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We could use the <code class="docutils literal notranslate"><span class="pre">repr</span></code> function to create a string representation of a list, but that representation is Python-specific.
+It would be better to make a database that can work with any language.
+To do that, we can use JSON to create a string representation.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">json</span></code> module provides a function <code class="docutils literal notranslate"><span class="pre">dumps</span></code>, that creates a language-independent representation of most Python objects.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>When we read one of these strings back, we can use <code class="docutils literal notranslate"><span class="pre">loads</span></code> to convert it back to a Python object.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">t</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> Create a dictionary with a few items, including keys and values with different types. Use <code class="docutils literal notranslate"><span class="pre">json</span></code> to make a string representation of the dictionary, then store it as a value in the Redis database. Retrieve it and convert it back to a dictionary.</p>
+</div>
+<div class="section" id="redis-data-types">
+<h2>Redis Data Types<a class="headerlink" href="#redis-data-types" title="Permalink to this headline">¶</a></h2>
+<p>JSON can represent most Python objects, so we could use it to store arbitrary data structures in Redis. But in that case Redis only knows that they are strings; it can’t work with them as data structures. For example, if we store a data structure in JSON, the only way to modify it would be to:</p>
+<ol class="simple">
+<li><p>Get the entire structure, which might be large,</p></li>
+<li><p>Load it back into a Python structure,</p></li>
+<li><p>Modify the Python structure,</p></li>
+<li><p>Dump it back into a JSON string, and</p></li>
+<li><p>Replace the old value in the database with the new value.</p></li>
+</ol>
+<p>That’s not very efficient. A better alternative is to use the data types Redis provides, which you can read about in the
+<a class="reference external" href="https://redis.io/topics/data-types-intro">Redis Data Types Intro</a>.</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="lists">
+<h1>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">rpush</span></code> method adds new elements to the end of a list (the <code class="docutils literal notranslate"><span class="pre">r</span></code> indicates the right-hand side of the list).</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">rpush</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You don’t have to do anything special to create a list; if it doesn’t exist, Redis creates it.</p>
+<p><code class="docutils literal notranslate"><span class="pre">llen</span></code> returns the length of the list.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">llen</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">lrange</span></code> gets elements from a list. With the indices <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">-1</span></code>, it gets all of the elements.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">lrange</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result is a Python list, but the elements are bytestrings.</p>
+<p><code class="docutils literal notranslate"><span class="pre">rpop</span></code> removes elements from the end of the list.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">rpop</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can read more about the other list methods in the <a class="reference external" href="https://redis.io/commands#list">Redis documentation</a>.</p>
+<p>And you can read about the <a class="reference external" href="https://redis-py.readthedocs.io/en/stable/index.html#redis.Redis.rpush">redis-py API here</a>.</p>
+<p>In general, the documentation of Redis is very good; the documentation of <code class="docutils literal notranslate"><span class="pre">redis-py</span></code> is a little rough around the edges.</p>
+<p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">lpush</span></code> to add elements to the beginning of the list and <code class="docutils literal notranslate"><span class="pre">lpop</span></code> to remove them.</p>
+<p>Note: Redis lists behave like linked lists, so you can add and remove elements from either end in constant time.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">lpush</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">lpop</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="hash">
+<h2>Hash<a class="headerlink" href="#hash" title="Permalink to this headline">¶</a></h2>
+<p>A <a class="reference external" href="https://redis.io/commands#hash">Redis hash</a> is similar to a Python dictionary, but just to make things confusing the nomenclature is a little different.</p>
+<p>What we would call a “key” in a Python dictionary is called a “field” in a Redis hash.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">hset</span></code> method sets a field-value pair in a hash:</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">hset</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;field&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">hget</span></code> method looks up a field and returns the corresponding value.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">hget</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;field&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">hset</span></code> can also take a Python dictionary as a parameter:</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">hset</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To iterate the elements of a hash, we can use <code class="docutils literal notranslate"><span class="pre">hscan_iter</span></code>:</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">hscan_iter</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The results are bytestrings for both the fields and values.</p>
+<p><strong>Exercise:</strong> To add multiple items to a hash, you can use <code class="docutils literal notranslate"><span class="pre">hset</span></code> with the keyword <code class="docutils literal notranslate"><span class="pre">mapping</span></code> and a dictionary (or other mapping type).</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">Counter</span></code> object from the <code class="docutils literal notranslate"><span class="pre">collections</span></code> module to count the letters in a string, then use <code class="docutils literal notranslate"><span class="pre">hset</span></code> to store the results in a Redis hash.</p>
+<p>Then use <code class="docutils literal notranslate"><span class="pre">hscan_iter</span></code> to display the results.</p>
+</div>
+<div class="section" id="deleting">
+<h2>Deleting<a class="headerlink" href="#deleting" title="Permalink to this headline">¶</a></h2>
+<p>Before we go on, let’s clean up the database by deleting all of the key-value pairs.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="anagrams-again">
+<h2>Anagrams (again!)<a class="headerlink" href="#anagrams-again" title="Permalink to this headline">¶</a></h2>
+<p>In a previous notebook, we made sets of words that are anagrams of each other by building a dictionary where they keys are sorted strings of letters and the values are lists of words.</p>
+<p>We’ll start by solving this problem again using Python data structures; then we’ll translate it into Redis.</p>
+<p>The following cell downloads a file that contains the list of words.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
+    
+<span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://github.com/AllenDowney/DSIRP/raw/main/american-english&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And here’s a generator function that reads the words in the file and yields them one at a time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">iterate_words</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Read lines from a file and split them into words.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+            <span class="k">yield</span> <span class="n">word</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The “signature” of a word is a string that contains the letter of the word in sorted order.
+So if two words are anagrams, they have the same signature.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">signature</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">word</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following loop makes a dictionary of anagram lists.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anagram_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">iterate_words</span><span class="p">(</span><span class="s1">&#39;american-english&#39;</span><span class="p">):</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">signature</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="n">anagram_dict</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following loop prints all anagram lists with 6 or more words</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">anagram_dict</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, to do the same thing in Redis, we have two options:</p>
+<ul class="simple">
+<li><p>We can store the anagram lists using Redis lists, using the signatures as keys.</p></li>
+<li><p>We can store the whole data structure in a Redis hash.</p></li>
+</ul>
+<p>A problem with the first option is that the keys in a Redis database are like global variables. If we create a large number of keys, we are likely to run into name conflicts.
+We can mitigate this problem by giving each key a prefix that identifies its purpose.</p>
+<p>The following loop implements the first option, using “Anagram” as a prefix for the keys.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">iterate_words</span><span class="p">(</span><span class="s1">&#39;american-english&#39;</span><span class="p">):</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Anagram:</span><span class="si">{</span><span class="n">signature</span><span class="p">(</span><span class="n">word</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">rpush</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>An advantage of this option is that it makes good use of Redis lists. A drawback is that makes many small database transactions, so it is relatively slow.</p>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">keys</span></code> to get a list of all keys with a given prefix.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keys</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">keys</span><span class="p">(</span><span class="s1">&#39;Anagram*&#39;</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> Write a loop that iterates through <code class="docutils literal notranslate"><span class="pre">keys</span></code>, uses <code class="docutils literal notranslate"><span class="pre">llen</span></code> to get the length of each list, and prints the elements of all lists with 6 or more elements.</p>
+<p>Before we go on, we can delete the keys from the database like this.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="o">*</span><span class="n">keys</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The second option is to compute the dictionary of anagram lists locally and then store it as a Redis hash.</p>
+<p>The following function uses <code class="docutils literal notranslate"><span class="pre">dumps</span></code> to convert lists to strings that can be stored as values in a Redis hash.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hash_key</span> <span class="o">=</span> <span class="s1">&#39;AnagramHash&#39;</span>
+<span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">anagram_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">hset</span><span class="p">(</span><span class="n">hash_key</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can do the same thing faster if we convert all of the lists to JSON locally and store all of the field-value pairs with one <code class="docutils literal notranslate"><span class="pre">hset</span></code> command.</p>
+<p>First, I’ll delete the hash we just created.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">hash_key</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> Make a Python dictionary that contains the items from <code class="docutils literal notranslate"><span class="pre">anagram_dict</span></code> but with the values converted to JSON. Use <code class="docutils literal notranslate"><span class="pre">hset</span></code> with the <code class="docutils literal notranslate"><span class="pre">mapping</span></code> keyword to store it as a Redis hash.</p>
+<p><strong>Exercise:</strong> Write a loop that iterates through the field-value pairs, converts each value back to a Python list, and prints the lists with 6 or more elements.</p>
+</div>
+<div class="section" id="shut-down">
+<h2>Shut down<a class="headerlink" href="#shut-down" title="Permalink to this headline">¶</a></h2>
+<p>If you are running this notebook on your own computer, you can use the following command to shut down the Redis server.</p>
+<p>If you are running on Colab, it’s not really necessary: the Redis server will get shut down when the Colab runtime shuts down (and everything stored in it will disappear).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>killall redis-server
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Allen B. Downey<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
