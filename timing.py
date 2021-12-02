@@ -23,7 +23,7 @@ def time_func(func, n):
     elapsed = end - start
     return elapsed
 
-def run_timing_test(func, max_time=1):
+def run_timing_test(func, start_at=10, max_time=1):
     """Tests the given function with a range of values for n.
 
     func: function object
@@ -32,7 +32,7 @@ def run_timing_test(func, max_time=1):
     """
     ns = []
     ts = []
-    for i in range(10, 28):
+    for i in range(start_at, 28):
         n = 2**i
         t = time_func(func, n)
         print(n, t)
