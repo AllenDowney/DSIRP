@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz 5 &#8212; Data Structures and Information Retrieval in Python</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -51,9 +51,13 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Deque" href="deque.html" />
     <link rel="prev" title="Indexer" href="indexer.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -186,6 +190,46 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Quiz 5
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="deque.html">
+   Deque
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bfs.html">
+   Breadth First Search
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz06.html">
+   Quiz 6
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="crawler.html">
+   Crawler
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mergesort.html">
+   Merge Sort
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fft.html">
+   FFT
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz07.html">
+   Quiz 7
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pagerank.html">
+   PageRank
   </a>
  </li>
 </ul>
@@ -372,13 +416,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>80806:C 03 Nov 2021 14:46:13.377 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-80806:C 03 Nov 2021 14:46:13.377 # Redis version=5.0.3, bits=64, commit=00000000, modified=0, pid=80806, just started
-80806:C 03 Nov 2021 14:46:13.377 # Configuration loaded
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -441,91 +478,6 @@ The following cell downloads data from the <a class="reference external" href="h
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>year</th>
-      <th>age</th>
-      <th>sex</th>
-      <th>polviews</th>
-      <th>partyid</th>
-      <th>indus10</th>
-    </tr>
-    <tr>
-      <th>caseid</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1974</td>
-      <td>21.0</td>
-      <td>1</td>
-      <td>4.0</td>
-      <td>2.0</td>
-      <td>4970.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1974</td>
-      <td>41.0</td>
-      <td>1</td>
-      <td>5.0</td>
-      <td>0.0</td>
-      <td>9160.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1974</td>
-      <td>58.0</td>
-      <td>2</td>
-      <td>6.0</td>
-      <td>1.0</td>
-      <td>2670.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1974</td>
-      <td>30.0</td>
-      <td>1</td>
-      <td>5.0</td>
-      <td>4.0</td>
-      <td>6870.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1974</td>
-      <td>48.0</td>
-      <td>1</td>
-      <td>5.0</td>
-      <td>4.0</td>
-      <td>7860.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> has one row for each person surveyed, called a “respondent”, and one column for each variable I selected.
 The columns are:</p>
@@ -559,42 +511,6 @@ Specifically, we will answer the following questions related to the “Linda pro
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-year        1974.0
-age           21.0
-sex            1.0
-polviews       4.0
-partyid        2.0
-indus10     4970.0
-Name: 0, dtype: float64
-1
-year        1974.0
-age           41.0
-sex            1.0
-polviews       5.0
-partyid        0.0
-indus10     9160.0
-Name: 1, dtype: float64
-2
-year        1974.0
-age           58.0
-sex            2.0
-polviews       6.0
-partyid        1.0
-indus10     2670.0
-Name: 2, dtype: float64
-3
-year        1974.0
-age           30.0
-sex            1.0
-polviews       5.0
-partyid        4.0
-indus10     6870.0
-Name: 3, dtype: float64
-</pre></div>
-</div>
-</div>
 </div>
 <p>The following loop iterates through the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and makes a set containing the <code class="docutils literal notranslate"><span class="pre">caseid</span></code> for the rows where the industry code is 6870, which indicates that the respondent works in banking.</p>
 <div class="cell docutils container">
@@ -606,11 +522,6 @@ Name: 3, dtype: float64
         <span class="n">bankers</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">caseid</span><span class="p">)</span>
         
 <span class="nb">len</span><span class="p">(</span><span class="n">bankers</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>728
 </pre></div>
 </div>
 </div>
@@ -649,11 +560,6 @@ Name: 3, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>26511
-</pre></div>
-</div>
-</div>
 </div>
 <p>The following cell makes a Python set that includes the <code class="docutils literal notranslate"><span class="pre">caseid</span></code> for people who self-identify as “Extremely liberal”, “Liberal”, or “Slightly liberal”.</p>
 <div class="cell docutils container">
@@ -665,11 +571,6 @@ Name: 3, dtype: float64
         <span class="n">liberal</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">caseid</span><span class="p">)</span>
         
 <span class="nb">len</span><span class="p">(</span><span class="n">liberal</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13493
 </pre></div>
 </div>
 </div>
@@ -722,21 +623,11 @@ Or you can use the following loop to start with a fresh, empty database.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{b&#39;gss_set:bankers&#39;, b&#39;gss_set:female&#39;}
-</pre></div>
-</div>
-</div>
 </div>
 <p>And the respondent with <code class="docutils literal notranslate"><span class="pre">caseid</span></code> 451 is a liberal female banker.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">find_tags</span><span class="p">(</span><span class="mi">451</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{b&#39;gss_set:bankers&#39;, b&#39;gss_set:female&#39;, b&#39;gss_set:liberal&#39;}
 </pre></div>
 </div>
 </div>
@@ -775,22 +666,22 @@ Or you can use the following loop to start with a fresh, empty database.</p>
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="indexer.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Indexer</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="indexer.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Indexer</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="deque.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Deque</p>
     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -811,8 +702,7 @@ Or you can use the following loop to start with a fresh, empty database.</p>
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

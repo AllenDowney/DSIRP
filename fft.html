@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FFT &#8212; Data Structures and Information Retrieval in Python</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -42,6 +42,8 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -51,8 +53,13 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quiz 7" href="quiz07.html" />
+    <link rel="prev" title="Merge Sort" href="mergesort.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -86,7 +93,7 @@
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="algorithms.html">
    Algorithms
@@ -185,6 +192,46 @@
  <li class="toctree-l1">
   <a class="reference internal" href="quiz05.html">
    Quiz 5
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="deque.html">
+   Deque
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bfs.html">
+   Breadth First Search
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz06.html">
+   Quiz 6
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="crawler.html">
+   Crawler
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mergesort.html">
+   Merge Sort
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   FFT
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz07.html">
+   Quiz 7
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pagerank.html">
+   PageRank
   </a>
  </li>
 </ul>
@@ -289,13 +336,13 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#empirical-order-of-growth">
-   Empirical order of growth
+  <a class="reference internal nav-link" href="#discrete-fourier-transform">
+   Discrete Fourier Transform
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dft">
-   DFT
+  <a class="reference internal nav-link" href="#timing-dft">
+   Timing DFT
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -316,234 +363,258 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="fft">
 <h1>FFT<a class="headerlink" href="#fft" title="Permalink to this headline">¶</a></h1>
-<p><em>Data Structures and Information Retrieval in Python</em></p>
-<p>Copyright 2021 Allen Downey</p>
-<p>License: <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/fft.ipynb">Click here to run this chapter on Colab</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="empirical-order-of-growth">
-<h2>Empirical order of growth<a class="headerlink" href="#empirical-order-of-growth" title="Permalink to this headline">¶</a></h2>
-<p>Sometimes we can figure out what order of growth a function belongs to by running it with a range of problem sizes and measuring the run time.</p>
-<p><code class="docutils literal notranslate"><span class="pre">order.py</span></code> contains functions from Appendix A we can use to estimate order of growth.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">order</span> <span class="kn">import</span> <span class="n">run_timing_test</span><span class="p">,</span> <span class="n">plot_timing_test</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">e63812e711a4</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">order</span> <span class="kn">import</span> <span class="n">run_timing_test</span><span class="p">,</span> <span class="n">plot_timing_test</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;order&#39;
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
+    
+<span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://github.com/AllenDowney/DSIRP/raw/main/timing.py&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="dft">
-<h2>DFT<a class="headerlink" href="#dft" title="Permalink to this headline">¶</a></h2>
-<p>Here’s an implementation of DFT using outer product to construct the transform matrix, and dot product to compute the DFT.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PI2</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
-
-<span class="k">def</span> <span class="nf">dft</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
-    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-    <span class="n">ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span>
-    <span class="n">ks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
-    <span class="n">args</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="n">ns</span><span class="p">)</span>
-    <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">PI2</span> <span class="o">*</span> <span class="n">args</span><span class="p">)</span>
-    <span class="n">amps</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">amps</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">timing</span> <span class="kn">import</span> <span class="n">run_timing_test</span><span class="p">,</span> <span class="n">plot_timing_test</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Here’s an example comparing this implementation of DFT with <code class="docutils literal notranslate"><span class="pre">np.fft.fft</span></code></p>
+<div class="section" id="discrete-fourier-transform">
+<h2>Discrete Fourier Transform<a class="headerlink" href="#discrete-fourier-transform" title="Permalink to this headline">¶</a></h2>
+<p>According to our friends at <a class="reference external" href="https://en.wikipedia.org/wiki/Discrete_Fourier_transform">Wikipedia</a>:</p>
+<blockquote>
+<div><p>The discrete Fourier transform transforms a sequence of <span class="math notranslate nohighlight">\(N\)</span> complex numbers
+<span class="math notranslate nohighlight">\({\displaystyle \mathbf{x} =x_{0},x_{1},\ldots ,x_{N-1}}\)</span> into another sequence of complex numbers,
+<span class="math notranslate nohighlight">\({\displaystyle \mathbf{X} =X_{0},X_{1},\ldots ,X_{N-1},}\)</span> which is defined by $<span class="math notranslate nohighlight">\(X_k = \sum_{n=0}^N x_n \cdot e^{-i 2 \pi k n / N} \)</span>$</p>
+</div></blockquote>
+<p>Notice:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(x\)</span> are the same length, <span class="math notranslate nohighlight">\(N\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> is the index that specifies an element of <span class="math notranslate nohighlight">\(x\)</span>, and</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span> is the index that specifies an element of <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+</ul>
+<p>Let’s start with a small example and use Numpy’s implementation of FFT to compute the DFT.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
-<span class="n">spectrum1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">spectrum1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;np.fft&#39;</span><span class="p">)</span>
-
-<span class="n">spectrum2</span> <span class="o">=</span> <span class="n">dft</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">spectrum2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;dft&#39;</span><span class="p">)</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">spectrum1</span><span class="p">,</span> <span class="n">spectrum2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/fft_8_0.png" src="_images/fft_8_0.png" />
 </div>
-</div>
-<p>Now, let’s see what the asymptotic behavior of <code class="docutils literal notranslate"><span class="pre">np.fft.fft</span></code> looks like:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_fft</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">spectrum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">ns</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">run_timing_test</span><span class="p">(</span><span class="n">test_fft</span><span class="p">)</span>
-<span class="n">plot_timing_test</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="s1">&#39;test_fft&#39;</span><span class="p">,</span> <span class="n">exp</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1024 0.0
-2048 0.0
-4096 0.0
-8192 0.0
-16384 0.0
-32768 0.010000000000000009
-65536 0.010000000000000009
-131072 0.010000000000000009
-262144 0.040000000000000036
-524288 0.060000000000000275
-1048576 0.09999999999999964
-2097152 0.2200000000000002
-4194304 0.45999999999999996
-8388608 1.04
-</pre></div>
 </div>
-<img alt="_images/fft_10_1.png" src="_images/fft_10_1.png" />
-</div>
-</div>
-<p>Up through the biggest array I can handle on my computer, it’s hard to distinguish from linear.</p>
-<p>And let’s see what my implementation of DFT looks like:</p>
+<p>Now we know what the answer is, let’s compute it ourselves.</p>
+<p>Here’s the expression that computes one element of <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_dft</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">spectrum</span> <span class="o">=</span> <span class="n">dft</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-
-<span class="n">ns</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">run_timing_test</span><span class="p">(</span><span class="n">test_dft</span><span class="p">)</span>
-<span class="n">plot_timing_test</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="s1">&#39;test_dft&#39;</span><span class="p">,</span> <span class="n">exp</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="n">exp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1024 0.1200000000000001
-2048 0.41000000000000014
-4096 1.7300000000000004
+</div>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="n">j</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">n</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
 </pre></div>
 </div>
-<img alt="_images/fft_12_1.png" src="_images/fft_12_1.png" />
 </div>
 </div>
-<p>Definitely not linear.  How about quadratic?</p>
+<p>Wrapping this code in a function makes the roles of <code class="docutils literal notranslate"><span class="pre">k</span></code> and <code class="docutils literal notranslate"><span class="pre">n</span></code> clearer:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">k</span></code> is the parameter that specifies which element of the DFT to compute, and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code> is the loop variable we use to compute the summation.</p></li>
+</ul>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dft_k</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="n">j</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">n</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_timing_test</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="s1">&#39;test_dft&#39;</span><span class="p">,</span> <span class="n">exp</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dft_k</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/fft_14_0.png" src="_images/fft_14_0.png" />
+</div>
+<p>Usually we compute <span class="math notranslate nohighlight">\(X\)</span> all at once, so we can wrap <code class="docutils literal notranslate"><span class="pre">dft_k</span></code> in another function:</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dft</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="n">dft_k</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">X</span>
+</pre></div>
 </div>
 </div>
-<p>Looks quadratic.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dft</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And that’s what we got from Numpy.</p>
+</div>
+<div class="section" id="timing-dft">
+<h2>Timing DFT<a class="headerlink" href="#timing-dft" title="Permalink to this headline">¶</a></h2>
+<p>Let’s see what the performance of <code class="docutils literal notranslate"><span class="pre">dft</span></code> looks like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_dft</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">dft</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> test_dft(512)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ns</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">run_timing_test</span><span class="p">(</span><span class="n">test_dft</span><span class="p">,</span> <span class="n">start_at</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plot_timing_test</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="s1">&#39;test_dft&#39;</span><span class="p">,</span> <span class="n">exp</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="implementing-fft">
 <h2>Implementing FFT<a class="headerlink" href="#implementing-fft" title="Permalink to this headline">¶</a></h2>
-<p>Ok, let’s try our own implementation of FFT.</p>
-<p>First I’ll get the divide and conquer part of the algorithm working:</p>
-<div class="cell docutils container">
+<p>The key to the FFT algorithm is the <a class="reference external" href="https://mathworld.wolfram.com/Danielson-LanczosLemma.html">Danielson-Lanczos lemma</a>, which says</p>
+<p><span class="math notranslate nohighlight">\( X_k = E_k + e^{-i 2 \pi n / N} O_k \)</span></p>
+<p>Where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E\)</span> is the FFT of the even elements of <span class="math notranslate nohighlight">\(x\)</span>, and</p></li>
+<li><p><span class="math notranslate nohighlight">\(O\)</span> is the DFT of the odd elements of <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
+</ul>
+<p>Before we can translate this expression into code, we have to deal with a gotcha.</p>
+<p>Remember that, if the length of <span class="math notranslate nohighlight">\(x\)</span> is <span class="math notranslate nohighlight">\(N\)</span>, the length of <span class="math notranslate nohighlight">\(X\)</span> is also <span class="math notranslate nohighlight">\(N\)</span>.</p>
+<p>If we select the even elements of <span class="math notranslate nohighlight">\(x\)</span>, the result is a sequence with length <span class="math notranslate nohighlight">\(N/2\)</span>, which means that the length of <span class="math notranslate nohighlight">\(E\)</span> is <span class="math notranslate nohighlight">\(N/2\)</span>.
+And the same for <span class="math notranslate nohighlight">\(O\)</span>.</p>
+<p>But if <span class="math notranslate nohighlight">\(k\)</span> goes from <span class="math notranslate nohighlight">\(0\)</span> up to <span class="math notranslate nohighlight">\(N-1\)</span>, what do we do when it exceeds <span class="math notranslate nohighlight">\(N/2-1\)</span>?</p>
+<p>Fortunately, the DFT repeats itself so, <span class="math notranslate nohighlight">\(X_N\)</span> is the same as <span class="math notranslate nohighlight">\(X_0\)</span>.
+That means we can extend <span class="math notranslate nohighlight">\(E\)</span> and <span class="math notranslate nohighlight">\(O\)</span> to be the same length as <span class="math notranslate nohighlight">\(X\)</span> just by repeating them.
+And we can do that with the Numpy function <code class="docutils literal notranslate"><span class="pre">tile</span></code>.</p>
+<p>So, here’s a version of <code class="docutils literal notranslate"><span class="pre">merge</span></code> based on the D-L lemma.</p>
+<div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fft_norec</span><span class="p">(</span><span class="n">ys</span><span class="p">):</span>
-    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
-    <span class="n">He</span> <span class="o">=</span> <span class="n">dft</span><span class="p">(</span><span class="n">ys</span><span class="p">[::</span><span class="mi">2</span><span class="p">])</span>
-    <span class="n">Ho</span> <span class="o">=</span> <span class="n">dft</span><span class="p">(</span><span class="n">ys</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span>
-    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">O</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
     <span class="n">ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
-    <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">PI2</span> <span class="o">*</span> <span class="n">ns</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">He</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">W</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">Ho</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="n">j</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">ns</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">W</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">O</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>This version breaks the array in half, uses <code class="docutils literal notranslate"><span class="pre">dft</span></code> to compute the DFTs of the halves, and then uses the D-L lemma to stich the results back up.</p>
+<p><strong>Exercise:</strong> As a first step toward implementing FFT, write a non-recursive function called <code class="docutils literal notranslate"><span class="pre">fft_norec</span></code> that takes a sequence called <code class="docutils literal notranslate"><span class="pre">x</span></code> and</p>
+<ol class="simple">
+<li><p>Divides <code class="docutils literal notranslate"><span class="pre">x</span></code> into even and odd elements,</p></li>
+<li><p>Uses <code class="docutils literal notranslate"><span class="pre">dft</span></code> to compute <code class="docutils literal notranslate"><span class="pre">E</span></code> and <code class="docutils literal notranslate"><span class="pre">O</span></code>, and</p></li>
+<li><p>Uses <code class="docutils literal notranslate"><span class="pre">merge</span></code> to compute <code class="docutils literal notranslate"><span class="pre">X</span></code>.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fft_norec</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Let’s see what the performance looks like.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_fft_norec</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">spectrum</span> <span class="o">=</span> <span class="n">fft_norec</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-
-<span class="n">ns</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">run_timing_test</span><span class="p">(</span><span class="n">test_fft_norec</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_fft_norec</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">spectrum</span> <span class="o">=</span> <span class="n">fft_norec</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> test_fft_norec(512)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ns</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">run_timing_test</span><span class="p">(</span><span class="n">test_fft_norec</span><span class="p">,</span> <span class="n">start_at</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">plot_timing_test</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="s1">&#39;test_fft_norec&#39;</span><span class="p">,</span> <span class="n">exp</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1024 0.07000000000000028
-2048 0.1899999999999995
-4096 0.8099999999999987
-8192 3.25
-</pre></div>
 </div>
-<img alt="_images/fft_19_1.png" src="_images/fft_19_1.png" />
-</div>
-</div>
-<p>Looks about the same as DFT, quadratic.</p>
-<p><strong>Exercise:</strong>  Starting with fft_norec, write a function called fft_rec that’s fully recursive; that is, instead of using <code class="docutils literal notranslate"><span class="pre">dft</span></code> to compute the DFTs of the halves, it should use <code class="docutils literal notranslate"><span class="pre">fft_rec</span></code>.  Of course, you will need a base case to avoid an infinite recursion.  You have two options:</p>
+<p><strong>Exercise:</strong>  Starting with <code class="docutils literal notranslate"><span class="pre">fft_norec</span></code>, write a function called <code class="docutils literal notranslate"><span class="pre">fft_rec</span></code> that’s fully recursive; that is, instead of using <code class="docutils literal notranslate"><span class="pre">dft</span></code> to compute the DFTs of the halves, it should use <code class="docutils literal notranslate"><span class="pre">fft_rec</span></code>.</p>
+<p>You will need a base case to avoid an infinite recursion.  You have two options:</p>
 <ol class="simple">
 <li><p>The DFT of an array with length 1 is the array itself.</p></li>
-<li><p>If the parameter, <code class="docutils literal notranslate"><span class="pre">ys</span></code>, is smaller than some threshold length, you could use DFT.</p></li>
+<li><p>If the parameter, <code class="docutils literal notranslate"><span class="pre">x</span></code>, is smaller than some threshold length, you could use DFT.</p></li>
 </ol>
 <p>Use <code class="docutils literal notranslate"><span class="pre">test_fft_rec</span></code>, below, to check the performance of your function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
-<span class="n">spectrum1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-
-<span class="n">spectrum2</span> <span class="o">=</span> <span class="n">fft_rec</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">spectrum1</span><span class="p">,</span> <span class="n">spectrum2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fft_rec</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_fft_rec</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">spectrum</span> <span class="o">=</span> <span class="n">fft_rec</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-
-<span class="n">ns</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">run_timing_test</span><span class="p">(</span><span class="n">test_fft_rec</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_fft_rec</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">spectrum</span> <span class="o">=</span> <span class="n">fft_rec</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> test_fft_rec(512)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ns</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">run_timing_test</span><span class="p">(</span><span class="n">test_fft_rec</span><span class="p">)</span>
 <span class="n">plot_timing_test</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="s1">&#39;test_fft_rec&#39;</span><span class="p">,</span> <span class="n">exp</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1024 0.040000000000000924
-2048 0.03999999999999915
-4096 0.08000000000000007
-8192 0.16999999999999993
-16384 0.34999999999999964
-32768 0.7000000000000011
-65536 1.4600000000000009
-</pre></div>
 </div>
-<img alt="_images/fft_24_1.png" src="_images/fft_24_1.png" />
-</div>
-</div>
-<p>If things go according to plan, your FFT implementation should be faster than <code class="docutils literal notranslate"><span class="pre">dft</span></code> and <code class="docutils literal notranslate"><span class="pre">fft_norec</span></code>, but probably not as fast as <code class="docutils literal notranslate"><span class="pre">np.fft.fft</span></code>.  And it might be a bit steeper than linear.</p>
+<p>If things go according to plan, your FFT implementation should be faster than <code class="docutils literal notranslate"><span class="pre">dft</span></code> and <code class="docutils literal notranslate"><span class="pre">fft_norec</span></code>, and over a range of problem sizes, it might be indistinguishable from linear.</p>
+<p><em>Data Structures and Information Retrieval in Python</em></p>
+<p>Copyright 2021 Allen Downey</p>
+<p>License: <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a></p>
 </div>
 </div>
 
@@ -570,13 +641,22 @@
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="mergesort.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Merge Sort</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="quiz07.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quiz 7</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -597,8 +677,7 @@
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

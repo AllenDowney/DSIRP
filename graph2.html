@@ -273,7 +273,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/graph.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/graph2.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -311,7 +311,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/DSIRP/master?urlpath=tree/graph.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/DSIRP/master?urlpath=tree/graph2.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -387,7 +387,7 @@ For example, in a graph that represents a social network, nodes might represent 
 <p>NetworkX provides data structures to represent graphs and function that implement graph algorithms.
 To show how it works, we’ll make a small graph that represents a social network.</p>
 <p>Here’s how we make a graph and add nodes.</p>
-<div class="cell tag_fill-in docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
@@ -407,7 +407,7 @@ To show how it works, we’ll make a small graph that represents a social networ
 </div>
 <p>Optionally, you can provide attributes that are associated with the node. In this example, Bob has an <code class="docutils literal notranslate"><span class="pre">age</span></code> attribute and Carol has a cat.</p>
 <p>Here’s how we add edges between nodes.</p>
-<div class="cell tag_fill-in docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
 <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Carol&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;enemy&#39;</span><span class="p">)</span>
@@ -432,23 +432,34 @@ In this example, the second edge has an attribute called <code class="docutils l
 </div>
 </div>
 </div>
-<div class="cell tag_fill-in docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/graph_8_0.png" src="_images/graph_8_0.png" />
+<img alt="_images/graph2_8_0.png" src="_images/graph2_8_0.png" />
 </div>
 </div>
 <p><strong>Exercise:</strong>  Suppose Alice introduces Bob and Carol, and they become frenemies. Update the social network by adding an edge between Bob and Carol with an appropriate attribute, then draw the graph  again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Carol&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;frenemy&#39;</span><span class="p">)</span>
+<span class="n">draw_graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/graph2_10_0.png" src="_images/graph2_10_0.png" />
+</div>
+</div>
 </div>
 <div class="section" id="graph-representation">
 <h2>Graph Representation<a class="headerlink" href="#graph-representation" title="Permalink to this headline">¶</a></h2>
 <p>NetworkX represents graphs using a dictionary that maps from each node to a dictionary that maps from nodes to edges.</p>
 <p>If we select an element from the top-level dictionary, the result is a dictionary-like object.</p>
-<div class="cell tag_fill-in docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">]</span>
 </pre></div>
@@ -461,7 +472,7 @@ In this example, the second edge has an attribute called <code class="docutils l
 </div>
 </div>
 <p>So we can iterate through the neighbors of a node like this:</p>
-<div class="cell tag_fill-in docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">neighbor</span><span class="p">)</span>
@@ -476,7 +487,7 @@ Carol
 </div>
 </div>
 <p>Or enumerate the neighbors and edges like this:</p>
-<div class="cell tag_fill-in docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
@@ -492,7 +503,7 @@ Carol {&#39;type&#39;: &#39;enemy&#39;}
 </div>
 <p>Edges are represented by dictionaries of attributes. In this example, the first edge has no attributes and the second has an attribute named <code class="docutils literal notranslate"><span class="pre">type</span></code>.</p>
 <p>We can select an edge like this:</p>
-<div class="cell tag_fill-in docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">][</span><span class="s1">&#39;Carol&#39;</span><span class="p">]</span>
 </pre></div>
@@ -505,7 +516,7 @@ Carol {&#39;type&#39;: &#39;enemy&#39;}
 </div>
 </div>
 <p>To check whether there is an edge from one node to another, we can use the <code class="docutils literal notranslate"><span class="pre">in</span></code> operator:</p>
-<div class="cell tag_fill-in docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">has_edge</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
@@ -513,7 +524,7 @@ Carol {&#39;type&#39;: &#39;enemy&#39;}
 </div>
 </div>
 </div>
-<div class="cell tag_fill-in docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">has_edge</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
 </pre></div>
@@ -526,7 +537,7 @@ Carol {&#39;type&#39;: &#39;enemy&#39;}
 </div>
 </div>
 <p>But there’s a method that does the same thing.</p>
-<div class="cell tag_fill-in docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
 </pre></div>
@@ -543,7 +554,7 @@ Carol {&#39;type&#39;: &#39;enemy&#39;}
 <h2>Complete graph<a class="headerlink" href="#complete-graph" title="Permalink to this headline">¶</a></h2>
 <p>In a complete graph, all nodes are connected to each other.
 To make a complete graph, we’ll use the following generator function, iterates through all pairs of nodes.</p>
-<div class="cell tag_fill-in docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">all_pairs</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">u</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
@@ -555,7 +566,7 @@ To make a complete graph, we’ll use the following generator function, iterates
 </div>
 </div>
 <p>Here’s a complete graph with 10 nodes:</p>
-<div class="cell tag_fill-in docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_complete_graph</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">nodes</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
@@ -567,7 +578,7 @@ To make a complete graph, we’ll use the following generator function, iterates
 </div>
 </div>
 </div>
-<div class="cell tag_fill-in docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">complete</span> <span class="o">=</span> <span class="n">make_complete_graph</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
@@ -582,7 +593,7 @@ To make a complete graph, we’ll use the following generator function, iterates
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/graph_30_0.png" src="_images/graph_30_0.png" />
+<img alt="_images/graph2_30_0.png" src="_images/graph2_30_0.png" />
 </div>
 </div>
 </div>
@@ -612,7 +623,7 @@ To make a complete graph, we’ll use the following generator function, iterates
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">make_random_graph</span></code> makes an ER graph where the probability of an edge between each pair of nodes is <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
-<div class="cell docutils container">
+<div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_random_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="n">nodes</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
@@ -646,7 +657,7 @@ To make a complete graph, we’ll use the following generator function, iterates
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/graph_40_0.png" src="_images/graph_40_0.png" />
+<img alt="_images/graph2_40_0.png" src="_images/graph2_40_0.png" />
 </div>
 </div>
 </div>
@@ -655,7 +666,7 @@ To make a complete graph, we’ll use the following generator function, iterates
 <p>A graph is <strong>connected</strong> if you can start from any node and follow a sequence of edges to reach any other node.</p>
 <p>To check whether a graph is connected, we’ll use a version of a depth-first search.
 First, let’s see what goes wrong with a basic DFS; then we’ll fix the problem.</p>
-<div class="cell tag_fill-in docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">basic_dfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">start</span><span class="p">):</span>
     <span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="n">start</span><span class="p">]</span>
@@ -883,7 +894,7 @@ We can use NetworkX and the functions we’ve written to replicate one of their 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/graph_71_0.png" src="_images/graph_71_0.png" />
+<img alt="_images/graph2_72_0.png" src="_images/graph2_72_0.png" />
 </div>
 </div>
 <p><strong>Exercise:</strong> In my implementation of <code class="docutils literal notranslate"><span class="pre">reachable_nodes</span></code>, you might be bothered by the apparent inefficiency of adding <em>all</em> neighbors to the stack without checking whether they are already in <code class="docutils literal notranslate"><span class="pre">seen</span></code>.  Write a version of this function that checks the neighbors before adding them to the stack.  Does this “optimization” change the order of growth?  Does it make the function faster?</p>

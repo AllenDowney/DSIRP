@@ -1,0 +1,2338 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crawler &#8212; Data Structures and Information Retrieval in Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Merge Sort" href="mergesort.html" />
+    <link rel="prev" title="Quiz 6" href="quiz06.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Structures and Information Retrieval in Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Outline
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="algorithms.html">
+   Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis.html">
+   Analysis of Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="timing.html">
+   Testing Order of Growth
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz01.html">
+   Quiz 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generator.html">
+   Generators and Iterators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="set.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="recursion.html">
+   Recursion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz02.html">
+   Quiz 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dfs.html">
+   Depth First Search
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="search.html">
+   Search
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hashmap.html">
+   Implementing Mapping Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz03.html">
+   Quiz 3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="heap.html">
+   Priority Queues and Heaps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="huffman.html">
+   Huffman Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="philosophy.html">
+   Getting to Philosophy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz04.html">
+   Quiz 4
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="redis.html">
+   Redis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="linked_list.html">
+   Linked List
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="indexer.html">
+   Indexer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz05.html">
+   Quiz 5
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="deque.html">
+   Deque
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bfs.html">
+   Breadth First Search
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz06.html">
+   Quiz 6
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Crawler
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mergesort.html">
+   Merge Sort
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fft.html">
+   FFT
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz07.html">
+   Quiz 7
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pagerank.html">
+   PageRank
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/crawler.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AllenDowney/DSIRP"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/DSIRP/master?urlpath=tree/crawler.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#crawling-the-web">
+   Crawling the web
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finding-links">
+   Finding links
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finding-words">
+   Finding words
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#redis">
+   Redis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indexing">
+   Indexing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#crawling">
+   Crawling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stop-words">
+   Stop words
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shutdown">
+   Shutdown
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="crawler">
+<h1>Crawler<a class="headerlink" href="#crawler" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/crawler.ipynb">Click here to run this chapter on Colab</a></p>
+<div class="section" id="crawling-the-web">
+<h2>Crawling the web<a class="headerlink" href="#crawling-the-web" title="Permalink to this headline">¶</a></h2>
+<p>At this point we have all the pieces we need to build a web crawler; it’s time to bring them together.</p>
+<p>First, from <code class="docutils literal notranslate"><span class="pre">philosophy.ipynb</span></code>, we have <code class="docutils literal notranslate"><span class="pre">WikiFetcher</span></code>, which we’ll use to download pages from Wikipedia while limiting requests to about one per second.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span><span class="p">,</span> <span class="n">sleep</span>
+    
+<span class="k">class</span> <span class="nc">WikiFetcher</span><span class="p">:</span>
+    <span class="n">next_request_time</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">min_interval</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># second</span>
+
+    <span class="k">def</span> <span class="nf">fetch_wikipedia</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sleep_if_needed</span><span class="p">()</span>
+        <span class="n">fp</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">soup</span>
+
+    <span class="k">def</span> <span class="nf">sleep_if_needed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_request_time</span><span class="p">:</span>
+            <span class="n">sleep_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_request_time</span> <span class="o">-</span> <span class="n">time</span><span class="p">()</span>    
+            <span class="k">if</span> <span class="n">sleep_time</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">sleep</span><span class="p">(</span><span class="n">sleep_time</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">next_request_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_interval</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s an example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fetcher</span> <span class="o">=</span> <span class="n">WikiFetcher</span><span class="p">()</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://en.wikipedia.org/wiki/Python_(programming_language)&#39;</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">fetcher</span><span class="o">.</span><span class="n">fetch_wikipedia</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result is a BeautifulSoup object that represents the document object model (DOM) of the page.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">WikiFetcher</span></code> won’t work if <code class="docutils literal notranslate"><span class="pre">url</span></code> is a bytearray, because <code class="docutils literal notranslate"><span class="pre">urlopen</span></code> doesn’t work with bytearrays.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;https://en.wikipedia.org/wiki/Python_(programming_language)&#39;</span>
+<span class="c1"># soup = fetcher.fetch_wikipedia(url)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To convert a bytearray to a string, you have to decode it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_str</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">fetcher</span><span class="o">.</span><span class="n">fetch_wikipedia</span><span class="p">(</span><span class="n">url_str</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Usually when you call <code class="docutils literal notranslate"><span class="pre">decode</span></code>, you should <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#bytes.decode">specify which encoding to use</a>. But in this case we know that the original strings were URLs, so the default encoding will work.</p>
+<p>Wikipedia pages contain boilerplate content that we don’t want to index, so we’ll select the <code class="docutils literal notranslate"><span class="pre">div</span></code> element that contains the “body content” of the page.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">root</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;mw-body-content&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="finding-links">
+<h2>Finding links<a class="headerlink" href="#finding-links" title="Permalink to this headline">¶</a></h2>
+<p>From <code class="docutils literal notranslate"><span class="pre">philosophy.ipynb</span></code>, we have the following function that traverses the DOM and finds links.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">Tag</span>
+
+<span class="k">def</span> <span class="nf">link_generator</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">descendants</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">Tag</span><span class="p">)</span> <span class="ow">and</span> <span class="n">element</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span>
+            <span class="n">href</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">href</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;/wiki&#39;</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">element</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This version includes links to images and other links we probably don’t want to index.</p>
+<p>The following version includes a condition that checks whether the link has a <code class="docutils literal notranslate"><span class="pre">title</span></code> attribute, which seems to select mostly “good” links.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">link_generator</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">descendants</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">Tag</span><span class="p">)</span> <span class="ow">and</span> <span class="n">element</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">href</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">title</span> <span class="ow">and</span> <span class="n">href</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;/wiki&#39;</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">element</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are the first few links from the page we downloaded.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">link</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">link_generator</span><span class="p">(</span><span class="n">root</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;a href=&quot;/wiki/Programming_paradigm&quot; title=&quot;Programming paradigm&quot;&gt;Paradigm&lt;/a&gt;
+&lt;a class=&quot;mw-redirect&quot; href=&quot;/wiki/Multi-paradigm_programming_language&quot; title=&quot;Multi-paradigm programming language&quot;&gt;Multi-paradigm&lt;/a&gt;
+&lt;a href=&quot;/wiki/Object-oriented_programming&quot; title=&quot;Object-oriented programming&quot;&gt;object-oriented&lt;/a&gt;
+&lt;a href=&quot;/wiki/Procedural_programming&quot; title=&quot;Procedural programming&quot;&gt;procedural&lt;/a&gt;
+&lt;a href=&quot;/wiki/Imperative_programming&quot; title=&quot;Imperative programming&quot;&gt;imperative&lt;/a&gt;
+&lt;a href=&quot;/wiki/Functional_programming&quot; title=&quot;Functional programming&quot;&gt;functional&lt;/a&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="finding-words">
+<h2>Finding words<a class="headerlink" href="#finding-words" title="Permalink to this headline">¶</a></h2>
+<p>From <code class="docutils literal notranslate"><span class="pre">indexer.ipynb</span></code>, we have the following function, which traverses the DOM and yields individual words, stripped of punctuation and converted to lowercase.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">NavigableString</span>
+<span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">whitespace</span><span class="p">,</span> <span class="n">punctuation</span>
+
+<span class="k">def</span> <span class="nf">iterate_words</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">descendants</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">NavigableString</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">element</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+                <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">whitespace</span> <span class="o">+</span> <span class="n">punctuation</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">word</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are the first words from the page we downloaded. They include keywords from the sidebar on the right side of the page, which are not part of the main text, but might be good to index anyway, since they indicate the topic of the page.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">iterate_words</span><span class="p">(</span><span class="n">root</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>general-purpose
+programming
+language
+mw-parser-output
+infobox-subbox{padding:0;border:none;margin:-3px;width:auto;min-width:100%;font-size:100%;clear:none;float:none;background-color:transparent}.mw-parser-output
+infobox-3cols-child{margin:auto
+python
+paradigm
+multi-paradigm
+object-oriented
+1
+procedural
+imperative
+functional
+structured
+reflective
+designed
+by
+guido
+van
+rossum
+developer
+python
+software
+foundation
+first
+appeared
+february
+20
+1991
+30
+years
+ago
+1991-02-20
+2
+stable
+release
+3.10.0
+3
+4
+october
+2021
+43
+days
+ago
+4
+october
+2021
+preview
+release
+3.11.0a2
+4
+5
+november
+2021
+11
+days
+ago
+5
+november
+2021
+typing
+discipline
+duck
+dynamic
+strong
+typing
+5
+gradual
+since
+3.5
+but
+ignored
+in
+cpython
+6
+os
+windows
+linux/unix
+macos
+and
+more
+7
+license
+python
+software
+foundation
+license
+filename
+extensions
+py
+pyi
+pyc
+pyd
+pyo
+prior
+to
+3.5
+8
+pyw
+pyz
+since
+3.5
+9
+website
+www
+python
+org
+major
+implementations
+cpython
+pypy
+stackless
+python
+micropython
+circuitpython
+ironpython
+jython
+dialects
+cython
+rpython
+starlark
+10
+influenced
+by
+abc
+11
+ada
+12
+algol
+68
+13
+apl
+14
+c
+15
+c
+16
+clu
+17
+dylan
+18
+haskell
+19
+icon
+20
+java
+21
+lisp
+22
+modula-3
+16
+perl
+standard
+ml
+14
+influenced
+apache
+groovy
+boo
+cobra
+coffeescript
+23
+d
+f
+genie
+24
+go
+javascript
+25
+26
+julia
+27
+nim
+ring
+28
+ruby
+29
+swift
+30
+python
+programming
+at
+wikibooks
+python
+is
+an
+interpreted
+high-level
+general-purpose
+programming
+language
+its
+design
+philosophy
+emphasizes
+code
+readability
+with
+its
+use
+of
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="redis">
+<h2>Redis<a class="headerlink" href="#redis" title="Permalink to this headline">¶</a></h2>
+<p>Let’s get Redis started.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">IN_COLAB</span> <span class="o">=</span> <span class="s1">&#39;google.colab&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span>
+
+<span class="k">if</span> <span class="n">IN_COLAB</span><span class="p">:</span>
+    <span class="o">!</span>pip install redis-server
+    <span class="o">!</span>/usr/local/lib/python*/dist-packages/redis_server/bin/redis-server --daemonize yes
+<span class="k">else</span><span class="p">:</span>
+    <span class="o">!</span>redis-server --daemonize yes
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>115991:C 17 Nov 2021 14:17:37.661 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+115991:C 17 Nov 2021 14:17:37.661 # Redis version=5.0.3, bits=64, commit=00000000, modified=0, pid=115991, just started
+115991:C 17 Nov 2021 14:17:37.661 # Configuration loaded
+</pre></div>
+</div>
+</div>
+</div>
+<p>And make sure the Redis client is installed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">redis</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip install redis
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll make a <code class="docutils literal notranslate"><span class="pre">Redis</span></code> object that creates the connection to the Redis database.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">redis</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">Redis</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you have a Redis database running on a different machine, you can create a <code class="docutils literal notranslate"><span class="pre">Redis</span></code> object using the URL of the database, like this</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;redis://redistogo:example@dory.redistogo.com:10534/&#39;</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">Redis</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If your database contains values from previous exercises, or if you make a mistake and want to start over, you can use the following function to clear the database.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clear_redis</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        
+<span class="c1"># clear_redis(r)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="indexing">
+<h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">¶</a></h2>
+<p>From <code class="docutils literal notranslate"><span class="pre">indexer.ipynb</span></code>, here’s the function that counts the words on a page and adds the results to a Redis hash.</p>
+<p>For each word, it creates or updates a hash in the database that maps from URLs to word counts. For example if the word <code class="docutils literal notranslate"><span class="pre">python</span></code> appears 428 times on a page, we could find the hash with key <code class="docutils literal notranslate"><span class="pre">Index:python</span></code> and add an entry that maps from the URL to the number 428.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="k">def</span> <span class="nf">redis_index</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">iterate_words</span><span class="p">(</span><span class="n">root</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">counter</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Index:</span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="c1"># print(key, count)</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">hset</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The previous version is likely to be slow because it makes many small requests to the database.
+We can speed it up using a pipeline object, like this:</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">redis_index_pipeline</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">iterate_words</span><span class="p">(</span><span class="n">root</span><span class="p">))</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">pipeline</span><span class="p">(</span><span class="n">transaction</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">counter</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Index:</span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="c1"># print(key, count)</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">hset</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s see which version is faster.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://en.wikipedia.org/wiki/Python_(programming_language)&#39;</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">fetcher</span><span class="o">.</span><span class="n">fetch_wikipedia</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;mw-body-content&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> redis_index(root, url)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 36.8 ms, sys: 13.2 ms, total: 49.9 ms
+Wall time: 53.3 ms
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> redis_index_pipeline(root, url)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 13.9 ms, sys: 7.58 ms, total: 21.5 ms
+Wall time: 20.4 ms
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">hscan_iter</span></code> to iterate the field-values pairs in the index for the word <code class="docutils literal notranslate"><span class="pre">python</span></code>, and print the URLs of the pages where this word appears and the number of times it appears on each page.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Index:python&#39;</span>
+
+<span class="k">for</span> <span class="n">page</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">hscan_iter</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;https://en.wikipedia.org/wiki/File:Python-logo-notext.svg&#39; b&#39;29&#39;
+b&#39;https://en.wikipedia.org/wiki/Python_(programming_language)&#39; b&#39;428&#39;
+b&#39;https://en.wikipedia.org/wiki/Programming_paradigm&#39; b&#39;3&#39;
+b&#39;https://en.wikipedia.org/wiki/Multi-paradigm_programming_language&#39; b&#39;3&#39;
+b&#39;https://en.wikipedia.org/wiki/Reflective_programming&#39; b&#39;3&#39;
+b&#39;https://en.wikipedia.org/wiki/Object-oriented_programming&#39; b&#39;6&#39;
+b&#39;https://en.wikipedia.org/wiki/List_of_object-oriented_programming_languages&#39; b&#39;3&#39;
+b&#39;https://en.wikipedia.org/wiki/Functional_programming&#39; b&#39;10&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that when we get the number back, it’s a bytearray. If we want to work with it as a number, we have to convert back to int.</p>
+</div>
+<div class="section" id="crawling">
+<h2>Crawling<a class="headerlink" href="#crawling" title="Permalink to this headline">¶</a></h2>
+<p>In <code class="docutils literal notranslate"><span class="pre">philosophy.ipynb</span></code> we wrote a simple crawler that always follows the first link.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urljoin</span>
+
+<span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;https://en.wikipedia.org/wiki/Philosophy&#39;</span>
+
+<span class="k">def</span> <span class="nf">get_to_philosophy</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">url</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Got there in </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> steps!&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">visited</span>
+        
+        <span class="k">if</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;URL already visited </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+            <span class="n">visited</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+            
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">fetcher</span><span class="o">.</span><span class="n">fetch_wikipedia</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;mw-body-content&#39;</span><span class="p">)</span>
+        <span class="n">link</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">link_generator</span><span class="p">(</span><span class="n">root</span><span class="p">))</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">link</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">])</span>
+        
+    <span class="k">return</span> <span class="n">visited</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_to_philosophy</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://en.wikipedia.org/wiki/Object-oriented_programming
+https://en.wikipedia.org/wiki/Object-orientation
+https://en.wikipedia.org/wiki/Wikipedia:PRIMARYTOPIC
+https://en.wikipedia.org/wiki/MOS:DAB
+https://en.wikipedia.org/wiki/Help:Disambiguation
+https://en.wikipedia.org/wiki/Wikipedia:Disambiguation
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">62</span><span class="o">-</span><span class="mi">4</span><span class="n">ac31b5a8562</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_to_philosophy</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="nn">&lt;ipython-input-61-734ed37e61bb&gt;</span> in <span class="ni">get_to_philosophy</span><span class="nt">(url)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> 
+<span class="g g-Whitespace">     </span><span class="mi">13</span>         <span class="k">if</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">14</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;URL already visited </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>             <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: URL already visited https://en.wikipedia.org/wiki/MOS:DAB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we want a crawler that runs a breadth-first search.
+Here’s the implementation of BFS from <code class="docutils literal notranslate"><span class="pre">bfs.ipynb</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+<span class="k">def</span> <span class="nf">reachable_nodes_bfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">start</span><span class="p">):</span>
+    <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="n">start</span><span class="p">])</span>
+    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+            <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+            <span class="n">neighbors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">node</span><span class="p">])</span> <span class="o">-</span> <span class="n">seen</span>
+            <span class="n">queue</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">neighbors</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">seen</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> Write a function called <code class="docutils literal notranslate"><span class="pre">crawl</span></code> that takes a starting URL as a parameter, and an optional number of pages to crawl.</p>
+<p>It should create a queue of URLs and work it’s way through the queue, indexing pages as it goes and adding new links to the queue.</p>
+<p>For a first draft, I suggest using Python data structures to keep track of the queue and the set of URLs that have already been seen/indexed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://en.wikipedia.org/wiki/Python_(programming_language)&#39;</span>
+<span class="n">seen</span> <span class="o">=</span> <span class="n">crawl</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://en.wikipedia.org/wiki/Python_(programming_language)
+https://en.wikipedia.org/wiki/Programming_paradigm
+https://en.wikipedia.org/wiki/Multi-paradigm_programming_language
+https://en.wikipedia.org/wiki/Object-oriented_programming
+https://en.wikipedia.org/wiki/Procedural_programming
+https://en.wikipedia.org/wiki/Imperative_programming
+https://en.wikipedia.org/wiki/Functional_programming
+https://en.wikipedia.org/wiki/Structured_programming
+https://en.wikipedia.org/wiki/Reflective_programming
+https://en.wikipedia.org/wiki/Software_design
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;Index:the&#39;</span>
+<span class="k">for</span> <span class="n">page</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">hscan_iter</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;https://en.wikipedia.org/wiki/Array_programming&#39; b&#39;118&#39;
+b&#39;https://en.wikipedia.org/wiki/File:Python-logo-notext.svg&#39; b&#39;17&#39;
+b&#39;https://en.wikipedia.org/wiki/Procedural_programming&#39; b&#39;49&#39;
+b&#39;https://en.wikipedia.org/wiki/Programming_paradigm&#39; b&#39;118&#39;
+b&#39;https://en.wikipedia.org/wiki/Python_(programming_language)&#39; b&#39;535&#39;
+b&#39;https://en.wikipedia.org/wiki/Structured_programming&#39; b&#39;160&#39;
+b&#39;https://en.wikipedia.org/wiki/Relativistic_programming&#39; b&#39;13&#39;
+b&#39;https://en.wikipedia.org/wiki/Multi-paradigm_programming_language&#39; b&#39;118&#39;
+b&#39;https://en.wikipedia.org/wiki/Object-oriented_programming&#39; b&#39;278&#39;
+b&#39;https://en.wikipedia.org/wiki/Software_design&#39; b&#39;152&#39;
+b&#39;https://en.wikipedia.org/wiki/Agent-oriented_programming&#39; b&#39;20&#39;
+b&#39;https://en.wikipedia.org/wiki/Reflective_programming&#39; b&#39;53&#39;
+b&#39;https://en.wikipedia.org/wiki/List_of_object-oriented_programming_languages&#39; b&#39;3&#39;
+b&#39;https://en.wikipedia.org/wiki/Functional_programming&#39; b&#39;227&#39;
+b&#39;https://en.wikipedia.org/wiki/Imperative_programming&#39; b&#39;80&#39;
+b&#39;https://en.wikipedia.org/wiki/Concurrent_computing&#39; b&#39;101&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>For a second draft, consider storing these structures in Redis so they are persistent; that way, you can call <code class="docutils literal notranslate"><span class="pre">crawl</span></code> later and it will pick up from where it left off. Or you could have multiple crawlers running at the same time.</p>
+<p>Hint: When you read a URL from Redis, you might have to decode it to make a string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">queue_key</span> <span class="o">=</span> <span class="s1">&#39;Crawler:queue&#39;</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">lpop</span><span class="p">(</span><span class="n">queue_key</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;https://en.wikipedia.org/wiki/Data-driven_programming&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seen_key</span> <span class="o">=</span> <span class="s1">&#39;Crawler:seen&#39;</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">sismember</span><span class="p">(</span><span class="n">seen_key</span><span class="p">,</span> <span class="s1">&#39;anything&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://en.wikipedia.org/wiki/Object-oriented_programming&#39;</span>
+<span class="n">crawl_persistent</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;https://en.wikipedia.org/wiki/Declarative_programming&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">smembers</span><span class="p">(</span><span class="n">seen_key</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{b&#39;https://en.wikipedia.org/wiki/Agent-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Array_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Concurrent_computing&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Declarative_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/List_of_object-oriented_programming_languages&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-orientation&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Relativistic_programming&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">lrange</span><span class="p">(</span><span class="n">queue_key</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[b&#39;https://en.wikipedia.org/wiki/Imperative_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Functional_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Functional_logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Purely_functional_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Abductive_logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Answer_set_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Concurrent_logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Functional_logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Inductive_logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Constraint_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Constraint_logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Concurrent_constraint_logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dataflow_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Flow-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Reactive_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Functional_reactive_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ontology_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Differentiable_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dynamic_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Event-driven_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Function-level_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Value-level_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Tacit_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Concatenative_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Generic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Imperative_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Declarative_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Procedural_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Polymorphic_code&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Intentional_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Language-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Domain-specific_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Literate_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Natural-language_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Metaprogramming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Automatic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Inductive_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Reflective_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Attribute-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Macro_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Template_metaprogramming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Non-structured_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Structured_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Array_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Nondeterministic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Parallel_computing&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Process-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Probabilistic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Quantum_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Set_theoretic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Stack-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Structured_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Non-structured_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Block_(programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Structured_concurrency&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Actor_model&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Class-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Concurrent_object-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Prototype-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Separation_of_concerns&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Aspect-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Role-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Subject-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Recursion_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Symbolic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Value-level_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Function-level_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Template:Programming_paradigms&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Template_talk:Programming_paradigms&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Programming_paradigm&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Data&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Field_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Attribute_(computing)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Method_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/This_(computer_programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Class-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Instance_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Class_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Data_type&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Multi-paradigm_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Imperative_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Procedural_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Java_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/C%2B%2B&#39;,
+ b&#39;https://en.wikipedia.org/wiki/C_Sharp_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Python_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/R_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/PHP&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Visual_Basic.NET&#39;,
+ b&#39;https://en.wikipedia.org/wiki/JavaScript&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ruby_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Perl&#39;,
+ b&#39;https://en.wikipedia.org/wiki/SIMSCRIPT&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_Pascal&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Objective-C&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dart_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Swift_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Scala_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Kotlin_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Common_Lisp&#39;,
+ b&#39;https://en.wikipedia.org/wiki/MATLAB&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Smalltalk&#39;,
+ b&#39;https://en.wikipedia.org/wiki/File:Oop-uml-class-example.png&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Unified_Modeling_Language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Variable_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Method_(computer_programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/MIT&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Artificial_intelligence&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Lisp_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Alan_Kay&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Sketchpad&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ivan_Sutherland&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ALGOL&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Simula&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Class_(computer_programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dynamic_binding_(computing)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Physical_modelling&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Smalltalk&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Xerox_PARC&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Alan_Kay&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dan_Ingalls&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Adele_Goldberg_(computer_scientist)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dynamic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Interpreter_(computing)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Compiler&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Lisp_(programming_language)#Language_innovations&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Lisp_(programming_language)#Object_systems&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Lisp_machine&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Flavors_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Multiple_inheritance&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Mixins&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Common_Lisp_Object_System&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Meta-object_protocol&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Intel_iAPX_432&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Linn_Products&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Rekursiv&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Byte_Magazine&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Association_for_Computing_Machinery&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Objective-C&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Brad_Cox&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ITT_Inc.&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Bjarne_Stroustrup&#39;,
+ b&#39;https://en.wikipedia.org/wiki/C%2B%2B&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Bertrand_Meyer&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Eiffel_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-Oriented_Software_Construction&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Design_by_Contract&#39;,
+ b&#39;https://en.wikipedia.org/wiki/File:Tiobeindex.png&#39;,
+ b&#39;https://en.wikipedia.org/wiki/File:Tiobeindex.png&#39;,
+ b&#39;https://en.wikipedia.org/wiki/TIOBE_index&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Measuring_programming_language_popularity&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Java_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Procedural_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/C_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Paradigm&#39;,
+ b&#39;https://en.wikipedia.org/wiki/FoxPro&#39;,
+ b&#39;https://en.wikipedia.org/wiki/C%2B%2B&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Delphi_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Wikipedia:Citation_needed&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Graphical_user_interface&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Cocoa_(software)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Mac_OS_X&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Objective-C&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Event-driven_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ETH_Z%C3%BCrich&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Niklaus_Wirth&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Data_abstraction&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Modularity_(programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Modula-2&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Oberon_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ada_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/BASIC&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Fortran&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Pascal_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/COBOL&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Python_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ruby_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Java_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Sun_Microsystems&#39;,
+ b&#39;https://en.wikipedia.org/wiki/C_Sharp_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Visual_Basic.NET&#39;,
+ b&#39;https://en.wikipedia.org/wiki/.NET_Framework&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Multi-paradigm&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Comparison_of_programming_languages_(object-oriented_programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/List_of_object-oriented_programming_terms&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Variable_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Data_type&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Integer_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Character_(computing)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Data_structures&#39;,
+ b&#39;https://en.wikipedia.org/wiki/String_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/List_(abstract_data_type)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Hash_table&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Pointer_(computer_programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Subroutine&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Structured_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Loop_(computing)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Conditional_(computer_programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Modular_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Namespace&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Class-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Prototype-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Class_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Instance_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Method_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Field_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Class_variable&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Instance_variable&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Member_variable&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Pointer_(computer_programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Abstraction_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Constructor_(object-oriented_programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Class-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Prototype-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Trait_(computer_programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Mixin&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Class-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Prototype-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Equivalence_class&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Delegation_(object-oriented_programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Single_inheritance&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dynamic_dispatch&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Abstract_data_type&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Multiple_dispatch&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Message_passing&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Information_hiding&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Encapsulation_(object-oriented_programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Underscore&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Code_refactoring&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Coupling_(computer_programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_composition&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Multiple_inheritance&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Mixin&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Abstract_class&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Final_(Java)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Composition_over_inheritance&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Go_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Open/closed_principle&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Delegation_(programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Subtyping&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Polymorphism_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Separation_of_concerns&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Open_recursion&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Name_binding&#39;,
+ b&#39;https://en.wikipedia.org/wiki/File:Question_book-new.svg&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Wikipedia:Citing_sources&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Wikipedia:Verifiability&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Help:Referencing_for_beginners&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Wikipedia:Verifiability#Burden_of_evidence&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Help:Maintenance_template_removal&#39;,
+ b&#39;https://en.wikipedia.org/wiki/List_of_object-oriented_programming_languages&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Simula&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Computer_simulation&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Smalltalk&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ruby_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Scala_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Smalltalk&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Eiffel_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Emerald_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/JADE_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Self_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Raku_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Java_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Python_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/C%2B%2B&#39;,
+ b&#39;https://en.wikipedia.org/wiki/C_Sharp_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Delphi_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_Pascal&#39;,
+ b&#39;https://en.wikipedia.org/wiki/VB.NET&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Procedural_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/PHP&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Perl&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Visual_Basic&#39;,
+ b&#39;https://en.wikipedia.org/wiki/MATLAB&#39;,
+ b&#39;https://en.wikipedia.org/wiki/COBOL_2002&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Fortran_2003&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ABAP&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ada_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Pascal_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Oberon_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Abstract_data_type&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-based&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Prototype-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/JavaScript&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Lua_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Modula-2&#39;,
+ b&#39;https://en.wikipedia.org/wiki/CLU_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Tcl&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Prototype-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dynamic_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Python_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Windows_PowerShell&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ruby_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Groovy_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Perl&#39;,
+ b&#39;https://en.wikipedia.org/wiki/PHP&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ColdFusion&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Document_Object_Model&#39;,
+ b&#39;https://en.wikipedia.org/wiki/HTML&#39;,
+ b&#39;https://en.wikipedia.org/wiki/XHTML&#39;,
+ b&#39;https://en.wikipedia.org/wiki/XML&#39;,
+ b&#39;https://en.wikipedia.org/wiki/JavaScript&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ECMAScript&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Prototype-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Class-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Lua_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Distributed_Data_Management_Architecture&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Smalltalk&#39;,
+ b&#39;https://en.wikipedia.org/wiki/IBM_i&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_(IBM_i)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/DRDA&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Design_Patterns_(book)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Design_pattern_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-oriented_design&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Program_semantics&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Is_a&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Mutable&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Subtype_polymorphism&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Type_checker&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Behavioral_subtyping&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Liskov_substitution_principle&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Design_pattern_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Design_Patterns_(book)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Erich_Gamma&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Richard_Helm&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ralph_Johnson_(computer_scientist)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/John_Vlissides&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Creational_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Factory_method_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Abstract_factory_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Singleton_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Builder_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Prototype_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Structural_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Adapter_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Bridge_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Composite_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Decorator_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Facade_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Flyweight_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Proxy_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Behavioral_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Command_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Interpreter_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Iterator_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Mediator_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Memento_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Observer_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/State_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Strategy_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Template_method_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Visitor_pattern&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-relational_mapping&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_database&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Relational_database_management_systems&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Relational_database&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-relational_mapping&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Integrated_development_environment&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Visual_FoxPro&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Java_Data_Objects&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ruby_on_Rails&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_database&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-oriented_programming#Criticism&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Bertrand_Meyer&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-Oriented_Software_Construction&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Circle-ellipse_problem&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Niklaus_Wirth&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Wirth%27s_law&#39;,
+ b&#39;https://en.wikipedia.org/wiki/KISS_principle&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Steve_Yegge&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Noun&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Verb&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Code_reuse&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Software_maintenance&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Control_flow&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Thread_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Responsibility-driven_design&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Data-driven_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Single_responsibility_principle&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Open/closed_principle&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Liskov_substitution_principle&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Interface_segregation_principle&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dependency_inversion_principle&#39;,
+ b&#39;https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Craig_Larman&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Luca_Cardelli&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Joe_Armstrong_(programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Erlang_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Christopher_J._Date&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Data_type&#39;,
+ b&#39;https://en.wikipedia.org/wiki/RDBMS&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Alexander_Stepanov&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Generic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Paul_Graham_(computer_programmer)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Duplicate_code&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Don%27t_repeat_yourself&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Steve_Yegge&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Functional_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Rich_Hickey&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Clojure&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Eric_S._Raymond&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Unix&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Open-source_software&#39;,
+ b&#39;https://en.wikipedia.org/wiki/C_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Rob_Pike&#39;,
+ b&#39;https://en.wikipedia.org/wiki/UTF-8&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Go_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Roman_numerals&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Data_structure&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Algorithm&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Data_type&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Java_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Lookup_table&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Formal_semantics_of_programming_languages&#39;,
+ b&#39;https://en.wikipedia.org/wiki/F-Coalgebra&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Abstract_data_type&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Existential_types&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Module_(programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dynamic_dispatch&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Recursive_type&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Record_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Function_literal&#39;,
+ b&#39;https://en.wikipedia.org/wiki/System_F-sub&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Subtype_polymorphism&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Parametric_polymorphism&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Syntactic_sugar&#39;,
+ b&#39;https://en.wikipedia.org/wiki/File:Octicons-terminal.svg&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Portal:Computer_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Comparison_of_programming_languages_(object-oriented_programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Comparison_of_programming_paradigms&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Component-based_software_engineering&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Design_by_contract&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_association&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_database&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_model_reference&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_modeling_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-oriented_analysis_and_design&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch&#39;,
+ b&#39;https://en.wikipedia.org/wiki/The_Third_Manifesto&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-relational_mapping&#39;,
+ b&#39;https://en.wikipedia.org/wiki/CADES&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Common_Object_Request_Broker_Architecture&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Distributed_Component_Object_Model&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Distributed_Data_Management_Architecture&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Jeroo&#39;,
+ b&#39;https://en.wikipedia.org/wiki/IDEF4&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Interface_description_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Lepus3&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Unified_Modeling_Language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Help:CS1_errors#missing_periodical&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-321-53205-3&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Phyllis_Fox&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Louis_Hodes&#39;,
+ b&#39;https://en.wikipedia.org/wiki/David_Luckham&#39;,
+ b&#39;https://en.wikipedia.org/wiki/David_Park_(computer_scientist)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Steve_Russell_(computer_scientist)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Boston&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Massachusetts&#39;,
+ b&#39;https://en.wikipedia.org/wiki/M.I.T._Computation_Center&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Help:CS1_errors#missing_periodical&#39;,
+ b&#39;https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/MIT_Press&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-262-13011-0&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Kristen_Nygaard&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ole-Johan_Dahl&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Doi_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/S2CID_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Bibcode_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-3-540-92144-8&#39;,
+ b&#39;https://en.wikipedia.org/wiki/FoxPro&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-81-259-2532-3&#39;,
+ b&#39;https://en.wikipedia.org/wiki/John_C._Mitchell&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/0-521-78098-5&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/0-12-633951-1&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Types_and_Programming_Languages&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-262-16209-8&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-8053-0608-8&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-1-78588-713-0&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-201-54435-0&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_Management_Group&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Niklaus_Wirth&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Computer_(magazine)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Doi_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/S2CID_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Robert_Harper_(computer_scientist)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Luca_Cardelli&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Doi_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISSN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/S2CID_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Wayback_Machine&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Alexander_Stepanov&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Doi_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Paul_Graham_(computer_programmer)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Rob_Pike&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Martin_Abadi&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-387-94775-4&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Martin_Abadi&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Luca_Cardelli&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Springer_Verlag&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-387-94775-4&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Harold_Abelson&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Gerald_Jay_Sussman&#39;,
+ b&#39;https://en.wikipedia.org/wiki/MIT_Press&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-262-01153-2&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Doi_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISSN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/S2CID_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Grady_Booch&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Addison-Wesley&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-8053-5340-2&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Oliver_Sims&#39;,
+ b&#39;https://en.wikipedia.org/wiki/John_Wiley_%26_Sons&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-471-19176-6&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Erich_Gamma&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Richard_Helm&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ralph_Johnson_(computer_scientist)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/John_Vlissides&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Bibcode_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-201-63361-0&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Paul_Harmon_(management_author)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-471-14717-6&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ivar_Jacobson&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Use_case&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Bibcode_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-201-54435-0&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Alan_Kay&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Bertrand_Meyer&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-Oriented_Software_Construction&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Prentice_Hall&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-13-629155-8&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-80-904661-8-0&#39;,
+ b&#39;https://en.wikipedia.org/wiki/James_Rumbaugh&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-13-629841-0&#39;,
+ b&#39;https://en.wikipedia.org/wiki/McGraw-Hill&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-07-319126-3&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Hdl_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-3-446-17426-9&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-471-54364-0&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Addison-Wesley&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-672-33016-2&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Microsoft_Press&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-7356-1965-4&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Template:Types_of_programming_languages&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Template_talk:Types_of_programming_languages&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Programming_paradigm&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Actor_model&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Array_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Aspect-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Class-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Concatenative_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Concurrent_computing&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dataflow_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Declarative_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Differentiable_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Domain-specific_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dynamic_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Esoteric_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Event-driven_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Extensible_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Functional_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Imperative_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Macro_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Metaprogramming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-based_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Pipeline_(software)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Procedural_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Prototype-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Reflective_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Rule-based_system&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Scripting_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Stack-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Synchronous_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Tactile_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Template_processor&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Assembly_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Compiled_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Interpreted_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Machine_code&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Low-level_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/High-level_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Very_high-level_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/First-generation_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Second-generation_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Third-generation_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Fourth-generation_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Fifth-generation_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Non-English-based_programming_languages&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Visual_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Template:Software_engineering&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Template_talk:Software_engineering&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Software_engineering&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Computer_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/DevOps&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Requirements_engineering&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Site_reliability_engineering&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Software_deployment&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Software_design&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Software_maintenance&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Software_testing&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Systems_analysis&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Formal_methods&#39;,
+ b&#39;https://en.wikipedia.org/wiki/File:HelloWorld_in_black_and_white.svg&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Data_modeling&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Enterprise_architecture&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Functional_specification&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Modeling_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Programming_paradigm&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Software&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Software_archaeology&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Software_architecture&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Software_configuration_management&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Software_development_process&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Software_quality&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Software_quality_assurance&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Software_verification_and_validation&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Structured_analysis&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Essential_Systems_Analysis&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Agile_software_development&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Aspect-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ontology_(information_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Service-oriented_architecture&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Systems_development_life_cycle&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Agile_software_development&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Enterprise_Unified_Process&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Executable_UML&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Incremental_build_model&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Iterative_and_incremental_development&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Software_prototyping&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Rapid_application_development&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Unified_Process&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Scrum_(software_development)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Spiral_model&#39;,
+ b&#39;https://en.wikipedia.org/wiki/V-Model_(software_development)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Waterfall_model&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Extreme_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISO/IEC_15504&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Capability_Maturity_Model_Integration&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Data_model&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Function_model&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Information_model&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Metamodeling&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_model&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Systems_modeling&#39;,
+ b&#39;https://en.wikipedia.org/wiki/View_model&#39;,
+ b&#39;https://en.wikipedia.org/wiki/IDEF&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Unified_Modeling_Language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Universal_Systems_Language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Systems_Modeling_Language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Computer_science&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Computer_engineering&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Information_science&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Project_management&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Risk_management&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Systems_engineering&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Category:Software_engineering&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Help:Authority_control&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Wikipedia:PRIMARYTOPIC&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Wikipedia:Broad-concept_article&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Wikipedia:Drafts&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-orientation_(disambiguation)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-oriented_analysis_and_design&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-oriented_design&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-oriented_database&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-oriented_modeling&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-oriented_operating_system&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-oriented_user_interface&#39;,
+ b&#39;https://en.wikipedia.org/wiki/File:Question_book-new.svg&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Wikipedia:Verifiability&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Help:Referencing_for_beginners&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Help:Maintenance_template_removal&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Programming_languages&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Category:Object-oriented_programming_languages&#39;,
+ b&#39;https://en.wikipedia.org/wiki/C%2B%2B&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Programming_paradigm&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Python_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ruby_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ABAP&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ada_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/AmigaE&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Apex_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/BETA_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Boo_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/C%2B%2B&#39;,
+ b&#39;https://en.wikipedia.org/wiki/C_Sharp_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ceylon_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Chapel_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Clarion_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/CLU_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/COBOL&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Cobra_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ColdFusion&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Common_Lisp&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Cool_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/CorbaScript&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Curl_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/D_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dart_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/DataFlex&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dylan_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/E_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Eiffel_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Sather&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Elixir_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Fortran_2003&#39;,
+ b&#39;https://en.wikipedia.org/wiki/FreeBASIC&#39;,
+ b&#39;https://en.wikipedia.org/wiki/F-Script_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/F_Sharp_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Gambas&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Genie_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Go_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Graphtalk&#39;,
+ b&#39;https://en.wikipedia.org/wiki/IDLscript&#39;,
+ b&#39;https://en.wikipedia.org/wiki/J_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/J_Sharp&#39;,
+ b&#39;https://en.wikipedia.org/wiki/JADE_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Java_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Groovy_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Join_Java&#39;,
+ b&#39;https://en.wikipedia.org/wiki/X10_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Julia_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Kotlin_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Lasso_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Lava_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Lexico_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Lingo_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/LISP&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Logtalk&#39;,
+ b&#39;https://en.wikipedia.org/wiki/MATLAB&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Modula-3&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Nemerle&#39;,
+ b&#39;https://en.wikipedia.org/wiki/NetRexx&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Nim_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Noop&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Oberon_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Oberon-2&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_Pascal&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Delphi_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Free_Pascal&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Turbo_Pascal&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object_REXX&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Objective-C&#39;,
+ b&#39;https://en.wikipedia.org/wiki/OCaml&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Omnis_Studio&#39;,
+ b&#39;https://en.wikipedia.org/wiki/OpenEdge_Advanced_Business_Language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Oz_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Perl&#39;,
+ b&#39;https://en.wikipedia.org/wiki/PHP&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Power_Builder&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Prototype-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Actor-Based_Concurrent_Language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ABCL/1&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ABCL/R&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ABCL/R2&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ABCL/c_plus&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Agora_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Cecil_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ECMAScript&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ActionScript&#39;,
+ b&#39;https://en.wikipedia.org/wiki/JavaScript&#39;,
+ b&#39;https://en.wikipedia.org/wiki/JScript&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Etoys_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Squeak&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Io_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Lua_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/MOO_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/NewtonScript&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Obliq&#39;,
+ b&#39;https://en.wikipedia.org/wiki/REBOL&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Self_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Python_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/REALbasic&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ruby_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Rust_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/S_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/R_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Scala_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Scriptol&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Seed7&#39;,
+ b&#39;https://en.wikipedia.org/wiki/SenseTalk&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Simula&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Smalltalk&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Self_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Squeak&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Pharo&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Newspeak_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Squirrel_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Swift_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/TADS&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Tcl&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Xotcl&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Incr_Tcl&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Transcript_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/TypeScript&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ubercode&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Vala_(programming_language)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Visual_Basic_(classic)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Visual_Basic_.NET&#39;,
+ b&#39;https://en.wikipedia.org/wiki/VBScript&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Visual_Basic_for_Applications&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Visual_FoxPro&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Visual_Prolog&#39;,
+ b&#39;https://en.wikipedia.org/wiki/XBase%2B%2B&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Xojo&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ZZT-oop&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-oriented_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Doi_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0-201-82467-4&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/9781449355692&#39;,
+ b&#39;https://en.wikipedia.org/wiki/ISBN_(identifier)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Special:BookSources/978-0596554651&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Curlie&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Template:Types_of_programming_languages&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Template_talk:Types_of_programming_languages&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Programming_paradigm&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Actor_model&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Array_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Aspect-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Class-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Concatenative_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Concurrent_computing&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dataflow_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Declarative_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Differentiable_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Domain-specific_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dynamic_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Esoteric_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Event-driven_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Extensible_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Functional_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Imperative_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Macro_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Metaprogramming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-based_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Pipeline_(software)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Procedural_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Prototype-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Reflective_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Rule-based_system&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Scripting_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Stack-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Synchronous_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Tactile_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Template_processor&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Assembly_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Compiled_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Interpreted_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Machine_code&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Low-level_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/High-level_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Very_high-level_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/First-generation_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Second-generation_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Third-generation_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Fourth-generation_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Fifth-generation_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Non-English-based_programming_languages&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Visual_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Help:Authority_control&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Object-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Programming_paradigm&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Action_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Array_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Automata-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Concurrent_computing&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Relativistic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Data-driven_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Declarative_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Imperative_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Functional_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Functional_logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Purely_functional_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Abductive_logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Answer_set_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Concurrent_logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Functional_logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Inductive_logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Constraint_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Constraint_logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Concurrent_constraint_logic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dataflow_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Flow-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Reactive_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Functional_reactive_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Ontology_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Differentiable_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Dynamic_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Event-driven_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Function-level_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Value-level_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Tacit_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Concatenative_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Generic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Imperative_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Declarative_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Procedural_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Polymorphic_code&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Intentional_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Language-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Domain-specific_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Literate_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Natural-language_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Metaprogramming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Automatic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Inductive_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Reflective_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Attribute-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Macro_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Template_metaprogramming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Non-structured_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Structured_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Array_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Nondeterministic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Parallel_computing&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Process-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Probabilistic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Quantum_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Set_theoretic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Stack-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Structured_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Non-structured_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Block_(programming)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Structured_concurrency&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Actor_model&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Class-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Concurrent_object-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Prototype-based_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Separation_of_concerns&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Aspect-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Role-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Subject-oriented_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Recursion_(computer_science)&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Symbolic_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Value-level_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Function-level_programming&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Template:Programming_paradigms&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Template_talk:Programming_paradigms&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Programming_paradigm&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Software_agent&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Yoav_Shoham&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Artificial_Intelligence&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Message_passing&#39;,
+ b&#39;https://en.wikipedia.org/wiki/API&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Foundation_for_Intelligent_Physical_Agents&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Agent_Communication_Language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/GOAL_agent_programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Programming_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Cognitive_agent&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Decision-making&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Common_sense&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Practical_reasoning&#39;,
+ b&#39;https://en.wikipedia.org/wiki/SARL_language&#39;,
+ b&#39;https://en.wikipedia.org/wiki/API&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Middleware&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Software_agent&#39;,
+ b&#39;https://en.wikipedia.org/wiki/Foundation_for_Intelligent_Physical_Agents&#39;,
+ ...]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crawl_persistent</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;https://en.wikipedia.org/wiki/Imperative_programming&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="stop-words">
+<h2>Stop words<a class="headerlink" href="#stop-words" title="Permalink to this headline">¶</a></h2>
+<p>The most common English words are likely to appear on every page.
+They don’t indicate what the page is about, and we might not want to index them. Words that we don’t index are sometimes called <a class="reference external" href="https://en.wikipedia.org/wiki/Stop_word">stop words</a>.</p>
+<p>Once you have indexed a few pages, use the index to identify the words that have appeared the most times, totaled across all pages.</p>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_key</span> <span class="o">=</span> <span class="s1">&#39;Index:the&#39;</span>
+<span class="n">r</span><span class="o">.</span><span class="n">hvals</span><span class="p">(</span><span class="n">word_key</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[b&#39;118&#39;,
+ b&#39;17&#39;,
+ b&#39;278&#39;,
+ b&#39;160&#39;,
+ b&#39;101&#39;,
+ b&#39;118&#39;,
+ b&#39;227&#39;,
+ b&#39;49&#39;,
+ b&#39;152&#39;,
+ b&#39;20&#39;,
+ b&#39;53&#39;,
+ b&#39;3&#39;,
+ b&#39;535&#39;,
+ b&#39;80&#39;,
+ b&#39;13&#39;,
+ b&#39;118&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">hvals</span><span class="p">(</span><span class="n">word_key</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2042
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">word_key</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">keys</span><span class="p">(</span><span class="s1">&#39;Index*&#39;</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">hvals</span><span class="p">(</span><span class="n">word_key</span><span class="p">))</span>
+    <span class="n">word</span> <span class="o">=</span> <span class="n">word_key</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">counter</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">total</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_fill-in docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counter</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;the&#39;, 2042),
+ (&#39;of&#39;, 1400),
+ (&#39;and&#39;, 1248),
+ (&#39;a&#39;, 1160),
+ (&#39;to&#39;, 933),
+ (&#39;programming&#39;, 859),
+ (&#39;in&#39;, 838),
+ (&#39;is&#39;, 625),
+ (&#39;on&#39;, 496),
+ (&#39;for&#39;, 488),
+ (&#39;python&#39;, 485),
+ (&#39;as&#39;, 466),
+ (&#39;from&#39;, 439),
+ (&#39;languages&#39;, 389),
+ (&#39;that&#39;, 366),
+ (&#39;software&#39;, 350),
+ (&#39;retrieved&#39;, 336),
+ (&#39;with&#39;, 332),
+ (&#39;language&#39;, 327),
+ (&#39;design&#39;, 325)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following cells use the results to make a Zipf plot, which shows counts versus “rank” on a log-log scale (the most common word has rank 1, the next most common has rank 2, and so on).</p>
+<p>Zipf’s law asserts that the distribution of word frequencies follows a power law, which implies that the Zipf plot is approximately a straight line.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">counter</span><span class="o">.</span><span class="n">most_common</span><span class="p">()):</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">count</span><span class="p">))</span>
+    
+<span class="n">rank</span><span class="p">,</span> <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Rank&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Zipf plot&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/crawler_67_0.png" src="_images/crawler_67_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="shutdown">
+<h2>Shutdown<a class="headerlink" href="#shutdown" title="Permalink to this headline">¶</a></h2>
+<p>If you are running this notebook on your own computer, you can use the following command to shut down the Redis server.</p>
+<p>If you are running on Colab, it’s not really necessary: the Redis server will get shut down when the Colab runtime shuts down (and everything stored in it will disappear).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>killall redis-server
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="quiz06.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Quiz 6</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="mergesort.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Merge Sort</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Allen B. Downey<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
