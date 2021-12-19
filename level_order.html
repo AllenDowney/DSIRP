@@ -338,17 +338,12 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Level Order Traversal
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#more-tree-traversal">
    More tree traversal
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#walking-a-directory">
    Walking a Directory
   </a>
@@ -364,14 +359,13 @@
         
               <div>
                 
-  <div class="section" id="level-order-traversal">
+  <div class="tex2jax_ignore mathjax_ignore section" id="level-order-traversal">
 <h1>Level Order Traversal<a class="headerlink" href="#level-order-traversal" title="Permalink to this headline">¶</a></h1>
 <p><em>Data Structures and Information Retrieval in Python</em></p>
 <p>Copyright 2021 Allen Downey</p>
 <p>License: <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a></p>
-</div>
 <div class="section" id="more-tree-traversal">
-<h1>More tree traversal<a class="headerlink" href="#more-tree-traversal" title="Permalink to this headline">¶</a></h1>
+<h2>More tree traversal<a class="headerlink" href="#more-tree-traversal" title="Permalink to this headline">¶</a></h2>
 <p>In a previous notebook we wrote two versions of a depth-first search in a tree.
 Now we are working toward depth-first search, but we’re going to make a stop along the way: level-order traversal.</p>
 <p>One application of level-order traversal is searching through directories (aka folders) in a file system.
@@ -479,7 +473,7 @@ It is tempting to write something like:</p>
 </div>
 </div>
 <div class="section" id="walking-a-directory">
-<h1>Walking a Directory<a class="headerlink" href="#walking-a-directory" title="Permalink to this headline">¶</a></h1>
+<h2>Walking a Directory<a class="headerlink" href="#walking-a-directory" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">os</span></code> module provides <code class="docutils literal notranslate"><span class="pre">walk</span></code>, which is a generator function that traverses a directory and all its subdirectories, and all their subdirectories, and so on.</p>
 <p>For each directory, it yields:</p>
 <ul class="simple">
@@ -564,6 +558,7 @@ To implement the queue efficiently, we can use <code class="docutils literal not
 </div>
 </div>
 <p>If you are looking for a file in a large file system, a level-order search might be useful if you think the file is more likely to be near the root, rather than deep in a nested subdirectory.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
