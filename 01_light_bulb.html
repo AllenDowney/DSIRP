@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Survival Analysis &#8212; Survival Analysis in Python</title>
+    <title>Survival Analysis &#8212; Data Structures and Information Retrieval in Python</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -73,7 +73,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">Survival Analysis in Python</h1>
+      <h1 class="site-logo" id="site-title">Data Structures and Information Retrieval in Python</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -156,7 +156,7 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/AllenDowney/SurvivalAnalysisPython"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/AllenDowney/DSIRP"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         
@@ -178,7 +178,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/SurvivalAnalysisPython/master?urlpath=tree/01_light_bulb.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/DSIRP/master?urlpath=tree/01_light_bulb.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -330,70 +330,6 @@ If that fails, you should be able to <a class="reference external" href="https:/
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>h</th>
-      <th>f</th>
-      <th>K</th>
-    </tr>
-    <tr>
-      <th>i</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>0</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>840</td>
-      <td>2</td>
-      <td>48</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>852</td>
-      <td>1</td>
-      <td>47</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>936</td>
-      <td>1</td>
-      <td>46</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>960</td>
-      <td>1</td>
-      <td>45</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </div>
 <div class="section" id="pmf">
@@ -401,41 +337,10 @@ If that fails, you should be able to <a class="reference external" href="https:/
 <p>This dataset is complete in the sense that the experiment ran until all light bulbs failed, so the lifetime for every bulb is known.
 So we can use the data to estimate the probability mass function (PMF) of lifetimes.</p>
 <p>To represent a PMF, I’ll use a Pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code> with the lifetimes (column <code class="docutils literal notranslate"><span class="pre">h</span></code>) as the index and the number of failures (column <code class="docutils literal notranslate"><span class="pre">f</span></code>) as the values.</p>
-<div class="cell tag_fill-in docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;f&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">])</span>
-<span class="n">pmf</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;t&#39;</span>
-<span class="n">pmf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>To normalize the PMF, we divide through by the total number of lightbulbs.</p>
-<div class="cell tag_fill-in docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf</span> <span class="o">/=</span> <span class="n">pmf</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">pmf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>For a given lifetime, <code class="docutils literal notranslate"><span class="pre">t</span></code>, the PMF contains the fraction of lifetimes equal to <code class="docutils literal notranslate"><span class="pre">t</span></code>.
 For example, we can compute the fraction of light bulbs that lasted 840 hours:</p>
-<div class="cell tag_fill-in docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf</span><span class="p">[</span><span class="mi">840</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>Or the fraction equal to 1524 hours.</p>
-<div class="cell tag_fill-in docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf</span><span class="p">[</span><span class="mi">1524</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>Here’s what the PMF looks like.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -469,31 +374,9 @@ For example, we can compute the fraction of light bulbs that lasted 840 hours:</
 <div class="section" id="cdf">
 <h2>CDF<a class="headerlink" href="#cdf" title="Permalink to this headline">¶</a></h2>
 <p>The Cumulative Distribution Function (CDF) is the cumulative sum of the PMF.</p>
-<div class="cell tag_fill-in docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf</span> <span class="o">=</span> <span class="n">pmf</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
-<span class="n">cdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>For a given lifetime, <code class="docutils literal notranslate"><span class="pre">t</span></code>, the CDF contains the fraction of lifetimes less than or equal to <code class="docutils literal notranslate"><span class="pre">t</span></code>.
 For example, here is the fraction of light bulbs that expired at or before 840 hours:</p>
-<div class="cell tag_fill-in docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf</span><span class="p">[</span><span class="mi">840</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>And the fraction that expired at or before 1524 hours.</p>
-<div class="cell tag_fill-in docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf</span><span class="p">[</span><span class="mi">1524</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>Here’s what the CDF looks like.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -516,22 +399,7 @@ For example, here is the fraction of light bulbs that expired at or before 840 h
 <li><p>The survival function is the fraction (strictly) greater than <code class="docutils literal notranslate"><span class="pre">t</span></code>.</p></li>
 </ul>
 <p>We can compute the survival function like this:</p>
-<div class="cell tag_fill-in docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">cdf</span>
-<span class="n">surv</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">surv</span></code> to compute the fraction of lightbulbs that live longer than 1524 hours:</p>
-<div class="cell tag_fill-in docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv</span><span class="p">[</span><span class="mi">1524</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>If we plot the survival function along with the CDF, we can see that they are complements.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -562,14 +430,6 @@ For example, here is the fraction of light bulbs that expired at or before 840 h
 </ul>
 <p>So the hazard rate is the ratio of <code class="docutils literal notranslate"><span class="pre">pmf(t)</span></code> to the sum <code class="docutils literal notranslate"><span class="pre">pmf(t)</span> <span class="pre">+</span> <span class="pre">surv(t)</span></code>.
 We can compute it like this:</p>
-<div class="cell tag_fill-in docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">haz</span> <span class="o">=</span> <span class="n">pmf</span> <span class="o">/</span> <span class="p">(</span><span class="n">pmf</span> <span class="o">+</span> <span class="n">surv</span><span class="p">)</span>
-<span class="n">haz</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>Here’s what the hazard function looks like:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
