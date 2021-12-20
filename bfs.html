@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Breadth First Search &#8212; Data Structures and Information Retrieval in Python</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -54,7 +54,10 @@
     <link rel="next" title="Quiz 6" href="quiz06.html" />
     <link rel="prev" title="Level Order Traversal" href="level_order.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -401,6 +404,11 @@ A WS graph starts with a ring lattice and randomly “rewires” some of the edg
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NodeView((0, 1, 2, 3, 4, 5, 6, 7, 8, 9))
+</pre></div>
+</div>
+</div>
 </div>
 <p>The result is a ring where each node holds hands with its immediate neighbors.</p>
 <div class="cell docutils container">
@@ -416,6 +424,9 @@ A WS graph starts with a ring lattice and randomly “rewires” some of the edg
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bfs_7_0.png" src="_images/bfs_7_0.png" />
 </div>
 </div>
 <p><strong>Exercise:</strong> Run this code again with different values of <code class="docutils literal notranslate"><span class="pre">k</span></code> and <code class="docutils literal notranslate"><span class="pre">p</span></code> to see what the effect is.</p>
@@ -445,12 +456,22 @@ A WS graph starts with a ring lattice and randomly “rewires” some of the edg
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>Exercise:</strong> Make a version of this function called <code class="docutils literal notranslate"><span class="pre">reachable_nodes_bfs</span></code> that does the same thing using breadth-first search.</p>
 <p>You can use this example to test your code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reachable_nodes_bfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 </pre></div>
 </div>
 </div>
@@ -491,10 +512,20 @@ Here is a version I modified to return a set of nodes:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.52 ms ± 7.91 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> plain_bfs(G, 0)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>946 µs ± 6.7 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -524,10 +555,18 @@ This version is similar to BFS, with one change: instead of keeping a set of nod
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/bfs_28_0.png" src="_images/bfs_28_0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shortest_path_dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 0, 8: 1, 1: 1, 2: 1, 9: 1, 6: 2, 7: 2, 3: 2, 4: 2, 5: 3}
 </pre></div>
 </div>
 </div>
@@ -543,11 +582,21 @@ This version is similar to BFS, with one change: instead of keeping a set of nod
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
 </div>
 <p>And let’s see which version is faster.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> shortest_path_dijkstra(G, 0)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.3 ms ± 12.3 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -558,11 +607,21 @@ This version is similar to BFS, with one change: instead of keeping a set of nod
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>955 µs ± 11.1 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can also compare it to the NetworkX function that does the same thing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> nx.shortest_path_length(G, 0)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>778 µs ± 9.5 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -581,11 +640,21 @@ This version is similar to BFS, with one change: instead of keeping a set of nod
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.6666666666666667
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">watts_strogatz_graph</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">average_shortest_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50.450450450450454
 </pre></div>
 </div>
 </div>
@@ -597,6 +666,13 @@ This version is similar to BFS, with one change: instead of keeping a set of nod
 
 <span class="n">ps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ps</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.00000000e-04 3.16227766e-04 1.00000000e-03 3.16227766e-03
+ 1.00000000e-02 3.16227766e-02 1.00000000e-01 3.16227766e-01
+ 1.00000000e+00]
 </pre></div>
 </div>
 </div>
@@ -615,6 +691,19 @@ This version is similar to BFS, with one change: instead of keeping a set of nod
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0001
+0.00031622776601683794
+0.001
+0.0031622776601683794
+0.01
+0.03162277660168379
+0.1
+0.31622776601683794
+1.0
+</pre></div>
+</div>
+</div>
 </div>
 <p>Here’s what the result looks like.</p>
 <div class="cell docutils container">
@@ -628,6 +717,9 @@ This version is similar to BFS, with one change: instead of keeping a set of nod
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average path length&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bfs_46_0.png" src="_images/bfs_46_0.png" />
 </div>
 </div>
 <p>With <code class="docutils literal notranslate"><span class="pre">p=0.01</span></code>, we’re only rewiring 1% of the edges, but the average path length is already down about as low as it will go.</p>
@@ -660,31 +752,22 @@ This version is similar to BFS, with one change: instead of keeping a set of nod
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="level_order.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Level Order Traversal</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="level_order.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Level Order Traversal</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="quiz06.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quiz 6</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="quiz06.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Quiz 6</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -705,8 +788,7 @@ This version is similar to BFS, with one change: instead of keeping a set of nod
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FFT &#8212; Data Structures and Information Retrieval in Python</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -42,7 +42,7 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
@@ -56,7 +56,10 @@
     <link rel="next" title="Quiz 7" href="quiz07.html" />
     <link rel="prev" title="Merge Sort" href="mergesort.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -424,6 +427,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j])
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now we know what the answer is, let’s compute it ourselves.</p>
 <p>Here’s the expression that computes one element of <span class="math notranslate nohighlight">\(X\)</span>.</p>
@@ -440,6 +448,11 @@
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="n">j</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">n</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1+0j)
 </pre></div>
 </div>
 </div>
@@ -464,6 +477,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1+0j)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Usually we compute <span class="math notranslate nohighlight">\(X\)</span> all at once, so we can wrap <code class="docutils literal notranslate"><span class="pre">dft_k</span></code> in another function:</p>
 <div class="cell tag_fill-in docutils container">
@@ -479,6 +497,11 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dft</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(1+0j), (1+0j), (1+0j), (1+0j)]
 </pre></div>
 </div>
 </div>
@@ -503,6 +526,12 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 772 ms, sys: 44 µs, total: 772 ms
+Wall time: 772 ms
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -510,6 +539,17 @@
 <span class="n">plot_timing_test</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="s1">&#39;test_dft&#39;</span><span class="p">,</span> <span class="n">exp</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32 0.010000000000000231
+64 0.009999999999999787
+128 0.050000000000000266
+256 0.18999999999999995
+512 0.79
+1024 3.1799999999999993
+</pre></div>
+</div>
+<img alt="_images/fft_20_1.png" src="_images/fft_20_1.png" />
 </div>
 </div>
 </div>
@@ -554,6 +594,11 @@ And we can do that with the Numpy function <code class="docutils literal notrans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j])
+</pre></div>
+</div>
+</div>
 </div>
 <p>Let’s see what the performance looks like.</p>
 <div class="cell docutils container">
@@ -571,6 +616,12 @@ And we can do that with the Numpy function <code class="docutils literal notrans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 384 ms, sys: 3.38 ms, total: 388 ms
+Wall time: 387 ms
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -578,6 +629,17 @@ And we can do that with the Numpy function <code class="docutils literal notrans
 <span class="n">plot_timing_test</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="s1">&#39;test_fft_norec&#39;</span><span class="p">,</span> <span class="n">exp</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32 0.0
+64 0.0
+128 0.030000000000001137
+256 0.09999999999999964
+512 0.3899999999999988
+1024 1.5899999999999999
+</pre></div>
+</div>
+<img alt="_images/fft_29_1.png" src="_images/fft_29_1.png" />
 </div>
 </div>
 <p><strong>Exercise:</strong>  Starting with <code class="docutils literal notranslate"><span class="pre">fft_norec</span></code>, write a function called <code class="docutils literal notranslate"><span class="pre">fft_rec</span></code> that’s fully recursive; that is, instead of using <code class="docutils literal notranslate"><span class="pre">dft</span></code> to compute the DFTs of the halves, it should use <code class="docutils literal notranslate"><span class="pre">fft_rec</span></code>.</p>
@@ -590,6 +652,11 @@ And we can do that with the Numpy function <code class="docutils literal notrans
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fft_rec</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j])
 </pre></div>
 </div>
 </div>
@@ -609,6 +676,12 @@ And we can do that with the Numpy function <code class="docutils literal notrans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 8.36 ms, sys: 42 µs, total: 8.4 ms
+Wall time: 7.92 ms
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -616,6 +689,19 @@ And we can do that with the Numpy function <code class="docutils literal notrans
 <span class="n">plot_timing_test</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="s1">&#39;test_fft_rec&#39;</span><span class="p">,</span> <span class="n">exp</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1024 0.019999999999999574
+2048 0.030000000000001137
+4096 0.049999999999998934
+8192 0.11000000000000121
+16384 0.22999999999999865
+32768 0.45000000000000107
+65536 0.9000000000000004
+131072 1.83
+</pre></div>
+</div>
+<img alt="_images/fft_35_1.png" src="_images/fft_35_1.png" />
 </div>
 </div>
 <p>If things go according to plan, your FFT implementation should be faster than <code class="docutils literal notranslate"><span class="pre">dft</span></code> and <code class="docutils literal notranslate"><span class="pre">fft_norec</span></code>, and over a range of problem sizes, it might be indistinguishable from linear.</p>
@@ -648,31 +734,22 @@ And we can do that with the Numpy function <code class="docutils literal notrans
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="mergesort.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Merge Sort</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="mergesort.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Merge Sort</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="quiz07.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quiz 7</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="quiz07.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Quiz 7</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -693,8 +770,7 @@ And we can do that with the Numpy function <code class="docutils literal notrans
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

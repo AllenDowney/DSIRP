@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Huffman Code &#8212; Data Structures and Information Retrieval in Python</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -54,7 +54,10 @@
     <link rel="next" title="Getting to Philosophy" href="philosophy.html" />
     <link rel="prev" title="Priority Queues and Heaps" href="heap.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -424,6 +427,26 @@ One way to do that is to start with a “corpus”, which is a text that contain
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({&#39;t&#39;: 2,
+         &#39;h&#39;: 2,
+         &#39;i&#39;: 2,
+         &#39;s&#39;: 2,
+         &#39; &#39;: 7,
+         &#39;a&#39;: 4,
+         &#39;n&#39;: 2,
+         &#39;e&#39;: 4,
+         &#39;x&#39;: 1,
+         &#39;m&#39;: 2,
+         &#39;p&#39;: 1,
+         &#39;l&#39;: 1,
+         &#39;o&#39;: 1,
+         &#39;f&#39;: 3,
+         &#39;u&#39;: 1,
+         &#39;r&#39;: 1})
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now let’s see how we can use these counts to build a Huffman code.
 The first step is to build a Huffman tree, which is a binary tree where every node contains a count and some nodes contain symbols.</p>
@@ -447,6 +470,11 @@ Since this node has no children, it is a leaf node.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Node(count=4, letter=&#39;a&#39;, left=None, right=None)
+</pre></div>
+</div>
+</div>
 </div>
 <p>And here’s another leaf node that represents the symbol <code class="docutils literal notranslate"><span class="pre">n</span></code> and its count.</p>
 <div class="cell tag_fill-in docutils container">
@@ -456,11 +484,21 @@ Since this node has no children, it is a leaf node.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Node(count=2, letter=&#39;n&#39;, left=None, right=None)
+</pre></div>
+</div>
+</div>
 </div>
 <p>One reason we’re using a namedtuple is that it behaves like a tuple, so if we compare two <code class="docutils literal notranslate"><span class="pre">Node</span></code> objects, we get a tuple-like sorting order.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span> <span class="o">&gt;</span> <span class="n">right</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -474,6 +512,11 @@ Since this node has no children, it is a leaf node.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="n">left</span><span class="o">.</span><span class="n">count</span> <span class="o">+</span> <span class="n">right</span><span class="o">.</span><span class="n">count</span>
 <span class="n">root</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
 <span class="n">root</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Node(count=6, letter=&#39;\x00&#39;, left=Node(count=4, letter=&#39;a&#39;, left=None, right=None), right=Node(count=2, letter=&#39;n&#39;, left=None, right=None))
 </pre></div>
 </div>
 </div>
@@ -499,6 +542,26 @@ The count of an interior node is the sum of the count of its children.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Node(count=2, letter=&#39;t&#39;, left=None, right=None),
+ Node(count=2, letter=&#39;h&#39;, left=None, right=None),
+ Node(count=2, letter=&#39;i&#39;, left=None, right=None),
+ Node(count=2, letter=&#39;s&#39;, left=None, right=None),
+ Node(count=7, letter=&#39; &#39;, left=None, right=None),
+ Node(count=4, letter=&#39;a&#39;, left=None, right=None),
+ Node(count=2, letter=&#39;n&#39;, left=None, right=None),
+ Node(count=4, letter=&#39;e&#39;, left=None, right=None),
+ Node(count=1, letter=&#39;x&#39;, left=None, right=None),
+ Node(count=2, letter=&#39;m&#39;, left=None, right=None),
+ Node(count=1, letter=&#39;p&#39;, left=None, right=None),
+ Node(count=1, letter=&#39;l&#39;, left=None, right=None),
+ Node(count=1, letter=&#39;o&#39;, left=None, right=None),
+ Node(count=3, letter=&#39;f&#39;, left=None, right=None),
+ Node(count=1, letter=&#39;u&#39;, left=None, right=None),
+ Node(count=1, letter=&#39;r&#39;, left=None, right=None)]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Next we’ll use the heap module to convert the list to a heap.</p>
 <div class="cell tag_fill-in docutils container">
@@ -508,6 +571,26 @@ The count of an interior node is the sum of the count of its children.</p>
 <span class="n">heap</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">heapify</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
 <span class="n">heap</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Node(count=1, letter=&#39;l&#39;, left=None, right=None),
+ Node(count=1, letter=&#39;p&#39;, left=None, right=None),
+ Node(count=1, letter=&#39;o&#39;, left=None, right=None),
+ Node(count=1, letter=&#39;r&#39;, left=None, right=None),
+ Node(count=2, letter=&#39;h&#39;, left=None, right=None),
+ Node(count=2, letter=&#39;i&#39;, left=None, right=None),
+ Node(count=1, letter=&#39;u&#39;, left=None, right=None),
+ Node(count=2, letter=&#39;s&#39;, left=None, right=None),
+ Node(count=1, letter=&#39;x&#39;, left=None, right=None),
+ Node(count=2, letter=&#39;m&#39;, left=None, right=None),
+ Node(count=7, letter=&#39; &#39;, left=None, right=None),
+ Node(count=4, letter=&#39;a&#39;, left=None, right=None),
+ Node(count=2, letter=&#39;t&#39;, left=None, right=None),
+ Node(count=3, letter=&#39;f&#39;, left=None, right=None),
+ Node(count=2, letter=&#39;n&#39;, left=None, right=None),
+ Node(count=4, letter=&#39;e&#39;, left=None, right=None)]
 </pre></div>
 </div>
 </div>
@@ -613,6 +696,11 @@ The count of an interior node is the sum of the count of its children.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now we’re ready to draw.</p>
 <div class="cell docutils container">
@@ -638,6 +726,9 @@ The count of an interior node is the sum of the count of its children.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_tree</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/huffman_39_0.png" src="_images/huffman_39_0.png" />
 </div>
 </div>
 <p>The result might not be identical to the tree on <a class="reference external" href="https://en.wikipedia.org/wiki/Huffman_coding">the Wikipedia page</a>, but a letter in our tree should be on the same level as the same letter in their tree.</p>
@@ -678,6 +769,26 @@ The count of an interior node is the sum of the count of its children.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;l&#39;: &#39;00000&#39;,
+ &#39;o&#39;: &#39;00001&#39;,
+ &#39;p&#39;: &#39;00010&#39;,
+ &#39;r&#39;: &#39;00011&#39;,
+ &#39;u&#39;: &#39;00100&#39;,
+ &#39;x&#39;: &#39;00101&#39;,
+ &#39;h&#39;: &#39;0011&#39;,
+ &#39;i&#39;: &#39;0100&#39;,
+ &#39;m&#39;: &#39;0101&#39;,
+ &#39;n&#39;: &#39;0110&#39;,
+ &#39;s&#39;: &#39;0111&#39;,
+ &#39;a&#39;: &#39;100&#39;,
+ &#39;e&#39;: &#39;101&#39;,
+ &#39;t&#39;: &#39;1100&#39;,
+ &#39;f&#39;: &#39;1101&#39;,
+ &#39; &#39;: &#39;111&#39;}
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="encoding">
@@ -700,6 +811,11 @@ The count of an interior node is the sum of the count of its children.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;1100001101000111111010001111110111000100100011010000000111110010000010&#39;
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="decoding">
@@ -710,6 +826,11 @@ If we get to a root node, we have decoded a symbol, so we should record it and t
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decode</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;this is spinal tap&#39;
 </pre></div>
 </div>
 </div>
@@ -743,31 +864,22 @@ If we get to a root node, we have decoded a symbol, so we should record it and t
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="heap.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Priority Queues and Heaps</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="heap.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Priority Queues and Heaps</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="philosophy.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Getting to Philosophy</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="philosophy.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Getting to Philosophy</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -788,8 +900,7 @@ If we get to a root node, we have decoded a symbol, so we should record it and t
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

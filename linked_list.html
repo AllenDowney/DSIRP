@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Linked List &#8212; Data Structures and Information Retrieval in Python</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -54,7 +54,10 @@
     <link rel="next" title="Indexer" href="indexer.html" />
     <link rel="prev" title="Redis" href="redis.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -433,6 +436,11 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Node(1, None)
+</pre></div>
+</div>
+</div>
 </div>
 <p>And then link them up, like this:</p>
 <div class="cell tag_fill-in docutils container">
@@ -446,6 +454,11 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Node(1, Node(2, Node(3, None)))
 </pre></div>
 </div>
 </div>
@@ -481,6 +494,11 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinkedList(Node(1, Node(2, Node(3, None))))
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="search">
@@ -493,10 +511,20 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Node(1, Node(2, Node(3, None)))
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">find</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Node(3, None)
 </pre></div>
 </div>
 </div>
@@ -530,6 +558,11 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinkedList(Node(1, Node(2, Node(3, None))))
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
@@ -549,10 +582,20 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 2, 3)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinkedList(None)
 </pre></div>
 </div>
 </div>
@@ -568,6 +611,11 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinkedList(Node(1, None))
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -576,10 +624,8 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rpop</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinkedList(Node(1, Node(2, None)))
 </pre></div>
 </div>
 </div>
@@ -587,6 +633,23 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rpop</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rpop</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -597,6 +660,11 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
     <span class="n">rpop</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tried to rpop from an empty list
 </pre></div>
 </div>
 </div>
@@ -625,6 +693,11 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">LinkedList</span><span class="p">(</span><span class="n">Node</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">Node</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">))))</span>
 <span class="n">reverse</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinkedList(Node(3, Node(2, Node(1, None))))
 </pre></div>
 </div>
 </div>
@@ -661,6 +734,11 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinkedList(Node(3, Node(2, Node(1, None))))
+</pre></div>
+</div>
+</div>
 </div>
 <p>And finally an iterative version that doesn’t allocate anything.</p>
 <div class="cell docutils container">
@@ -683,6 +761,11 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">LinkedList</span><span class="p">(</span><span class="n">Node</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">Node</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">))))</span>
 <span class="n">reverse</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinkedList(Node(3, Node(2, Node(1, None))))
 </pre></div>
 </div>
 </div>
@@ -711,6 +794,11 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinkedList(Node(1, Node(3, None)))
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>Exercise:</strong> Write a function called <code class="docutils literal notranslate"><span class="pre">remove</span></code> that takes a LinkedList and a target value. It should remove the first node that contains the value, or raise a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> if it is not found.</p>
 <p>Hint: This one is a little tricky.</p>
@@ -723,11 +811,21 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinkedList(Node(1, Node(3, None)))
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">remove</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinkedList(Node(3, None))
 </pre></div>
 </div>
 </div>
@@ -741,11 +839,21 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Value not found
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">remove</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinkedList(None)
 </pre></div>
 </div>
 </div>
@@ -756,6 +864,11 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
     <span class="n">remove</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Value not found (empty list)
 </pre></div>
 </div>
 </div>
@@ -779,6 +892,11 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">LinkedList</span><span class="p">(</span><span class="n">Node</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">Node</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">))))</span>
 <span class="n">insert_after</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">head</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinkedList(Node(1, Node(5, Node(2, Node(3, None)))))
 </pre></div>
 </div>
 </div>
@@ -812,11 +930,21 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinkedList(Node(1, None))
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">insert_sorted</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinkedList(Node(1, Node(3, None)))
 </pre></div>
 </div>
 </div>
@@ -828,11 +956,21 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinkedList(Node(0, Node(1, Node(3, None))))
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">insert_sorted</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinkedList(Node(0, Node(1, Node(2, Node(3, None)))))
 </pre></div>
 </div>
 </div>
@@ -867,31 +1005,22 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="redis.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Redis</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="redis.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Redis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="indexer.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Indexer</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="indexer.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Indexer</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -912,8 +1041,7 @@ But we might be willing to pay some overhead to achieve bulletproof correctness.
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

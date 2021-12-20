@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Redis &#8212; Data Structures and Information Retrieval in Python</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -54,7 +54,10 @@
     <link rel="next" title="Linked List" href="linked_list.html" />
     <link rel="prev" title="Quiz 4" href="quiz04.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -462,6 +465,13 @@ Databases on RedisToGo are persistent.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>341134:C 20 Dec 2021 15:10:27.756 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+341134:C 20 Dec 2021 15:10:27.756 # Redis version=5.0.3, bits=64, commit=00000000, modified=0, pid=341134, just started
+341134:C 20 Dec 2021 15:10:27.756 # Configuration loaded
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="redis-py">
@@ -495,11 +505,21 @@ In the following example, the key and value are both strings.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">get</span></code> method looks up a key and returns the corresponding value.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;value&#39;
 </pre></div>
 </div>
 </div>
@@ -513,11 +533,21 @@ In the following example, the key and value are both strings.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
 </div>
 <p>And Redis provides some functions that understand numbers, like <code class="docutils literal notranslate"><span class="pre">incr</span></code>.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">incr</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
 </pre></div>
 </div>
 </div>
@@ -530,11 +560,21 @@ In the following example, the key and value are both strings.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;6&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>If you want to do math with it, you have to convert it back to a number.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
 </pre></div>
 </div>
 </div>
@@ -547,6 +587,11 @@ In the following example, the key and value are both strings.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
@@ -554,10 +599,20 @@ In the following example, the key and value are both strings.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;string&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;1.23&#39;
 </pre></div>
 </div>
 </div>
@@ -576,6 +631,11 @@ In the following example, the key and value are both strings.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Invalid input of type: &#39;list&#39;. Convert to a bytes, string, int or float first.
+</pre></div>
+</div>
+</div>
 </div>
 <p>We could use the <code class="docutils literal notranslate"><span class="pre">repr</span></code> function to create a string representation of a list, but that representation is Python-specific.
 It would be better to make a database that can work with any language.
@@ -591,12 +651,22 @@ To do that, we can use JSON to create a string representation.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;[1, 2, 3]&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>When we read one of these strings back, we can use <code class="docutils literal notranslate"><span class="pre">loads</span></code> to convert it back to a Python object.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3]
 </pre></div>
 </div>
 </div>
@@ -626,12 +696,22 @@ To do that, we can use JSON to create a string representation.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
 </div>
 <p>You don’t have to do anything special to create a list; if it doesn’t exist, Redis creates it.</p>
 <p><code class="docutils literal notranslate"><span class="pre">llen</span></code> returns the length of the list.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">llen</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
 </pre></div>
 </div>
 </div>
@@ -643,12 +723,22 @@ To do that, we can use JSON to create a string representation.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[b&#39;1&#39;, b&#39;2&#39;, b&#39;3&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <p>The result is a Python list, but the elements are bytestrings.</p>
 <p><code class="docutils literal notranslate"><span class="pre">rpop</span></code> removes elements from the end of the list.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">rpop</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;3&#39;
 </pre></div>
 </div>
 </div>
@@ -664,10 +754,20 @@ To do that, we can use JSON to create a string representation.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">lpop</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;-1&#39;
 </pre></div>
 </div>
 </div>
@@ -683,11 +783,21 @@ To do that, we can use JSON to create a string representation.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">hget</span></code> method looks up a field and returns the corresponding value.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">hget</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;field&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;value&#39;
 </pre></div>
 </div>
 </div>
@@ -700,12 +810,25 @@ To do that, we can use JSON to create a string representation.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
 </div>
 <p>To iterate the elements of a hash, we can use <code class="docutils literal notranslate"><span class="pre">hscan_iter</span></code>:</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">hscan_iter</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;field&#39; b&#39;value&#39;
+b&#39;a&#39; b&#39;1&#39;
+b&#39;b&#39; b&#39;2&#39;
+b&#39;c&#39; b&#39;3&#39;
 </pre></div>
 </div>
 </div>
@@ -790,6 +913,20 @@ So if two words are anagrams, they have the same signature.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6 [&#39;abets&#39;, &#39;baste&#39;, &#39;bates&#39;, &#39;beast&#39;, &#39;beats&#39;, &#39;betas&#39;]
+6 [&#39;aster&#39;, &#39;rates&#39;, &#39;stare&#39;, &#39;tares&#39;, &#39;taser&#39;, &#39;tears&#39;]
+6 [&#39;caret&#39;, &#39;cater&#39;, &#39;crate&#39;, &#39;react&#39;, &#39;recta&#39;, &#39;trace&#39;]
+7 [&#39;carets&#39;, &#39;caster&#39;, &#39;caters&#39;, &#39;crates&#39;, &#39;reacts&#39;, &#39;recast&#39;, &#39;traces&#39;]
+6 [&#39;drapes&#39;, &#39;padres&#39;, &#39;parsed&#39;, &#39;rasped&#39;, &#39;spared&#39;, &#39;spread&#39;]
+6 [&#39;lapse&#39;, &#39;leaps&#39;, &#39;pales&#39;, &#39;peals&#39;, &#39;pleas&#39;, &#39;sepal&#39;]
+6 [&#39;least&#39;, &#39;slate&#39;, &#39;stale&#39;, &#39;steal&#39;, &#39;tales&#39;, &#39;teals&#39;]
+6 [&#39;opts&#39;, &#39;post&#39;, &#39;pots&#39;, &#39;spot&#39;, &#39;stop&#39;, &#39;tops&#39;]
+6 [&#39;palest&#39;, &#39;pastel&#39;, &#39;petals&#39;, &#39;plates&#39;, &#39;pleats&#39;, &#39;staple&#39;]
+7 [&#39;pares&#39;, &#39;parse&#39;, &#39;pears&#39;, &#39;rapes&#39;, &#39;reaps&#39;, &#39;spare&#39;, &#39;spear&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now, to do the same thing in Redis, we have two options:</p>
 <ul class="simple">
@@ -817,12 +954,22 @@ We can mitigate this problem by giving each key a prefix that identifies its pur
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>96936
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>Exercise:</strong> Write a loop that iterates through <code class="docutils literal notranslate"><span class="pre">keys</span></code>, uses <code class="docutils literal notranslate"><span class="pre">llen</span></code> to get the length of each list, and prints the elements of all lists with 6 or more elements.</p>
 <p>Before we go on, we can delete the keys from the database like this.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="o">*</span><span class="n">keys</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>96936
 </pre></div>
 </div>
 </div>
@@ -844,6 +991,11 @@ We can mitigate this problem by giving each key a prefix that identifies its pur
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">hash_key</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -891,31 +1043,22 @@ We can mitigate this problem by giving each key a prefix that identifies its pur
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="quiz04.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Quiz 4</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="quiz04.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Quiz 4</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="linked_list.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Linked List</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="linked_list.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Linked List</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -936,8 +1079,7 @@ We can mitigate this problem by giving each key a prefix that identifies its pur
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

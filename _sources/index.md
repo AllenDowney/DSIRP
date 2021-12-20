@@ -31,19 +31,27 @@ Click on the links below to run the notebooks on Colab.
 [Slides](https://docs.google.com/presentation/d/e/2PACX-1vQXYlOUlPPTE9GGR3UBugxYT8n_TcIGR5ttG7Rz_aA8lAFLTCeYUC1HFnQyDQBKPOv6PC7_PQ5Q-xz6/pub)  
 [Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/analysis.ipynb)
 
-* [Timing](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/timing.ipynb)
+* Timing: Checking asymptotic behavior by measuring run time.  
+[Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/timing.ipynb)
 
-* [Quiz01](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz01.ipynb)
+* Quiz 01  
+[Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz01.ipynb)
 
-* [Generator](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/generator.ipynb)
+* Generator functions: Separate the iteration from the program logic  
+[Slides](https://docs.google.com/presentation/d/e/2PACX-1vTOxX01R5LNdEZDqSkiG5YOlJQieAO2bePigUnz6Fx5fiJqTMtpoOzn0ltpaeuWbfLl74vz6YqWUmZK/pub)  
+[Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/generator.ipynb)
 
-* [Set](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/set.ipynb)
+* Set: Using Python sets.  
+[Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/set.ipynb)
 
-* [Recursion](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/recursion.ipynb)
+* Recursion: Practice recursive functions.  
+[Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/recursion.ipynb)
 
 * [Quiz02](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz02.ipynb)
 
-* [DFS](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/dfs.ipynb)
+* Depth First Search: Tree traversal in BeautifulSoup.  
+[Slides](https://docs.google.com/presentation/d/e/2PACX-1vTQzIt8u_vdwhqeFjPIHUNDFlO0_2-GId567gTbSCtyfQM0nRWjlxbklUhWTGl4KDzVI4_JxcfYRfEa/pub)  
+[DFS](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/dfs.ipynb)
 
 * [Search](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/searching.ipynb)
 

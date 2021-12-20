@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Merge Sort &#8212; Data Structures and Information Retrieval in Python</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -54,7 +54,10 @@
     <link rel="next" title="FFT" href="fft.html" />
     <link rel="prev" title="Crawler" href="crawler.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -417,12 +420,22 @@ I found that I could write it more concisely as a generator function.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[65, 55, 62, 4, 1, 91]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 <span class="n">ys</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 <span class="n">ys</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 4, 55, 62, 65, 91]
 </pre></div>
 </div>
 </div>
@@ -434,10 +447,20 @@ I found that I could write it more concisely as a generator function.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 4, 13, 26, 55, 62, 65, 68, 71, 90, 91, 98]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sorted</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">==</span> <span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -451,6 +474,11 @@ I found that I could write it more concisely as a generator function.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5, 25, 67, 88, 35, 71, 26, 28, 12, 7, 57, 8]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -459,10 +487,20 @@ I found that I could write it more concisely as a generator function.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5, 7, 8, 12, 25, 26, 28, 35, 57, 67, 71, 88]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sorted</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">==</span> <span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -480,6 +518,11 @@ For example, here are three sorted sub-sequences.</p>
 <span class="n">zs</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="nb">min</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">ys</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">zs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3, 16, 12)
 </pre></div>
 </div>
 </div>
@@ -530,6 +573,11 @@ Since the indices are unique, there can’t be a tie, so we never have to compar
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
 </div>
 <p>If we know that the iterator has more values, we can use <code class="docutils literal notranslate"><span class="pre">next</span></code> to get the next one and then push a tuple back into the heap.</p>
 <div class="cell tag_fill-in docutils container">
@@ -555,6 +603,15 @@ If there are no more elements in the iterator, <code class="docutils literal not
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+10
+13
+87
+95
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>Exercise:</strong> Write a generator function called <code class="docutils literal notranslate"><span class="pre">heapmerge</span></code> that takes a list of sequences and yields the elements from the sequences in increasing order.</p>
 <p>You can use the following examples to test your function.</p>
@@ -565,10 +622,20 @@ If there are no more elements in the iterator, <code class="docutils literal not
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3, 10, 12, 13, 16, 17, 20, 29, 34, 44, 87, 89, 92, 95, 97]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sorted</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">==</span> <span class="n">seq</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -616,6 +683,26 @@ Let’s see what that looks like when we plot runtime versus problem size.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1024 0.0
+2048 0.0
+4096 0.0
+8192 0.0
+16384 0.0
+32768 0.0
+65536 0.010000000000000231
+131072 0.009999999999999787
+262144 0.03000000000000025
+524288 0.04999999999999982
+1048576 0.1200000000000001
+2097152 0.23999999999999977
+4194304 0.5000000000000004
+8388608 0.9699999999999993
+16777216 2.0900000000000007
+</pre></div>
+</div>
+<img alt="_images/mergesort_40_1.png" src="_images/mergesort_40_1.png" />
+</div>
 </div>
 <p>quicksort is hard to distinguish from linear, up to about 10 million elements.</p>
 <div class="cell docutils container">
@@ -629,6 +716,25 @@ Let’s see what that looks like when we plot runtime versus problem size.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1024 0.0
+2048 0.0
+4096 0.0
+8192 0.0
+16384 0.0
+32768 0.0
+65536 0.010000000000000675
+131072 0.009999999999999787
+262144 0.03000000000000025
+524288 0.05999999999999961
+1048576 0.1200000000000001
+2097152 0.2699999999999996
+4194304 0.5499999999999998
+8388608 1.160000000000001
+</pre></div>
+</div>
+<img alt="_images/mergesort_42_1.png" src="_images/mergesort_42_1.png" />
+</div>
 </div>
 <p>Merge sort is similar, maybe with some upward curvature.</p>
 <div class="cell docutils container">
@@ -641,6 +747,26 @@ Let’s see what that looks like when we plot runtime versus problem size.</p>
 <span class="n">plot_timing_test</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="s1">&#39;test_heapsort&#39;</span><span class="p">,</span> <span class="n">exp</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1024 0.0
+2048 0.0
+4096 0.0
+8192 0.0
+16384 0.0
+32768 0.0
+65536 0.009999999999999787
+131072 0.009999999999999787
+262144 0.030000000000001137
+524288 0.049999999999998934
+1048576 0.10999999999999943
+2097152 0.21000000000000085
+4194304 0.4499999999999993
+8388608 0.9800000000000004
+16777216 1.9700000000000006
+</pre></div>
+</div>
+<img alt="_images/mergesort_44_1.png" src="_images/mergesort_44_1.png" />
 </div>
 </div>
 <p>The three methods are effectively linear over this range of problem sizes.</p>
@@ -656,6 +782,20 @@ Let’s see what that looks like when we plot runtime versus problem size.</p>
 <span class="n">plot_timing_test</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="s1">&#39;test_merge_sort_rec&#39;</span><span class="p">,</span> <span class="n">exp</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1024 0.0
+2048 0.009999999999999787
+4096 0.010000000000001563
+8192 0.02999999999999936
+16384 0.0600000000000005
+32768 0.11999999999999922
+65536 0.2599999999999998
+131072 0.5300000000000011
+262144 1.089999999999998
+</pre></div>
+</div>
+<img alt="_images/mergesort_46_1.png" src="_images/mergesort_46_1.png" />
 </div>
 </div>
 <p>If things go according to plan, our implementation of merge sort should be close to linear, or a little steeper.</p>
@@ -688,31 +828,22 @@ Let’s see what that looks like when we plot runtime versus problem size.</p>
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="crawler.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Crawler</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="crawler.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Crawler</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="fft.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">FFT</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="fft.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">FFT</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -733,8 +864,7 @@ Let’s see what that looks like when we plot runtime versus problem size.</p>
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PageRank &#8212; Data Structures and Information Retrieval in Python</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -53,7 +53,10 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Quiz 7" href="quiz07.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -415,12 +418,27 @@ So, let’s see how it works.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/pagerank_6_0.png" src="_images/pagerank_6_0.png" />
+</div>
 </div>
 <p>NetworkX provides an implementation of PageRank we can use to compute a metric of “importance” for each page.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ranks_pr</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="n">ranks_pr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 0.1529214627122818,
+ 1: 0.3707896283472802,
+ 2: 0.14402452847002478,
+ 3: 0.018750000000000003,
+ 4: 0.18430400881769338,
+ 5: 0.018750000000000003,
+ 6: 0.018750000000000003,
+ 7: 0.09171037165271977}
 </pre></div>
 </div>
 </div>
@@ -482,6 +500,18 @@ If everything goes according to plan, these values should approximate the result
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({7: 0.093,
+         2: 0.145,
+         1: 0.39,
+         4: 0.19,
+         6: 0.019,
+         0: 0.133,
+         3: 0.009,
+         5: 0.021})
+</pre></div>
+</div>
+</div>
 </div>
 <p>To compare them to the results from PageRank, I’ll put them in a Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
 <div class="cell docutils container">
@@ -497,6 +527,82 @@ If everything goes according to plan, these values should approximate the result
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PageRank</th>
+      <th>RandomWalk</th>
+      <th>Diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>15.292146</td>
+      <td>13.3</td>
+      <td>-1.992146</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>37.078963</td>
+      <td>39.0</td>
+      <td>1.921037</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>14.402453</td>
+      <td>14.5</td>
+      <td>0.097547</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.875000</td>
+      <td>0.9</td>
+      <td>-0.975000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>18.430401</td>
+      <td>19.0</td>
+      <td>0.569599</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.875000</td>
+      <td>2.1</td>
+      <td>0.225000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.875000</td>
+      <td>1.9</td>
+      <td>0.025000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>9.171037</td>
+      <td>9.3</td>
+      <td>0.128963</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>The differences should be a few percentage points at most.</p>
 </div>
@@ -514,6 +620,18 @@ The code here is based on the <a class="reference external" href="https://networ
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1., 0., 0., 0., 0., 0., 0., 1.],
+       [0., 1., 0., 0., 1., 0., 0., 0.],
+       [1., 1., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 1., 0., 0., 0., 0., 1.],
+       [0., 1., 1., 0., 0., 0., 0., 0.],
+       [0., 1., 0., 0., 1., 0., 0., 0.],
+       [1., 1., 0., 0., 0., 0., 0., 0.],
+       [0., 1., 1., 0., 0., 0., 0., 0.]])
+</pre></div>
+</div>
+</div>
 </div>
 <p>In this matrix, the element in row <code class="docutils literal notranslate"><span class="pre">i</span></code>, column <code class="docutils literal notranslate"><span class="pre">j</span></code> indicates the number of edges from node <code class="docutils literal notranslate"><span class="pre">i</span></code> to node <code class="docutils literal notranslate"><span class="pre">j</span></code>.</p>
 <p>If we normalize each row so it adds up to one, each element of the result represents the probability of a transition from one node to another.</p>
@@ -521,6 +639,18 @@ The code here is based on the <a class="reference external" href="https://networ
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">/=</span> <span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">M</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.5, 0. , 0. , 0. , 0. , 0. , 0. , 0.5],
+       [0. , 0.5, 0. , 0. , 0.5, 0. , 0. , 0. ],
+       [0.5, 0.5, 0. , 0. , 0. , 0. , 0. , 0. ],
+       [0. , 0. , 0.5, 0. , 0. , 0. , 0. , 0.5],
+       [0. , 0.5, 0.5, 0. , 0. , 0. , 0. , 0. ],
+       [0. , 0.5, 0. , 0. , 0.5, 0. , 0. , 0. ],
+       [0.5, 0.5, 0. , 0. , 0. , 0. , 0. , 0. ],
+       [0. , 0.5, 0.5, 0. , 0. , 0. , 0. , 0. ]])
 </pre></div>
 </div>
 </div>
@@ -535,6 +665,11 @@ For example, suppose we start with 100 walkers at each node, represented by the 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([100, 100, 100, 100, 100, 100, 100, 100])
+</pre></div>
+</div>
+</div>
 </div>
 <p>If we transpose <code class="docutils literal notranslate"><span class="pre">M</span></code>, we get a <a class="reference external" href="https://en.wikipedia.org/wiki/Stochastic_matrix">transition matrix</a> where the element at row <code class="docutils literal notranslate"><span class="pre">i</span></code> and column <code class="docutils literal notranslate"><span class="pre">j</span></code> is the fraction of walkers at node <code class="docutils literal notranslate"><span class="pre">j</span></code> that move to node <code class="docutils literal notranslate"><span class="pre">i</span></code>.</p>
 <p>If we multiply the transition matrix by <code class="docutils literal notranslate"><span class="pre">x</span></code>, the result is an array with the number of walkers at each node after one time step.</p>
@@ -542,6 +677,11 @@ For example, suppose we start with 100 walkers at each node, represented by the 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">x</span>
 <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([150., 300., 150.,   0., 100.,   0.,   0., 100.])
 </pre></div>
 </div>
 </div>
@@ -554,6 +694,18 @@ That’s because the random walk we’ve simulated doesn’t include random jump
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">),</span> <span class="mi">1</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
 <span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125],
+       [0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125],
+       [0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125],
+       [0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125],
+       [0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125],
+       [0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125],
+       [0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125],
+       [0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125]])
 </pre></div>
 </div>
 </div>
@@ -587,6 +739,12 @@ That’s because the random walk we’ve simulated doesn’t include random jump
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.15293199, 0.37077494, 0.14404034, 0.01875   , 0.18427767,
+       0.01875   , 0.01875   , 0.09172506])
+</pre></div>
+</div>
+</div>
 </div>
 <p>Here’s the table that compares the results.</p>
 <div class="cell docutils container">
@@ -602,6 +760,82 @@ That’s because the random walk we’ve simulated doesn’t include random jump
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PageRank</th>
+      <th>AdjMatrix</th>
+      <th>Diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>15.292146</td>
+      <td>15.293199</td>
+      <td>0.001053</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>37.078963</td>
+      <td>37.077494</td>
+      <td>-0.001469</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>14.402453</td>
+      <td>14.404034</td>
+      <td>0.001581</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.875000</td>
+      <td>1.875000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>18.430401</td>
+      <td>18.427767</td>
+      <td>-0.002634</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.875000</td>
+      <td>1.875000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.875000</td>
+      <td>1.875000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>9.171037</td>
+      <td>9.172506</td>
+      <td>0.001469</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 <div class="section" id="eigenvectors">
@@ -617,6 +851,14 @@ Here are the eigenvalues and eigenvectors of the Google matrix.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.00000000e+00+0.j       ,  4.25000000e-01+0.j       ,
+       -2.12500000e-01+0.3680608j, -2.12500000e-01-0.3680608j,
+        8.61220879e-17+0.j       ,  2.07547158e-18+0.j       ,
+       -1.82225683e-17+0.j       ,  0.00000000e+00+0.j       ])
+</pre></div>
+</div>
+</div>
 </div>
 <p>And here’s how we can get the eigenvector corresponding to the largest eigenvalue.</p>
 <div class="cell docutils container">
@@ -626,11 +868,22 @@ Here are the eigenvalues and eigenvectors of the Google matrix.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0, (0.9999999999999993+0j))
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">largest</span> <span class="o">=</span> <span class="n">eigenvectors</span><span class="p">[:,</span> <span class="n">ind</span><span class="p">]</span>
 <span class="n">largest</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.32235148+0.j, -0.78161291+0.j, -0.30359969+0.j, -0.03952437+0.j,
+       -0.38850772+0.j, -0.03952437+0.j, -0.03952437+0.j, -0.19332161+0.j])
 </pre></div>
 </div>
 </div>
@@ -651,6 +904,12 @@ Here are the eigenvalues and eigenvectors of the Google matrix.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.15292059, 0.37079   , 0.14402491, 0.01875   , 0.1843045 ,
+       0.01875   , 0.01875   , 0.09171   ])
+</pre></div>
+</div>
+</div>
 </div>
 <p>The result is the set of ranks based on the eigenvectors of the Google matrix.
 They should be identical to the results from PageRank, except for small floating-point errors.</p>
@@ -667,6 +926,82 @@ They should be identical to the results from PageRank, except for small floating
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PageRank</th>
+      <th>Eigenvector</th>
+      <th>Diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>15.292146</td>
+      <td>15.292059</td>
+      <td>-8.752734e-05</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>37.078963</td>
+      <td>37.079000</td>
+      <td>3.719912e-05</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>14.402453</td>
+      <td>14.402491</td>
+      <td>3.839473e-05</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.875000</td>
+      <td>1.875000</td>
+      <td>1.734723e-15</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>18.430401</td>
+      <td>18.430450</td>
+      <td>4.913262e-05</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.875000</td>
+      <td>1.875000</td>
+      <td>1.040834e-15</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.875000</td>
+      <td>1.875000</td>
+      <td>1.040834e-15</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>9.171037</td>
+      <td>9.171000</td>
+      <td>-3.719912e-05</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 <div class="section" id="putting-it-all-together">
@@ -784,6 +1119,18 @@ They should be identical to the results from PageRank, except for small floating
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 0.15292058743886122,
+ 1: 0.370790000338484,
+ 2: 0.14402491241728307,
+ 3: 0.01875000000000002,
+ 4: 0.1843045001438557,
+ 5: 0.018750000000000013,
+ 6: 0.018750000000000013,
+ 7: 0.09170999966151594}
+</pre></div>
+</div>
+</div>
 </div>
 <p><em>Data Structures and Information Retrieval in Python</em></p>
 <p>Copyright 2021 Allen Downey</p>
@@ -814,22 +1161,15 @@ They should be identical to the results from PageRank, except for small floating
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="quiz07.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Quiz 7</p>
-            </div>
-        </a>
-    </div>
-
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="quiz07.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Quiz 7</p>
+        </div>
+    </a>
 </div>
         
         </div>
@@ -850,8 +1190,7 @@ They should be identical to the results from PageRank, except for small floating
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

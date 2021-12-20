@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Depth First Search &#8212; Data Structures and Information Retrieval in Python</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -54,7 +54,10 @@
     <link rel="next" title="Search" href="searching.html" />
     <link rel="prev" title="Quiz 2" href="quiz02.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -399,11 +402,30 @@ For example, here is a minimal HTML document, which I borrowed from the <a class
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bs4.BeautifulSoup
+</pre></div>
+</div>
+</div>
 </div>
 <p>The result is a <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code> object that represents the root of the tree. If we display the soup, it reproduces the HTML.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse&#39;s story&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;p class=&quot;title&quot;&gt;&lt;b&gt;The Dormouse&#39;s story&lt;/b&gt;&lt;/p&gt;
+&lt;p class=&quot;story&quot;&gt;Once upon a time there were three little sisters; and their names were
+&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,
+&lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt; and
+&lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;;
+and they lived at the bottom of a well.&lt;/p&gt;
+&lt;p class=&quot;story&quot;&gt;...&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
 </pre></div>
 </div>
 </div>
@@ -415,11 +437,53 @@ For example, here is a minimal HTML document, which I borrowed from the <a class
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;html&gt;
+ &lt;head&gt;
+  &lt;title&gt;
+   The Dormouse&#39;s story
+  &lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;p class=&quot;title&quot;&gt;
+   &lt;b&gt;
+    The Dormouse&#39;s story
+   &lt;/b&gt;
+  &lt;/p&gt;
+  &lt;p class=&quot;story&quot;&gt;
+   Once upon a time there were three little sisters; and their names were
+   &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;
+    Elsie
+   &lt;/a&gt;
+   ,
+   &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;
+    Lacie
+   &lt;/a&gt;
+   and
+   &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;
+    Tillie
+   &lt;/a&gt;
+   ;
+and they lived at the bottom of a well.
+  &lt;/p&gt;
+  &lt;p class=&quot;story&quot;&gt;
+   ...
+  &lt;/p&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code> object has a property called <code class="docutils literal notranslate"><span class="pre">children</span></code> that returns an iterator of the objects it contains.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span><span class="o">.</span><span class="n">children</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;list_iterator at 0x7f11481f58d0&gt;
 </pre></div>
 </div>
 </div>
@@ -432,12 +496,31 @@ For example, here is a minimal HTML document, which I borrowed from the <a class
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;bs4.element.Tag&#39;&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <p>This soup contains only a single child, which is a <code class="docutils literal notranslate"><span class="pre">Tag</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code> also provides <code class="docutils literal notranslate"><span class="pre">contents</span></code>, which returns the children in the form of a list, which can be more convenient.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span><span class="o">.</span><span class="n">contents</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse&#39;s story&lt;/title&gt;&lt;/head&gt;
+ &lt;body&gt;
+ &lt;p class=&quot;title&quot;&gt;&lt;b&gt;The Dormouse&#39;s story&lt;/b&gt;&lt;/p&gt;
+ &lt;p class=&quot;story&quot;&gt;Once upon a time there were three little sisters; and their names were
+ &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,
+ &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt; and
+ &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;;
+ and they lived at the bottom of a well.&lt;/p&gt;
+ &lt;p class=&quot;story&quot;&gt;...&lt;/p&gt;
+ &lt;/body&gt;&lt;/html&gt;]
 </pre></div>
 </div>
 </div>
@@ -451,11 +534,30 @@ Let’s get just this element:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse&#39;s story&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;p class=&quot;title&quot;&gt;&lt;b&gt;The Dormouse&#39;s story&lt;/b&gt;&lt;/p&gt;
+&lt;p class=&quot;story&quot;&gt;Once upon a time there were three little sisters; and their names were
+&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,
+&lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt; and
+&lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;;
+and they lived at the bottom of a well.&lt;/p&gt;
+&lt;p class=&quot;story&quot;&gt;...&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <p>The type of the element is <code class="docutils literal notranslate"><span class="pre">Tag</span></code>:</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bs4.element.Tag
 </pre></div>
 </div>
 </div>
@@ -467,12 +569,32 @@ Let’s get just this element:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;html&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now let’s get the children of this top-level element:</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">children</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">contents</span>
 <span class="n">children</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;head&gt;&lt;title&gt;The Dormouse&#39;s story&lt;/title&gt;&lt;/head&gt;,
+ &#39;\n&#39;,
+ &lt;body&gt;
+ &lt;p class=&quot;title&quot;&gt;&lt;b&gt;The Dormouse&#39;s story&lt;/b&gt;&lt;/p&gt;
+ &lt;p class=&quot;story&quot;&gt;Once upon a time there were three little sisters; and their names were
+ &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,
+ &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt; and
+ &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;;
+ and they lived at the bottom of a well.&lt;/p&gt;
+ &lt;p class=&quot;story&quot;&gt;...&lt;/p&gt;
+ &lt;/body&gt;]
 </pre></div>
 </div>
 </div>
@@ -498,6 +620,11 @@ Let’s get just this element:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tag&lt;html&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <p>And the following function to print a list of elements.</p>
 <div class="cell docutils container">
@@ -517,6 +644,15 @@ Let’s get just this element:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[
+Tag&lt;head&gt;
+NavigableString
+Tag&lt;body&gt;
+]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now let’s try navigating the tree. I’ll start with the first child of <code class="docutils literal notranslate"><span class="pre">element</span></code>.</p>
 <div class="cell tag_fill-in docutils container">
@@ -526,11 +662,23 @@ Let’s get just this element:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tag&lt;head&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <p>And print its children.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_element_list</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">contents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[
+Tag&lt;title&gt;
+]
 </pre></div>
 </div>
 </div>
@@ -543,11 +691,21 @@ Let’s get just this element:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tag&lt;title&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grandchild</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">print_element</span><span class="p">(</span><span class="n">grandchild</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tag&lt;title&gt;
 </pre></div>
 </div>
 </div>
@@ -557,6 +715,11 @@ Let’s get just this element:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greatgrandchild</span> <span class="o">=</span> <span class="n">grandchild</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">print_element</span><span class="p">(</span><span class="n">greatgrandchild</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NavigableString
 </pre></div>
 </div>
 </div>
@@ -570,10 +733,20 @@ Let’s get just this element:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AttributeError: &#39;NavigableString&#39; object has no attribute &#39;contents&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greatgrandchild</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;The Dormouse&#39;s story&quot;
 </pre></div>
 </div>
 </div>
@@ -612,6 +785,19 @@ The recursive implementation looks like this:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Dormouse&#39;s story
+
+The Dormouse&#39;s story
+Once upon a time there were three little sisters; and their names were
+Elsie,
+Lacie and
+Tillie;
+and they lived at the bottom of a well.
+...
+</pre></div>
+</div>
+</div>
 </div>
 <p>Here is an iterative version of DFS that uses a list to represent a stack of elements:</p>
 <div class="cell tag_fill-in docutils container">
@@ -640,6 +826,19 @@ reverse order.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iterative_DFS</span><span class="p">(</span><span class="n">soup</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Dormouse&#39;s story
+
+The Dormouse&#39;s story
+Once upon a time there were three little sisters; and their names were
+Elsie,
+Lacie and
+Tillie;
+and they lived at the bottom of a well.
+...
 </pre></div>
 </div>
 </div>
@@ -689,31 +888,22 @@ reverse order.</p>
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="quiz02.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Quiz 2</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="quiz02.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Quiz 2</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="searching.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Search</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="searching.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Search</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -734,8 +924,7 @@ reverse order.</p>
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

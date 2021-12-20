@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Testing Order of Growth &#8212; Data Structures and Information Retrieval in Python</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -54,7 +54,10 @@
     <link rel="next" title="Quiz 1" href="quiz01.html" />
     <link rel="prev" title="Analysis of Algorithms" href="analysis.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -408,7 +411,7 @@ So the behavior for small and medium problems might not be what the analysis pre
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.010000000000000009
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
 </pre></div>
 </div>
 </div>
@@ -463,7 +466,7 @@ So the behavior for small and medium problems might not be what the analysis pre
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>450 µs ± 751 ns per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>427 µs ± 6.66 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -522,15 +525,15 @@ So the behavior for small and medium problems might not be what the analysis pre
 2048 0.0
 4096 0.0
 8192 0.0
-16384 0.0
+16384 0.009999999999999787
 32768 0.0
 65536 0.0
-131072 0.009999999999999787
-262144 0.020000000000000462
-524288 0.040000000000000924
-1048576 0.0699999999999994
-2097152 0.15000000000000036
-4194304 0.2999999999999998
+131072 0.020000000000000462
+262144 0.019999999999999574
+524288 0.02999999999999936
+1048576 0.08000000000000096
+2097152 0.15999999999999925
+4194304 0.27000000000000046
 8388608 0.5700000000000003
 16777216 1.0399999999999991
 </pre></div>
@@ -591,7 +594,8 @@ It will help to plot a straight line that goes through the last data point.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.008124999999999993,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0010156249999999992,
+ 0.008124999999999993,
  0.016249999999999987,
  0.03249999999999997,
  0.06499999999999995,
@@ -676,18 +680,18 @@ It will help to plot a straight line that goes through the last data point.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1024 0.0
 2048 0.0
 4096 0.0
-8192 0.0
+8192 0.010000000000001563
 16384 0.0
 32768 0.0
 65536 0.009999999999999787
-131072 0.019999999999999574
-262144 0.030000000000001137
+131072 0.009999999999999787
+262144 0.03999999999999915
 524288 0.05000000000000071
-1048576 0.11999999999999922
-2097152 0.2400000000000002
-4194304 0.46999999999999886
-8388608 0.9199999999999999
-16777216 1.7600000000000016
+1048576 0.11000000000000121
+2097152 0.22999999999999865
+4194304 0.4800000000000004
+8388608 0.8699999999999992
+16777216 1.6900000000000013
 </pre></div>
 </div>
 <img alt="_images/timing_33_1.png" src="_images/timing_33_1.png" />
@@ -714,10 +718,10 @@ It will help to plot a straight line that goes through the last data point.</p>
 2048 0.0
 4096 0.0
 8192 0.010000000000001563
-16384 0.029999999999997584
-32768 0.07000000000000028
-65536 0.4200000000000017
-131072 1.7799999999999976
+16384 0.019999999999999574
+32768 0.08999999999999986
+65536 0.39000000000000057
+131072 1.7199999999999989
 </pre></div>
 </div>
 <img alt="_images/timing_35_1.png" src="_images/timing_35_1.png" />
@@ -746,17 +750,18 @@ It will help to plot a straight line that goes through the last data point.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1024 0.0
 2048 0.0
 4096 0.0
-8192 0.009999999999999787
+8192 0.0
 16384 0.0
-32768 0.009999999999999787
+32768 0.0
 65536 0.009999999999999787
-131072 0.030000000000001137
-262144 0.049999999999998934
-524288 0.08999999999999986
-1048576 0.1999999999999993
-2097152 0.40000000000000036
-4194304 0.8000000000000007
-8388608 1.5700000000000003
+131072 0.019999999999999574
+262144 0.030000000000001137
+524288 0.05999999999999872
+1048576 0.10999999999999943
+2097152 0.26000000000000156
+4194304 0.5500000000000007
+8388608 1.0
+16777216 1.9100000000000001
 </pre></div>
 </div>
 <img alt="_images/timing_37_1.png" src="_images/timing_37_1.png" />
@@ -778,11 +783,11 @@ It will help to plot a straight line that goes through the last data point.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1024 0.019999999999999574
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1024 0.00999999999999801
 2048 0.03999999999999915
-4096 0.16000000000000014
-8192 0.6099999999999994
-16384 2.4300000000000033
+4096 0.14000000000000057
+8192 0.5499999999999972
+16384 2.1400000000000006
 </pre></div>
 </div>
 <img alt="_images/timing_39_1.png" src="_images/timing_39_1.png" />
@@ -810,15 +815,16 @@ It will help to plot a straight line that goes through the last data point.</p>
 4096 0.0
 8192 0.0
 16384 0.0
-32768 0.010000000000001563
+32768 0.0
 65536 0.00999999999999801
-131072 0.020000000000003126
-262144 0.03999999999999915
-524288 0.07000000000000028
-1048576 0.14999999999999858
-2097152 0.3000000000000007
-4194304 0.5999999999999979
-8388608 1.2300000000000004
+131072 0.0
+262144 0.030000000000001137
+524288 0.04999999999999716
+1048576 0.11000000000000298
+2097152 0.23999999999999844
+4194304 0.4400000000000013
+8388608 0.9400000000000013
+16777216 1.8699999999999974
 </pre></div>
 </div>
 <img alt="_images/timing_41_1.png" src="_images/timing_41_1.png" />
@@ -848,14 +854,14 @@ It will help to plot a straight line that goes through the last data point.</p>
 8192 0.0
 16384 0.0
 32768 0.00999999999999801
-65536 0.010000000000001563
-131072 0.030000000000001137
+65536 0.010000000000005116
+131072 0.01999999999999602
 262144 0.05000000000000071
-524288 0.09999999999999787
-1048576 0.20000000000000284
-2097152 0.399999999999995
-4194304 0.8000000000000007
-8388608 1.6499999999999986
+524288 0.06999999999999673
+1048576 0.1600000000000037
+2097152 0.33999999999999986
+4194304 0.6600000000000001
+8388608 1.3900000000000006
 </pre></div>
 </div>
 <img alt="_images/timing_43_1.png" src="_images/timing_43_1.png" />
@@ -888,31 +894,22 @@ It will help to plot a straight line that goes through the last data point.</p>
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="analysis.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Analysis of Algorithms</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="analysis.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Analysis of Algorithms</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="quiz01.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quiz 1</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="quiz01.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Quiz 1</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -933,8 +930,7 @@ It will help to plot a straight line that goes through the last data point.</p>
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Getting to Philosophy &#8212; Data Structures and Information Retrieval in Python</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -54,7 +54,10 @@
     <link rel="next" title="Quiz 4" href="quiz04.html" />
     <link rel="prev" title="Huffman Code" href="huffman.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -431,6 +434,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bs4.BeautifulSoup
+</pre></div>
+</div>
+</div>
 </div>
 <p>To iterate through the elements in the DOM, we can write our own implementation of depth first search, like this:</p>
 <div class="cell docutils container">
@@ -459,6 +467,19 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Dormouse&#39;s story
+
+The Dormouse&#39;s story
+Once upon a time there were three little sisters; and their names were
+(Elsie),
+Lacie and
+Tillie;
+and they lived at the bottom of a well.
+...
+</pre></div>
+</div>
+</div>
 </div>
 <p>But we can also use <code class="docutils literal notranslate"><span class="pre">descendants</span></code>, which does the same thing.</p>
 <div class="cell docutils container">
@@ -466,6 +487,19 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">descendants</span><span class="p">:</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">NavigableString</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">string</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Dormouse&#39;s story
+
+The Dormouse&#39;s story
+Once upon a time there were three little sisters; and their names were
+(Elsie),
+Lacie and
+Tillie;
+and they lived at the bottom of a well.
+...
 </pre></div>
 </div>
 </div>
@@ -506,6 +540,12 @@ If you have a link, you could work your way outward looking for enclosing parent
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;
+&lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="checking-for-italics">
@@ -524,6 +564,11 @@ If you have a link, you could work your way outward looking for enclosing parent
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <p>Its parent is an italics tag.</p>
 <div class="cell docutils container">
@@ -533,10 +578,20 @@ If you have a link, you could work your way outward looking for enclosing parent
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parent</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;i&#39;
 </pre></div>
 </div>
 </div>
@@ -655,6 +710,13 @@ request and sleeps if the elapsed time is less than <code class="docutils litera
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1640031013.2612915
+1640031013.7938814
+1640031014.7832372
+</pre></div>
+</div>
+</div>
 </div>
 <p>If things have gone according to plan, the three timestamps should be no less than 1 second apart, which is consistent with the terms in Wikipedia’s <a class="reference external" href="https://en.wikipedia.org/robots.txt">robots.txt</a>:</p>
 <blockquote>
@@ -683,10 +745,40 @@ results at the end (whether it succeeds or fails).</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;https://en.wikipedia.org/wiki/Interpreted_language&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_to_philosophy</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://en.wikipedia.org/wiki/Python_(programming_language)
+https://en.wikipedia.org/wiki/Interpreted_language
+https://en.wikipedia.org/wiki/Computer_science
+https://en.wikipedia.org/wiki/Computation
+https://en.wikipedia.org/wiki/Calculation
+https://en.wikipedia.org/wiki/Arithmetic
+https://en.wikipedia.org/wiki/Mathematics
+https://en.wikipedia.org/wiki/Epistemology
+https://en.wikipedia.org/wiki/Outline_of_philosophy
+Got there in 9 steps!
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;https://en.wikipedia.org/wiki/Python_(programming_language)&#39;,
+ &#39;https://en.wikipedia.org/wiki/Interpreted_language&#39;,
+ &#39;https://en.wikipedia.org/wiki/Computer_science&#39;,
+ &#39;https://en.wikipedia.org/wiki/Computation&#39;,
+ &#39;https://en.wikipedia.org/wiki/Calculation&#39;,
+ &#39;https://en.wikipedia.org/wiki/Arithmetic&#39;,
+ &#39;https://en.wikipedia.org/wiki/Mathematics&#39;,
+ &#39;https://en.wikipedia.org/wiki/Epistemology&#39;,
+ &#39;https://en.wikipedia.org/wiki/Outline_of_philosophy&#39;]
 </pre></div>
 </div>
 </div>
@@ -717,31 +809,22 @@ results at the end (whether it succeeds or fails).</p>
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="huffman.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Huffman Code</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="huffman.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Huffman Code</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="quiz04.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quiz 4</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="quiz04.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Quiz 4</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -762,8 +845,7 @@ results at the end (whether it succeeds or fails).</p>
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
