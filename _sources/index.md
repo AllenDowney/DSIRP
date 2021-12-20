@@ -1,18 +1,35 @@
-# Outline
+# Introduction
 
-This book is an introduction to data structures in Python, using a web search engine as a motivating example.
+*Data Structures and Information Retrieval in Python* is an introduction to data structures and algorithms using a web search engine as a motivating example.
 It is based in part on *[Think Data Structures](https://greenteapress.com/wp/think-data-structures/)*, which uses Java.
 
+The elements of the search engine are:
+
+* The Crawler, which downloads web pages and follows links to other pages,
+
+* The Indexer, which builds a map from each word to the pages where it appears, and
+
+* The Retriever, which looks up search terms and finds pages that maximize relevance and quality.
+
+The index is stored in Redis, which is a data store that provides structures like sets, lists, and hashmaps. The book presents each data structure first in Python, then in Redis, which should help readers see which features are essential and which are implementation details.
+
+As I did with [*Think Bayes*](https://greenteapress.com/wp/think-bayes/), I wrote this book entirely in Jupyter notebooks, and used JupyterBook to translate them to HTML. The notebooks run on Colab, which is a service provided by Google that runs notebooks in a browser. So you can read the book, run the code, and work on exercises without installing anything.
+
 This material is a work in progress, so your feedback is welcome.  The best way to provide that feedback is to [click here and create an issue in this GitHub repository](https://github.com/AllenDowney/DSIRP/issues).
+
+[Overview slides](https://docs.google.com/presentation/d/e/2PACX-1vRFFocqlEH4YAbi8_xgZhfx9cvHFdMkhx_-yQ2aVVqc5quUQlm_mhuu7XoE9UOARsvwDe9X0kcA2DqS/pub)
 
 
 ## The notebooks
 
 Click on the links below to run the notebooks on Colab.
 
-* [Algorithms](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/algorithms.ipynb)
+* Algorithms: Day One activity checking for anagrams and finding anagram sets.  
+[Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/algorithms.ipynb)
 
-* [Analysis](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/analysis.ipynb)
+* Analysis: Introduction to the analysis of algorithms and Big O notation.  
+[Slides](https://docs.google.com/presentation/d/e/2PACX-1vQXYlOUlPPTE9GGR3UBugxYT8n_TcIGR5ttG7Rz_aA8lAFLTCeYUC1HFnQyDQBKPOv6PC7_PQ5Q-xz6/pub)  
+[Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/analysis.ipynb)
 
 * [Timing](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/timing.ipynb)
 
