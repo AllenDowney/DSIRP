@@ -135,7 +135,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="search2.html">
+  <a class="reference internal" href="searching.html">
    Search
   </a>
  </li>
@@ -195,6 +195,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="graph.html">
+   Graphs
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="level_order.html">
    Level Order Traversal
   </a>
@@ -202,11 +207,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="bfs.html">
    Breadth First Search
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="graph.html">
-   Graphs
   </a>
  </li>
  <li class="toctree-l1">
@@ -379,7 +379,11 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="testing-order-of-growth">
 <h1>Testing Order of Growth<a class="headerlink" href="#testing-order-of-growth" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/chapters/timing.ipynb">Click here to run this chapter on Colab</a></p>
-<p>Read the <a class="reference external" href="https://docs.python.org/3/library/os.html#os.times">documentation of os.times</a></p>
+<p>Analysis of algorithms makes it possible to predict how run time will grow as the size of a problem increases.
+But this kind of analysis ignores leading coefficients and non-leading terms.
+So the behavior for small and medium problems might not be what the analysis predicts.</p>
+<p>To see how run time really behaves for a range of problem sizes, we can run the algorithm and measure.</p>
+<p>To do the measurement, we’ll use the <a class="reference external" href="https://docs.python.org/3/library/os.html#os.times">times</a> function from the <code class="docutils literal notranslate"><span class="pre">os</span></code> module.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -544,7 +548,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/timing_22_0.png" src="_images/timing_22_0.png" />
+<img alt="_images/timing_21_0.png" src="_images/timing_21_0.png" />
 </div>
 </div>
 <p>This one looks pretty linear, but it won’t always be so clear.
@@ -633,7 +637,7 @@ It will help to plot a straight line that goes through the last data point.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/timing_28_0.png" src="_images/timing_28_0.png" />
+<img alt="_images/timing_27_0.png" src="_images/timing_27_0.png" />
 </div>
 </div>
 <p>From these results, what can we conclude about the order of growth of <code class="docutils literal notranslate"><span class="pre">list.append</span></code>?</p>
@@ -646,7 +650,7 @@ It will help to plot a straight line that goes through the last data point.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/timing_31_0.png" src="_images/timing_31_0.png" />
+<img alt="_images/timing_30_0.png" src="_images/timing_30_0.png" />
 </div>
 </div>
 <p>Why might we prefer this scale?</p>
@@ -686,7 +690,7 @@ It will help to plot a straight line that goes through the last data point.</p>
 16777216 1.7600000000000016
 </pre></div>
 </div>
-<img alt="_images/timing_34_1.png" src="_images/timing_34_1.png" />
+<img alt="_images/timing_33_1.png" src="_images/timing_33_1.png" />
 </div>
 </div>
 <p>What can we conclude?</p>
@@ -716,7 +720,7 @@ It will help to plot a straight line that goes through the last data point.</p>
 131072 1.7799999999999976
 </pre></div>
 </div>
-<img alt="_images/timing_36_1.png" src="_images/timing_36_1.png" />
+<img alt="_images/timing_35_1.png" src="_images/timing_35_1.png" />
 </div>
 </div>
 </div>
@@ -755,7 +759,7 @@ It will help to plot a straight line that goes through the last data point.</p>
 8388608 1.5700000000000003
 </pre></div>
 </div>
-<img alt="_images/timing_38_1.png" src="_images/timing_38_1.png" />
+<img alt="_images/timing_37_1.png" src="_images/timing_37_1.png" />
 </div>
 </div>
 <p>What if we always search for the last element?</p>
@@ -781,7 +785,7 @@ It will help to plot a straight line that goes through the last data point.</p>
 16384 2.4300000000000033
 </pre></div>
 </div>
-<img alt="_images/timing_40_1.png" src="_images/timing_40_1.png" />
+<img alt="_images/timing_39_1.png" src="_images/timing_39_1.png" />
 </div>
 </div>
 </div>
@@ -817,7 +821,7 @@ It will help to plot a straight line that goes through the last data point.</p>
 8388608 1.2300000000000004
 </pre></div>
 </div>
-<img alt="_images/timing_42_1.png" src="_images/timing_42_1.png" />
+<img alt="_images/timing_41_1.png" src="_images/timing_41_1.png" />
 </div>
 </div>
 </div>
@@ -854,7 +858,7 @@ It will help to plot a straight line that goes through the last data point.</p>
 8388608 1.6499999999999986
 </pre></div>
 </div>
-<img alt="_images/timing_44_1.png" src="_images/timing_44_1.png" />
+<img alt="_images/timing_43_1.png" src="_images/timing_43_1.png" />
 </div>
 </div>
 <p>This characteristic of dictionaries is the foundation of a lot of efficient algorithms!</p>

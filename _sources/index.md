@@ -26,9 +26,9 @@ Click on the links below to run the notebooks on Colab.
 
 * [Quiz02](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz02.ipynb)
 
-* [Dfs](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/dfs.ipynb)
+* [DFS](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/dfs.ipynb)
 
-* [Search](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/search2.ipynb)
+* [Search](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/searching.ipynb)
 
 * [Hashmap](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/hashmap.ipynb)
 
