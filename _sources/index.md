@@ -56,6 +56,8 @@ Click on the links below to run the notebooks on Colab.
 
 * [Breadth First Search](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/bfs.ipynb)
 
+* [Graphs](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/graph.ipynb)
+
 * [Quiz06](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz06.ipynb)
 
 * [Crawler](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/crawler.ipynb)
