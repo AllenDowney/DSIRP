@@ -1,0 +1,19 @@
+name: DSIRP
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - jupyter
+  - numpy
+  - scipy
+  - pandas
+  - networkx
+  - matplotlib
+  - lxml
+  - html5lib
+  - beautifulsoup4
+  - redis
+  - redis-py
+  - jupyter-book
+  - pip
