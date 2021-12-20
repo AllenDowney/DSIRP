@@ -1,0 +1,33 @@
+format: jb-article
+root: index
+sections:
+- file: algorithms
+- file: analysis
+- file: timing
+- file: quiz01
+- file: generator
+- file: set
+- file: recursion
+- file: quiz02
+- file: dfs
+- file: searching
+- file: hashmap
+- file: quiz03
+- file: heap
+- file: huffman
+- file: philosophy
+- file: quiz04
+- file: redis
+- file: linked_list
+- file: indexer
+- file: quiz05
+- file: deque
+- file: graph
+- file: level_order
+- file: bfs
+- file: quiz06
+- file: crawler
+- file: mergesort
+- file: fft
+- file: quiz07
+- file: pagerank
