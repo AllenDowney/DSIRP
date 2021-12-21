@@ -7,9 +7,9 @@ The elements of the search engine are:
 
 * The Crawler, which downloads web pages and follows links to other pages,
 
-* The Indexer, which builds a map from each word to the pages where it appears, and
+* The Indexer, which builds a map from each search term to the pages where it appears, and
 
-* The Retriever, which looks up search terms and finds pages that maximize relevance and quality.
+* The Retriever, which looks up search terms and finds relevant, high-quality pages.
 
 The index is stored in Redis, which is a data store that provides structures like sets, lists, and hashmaps. The book presents each data structure first in Python, then in Redis, which should help readers see which features are essential and which are implementation details.
 
