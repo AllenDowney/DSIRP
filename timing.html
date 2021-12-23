@@ -447,7 +447,7 @@ So the behavior for small and medium problems might not be what the analysis pre
 </div>
 <p>One of the things that makes timing tricky is that many operations are too fast to measure accurately.</p>
 <p><code class="docutils literal notranslate"><span class="pre">%timeit</span></code> handles this by running enough times get a precise estimate, even for things that run very fast.</p>
-<p>We’ll handle it by running over a wide range of problem sizes, hoping to sizes that run long enough to measure, but not more than a few seconds.</p>
+<p>We’ll handle it by running over a wide range of problem sizes, hoping to find sizes that run long enough to measure, but not more than a few seconds.</p>
 <p>The following function takes a size, <code class="docutils literal notranslate"><span class="pre">n</span></code>, creates an empty list, and calls <code class="docutils literal notranslate"><span class="pre">list.append</span></code> <code class="docutils literal notranslate"><span class="pre">n</span></code> times.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
