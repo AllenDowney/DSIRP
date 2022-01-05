@@ -83,8 +83,8 @@ Click on the links below to run the notebooks on Colab.
 * Redis: Introduction to the Redis data store.  
 [Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/redis.ipynb)
 
-* Linked List: Trees before lists? Strange but true.
-[Slides](https://docs.google.com/presentation/d/e/2PACX-1vRSKmupEcVRXzH4jj31Zk5To6PrmIej58HviUrbN0a7wKTKBZwdoVHcGSFKvWac-L1w3Js9R6eD33fn/pub)
+* Linked List: Trees before lists? Strange but true.  
+[Slides](https://docs.google.com/presentation/d/e/2PACX-1vRSKmupEcVRXzH4jj31Zk5To6PrmIej58HviUrbN0a7wKTKBZwdoVHcGSFKvWac-L1w3Js9R6eD33fn/pub)  
 [Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/linked_list.ipynb)
 
 * Indexer: Make a map of the internet for fast lookups.  
