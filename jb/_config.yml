@@ -7,7 +7,3 @@ execute:
 
 repository:
   url: https://github.com/AllenDowney/DSIRP
-html:
-  use_repository_button: true
-launch_buttons:
-  binderhub_url:""
