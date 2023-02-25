@@ -1,4 +1,3 @@
-# these versions match Colab as of 2022-12-29
 jupyter
 numpy
 matplotlib

@@ -1,6 +1,7 @@
 -r requirements.txt
 black
+ghp-import
+jupyter-book
 nb_black
 nbformat
-nbmake
 pytest
