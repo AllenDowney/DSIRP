@@ -16,4 +16,5 @@ dependencies:
   - redis
   - redis-py
   - jupyter-book
+  - ghp-import
   - pip

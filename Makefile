@@ -5,7 +5,7 @@ PYTHON_INTERPRETER = python
 
 ## Set up python interpreter environment
 create_environment:
-	conda create -y --name $(PROJECT_NAME) python=$(PYTHON_VERSION)
+	conda env create -f environment.yml
 	@echo ">>> conda env created. Activate with:\nconda activate $(PROJECT_NAME)"
 
 
