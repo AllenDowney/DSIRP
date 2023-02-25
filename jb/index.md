@@ -34,7 +34,7 @@ Click on the links below to run the notebooks on Colab.
 * Timing: Checking asymptotic behavior by measuring run time.  
 [Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/timing.ipynb)
 
-* Quiz 01  
+* Quiz 1  
 [Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz01.ipynb)
 
 * Generator functions: Separate the iteration from the program logic  
@@ -47,7 +47,8 @@ Click on the links below to run the notebooks on Colab.
 * Recursion: Practice recursive functions.  
 [Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/recursion.ipynb)
 
-* [Quiz02](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz02.ipynb)
+* Quiz 2  
+[Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz02.ipynb)
 
 * Depth First Search: Tree traversal in BeautifulSoup.  
 [Slides](https://docs.google.com/presentation/d/e/2PACX-1vTQzIt8u_vdwhqeFjPIHUNDFlO0_2-GId567gTbSCtyfQM0nRWjlxbklUhWTGl4KDzVI4_JxcfYRfEa/pub)  
@@ -61,7 +62,8 @@ Click on the links below to run the notebooks on Colab.
 [Slides](https://docs.google.com/presentation/d/e/2PACX-1vQXOQd5jpi4eHfIg9iqPCOSLVFEnaAvAiFhBAGZECl0wZ2XKJdbMSnGZsym8CvVq-IsxvvKu1tB7e2L/pub)  
 [Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/hashmap.ipynb)
 
-* [Quiz03](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz03.ipynb)
+* Quiz 3  
+[Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz03.ipynb)
 
 * Heap: It's an array, it's a tree, it's a PriorityQueue!  
 [Slides](https://docs.google.com/presentation/d/e/2PACX-1vQTHKlq7pvrOCgqgPhLodGUtrcA3sFGco4r8O041WvmKLi-JFDfUPpb4X6txEn1qe2RR_xBfvXlXtSD/pub)  
@@ -75,19 +77,21 @@ Click on the links below to run the notebooks on Colab.
 [Slides](https://docs.google.com/presentation/d/e/2PACX-1vQKVxHQKnp4LoiDipCvMh6GFRhgdiNFG_fqJ6vOfFb-ai9S1jLLbFvR1Qp4ocaAMNGL2FSaUd3-3H62/pub)  
 [Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/philosophy.ipynb)
 
-* [Quiz04](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz04.ipynb)
+* Quiz 4  
+[Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz04.ipynb)
 
 * Redis: Introduction to the Redis data store.  
 [Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/redis.ipynb)
 
-* Linked List: Trees before lists? Strange but true.
-[Slides](https://docs.google.com/presentation/d/e/2PACX-1vRSKmupEcVRXzH4jj31Zk5To6PrmIej58HviUrbN0a7wKTKBZwdoVHcGSFKvWac-L1w3Js9R6eD33fn/pub)
+* Linked List: Trees before lists? Strange but true.  
+[Slides](https://docs.google.com/presentation/d/e/2PACX-1vRSKmupEcVRXzH4jj31Zk5To6PrmIej58HviUrbN0a7wKTKBZwdoVHcGSFKvWac-L1w3Js9R6eD33fn/pub)  
 [Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/linked_list.ipynb)
 
 * Indexer: Make a map of the internet for fast lookups.  
 [Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/indexer.ipynb)
 
-* [Quiz05](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz05.ipynb)
+* Quiz 5  
+[Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz05.ipynb)
 
 * Deque: Like a linked list, but more so.  
 [Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/deque.ipynb)
@@ -103,7 +107,8 @@ Click on the links below to run the notebooks on Colab.
 [Slides](https://docs.google.com/presentation/d/e/2PACX-1vRXakv4ZkGq648UwqRCXUkmqUFwGx4kJ4OskY6F9_busCH2aXPjZKKsQhGP4ESdJJNDq8bJowB9zLJb/pub)  
 [Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/bfs.ipynb)
 
-* [Quiz06](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz06.ipynb)
+* Quiz 6  
+[Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz06.ipynb)
 
 * Crawler: Follow links and breadth-first search the internet.  
 [Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/crawler.ipynb)
@@ -112,11 +117,12 @@ Click on the links below to run the notebooks on Colab.
 [Slides](https://docs.google.com/presentation/d/e/2PACX-1vQbgVZohGR3tSm7LtnYVravKt_za_70Egy4hQwpGeLsjvhfmG16QfBjhph991EsIWsrfyABsRMmMAMk/pub)  
 [Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/mergesort.ipynb)
 
-* Fast Fourier Tranform: It's like mergesort, but with complex numbers.  
+* Fast Fourier Transform: It's like mergesort, but with complex numbers.  
 [Slides](https://docs.google.com/presentation/d/e/2PACX-1vRuShFoETvJiCPAiM1xbxDBIM6MaXh2kMpjYB3FvRB4xzYsfi3vgZYgoQbxtGq8ODLjC8qhwn17f2_V/pub)  
 [Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/fft.ipynb)
 
-* [Quiz07](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz07.ipynb)
+* Quiz 7
+[Notebook](https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/quiz07.ipynb)
 
 * PageRank: Random walks, adjacency matrices, and eigenvectors!  
 [Slides](https://docs.google.com/presentation/d/e/2PACX-1vTXdmLq-KdIVsm9dQVPUi5skj-hLDlYHuxMLmDimtvBF_qs1ZyRA6gy5SgsdINLf1baWppl6SsFL6OD/pub)  
