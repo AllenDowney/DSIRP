@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Redis &#8212; Data Structures and Information Retrieval in Python</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,36 +20,35 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -60,7 +61,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -69,9 +84,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
       
@@ -84,14 +100,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="index.html">
-   Introduction
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="algorithms.html">
    Algorithms
@@ -245,104 +262,164 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/redis.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/AllenDowney/DSIRP"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/DSIRP/master?urlpath=tree/redis.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AllenDowney/DSIRP/master?urlpath=tree/redis.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/redis.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Redis
@@ -399,21 +476,93 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Redis</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Redis
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#persistence">
+     Persistence
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#redis-clients-and-servers">
+     Redis clients and servers
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#redis-py">
+     redis-py
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#redis-data-types">
+     Redis Data Types
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lists">
+   Lists
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hash">
+     Hash
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deleting">
+     Deleting
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anagrams-again">
+     Anagrams (again!)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shut-down">
+     Shut down
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="redis">
-<h1>Redis<a class="headerlink" href="#redis" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="redis">
+<h1>Redis<a class="headerlink" href="#redis" title="Permalink to this headline">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/redis.ipynb">Click here to run this chapter on Colab</a></p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/DSIRP/blob/main/notebooks/chap01.ipynb">Click here to run this chapter on Colab</a></p>
-<div class="section" id="persistence">
-<h2>Persistence<a class="headerlink" href="#persistence" title="Permalink to this headline">¶</a></h2>
+<section id="persistence">
+<h2>Persistence<a class="headerlink" href="#persistence" title="Permalink to this headline">#</a></h2>
 <p>Data stored only in the memory of a running program is called “volatile”, because it disappears when the program ends.</p>
 <p>Data that still exists after the program that created it ends is called
 “persistent”. In general, files stored in a file system are persistent,
@@ -439,9 +588,9 @@ these capabilities.</p>
 Among others, it provides lists, hashes (similar to Python dictionaries), and sets.</p>
 <p>Redis is a “key-value database”, which means that it represents a mapping from keys to values.
 In Redis, the keys are strings and the values can be one of several types.</p>
-</div>
-<div class="section" id="redis-clients-and-servers">
-<h2>Redis clients and servers<a class="headerlink" href="#redis-clients-and-servers" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="redis-clients-and-servers">
+<h2>Redis clients and servers<a class="headerlink" href="#redis-clients-and-servers" title="Permalink to this headline">#</a></h2>
 <p>Redis is usually run as a remote service; in fact, the name stands for
 “REmote DIctionary Server”. To use Redis, you have to run the Redis
 server somewhere and then connect to it using a Redis client.</p>
@@ -458,10 +607,10 @@ Databases on RedisToGo are persistent.</p>
 <span class="n">IN_COLAB</span> <span class="o">=</span> <span class="s1">&#39;google.colab&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span>
 
 <span class="k">if</span> <span class="n">IN_COLAB</span><span class="p">:</span>
-    <span class="o">!</span>pip install redis-server
-    <span class="o">!</span>/usr/local/lib/python*/dist-packages/redis_server/bin/redis-server --daemonize yes
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>redis-server
+    <span class="o">!</span>/usr/local/lib/python*/dist-packages/redis_server/bin/redis-server<span class="w"> </span>--daemonize<span class="w"> </span>yes
 <span class="k">else</span><span class="p">:</span>
-    <span class="o">!</span>redis-server --daemonize yes
+    <span class="o">!</span>redis-server<span class="w"> </span>--daemonize<span class="w"> </span>yes
 </pre></div>
 </div>
 </div>
@@ -473,9 +622,9 @@ Databases on RedisToGo are persistent.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="redis-py">
-<h2>redis-py<a class="headerlink" href="#redis-py" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="redis-py">
+<h2>redis-py<a class="headerlink" href="#redis-py" title="Permalink to this headline">#</a></h2>
 <p>To talk to the Redis server, we’ll use <a class="reference external" href="https://redis-py.readthedocs.io/en/stable/index.html">redis-py</a>.
 Here’s how we use it to connect to the Redis server.</p>
 <div class="cell docutils container">
@@ -483,7 +632,7 @@ Here’s how we use it to connect to the Redis server.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">redis</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="o">!</span>pip install redis
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>redis
 </pre></div>
 </div>
 </div>
@@ -672,9 +821,9 @@ To do that, we can use JSON to create a string representation.</p>
 </div>
 </div>
 <p><strong>Exercise:</strong> Create a dictionary with a few items, including keys and values with different types. Use <code class="docutils literal notranslate"><span class="pre">json</span></code> to make a string representation of the dictionary, then store it as a value in the Redis database. Retrieve it and convert it back to a dictionary.</p>
-</div>
-<div class="section" id="redis-data-types">
-<h2>Redis Data Types<a class="headerlink" href="#redis-data-types" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="redis-data-types">
+<h2>Redis Data Types<a class="headerlink" href="#redis-data-types" title="Permalink to this headline">#</a></h2>
 <p>JSON can represent most Python objects, so we could use it to store arbitrary data structures in Redis. But in that case Redis only knows that they are strings; it can’t work with them as data structures. For example, if we store a data structure in JSON, the only way to modify it would be to:</p>
 <ol class="simple">
 <li><p>Get the entire structure, which might be large,</p></li>
@@ -685,10 +834,10 @@ To do that, we can use JSON to create a string representation.</p>
 </ol>
 <p>That’s not very efficient. A better alternative is to use the data types Redis provides, which you can read about in the
 <a class="reference external" href="https://redis.io/topics/data-types-intro">Redis Data Types Intro</a>.</p>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="lists">
-<h1>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="lists">
+<h1>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">#</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">rpush</span></code> method adds new elements to the end of a list (the <code class="docutils literal notranslate"><span class="pre">r</span></code> indicates the right-hand side of the list).</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
@@ -772,8 +921,8 @@ To do that, we can use JSON to create a string representation.</p>
 </div>
 </div>
 </div>
-<div class="section" id="hash">
-<h2>Hash<a class="headerlink" href="#hash" title="Permalink to this headline">¶</a></h2>
+<section id="hash">
+<h2>Hash<a class="headerlink" href="#hash" title="Permalink to this headline">#</a></h2>
 <p>A <a class="reference external" href="https://redis.io/commands#hash">Redis hash</a> is similar to a Python dictionary, but just to make things confusing the nomenclature is a little different.</p>
 <p>What we would call a “key” in a Python dictionary is called a “field” in a Redis hash.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">hset</span></code> method sets a field-value pair in a hash:</p>
@@ -837,9 +986,9 @@ b&#39;c&#39; b&#39;3&#39;
 <p><strong>Exercise:</strong> To add multiple items to a hash, you can use <code class="docutils literal notranslate"><span class="pre">hset</span></code> with the keyword <code class="docutils literal notranslate"><span class="pre">mapping</span></code> and a dictionary (or other mapping type).</p>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">Counter</span></code> object from the <code class="docutils literal notranslate"><span class="pre">collections</span></code> module to count the letters in a string, then use <code class="docutils literal notranslate"><span class="pre">hset</span></code> to store the results in a Redis hash.</p>
 <p>Then use <code class="docutils literal notranslate"><span class="pre">hscan_iter</span></code> to display the results.</p>
-</div>
-<div class="section" id="deleting">
-<h2>Deleting<a class="headerlink" href="#deleting" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="deleting">
+<h2>Deleting<a class="headerlink" href="#deleting" title="Permalink to this headline">#</a></h2>
 <p>Before we go on, let’s clean up the database by deleting all of the key-value pairs.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
@@ -849,9 +998,9 @@ b&#39;c&#39; b&#39;3&#39;
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="anagrams-again">
-<h2>Anagrams (again!)<a class="headerlink" href="#anagrams-again" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="anagrams-again">
+<h2>Anagrams (again!)<a class="headerlink" href="#anagrams-again" title="Permalink to this headline">#</a></h2>
 <p>In a previous notebook, we made sets of words that are anagrams of each other by building a dictionary where they keys are sorted strings of letters and the values are lists of words.</p>
 <p>We’ll start by solving this problem again using Python data structures; then we’ll translate it into Redis.</p>
 <p>The following cell downloads a file that contains the list of words.</p>
@@ -875,7 +1024,7 @@ b&#39;c&#39; b&#39;3&#39;
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">iterate_words</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Read lines from a file and split them into words.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read lines from a file and split them into words.&quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
             <span class="k">yield</span> <span class="n">word</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -1002,14 +1151,14 @@ We can mitigate this problem by giving each key a prefix that identifies its pur
 </div>
 <p><strong>Exercise:</strong> Make a Python dictionary that contains the items from <code class="docutils literal notranslate"><span class="pre">anagram_dict</span></code> but with the values converted to JSON. Use <code class="docutils literal notranslate"><span class="pre">hset</span></code> with the <code class="docutils literal notranslate"><span class="pre">mapping</span></code> keyword to store it as a Redis hash.</p>
 <p><strong>Exercise:</strong> Write a loop that iterates through the field-value pairs, converts each value back to a Python list, and prints the lists with 6 or more elements.</p>
-</div>
-<div class="section" id="shut-down">
-<h2>Shut down<a class="headerlink" href="#shut-down" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="shut-down">
+<h2>Shut down<a class="headerlink" href="#shut-down" title="Permalink to this headline">#</a></h2>
 <p>If you are running this notebook on your own computer, you can use the following command to shut down the Redis server.</p>
 <p>If you are running on Colab, it’s not really necessary: the Redis server will get shut down when the Colab runtime shuts down (and everything stored in it will disappear).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>killall redis-server
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>killall<span class="w"> </span>redis-server
 </pre></div>
 </div>
 </div>
@@ -1017,8 +1166,8 @@ We can mitigate this problem by giving each key a prefix that identifies its pur
 <p><em>Data Structures and Information Retrieval in Python</em></p>
 <p>Copyright 2021 Allen Downey</p>
 <p>License: <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a></p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1032,7 +1181,7 @@ We can mitigate this problem by giving each key a prefix that identifies its pur
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1042,9 +1191,11 @@ We can mitigate this problem by giving each key a prefix that identifies its pur
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="quiz04.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1060,26 +1211,28 @@ We can mitigate this problem by giving each key a prefix that identifies its pur
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Allen B. Downey<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Allen B. Downey<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
