@@ -1,8 +1,5 @@
 -r requirements.txt
 black
-ghp-import
-jupyter-book
-# nb_black      removed because it was erroring out
 nbformat
 pytest
 nbmake
